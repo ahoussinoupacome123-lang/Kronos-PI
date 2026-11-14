@@ -1,0 +1,15 @@
+# Réclam'Graph — dependances CPU/noyau (versions epinglees, verifiees sur Python 3.14.4)
+# Installation : make setup
+numpy==2.5.5
+pandas==3.1.1
+scipy==1.18.1
+scikit-learn==1.9.1
+networkx==3.7
+Faker==40.63.0
+pydantic==2.14.4
+openai==3.59.0
+python-dotenv==1.2.4
+orjson==3.13.0
+streamlit==1.67.0
+plotly==7.2.0
+pytest==9.2.0
