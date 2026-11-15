@@ -37,6 +37,7 @@ for _d in (DATA_DIR, RESULTS_DIR, CACHE_DIR):
 # Fichiers canoniques
 COMPLAINTS_FILE = DATA_DIR / "complaints.jsonl"
 GROUND_TRUTH_FILE = DATA_DIR / "ground_truth.json"
+ALIAS_DIRECTORY_FILE = DATA_DIR / "alias_directory.json"
 EXTRACTIONS_FILE = DATA_DIR / "extractions.jsonl"
 SHARED_RECORDS_FILE = DATA_DIR / "shared_records.jsonl"
 ALERTS_FILE = RESULTS_DIR / "mule_alerts.json"
