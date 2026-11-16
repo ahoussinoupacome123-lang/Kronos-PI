@@ -225,10 +225,41 @@ class MuleAlert(BaseModel):
     human_validator: str | None = None
     gt_campaign_id: str | None = None
 
+    # --- état au moment exact du déclenchement de la règle ---
+    n_complainants_at_alert: int = 0
+    n_operators_at_alert: int = 0
+    total_fcfa_at_alert: int = 0
+    last_update_at: datetime | None = None
+
+    # --- score et priorisation ---
+    score_features: dict[str, float] = Field(default_factory=dict)
+    is_priority: bool = False
+
+    # --- impact ---
+    #: Montant exact, connu de l'opérateur qui HÉBERGE le compte mule (il voit
+    #: le solde réel). Le hub, lui, ne manipule que des montants arrondis :
+    #: `total_fcfa` est la vue hub, `total_fcfa_exact` la vue opérateur hôte.
+    total_fcfa_exact: int | None = None
+    freezable_at_last_update_fcfa: int = 0
+    impact_note: str = ""
+
+    @property
+    def total_for_display(self) -> int:
+        """Montant à afficher : l'exact si l'opérateur hôte l'a fourni."""
+        return self.total_fcfa_exact if self.total_fcfa_exact is not None else self.total_fcfa
+
     @property
     def headline(self) -> str:
-        total = f"{self.total_fcfa:,}".replace(",", "\u202f")
-        frozen = f"{self.freezable_fcfa:,}".replace(",", "\u202f")
+        """Texte d'alerte de la démo.
+
+        Chiffres de l'opérateur hôte (montants exacts et solde réel) : une
+        fois alerté, c'est lui qui connaît le compte. La vue hub, volontairement
+        arrondie, reste disponible dans `total_fcfa`.
+        """
+        total = f"{self.total_for_display:,}".replace(",", "\u202f")
+        frozen = f"{self.freezable_at_last_update_fcfa or self.freezable_fcfa:,}".replace(
+            ",", "\u202f"
+        )
         return (
             f"mule probable, {self.n_complainants} plaignants, "
             f"{self.n_operators} opérateurs, {total} FCFA dont "
