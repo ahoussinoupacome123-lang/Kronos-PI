@@ -249,3 +249,33 @@ SCAM_INDICATOR_PHRASES = {
     ),
     "demande_de_code": ("mon code", "otp", "code recu", "code de verification"),
 }
+
+# --------------------------------------------------------------------------
+# Gabarits AMBIGUS — le coeur du problème métier
+# --------------------------------------------------------------------------
+# « J'ai envoyé au mauvais numéro » (erreur sincère) et « je me suis trompé de
+# numéro, renvoyez-moi l'argent » (arnaque) emploient LES MÊMES MOTS. Un
+# opérateur seul, devant ce texte, ne peut pas trancher.
+#
+# Ces gabarits sont utilisés indifféremment par ARNAQUE_ERREUR_DEPOT et par
+# ERREUR_DESTINATAIRE_SINCERE. Une partie d'entre eux ne contient AUCUN signal
+# permettant de décider : ils plafonnent volontairement la F1 de n'importe
+# quel classifieur, y compris le nôtre.
+#
+# Sans eux, des n-grammes de caractères atteignent 1.00 de F1 macro sur ce
+# corpus — ce qui ne mesure que la séparabilité des gabarits, pas une
+# capacité. C'est aussi la démonstration de l'argument du projet : le signal
+# utile n'est pas dans le texte d'une plainte, il est dans le CROISEMENT de
+# plusieurs plaintes.
+AMBIGUOUS_TEMPLATES: tuple[str, ...] = (
+    "{G} jai envoye {A} a {AL} et je voudrais annuler svp. {C}",
+    "{G} probleme avec un transfert de {A} vers {AL}, ce nest pas le bon destinataire. {C}",
+    "{G} jai fait une erreur avec {A} vers {MS}, aidez moi a recuperer largent. {C}",
+    "{G} on sest trompe sur un montant de {A}, le beneficiaire est {AL}. {C}",
+    "{G} {A} est parti chez {AL} alors ke ce netait pas prevu. {C}",
+    "{G} transfert de {A} a annuler, destinataire {AL}, heure {HH}. {C}",
+    "{G} il y a eu une erreur de numero sur {A}, reference {REF}. {C}",
+    "{G} jai un souci, {A} envoye au mauvais numero {MS}. komment faire? {C}",
+    "{G} mauvais numero pour {A}, le compte est sur {OP}. je veux mon argent. {C}",
+    "{G} erreur sur {A} vers {AL}, merci de regulariser. {C}",
+)

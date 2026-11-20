@@ -89,6 +89,10 @@ class Complaint(BaseModel):
     gt_campaign_id: str | None = None
     gt_incident_id: str | None = None
     gt_is_mule_victim: bool = False
+    #: Vrai si le texte vient d'un gabarit AMBIGU, utilisable tel quel pour une
+    #: arnaque comme pour une erreur sincère. Permet de mesurer séparément le
+    #: sous-corpus que personne ne peut trancher sur le seul texte.
+    gt_text_is_ambiguous: bool = False
     gt_scam_indicators: list[str] = Field(default_factory=list)
 
     def public(self) -> dict[str, Any]:

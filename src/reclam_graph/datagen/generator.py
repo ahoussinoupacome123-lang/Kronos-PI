@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import json
 import random
+from collections import defaultdict
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
@@ -230,6 +231,13 @@ def _weighted(rng: random.Random, pairs: tuple) -> Any:
 # --------------------------------------------------------------------------
 # Rendu d'une réclamation
 # --------------------------------------------------------------------------
+#: Part des plaintes de transfert rendues AMBIGUES (texte identique pour une
+#: arnaque et pour une erreur sincère). Sans cela, le corpus est trivialement
+#: separable et toute F1 de classification y vaut 1.00, ce qui ne mesure rien.
+AMBIGUOUS_SHARE_CAMPAIGN = 0.20
+AMBIGUOUS_SHARE_SINCERE = 0.18
+
+
 def render_text(
     typology: str,
     rng: random.Random,
@@ -238,8 +246,13 @@ def render_text(
     msisdn: str | None,
     event_at: datetime | None,
     dest_operator: str | None,
+    ambiguous: bool = False,
 ) -> str:
-    template = rng.choice(tpl.TEMPLATES[typology])
+    template = (
+        rng.choice(tpl.AMBIGUOUS_TEMPLATES)
+        if ambiguous
+        else rng.choice(tpl.TEMPLATES[typology])
+    )
     text = template.format(
         G=rng.choice(tpl.GREETINGS),
         C=rng.choice(tpl.CLOSINGS),
@@ -271,6 +284,7 @@ def _mk_complaint(
     incident_id: str | None = None,
     decoy_id: str | None = None,
     is_mule_victim: bool = False,
+    text_is_ambiguous: bool = False,
 ) -> Complaint:
     c = Complaint(
         complaint_id=cid,
@@ -289,6 +303,7 @@ def _mk_complaint(
         gt_campaign_id=campaign_id,
         gt_incident_id=incident_id,
         gt_is_mule_victim=is_mule_victim,
+        gt_text_is_ambiguous=text_is_ambiguous,
         gt_scam_indicators=detect_indicators(text),
     )
     # `decoy_id` voyage dans la vérité terrain agrégée, pas dans le schéma
@@ -350,9 +365,16 @@ def generate_dataset(
                 customer = pop.pick(victim_op)
             event_at = at(spec["day_offset"], credit_hhmm)
             received_at = at(spec["day_offset"], complaint_hhmm)
+            # La victime d'ouverture de la démo garde un récit explicite : c'est
+            # le cas que l'on montre au jury. Les autres peuvent être ambiguës.
+            is_narrative_first = bool(spec.get("narrative")) and idx == 0
+            ambiguous = (
+                not is_narrative_first
+                and rng.random() < AMBIGUOUS_SHARE_CAMPAIGN
+            )
             text = render_text(
                 "ARNAQUE_ERREUR_DEPOT", rng, amount, mule_alias, mule_msisdn,
-                event_at, mule_op.title(),
+                event_at, mule_op.title(), ambiguous=ambiguous,
             )
             cid = next_id()
             complaints.append(
@@ -362,7 +384,7 @@ def generate_dataset(
                     amount=amount, beneficiary_alias=mule_alias,
                     beneficiary_msisdn=mule_msisdn, dest_operator=mule_op,
                     event_at=event_at, campaign_id=spec["campaign_id"],
-                    is_mule_victim=True,
+                    is_mule_victim=True, text_is_ambiguous=ambiguous,
                 )
             )
             total += amount
@@ -375,6 +397,7 @@ def generate_dataset(
                     "complaint_at": received_at.isoformat(),
                     "complainant_msisdn": customer["msisdn"],
                     "complainant_name": customer["name"],
+                    "texte_ambigu": ambiguous,
                 }
             )
         campaigns_gt.append(
@@ -471,6 +494,58 @@ def generate_dataset(
             }
         )
 
+    # ---------------- 3bis) Les arnaques « erreur de dépôt » ISOLÉES --------
+    # Une victime seule face à un compte bénéficiaire qui ne reçoit qu'une ou
+    # deux plaintes. Elles ne doivent PAS lever d'alerte : la règle exige 3
+    # plaignants sur 2 réseaux en 60 minutes. Quand deux plaintes visent le
+    # même alias, on les écarte volontairement de plus de 3 heures pour qu'il
+    # n'y ait aucun regroupement accidentel qui polluerait la vérité terrain.
+    isolated_ids: list[str] = []
+    n_isolated_aliases = max(1, int(cfg.N_ISOLATED_SCAMS * 0.75))
+    isolated_aliases = [
+        pop.pick(rng.choice(cfg.OPERATORS)) for _ in range(n_isolated_aliases)
+    ]
+    for target in isolated_aliases:
+        directory[target["msisdn"]] = target["alias"]
+    used_times: dict[str, list[datetime]] = defaultdict(list)
+    for i in range(cfg.N_ISOLATED_SCAMS):
+        target = isolated_aliases[i % n_isolated_aliases]
+        victim_op = rng.choice(
+            [o for o in cfg.OPERATORS if o != target["operator"]] + [target["operator"]]
+        )
+        customer = pop.pick(victim_op)
+        for _ in range(40):  # au plus 40 tentatives pour trouver un créneau isolé
+            day = rng.randint(0, cfg.N_DAYS - 1)
+            hour = _weighted(rng, tuple((h, w) for h, w in enumerate(HOUR_WEIGHTS)))
+            received_at = sim_start + timedelta(
+                days=day, hours=hour, minutes=rng.randint(0, 59)
+            )
+            if all(
+                abs((received_at - t).total_seconds()) > 3 * 3600
+                for t in used_times[target["alias"]]
+            ):
+                break
+        used_times[target["alias"]].append(received_at)
+        amount = rng.choice([5_000, 10_000, 15_000, 20_000, 25_000, 30_000, 40_000, 50_000])
+        event_at = received_at - timedelta(minutes=rng.randint(4, 120))
+        ambiguous = rng.random() < AMBIGUOUS_SHARE_CAMPAIGN
+        text = render_text(
+            "ARNAQUE_ERREUR_DEPOT", rng, amount, target["alias"], target["msisdn"],
+            event_at, target["operator"].title(), ambiguous=ambiguous,
+        )
+        cid = next_id()
+        isolated_ids.append(cid)
+        complaints.append(
+            _mk_complaint(
+                cid, victim_op, received_at, customer,
+                Typology.ARNAQUE_ERREUR_DEPOT, text, rng,
+                amount=amount, beneficiary_alias=target["alias"],
+                beneficiary_msisdn=target["msisdn"],
+                dest_operator=target["operator"], event_at=event_at,
+                text_is_ambiguous=ambiguous,
+            )
+        )
+
     # ---------------- 4) Le bruit de fond ----------------------------------
     remaining = n_complaints - len(complaints)
     if remaining < 0:
@@ -515,15 +590,19 @@ def generate_dataset(
         elif typology_name in ("TRANSACTION_ECHOUEE_DEBITEE", "RETARD_TIMEOUT"):
             dest = rng.choice(cfg.OPERATORS)
         typology = Typology(typology_name)
+        ambiguous = (
+            typology_name == "ERREUR_DESTINATAIRE_SINCERE"
+            and rng.random() < AMBIGUOUS_SHARE_SINCERE
+        )
         text = render_text(
             typology_name, rng, amount, alias, ben_msisdn, event_at,
-            dest.title() if dest else None,
+            dest.title() if dest else None, ambiguous=ambiguous,
         )
         complaints.append(
             _mk_complaint(
                 next_id(), op, received_at, customer, typology, text, rng,
                 amount=amount, beneficiary_alias=alias, beneficiary_msisdn=ben_msisdn,
-                dest_operator=dest, event_at=event_at,
+                dest_operator=dest, event_at=event_at, text_is_ambiguous=ambiguous,
             )
         )
 
@@ -556,12 +635,35 @@ def generate_dataset(
         "sim_end": (sim_start + timedelta(days=cfg.N_DAYS)).isoformat(),
         "operators": list(cfg.OPERATORS),
         "text_source": "gabarits + bruitage déterministe (aucun LLM requis)",
+        "textes_ambigus": {
+            "note": (
+                "Une partie des plaintes de transfert utilise des gabarits "
+                "AMBIGUS, identiques pour une arnaque et pour une erreur "
+                "sincère : aucun classifieur ne peut les séparer de façon "
+                "fiable. C'est voulu, et c'est l'argument du projet — le signal "
+                "utile est dans le croisement, pas dans le texte d'une plainte."
+            ),
+            "part_campagnes": AMBIGUOUS_SHARE_CAMPAIGN,
+            "part_erreurs_sinceres": AMBIGUOUS_SHARE_SINCERE,
+        },
         "counts_per_typology": dict(sorted(per_typology.items())),
         "counts_per_operator": dict(sorted(per_operator.items())),
         "mule_rule_used_by_hub": {
             "min_complainants": cfg.MULE_MIN_COMPLAINANTS,
             "min_operators": cfg.MULE_MIN_OPERATORS,
             "window_minutes": cfg.MULE_WINDOW_MINUTES,
+        },
+        "isolated_scams": {
+            "n": len(isolated_ids),
+            "complaint_ids": isolated_ids,
+            "note": (
+                "Arnaques « erreur de dépôt » isolées : une ou deux plaintes par "
+                "compte bénéficiaire, espacées de plus de 3 heures. Elles NE "
+                "DOIVENT PAS lever d'alerte mule (la règle exige 3 plaignants sur "
+                "2 réseaux en 60 min) et doivent produire un dossier de "
+                "remboursement. Elles servent à mesurer la précision et à donner "
+                "à la classe ARNAQUE un poids réaliste."
+            ),
         },
         "campaigns": campaigns_gt,
         "incidents": [incident_gt],
