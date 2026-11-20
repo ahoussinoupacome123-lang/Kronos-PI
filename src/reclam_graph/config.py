@@ -153,6 +153,15 @@ OPERATOR_SHARE = (0.45, 0.33, 0.22)  # parts de volume synthétiques
 
 N_MULE_CAMPAIGNS = 5
 N_INCIDENTS = 1
+#: Arnaques « erreur de dépôt » ISOLÉES : une victime seule, un compte
+#: bénéficiaire qui ne reçoit qu'une ou deux plaintes. C'est le cas le plus
+#: fréquent dans la réalité (la fraude par ingénierie sociale est massive en
+#: nombre), et il est indispensable à deux titres :
+#:   1. sans lui, la classe ARNAQUE ne pèse que 0,2 % du corpus et toute F1 de
+#:      classification mesurée dessus est instable ;
+#:   2. ces plaintes NE DOIVENT PAS déclencher d'alerte mule — elles testent
+#:      la précision et doivent produire un dossier de remboursement.
+N_ISOLATED_SCAMS = 600
 SIM_START = "2026-11-16T00:00:00+01:00"  # lundi
 
 # Part des réclamations par grande famille (somme ~1 hors scénarios injectés)
