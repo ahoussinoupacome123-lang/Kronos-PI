@@ -340,6 +340,16 @@ def generate_dataset(
     # joindraient pas au hub.
     directory: dict[str, str] = {}
 
+    # Alias RÉSERVÉS aux scénarios. Les alias de clients sont engendrés sous la
+    # forme `prenom.nom@operateur`, exactement comme les alias de mules écrits
+    # dans `scenarios.py` : sans cette réservation, un client du bruit nommé
+    # « Koffi Santos » chez BETACASH produit l'alias de la mule de CMP-01, ses
+    # plaintes entrent dans la grappe et la vérité terrain est fausse. Bug
+    # observé le 21/11 : l'alerte de CMP-01 partait 23 min au lieu de 12 min.
+    reserved_aliases: set[str] = {
+        spec["mule_alias"].lower() for spec in sc.CAMPAIGN_SPECS
+    } | {d["alias"].lower() for d in sc.DECOY_SPECS}
+
     def next_id() -> str:
         nonlocal counter
         counter += 1
@@ -367,9 +377,12 @@ def generate_dataset(
             received_at = at(spec["day_offset"], complaint_hhmm)
             # La victime d'ouverture de la démo garde un récit explicite : c'est
             # le cas que l'on montre au jury. Les autres peuvent être ambiguës.
-            is_narrative_first = bool(spec.get("narrative")) and idx == 0
+            # La campagne narrative (celle que l'on montre au jury) reste
+            # entièrement explicite : c'est le cas d'ouverture de la démo, et
+            # ses chiffres sont ceux annoncés dans le pitch. L'ambiguïté est
+            # injectée dans les quatre autres campagnes et dans le bruit.
             ambiguous = (
-                not is_narrative_first
+                not spec.get("narrative")
                 and rng.random() < AMBIGUOUS_SHARE_CAMPAIGN
             )
             text = render_text(
@@ -502,9 +515,13 @@ def generate_dataset(
     # n'y ait aucun regroupement accidentel qui polluerait la vérité terrain.
     isolated_ids: list[str] = []
     n_isolated_aliases = max(1, int(cfg.N_ISOLATED_SCAMS * 0.75))
-    isolated_aliases = [
-        pop.pick(rng.choice(cfg.OPERATORS)) for _ in range(n_isolated_aliases)
-    ]
+    isolated_aliases = []
+    while len(isolated_aliases) < n_isolated_aliases:
+        candidate = pop.pick(rng.choice(cfg.OPERATORS))
+        if candidate["alias"].lower() in reserved_aliases:
+            continue
+        reserved_aliases.add(candidate["alias"].lower())
+        isolated_aliases.append(candidate)
     for target in isolated_aliases:
         directory[target["msisdn"]] = target["alias"]
     used_times: dict[str, list[datetime]] = defaultdict(list)
@@ -559,7 +576,12 @@ def generate_dataset(
 
     # Pool d'alias « destinataires » assez large pour que les erreurs
     # sincères ne se regroupent pas par accident au-delà du seuil.
-    alias_pool = [pop.pick(rng.choice(cfg.OPERATORS)) for _ in range(5200)]
+    alias_pool = []
+    while len(alias_pool) < 5200:
+        candidate = pop.pick(rng.choice(cfg.OPERATORS))
+        if candidate["alias"].lower() in reserved_aliases:
+            continue  # ne jamais réutiliser un alias de scénario dans le bruit
+        alias_pool.append(candidate)
     for target in alias_pool:
         directory[target["msisdn"]] = target["alias"]
 
@@ -605,6 +627,26 @@ def generate_dataset(
                 dest_operator=dest, event_at=event_at, text_is_ambiguous=ambiguous,
             )
         )
+
+    # --- Invariant de la vérité terrain -----------------------------------
+    # Les plaintes qui désignent l'alias d'une mule doivent être EXACTEMENT les
+    # victimes de sa campagne. Si ce n'est pas le cas, la grappe est polluée et
+    # tous les chiffres de détection sont faux : on échoue bruyamment plutôt
+    # que de publier un benchmark invalide.
+    for campaign in campaigns_gt:
+        alias = campaign["mule_alias"].lower()
+        referencing = {
+            c.complaint_id
+            for c in complaints
+            if (c.gt_beneficiary_alias or "").lower() == alias
+        }
+        expected = {v["complaint_id"] for v in campaign["victims"]}
+        if referencing != expected:
+            raise AssertionError(
+                f"{campaign['campaign_id']} : l'alias {alias} est désigné par "
+                f"{len(referencing)} plaintes alors que la campagne en compte "
+                f"{len(expected)}. Collision d'alias — vérité terrain invalide."
+            )
 
     complaints.sort(key=lambda c: c.received_at)
 
