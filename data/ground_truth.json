@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T03:37:52.491418+01:00",
+  "generated_at": "2026-11-25T03:44:09.306519+01:00",
   "synthetic": true,
   "warning": "Toutes ces données sont synthétiques. Les opérateurs ALPHAMONEY, BETACASH et GAMMAPAY sont fictifs. Aucun chiffre de ce fichier ne décrit un opérateur réel.",
   "seed": 20260112,
@@ -19,20 +19,20 @@
     "part_erreurs_sinceres": 0.18
   },
   "counts_per_typology": {
-    "AGENT_DISTRIBUTEUR": 1288,
+    "AGENT_DISTRIBUTEUR": 1332,
     "ARNAQUE_ERREUR_DEPOT": 641,
-    "AUTRE": 1920,
+    "AUTRE": 1951,
     "CHANGEMENT_NUMERO": 908,
-    "ERREUR_DESTINATAIRE_SINCERE": 6556,
-    "FRAIS_CONTESTES": 1691,
-    "OTP_PHISHING": 1304,
-    "RETARD_TIMEOUT": 2624,
-    "TRANSACTION_ECHOUEE_DEBITEE": 3068
+    "ERREUR_DESTINATAIRE_SINCERE": 6459,
+    "FRAIS_CONTESTES": 1716,
+    "OTP_PHISHING": 1324,
+    "RETARD_TIMEOUT": 2603,
+    "TRANSACTION_ECHOUEE_DEBITEE": 3066
   },
   "counts_per_operator": {
-    "ALPHAMONEY": 8899,
-    "BETACASH": 6520,
-    "GAMMAPAY": 4581
+    "ALPHAMONEY": 9001,
+    "BETACASH": 6566,
+    "GAMMAPAY": 4433
   },
   "mule_rule_used_by_hub": {
     "min_complainants": 3,
@@ -692,8 +692,8 @@
           "amount_fcfa": 18000,
           "credit_at": "2026-11-17T14:10:00+01:00",
           "complaint_at": "2026-11-17T14:21:00+01:00",
-          "complainant_msisdn": "+22961756990",
-          "complainant_name": "Blandine Hounkpatin",
+          "complainant_msisdn": "+22961446693",
+          "complainant_name": "Adjoa Tchibozo",
           "texte_ambigu": false
         },
         {
@@ -702,8 +702,8 @@
           "amount_fcfa": 22000,
           "credit_at": "2026-11-17T14:14:00+01:00",
           "complaint_at": "2026-11-17T14:33:00+01:00",
-          "complainant_msisdn": "+22996489148",
-          "complainant_name": "Mawuli Santos",
+          "complainant_msisdn": "+22996604610",
+          "complainant_name": "Yacoubou Tchibozo",
           "texte_ambigu": false
         },
         {
@@ -712,8 +712,8 @@
           "amount_fcfa": 27000,
           "credit_at": "2026-11-17T14:19:00+01:00",
           "complaint_at": "2026-11-17T14:41:00+01:00",
-          "complainant_msisdn": "+22997052703",
-          "complainant_name": "Mawuli Ahouandjinou",
+          "complainant_msisdn": "+22997497759",
+          "complainant_name": "Souleymane Aholou",
           "texte_ambigu": false
         },
         {
@@ -722,8 +722,8 @@
           "amount_fcfa": 15000,
           "credit_at": "2026-11-17T14:25:00+01:00",
           "complaint_at": "2026-11-17T14:52:00+01:00",
-          "complainant_msisdn": "+22996107562",
-          "complainant_name": "Chabi Bio",
+          "complainant_msisdn": "+22996985182",
+          "complainant_name": "Christelle Assogba",
           "texte_ambigu": false
         },
         {
@@ -732,9 +732,9 @@
           "amount_fcfa": 25000,
           "credit_at": "2026-11-17T14:31:00+01:00",
           "complaint_at": "2026-11-17T15:02:00+01:00",
-          "complainant_msisdn": "+22961225958",
-          "complainant_name": "Rachidi Aholou",
-          "texte_ambigu": true
+          "complainant_msisdn": "+22961369566",
+          "complainant_name": "Abdoul Santos",
+          "texte_ambigu": false
         }
       ]
     },
@@ -743,7 +743,7 @@
       "label": "Arnaque erreur de dépôt — mule hébergée chez ALPHAMONEY",
       "mule_operator": "ALPHAMONEY",
       "mule_alias": "rachelle.gbedo@alphamoney",
-      "mule_msisdn": "+22996902413",
+      "mule_msisdn": "+22996260405",
       "total_fcfa": 182000,
       "n_victims": 9,
       "operators": [
@@ -764,8 +764,8 @@
           "amount_fcfa": 20000,
           "credit_at": "2026-11-18T09:05:00+01:00",
           "complaint_at": "2026-11-18T09:12:00+01:00",
-          "complainant_msisdn": "+22996833520",
-          "complainant_name": "Chabi Gbedo",
+          "complainant_msisdn": "+22996580448",
+          "complainant_name": "Rachelle Zinsou",
           "texte_ambigu": false
         },
         {
@@ -774,8 +774,8 @@
           "amount_fcfa": 15000,
           "credit_at": "2026-11-18T09:08:00+01:00",
           "complaint_at": "2026-11-18T09:19:00+01:00",
-          "complainant_msisdn": "+22997334521",
-          "complainant_name": "Sèdjro Hounkpatin",
+          "complainant_msisdn": "+22997017165",
+          "complainant_name": "Aïcha Ahouandjinou",
           "texte_ambigu": false
         },
         {
@@ -784,9 +784,9 @@
           "amount_fcfa": 25000,
           "credit_at": "2026-11-18T09:12:00+01:00",
           "complaint_at": "2026-11-18T09:24:00+01:00",
-          "complainant_msisdn": "+22996480027",
-          "complainant_name": "Komlan Degbey",
-          "texte_ambigu": true
+          "complainant_msisdn": "+22996118172",
+          "complainant_name": "Abdoul Koukpaki",
+          "texte_ambigu": false
         },
         {
           "complaint_id": "RC-000011",
@@ -794,8 +794,8 @@
           "amount_fcfa": 30000,
           "credit_at": "2026-11-18T09:17:00+01:00",
           "complaint_at": "2026-11-18T09:31:00+01:00",
-          "complainant_msisdn": "+22961590873",
-          "complainant_name": "Moussa Koukpaki",
+          "complainant_msisdn": "+22961578364",
+          "complainant_name": "Nadège Amoussou",
           "texte_ambigu": false
         },
         {
@@ -804,8 +804,8 @@
           "amount_fcfa": 18000,
           "credit_at": "2026-11-18T09:22:00+01:00",
           "complaint_at": "2026-11-18T09:38:00+01:00",
-          "complainant_msisdn": "+22996494883",
-          "complainant_name": "Moussa Gnonlonfoun",
+          "complainant_msisdn": "+22996892319",
+          "complainant_name": "Koffi Aholou",
           "texte_ambigu": false
         },
         {
@@ -814,8 +814,8 @@
           "amount_fcfa": 22000,
           "credit_at": "2026-11-18T09:28:00+01:00",
           "complaint_at": "2026-11-18T09:45:00+01:00",
-          "complainant_msisdn": "+22997940822",
-          "complainant_name": "Hortense Nouatin",
+          "complainant_msisdn": "+22997184923",
+          "complainant_name": "Sylvie Santos",
           "texte_ambigu": false
         },
         {
@@ -824,8 +824,8 @@
           "amount_fcfa": 12000,
           "credit_at": "2026-11-18T09:33:00+01:00",
           "complaint_at": "2026-11-18T09:52:00+01:00",
-          "complainant_msisdn": "+22996104584",
-          "complainant_name": "Adjoa Tchibozo",
+          "complainant_msisdn": "+22996881462",
+          "complainant_name": "Rachidi Nouatin",
           "texte_ambigu": false
         },
         {
@@ -834,8 +834,8 @@
           "amount_fcfa": 16000,
           "credit_at": "2026-11-18T09:40:00+01:00",
           "complaint_at": "2026-11-18T09:58:00+01:00",
-          "complainant_msisdn": "+22961601878",
-          "complainant_name": "Sylvie Tidjani",
+          "complainant_msisdn": "+22961202897",
+          "complainant_name": "Abdoul Hounkpatin",
           "texte_ambigu": false
         },
         {
@@ -844,9 +844,9 @@
           "amount_fcfa": 24000,
           "credit_at": "2026-11-18T09:46:00+01:00",
           "complaint_at": "2026-11-18T10:05:00+01:00",
-          "complainant_msisdn": "+22997696384",
-          "complainant_name": "Chabi Dossou",
-          "texte_ambigu": false
+          "complainant_msisdn": "+22997514835",
+          "complainant_name": "Koffi Zinsou",
+          "texte_ambigu": true
         }
       ]
     },
@@ -855,7 +855,7 @@
       "label": "Arnaque erreur de dépôt — victimes réparties 2/2/2",
       "mule_operator": "GAMMAPAY",
       "mule_alias": "ibrahim.tidjani@gammapay",
-      "mule_msisdn": "+22961510547",
+      "mule_msisdn": "+22961389973",
       "total_fcfa": 155000,
       "n_victims": 6,
       "operators": [
@@ -876,8 +876,8 @@
           "amount_fcfa": 35000,
           "credit_at": "2026-11-19T11:10:00+01:00",
           "complaint_at": "2026-11-19T11:18:00+01:00",
-          "complainant_msisdn": "+22996079785",
-          "complainant_name": "Rachidi Lokossou",
+          "complainant_msisdn": "+22996371393",
+          "complainant_name": "Fatou Zinsou",
           "texte_ambigu": false
         },
         {
@@ -886,9 +886,9 @@
           "amount_fcfa": 28000,
           "credit_at": "2026-11-19T11:15:00+01:00",
           "complaint_at": "2026-11-19T11:26:00+01:00",
-          "complainant_msisdn": "+22997490561",
-          "complainant_name": "Gildas Gnonlonfoun",
-          "texte_ambigu": true
+          "complainant_msisdn": "+22997392567",
+          "complainant_name": "Félicité Degbey",
+          "texte_ambigu": false
         },
         {
           "complaint_id": "RC-000019",
@@ -896,8 +896,8 @@
           "amount_fcfa": 20000,
           "credit_at": "2026-11-19T11:21:00+01:00",
           "complaint_at": "2026-11-19T11:33:00+01:00",
-          "complainant_msisdn": "+22961975770",
-          "complainant_name": "Olivier Ahouandjinou",
+          "complainant_msisdn": "+22961743451",
+          "complainant_name": "Sèdjro Assogba",
           "texte_ambigu": false
         },
         {
@@ -906,8 +906,8 @@
           "amount_fcfa": 24000,
           "credit_at": "2026-11-19T11:28:00+01:00",
           "complaint_at": "2026-11-19T11:47:00+01:00",
-          "complainant_msisdn": "+22996084182",
-          "complainant_name": "Félicité Hounkpatin",
+          "complainant_msisdn": "+22996964303",
+          "complainant_name": "Nadège Lokossou",
           "texte_ambigu": false
         },
         {
@@ -916,9 +916,9 @@
           "amount_fcfa": 31000,
           "credit_at": "2026-11-19T11:35:00+01:00",
           "complaint_at": "2026-11-19T11:58:00+01:00",
-          "complainant_msisdn": "+22997831134",
-          "complainant_name": "Koffi Amoussou",
-          "texte_ambigu": true
+          "complainant_msisdn": "+22997749919",
+          "complainant_name": "Prudence Dagba",
+          "texte_ambigu": false
         },
         {
           "complaint_id": "RC-000022",
@@ -926,8 +926,8 @@
           "amount_fcfa": 17000,
           "credit_at": "2026-11-19T11:42:00+01:00",
           "complaint_at": "2026-11-19T12:09:00+01:00",
-          "complainant_msisdn": "+22961970306",
-          "complainant_name": "Moussa Soglo",
+          "complainant_msisdn": "+22961013064",
+          "complainant_name": "Bernadette Sossou",
           "texte_ambigu": false
         }
       ]
@@ -937,7 +937,7 @@
       "label": "Arnaque erreur de dépôt — grosse campagne, retrait précoce",
       "mule_operator": "BETACASH",
       "mule_alias": "fatou.diallo@betacash",
-      "mule_msisdn": "+22997565284",
+      "mule_msisdn": "+22997482222",
       "total_fcfa": 241000,
       "n_victims": 11,
       "operators": [
@@ -958,8 +958,8 @@
           "amount_fcfa": 18000,
           "credit_at": "2026-11-20T16:02:00+01:00",
           "complaint_at": "2026-11-20T16:10:00+01:00",
-          "complainant_msisdn": "+22997148330",
-          "complainant_name": "Vivien Hounkpatin",
+          "complainant_msisdn": "+22997423575",
+          "complainant_name": "Adjoa Gnonlonfoun",
           "texte_ambigu": false
         },
         {
@@ -968,9 +968,9 @@
           "amount_fcfa": 22000,
           "credit_at": "2026-11-20T16:06:00+01:00",
           "complaint_at": "2026-11-20T16:17:00+01:00",
-          "complainant_msisdn": "+22996169900",
-          "complainant_name": "Mariam Dagba",
-          "texte_ambigu": true
+          "complainant_msisdn": "+22996635653",
+          "complainant_name": "Rachelle Dossou",
+          "texte_ambigu": false
         },
         {
           "complaint_id": "RC-000025",
@@ -978,8 +978,8 @@
           "amount_fcfa": 26000,
           "credit_at": "2026-11-20T16:11:00+01:00",
           "complaint_at": "2026-11-20T16:23:00+01:00",
-          "complainant_msisdn": "+22997424009",
-          "complainant_name": "Bernadette Dossou",
+          "complainant_msisdn": "+22997795425",
+          "complainant_name": "Olivier Tidjani",
           "texte_ambigu": false
         },
         {
@@ -988,8 +988,8 @@
           "amount_fcfa": 14000,
           "credit_at": "2026-11-20T16:16:00+01:00",
           "complaint_at": "2026-11-20T16:31:00+01:00",
-          "complainant_msisdn": "+22961214167",
-          "complainant_name": "Zinsou Hounkpatin",
+          "complainant_msisdn": "+22961788384",
+          "complainant_name": "Prudence Zinsou",
           "texte_ambigu": false
         },
         {
@@ -998,9 +998,9 @@
           "amount_fcfa": 30000,
           "credit_at": "2026-11-20T16:22:00+01:00",
           "complaint_at": "2026-11-20T16:39:00+01:00",
-          "complainant_msisdn": "+22997321136",
-          "complainant_name": "Souleymane Ahouandjinou",
-          "texte_ambigu": true
+          "complainant_msisdn": "+22997571828",
+          "complainant_name": "Abdoul Hounkpatin",
+          "texte_ambigu": false
         },
         {
           "complaint_id": "RC-000028",
@@ -1008,9 +1008,9 @@
           "amount_fcfa": 19000,
           "credit_at": "2026-11-20T16:27:00+01:00",
           "complaint_at": "2026-11-20T16:46:00+01:00",
-          "complainant_msisdn": "+22996714192",
-          "complainant_name": "Fatou Kponou",
-          "texte_ambigu": false
+          "complainant_msisdn": "+22996404521",
+          "complainant_name": "Grâce Nouatin",
+          "texte_ambigu": true
         },
         {
           "complaint_id": "RC-000029",
@@ -1018,8 +1018,8 @@
           "amount_fcfa": 23000,
           "credit_at": "2026-11-20T16:33:00+01:00",
           "complaint_at": "2026-11-20T16:54:00+01:00",
-          "complainant_msisdn": "+22997569094",
-          "complainant_name": "Rachidi Soglo",
+          "complainant_msisdn": "+22997441544",
+          "complainant_name": "Sylvie Gbedo",
           "texte_ambigu": false
         },
         {
@@ -1028,9 +1028,9 @@
           "amount_fcfa": 21000,
           "credit_at": "2026-11-20T16:38:00+01:00",
           "complaint_at": "2026-11-20T17:02:00+01:00",
-          "complainant_msisdn": "+22961053765",
-          "complainant_name": "Souleymane Degbey",
-          "texte_ambigu": true
+          "complainant_msisdn": "+22961178224",
+          "complainant_name": "Souleymane Djossou",
+          "texte_ambigu": false
         },
         {
           "complaint_id": "RC-000031",
@@ -1038,8 +1038,8 @@
           "amount_fcfa": 16000,
           "credit_at": "2026-11-20T16:44:00+01:00",
           "complaint_at": "2026-11-20T17:11:00+01:00",
-          "complainant_msisdn": "+22996202809",
-          "complainant_name": "Félicité Nouatin",
+          "complainant_msisdn": "+22996254866",
+          "complainant_name": "Bernadette Dagba",
           "texte_ambigu": false
         },
         {
@@ -1048,8 +1048,8 @@
           "amount_fcfa": 27000,
           "credit_at": "2026-11-20T16:50:00+01:00",
           "complaint_at": "2026-11-20T17:19:00+01:00",
-          "complainant_msisdn": "+22997740990",
-          "complainant_name": "Souleymane Djossou",
+          "complainant_msisdn": "+22997062925",
+          "complainant_name": "Blandine Amoussou",
           "texte_ambigu": false
         },
         {
@@ -1058,8 +1058,8 @@
           "amount_fcfa": 25000,
           "credit_at": "2026-11-20T16:56:00+01:00",
           "complaint_at": "2026-11-20T17:28:00+01:00",
-          "complainant_msisdn": "+22961521558",
-          "complainant_name": "Rachelle Hounkpatin",
+          "complainant_msisdn": "+22961687511",
+          "complainant_name": "Serge Ahouandjinou",
           "texte_ambigu": false
         }
       ]
@@ -1069,7 +1069,7 @@
       "label": "Arnaque erreur de dépôt — plaintes étalées, invisible en solo",
       "mule_operator": "ALPHAMONEY",
       "mule_alias": "serge.kponou@alphamoney",
-      "mule_msisdn": "+22996547265",
+      "mule_msisdn": "+22996070866",
       "total_fcfa": 180000,
       "n_victims": 8,
       "operators": [
@@ -1090,8 +1090,8 @@
           "amount_fcfa": 21000,
           "credit_at": "2026-11-22T10:04:00+01:00",
           "complaint_at": "2026-11-22T10:12:00+01:00",
-          "complainant_msisdn": "+22996176507",
-          "complainant_name": "Komlan Soglo",
+          "complainant_msisdn": "+22996296370",
+          "complainant_name": "Sèdjro Soglo",
           "texte_ambigu": false
         },
         {
@@ -1100,8 +1100,8 @@
           "amount_fcfa": 17000,
           "credit_at": "2026-11-22T10:09:00+01:00",
           "complaint_at": "2026-11-22T10:21:00+01:00",
-          "complainant_msisdn": "+22997719876",
-          "complainant_name": "Ibrahim Agbodjan",
+          "complainant_msisdn": "+22997944561",
+          "complainant_name": "Aïcha Dossou",
           "texte_ambigu": false
         },
         {
@@ -1110,8 +1110,8 @@
           "amount_fcfa": 29000,
           "credit_at": "2026-11-22T10:14:00+01:00",
           "complaint_at": "2026-11-22T10:27:00+01:00",
-          "complainant_msisdn": "+22961259954",
-          "complainant_name": "Mawuli Sossou",
+          "complainant_msisdn": "+22961708798",
+          "complainant_name": "Serge Santos",
           "texte_ambigu": false
         },
         {
@@ -1120,8 +1120,8 @@
           "amount_fcfa": 23000,
           "credit_at": "2026-11-22T10:20:00+01:00",
           "complaint_at": "2026-11-22T10:44:00+01:00",
-          "complainant_msisdn": "+22996329694",
-          "complainant_name": "Sèdjro Adjovi",
+          "complainant_msisdn": "+22996955904",
+          "complainant_name": "Gildas Santos",
           "texte_ambigu": false
         },
         {
@@ -1130,8 +1130,8 @@
           "amount_fcfa": 26000,
           "credit_at": "2026-11-22T10:26:00+01:00",
           "complaint_at": "2026-11-22T10:58:00+01:00",
-          "complainant_msisdn": "+22997901896",
-          "complainant_name": "Adjoa Dagba",
+          "complainant_msisdn": "+22997686372",
+          "complainant_name": "Adjoa Koukpaki",
           "texte_ambigu": false
         },
         {
@@ -1140,8 +1140,8 @@
           "amount_fcfa": 19000,
           "credit_at": "2026-11-22T10:33:00+01:00",
           "complaint_at": "2026-11-22T11:12:00+01:00",
-          "complainant_msisdn": "+22961995104",
-          "complainant_name": "Rachelle Nouatin",
+          "complainant_msisdn": "+22961082164",
+          "complainant_name": "Sylvie Soglo",
           "texte_ambigu": false
         },
         {
@@ -1150,8 +1150,8 @@
           "amount_fcfa": 31000,
           "credit_at": "2026-11-22T10:40:00+01:00",
           "complaint_at": "2026-11-22T11:26:00+01:00",
-          "complainant_msisdn": "+22997383868",
-          "complainant_name": "Abdoul Nouatin",
+          "complainant_msisdn": "+22997921245",
+          "complainant_name": "Hortense Gbedo",
           "texte_ambigu": false
         },
         {
@@ -1160,8 +1160,8 @@
           "amount_fcfa": 14000,
           "credit_at": "2026-11-22T10:47:00+01:00",
           "complaint_at": "2026-11-22T11:39:00+01:00",
-          "complainant_msisdn": "+22961707083",
-          "complainant_name": "Bernadette Gnonlonfoun",
+          "complainant_msisdn": "+22961044871",
+          "complainant_name": "Souleymane Koukpaki",
           "texte_ambigu": false
         }
       ]
