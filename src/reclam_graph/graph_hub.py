@@ -87,11 +87,24 @@ def score_cluster(records: Sequence[SharedRecord]) -> tuple[float, dict[str, flo
         "typologie_arnaque": share_scam,
         "intensite": min(1.0, rate / 0.2),
     }
+    # Pondération : le score doit mesurer ce que la RÈGLE NE MESURE PAS.
+    # La règle garantit déjà au moins 3 plaignants et 2 opérateurs ; ces deux
+    # grandeurs sont donc quasi constantes d'une alerte à l'autre et ne
+    # discriminent rien. Les surpondérer a produit un vrai défaut : une grappe
+    # légitime (facturier très sollicité, 3 plaignants, 3 réseaux, aucune
+    # arnaque) atteignait 0,525 et passait prioritaire. Le poids va donc à ce
+    # qui distingue réellement une campagne : la typologie d'arnaque et la
+    # vitesse d'arrivée des plaintes (une campagne est brutale, les erreurs
+    # d'un facturier arrivent au compte-gouttes).
+    #
+    # Contrainte à assumer : le hub ne reçoit PAS les indices d'arnaque
+    # extraits du texte — ils ne quittent pas l'opérateur. La typologie est
+    # donc le seul signal de fraude disponible côté hub, et c'est voulu.
     weights = {
-        "plaignants": 0.25,
-        "operateurs": 0.20,
-        "typologie_arnaque": 0.40,  # le signal le plus discriminant
-        "intensite": 0.15,
+        "plaignants": 0.15,
+        "operateurs": 0.10,
+        "typologie_arnaque": 0.50,
+        "intensite": 0.25,
     }
     score = sum(features[k] * weights[k] for k in weights)
     return round(min(1.0, score), 4), {k: round(v, 4) for k, v in features.items()}
