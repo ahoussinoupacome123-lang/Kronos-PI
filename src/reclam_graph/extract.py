@@ -48,8 +48,16 @@ RE_TIME = re.compile(r"\b(\d{1,2})\s?[h:]\s?(\d{2})\b")
 
 #: Montants « propres » : 25000, 25 000, 25.000, éventuellement suivis d'une
 #: unité. C'est ce qu'une regex d'opérateur sait faire.
+#:
+#: Les bornes sont des assertions sur les CHIFFRES et non `\b` : « 25.000F »
+#: n'a pas de frontière de mot entre « 0 » et « F », et un `\b` final faisait
+#: rater ce format pourtant courant. On exige donc seulement qu'aucun chiffre
+#: ne précède ni ne suive la capture, ce qui écarte aussi les références de
+#: transaction et les numéros de téléphone (trop longs).
 RE_AMOUNT_PLAIN = re.compile(
-    r"\b(\d{1,3}(?:[ .]\d{3})+|\d{3,9})\b\s*(?:f\b|fcfa\b|frs?\b|f\s?cfa\b)?", re.I
+    r"(?<![\d.,])(\d{1,3}(?:[ .]\d{3})+|\d{3,9})(?!\d)\s*"
+    r"(?:f\b|fcfa\b|frs?\b|f\s?cfa\b)?",
+    re.I,
 )
 #: Montants « sales » : 25k, 25 mil, 25mil, 25 milles. Hors de portée de la
 #: regex de référence — c'est précisément là que le LLM gagne.
