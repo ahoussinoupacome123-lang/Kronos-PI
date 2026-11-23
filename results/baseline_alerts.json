@@ -1,0 +1,184 @@
+[
+  {
+    "alert_id": "ALERT-ALPHAMONEY-28f7c19455",
+    "alias_hmac": "28f7c19455c7c685",
+    "alert_at": "2026-11-17T14:52:00+01:00",
+    "first_complaint_at": "2026-11-17T14:09:00+01:00",
+    "detection_delay_minutes": 43.0,
+    "n_complainants": 3,
+    "n_operators": 1,
+    "operators": [
+      "ALPHAMONEY"
+    ],
+    "total_fcfa": 60000,
+    "freezable_fcfa": 0,
+    "score": 0.569,
+    "rule": "3 plaignants distincts, 1 opérateur(s) distinct(s), fenêtre de 60 min",
+    "evidence_record_ids": [
+      "SR-d72575058ce6",
+      "SR-6a282e042d7c",
+      "SR-cfdabb74c8d8"
+    ],
+    "evidence_complaint_refs": [
+      "RC-000001",
+      "RC-000004",
+      "RC-000006"
+    ],
+    "recommendation": "Recommandation : suspendre temporairement les retraits sur le compte bénéficiaire et notifier les opérateurs concernés. Décision humaine requise chez l'opérateur — Réclam'Graph ne gèle rien.",
+    "detected_by": "operateur-seul:ALPHAMONEY",
+    "human_validator": null,
+    "gt_campaign_id": "CMP-01",
+    "n_complainants_at_alert": 3,
+    "n_operators_at_alert": 1,
+    "total_fcfa_at_alert": 60000,
+    "last_update_at": "2026-11-17T14:52:00+01:00",
+    "score_features": {
+      "plaignants": 1.0,
+      "operateurs": 0.0,
+      "typologie_arnaque": 0.6667,
+      "intensite": 0.3488
+    },
+    "is_priority": true,
+    "total_fcfa_exact": null,
+    "freezable_at_last_update_fcfa": 0,
+    "impact_note": "motif repéré, mais le compte mule est hébergé chez BETACASH : l'opérateur qui détecte ne peut pas suspendre le compte d'un concurrent (demande manuelle, J+5)."
+  },
+  {
+    "alert_id": "ALERT-ALPHAMONEY-12c7d1db26",
+    "alias_hmac": "12c7d1db265e5351",
+    "alert_at": "2026-11-18T09:38:00+01:00",
+    "first_complaint_at": "2026-11-18T09:12:00+01:00",
+    "detection_delay_minutes": 26.0,
+    "n_complainants": 4,
+    "n_operators": 1,
+    "operators": [
+      "ALPHAMONEY"
+    ],
+    "total_fcfa": 55000,
+    "freezable_fcfa": 162000,
+    "score": 0.725,
+    "rule": "3 plaignants distincts, 1 opérateur(s) distinct(s), fenêtre de 60 min",
+    "evidence_record_ids": [
+      "SR-fd0481beb47e",
+      "SR-d842404ec390",
+      "SR-7a5f31cb94db",
+      "SR-1c8f92efea89"
+    ],
+    "evidence_complaint_refs": [
+      "RC-000008",
+      "RC-000010",
+      "RC-000012",
+      "RC-000014"
+    ],
+    "recommendation": "Recommandation : suspendre temporairement les retraits sur le compte bénéficiaire et notifier les opérateurs concernés. Décision humaine requise chez l'opérateur — Réclam'Graph ne gèle rien.",
+    "detected_by": "operateur-seul:ALPHAMONEY",
+    "human_validator": null,
+    "gt_campaign_id": "CMP-02",
+    "n_complainants_at_alert": 3,
+    "n_operators_at_alert": 1,
+    "total_fcfa_at_alert": 45000,
+    "last_update_at": "2026-11-18T09:52:00+01:00",
+    "score_features": {
+      "plaignants": 1.0,
+      "operateurs": 0.0,
+      "typologie_arnaque": 1.0,
+      "intensite": 0.5
+    },
+    "is_priority": true,
+    "total_fcfa_exact": 182000,
+    "freezable_at_last_update_fcfa": 127000,
+    "impact_note": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique)."
+  },
+  {
+    "alert_id": "ALERT-BETACASH-75317619c8",
+    "alias_hmac": "75317619c8db2793",
+    "alert_at": "2026-11-20T16:39:00+01:00",
+    "first_complaint_at": "2026-11-20T16:10:00+01:00",
+    "detection_delay_minutes": 29.0,
+    "n_complainants": 5,
+    "n_operators": 1,
+    "operators": [
+      "BETACASH"
+    ],
+    "total_fcfa": 100000,
+    "freezable_fcfa": 205000,
+    "score": 0.6243,
+    "rule": "3 plaignants distincts, 1 opérateur(s) distinct(s), fenêtre de 60 min",
+    "evidence_record_ids": [
+      "SR-17418d143466",
+      "SR-8ac883dbc97f",
+      "SR-12aa69638bd7",
+      "SR-6f48c02a50a9",
+      "SR-ed3ddc384b02"
+    ],
+    "evidence_complaint_refs": [
+      "RC-000023",
+      "RC-000025",
+      "RC-000027",
+      "RC-000029",
+      "RC-000032"
+    ],
+    "recommendation": "Recommandation : suspendre temporairement les retraits sur le compte bénéficiaire et notifier les opérateurs concernés. Décision humaine requise chez l'opérateur — Réclam'Graph ne gèle rien.",
+    "detected_by": "operateur-seul:BETACASH",
+    "human_validator": null,
+    "gt_campaign_id": "CMP-04",
+    "n_complainants_at_alert": 3,
+    "n_operators_at_alert": 1,
+    "total_fcfa_at_alert": 75000,
+    "last_update_at": "2026-11-20T17:19:00+01:00",
+    "score_features": {
+      "plaignants": 1.0,
+      "operateurs": 0.0,
+      "typologie_arnaque": 0.8,
+      "intensite": 0.3623
+    },
+    "is_priority": true,
+    "total_fcfa_exact": 241000,
+    "freezable_at_last_update_fcfa": 45000,
+    "impact_note": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique)."
+  },
+  {
+    "alert_id": "ALERT-GAMMAPAY-75317619c8",
+    "alias_hmac": "75317619c8db2793",
+    "alert_at": "2026-11-20T17:28:00+01:00",
+    "first_complaint_at": "2026-11-20T16:31:00+01:00",
+    "detection_delay_minutes": 57.0,
+    "n_complainants": 3,
+    "n_operators": 1,
+    "operators": [
+      "GAMMAPAY"
+    ],
+    "total_fcfa": 60000,
+    "freezable_fcfa": 0,
+    "score": 0.6895,
+    "rule": "3 plaignants distincts, 1 opérateur(s) distinct(s), fenêtre de 60 min",
+    "evidence_record_ids": [
+      "SR-77970f8264bc",
+      "SR-9d60d835c6c5",
+      "SR-b598d4d42048"
+    ],
+    "evidence_complaint_refs": [
+      "RC-000026",
+      "RC-000030",
+      "RC-000033"
+    ],
+    "recommendation": "Recommandation : suspendre temporairement les retraits sur le compte bénéficiaire et notifier les opérateurs concernés. Décision humaine requise chez l'opérateur — Réclam'Graph ne gèle rien.",
+    "detected_by": "operateur-seul:GAMMAPAY",
+    "human_validator": null,
+    "gt_campaign_id": "CMP-04",
+    "n_complainants_at_alert": 3,
+    "n_operators_at_alert": 1,
+    "total_fcfa_at_alert": 60000,
+    "last_update_at": "2026-11-20T17:28:00+01:00",
+    "score_features": {
+      "plaignants": 1.0,
+      "operateurs": 0.0,
+      "typologie_arnaque": 1.0,
+      "intensite": 0.2632
+    },
+    "is_priority": true,
+    "total_fcfa_exact": null,
+    "freezable_at_last_update_fcfa": 0,
+    "impact_note": "motif repéré, mais le compte mule est hébergé chez BETACASH : l'opérateur qui détecte ne peut pas suspendre le compte d'un concurrent (demande manuelle, J+5)."
+  }
+]

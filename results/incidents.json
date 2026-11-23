@@ -1,0 +1,62 @@
+{
+  "alertes": [
+    {
+      "incident_id": "RADAR-02",
+      "detected_at": "2026-11-20T14:00:00+01:00",
+      "window_start": "2026-11-20T13:00:00+01:00",
+      "window_end": "2026-11-20T16:00:00+01:00",
+      "operator": null,
+      "typology": "RETARD_TIMEOUT",
+      "count": 329,
+      "baseline_mean": 6.11,
+      "zscore": 29.0,
+      "cluster_id": 2,
+      "cluster_size": 131,
+      "sample_texts": [
+        "Bjr madame transac TX9560409563 de 10.000F en attente depuis plus dune heure. le eneficiaire na rien recu, mon solde est debite.",
+        "svp bonjour mon transfert de 25000F vers Betacash est bloque depuis 12h02, ca affiche en cours de traitement. idez moi vite svp on dit quoi",
+        "SVP BONJOUR TRANSAC TX6882918331 DE 20000 FCFA EN ATTENTE DEPUIS PLUS DUNE HEURE. LE BENEFICIAIRE NA RIEN DU TT RECU, MON SOLDE EST DEBIT. MCI DE REGLER CA"
+      ],
+      "label": "Panne d'interopérabilité probable (PI-SPI) — vague de timeouts sur les 3 réseaux",
+      "gt_incident_id": null
+    },
+    {
+      "incident_id": "RADAR-01",
+      "detected_at": "2026-11-22T12:00:00+01:00",
+      "window_start": "2026-11-22T11:00:00+01:00",
+      "window_end": "2026-11-22T12:00:00+01:00",
+      "operator": "GAMMAPAY",
+      "typology": "ERREUR_DESTINATAIRE_SINCERE",
+      "count": 25,
+      "baseline_mean": 12.0,
+      "zscore": 8.77,
+      "cluster_id": 0,
+      "cluster_size": 9,
+      "sample_texts": [
+        "Brj jai tape un chiffre de trop, 50mil est alle chez bernadette.djossou@alphamoney. je voudrais recupeerer mon argent svp. mci de regler ac",
+        "Bonjour l'equiep je me suis trompe de numero, jai envoye 100mil a nadege.quenum@alphamoney au lieu de ma sooeur. pouvvez ovuus annnuler svp. j'attends votre ertuor",
+        "Slt svp jai fait une erreur de destintaire sur 20000, le beneficiiare est prudence.soglo@betacash sur le reseau Betacash. comment on annule? svp aidez moi nukun"
+      ],
+      "label": "Pic de ERREUR_DESTINATAIRE_SINCERE sur GAMMAPAY",
+      "gt_incident_id": null
+    }
+  ],
+  "evaluation": {
+    "incidents_injectes": 1,
+    "incidents_detectes": 1,
+    "rappel": 1.0,
+    "alertes_radar_totales": 2,
+    "detail": [
+      {
+        "incident_id": "INC-01",
+        "label": "Panne d'interopérabilité PI-SPI — vague de timeouts",
+        "detecte": true,
+        "alerte": "RADAR-02",
+        "detecte_a": "2026-11-20T14:00:00+01:00",
+        "debut_reel": "2026-11-20T13:00:00+01:00",
+        "delai_minutes": 60.0,
+        "zscore": 29.0
+      }
+    ]
+  }
+}

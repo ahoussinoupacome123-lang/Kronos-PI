@@ -1,0 +1,600 @@
+[
+  {
+    "alert_id": "ALERT-consortium-28f7c19455",
+    "alias_hmac": "28f7c19455c7c685",
+    "alert_at": "2026-11-17T14:21:00+01:00",
+    "first_complaint_at": "2026-11-17T14:09:00+01:00",
+    "detection_delay_minutes": 12.0,
+    "n_complainants": 7,
+    "n_operators": 3,
+    "operators": [
+      "ALPHAMONEY",
+      "BETACASH",
+      "GAMMAPAY"
+    ],
+    "total_fcfa": 160000,
+    "freezable_fcfa": 162000,
+    "score": 0.8919,
+    "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
+    "evidence_record_ids": [
+      "SR-d72575058ce6",
+      "SR-0cd9073c371d",
+      "SR-1ac69ce20ed1",
+      "SR-6a282e042d7c",
+      "SR-7e515187c398",
+      "SR-cfdabb74c8d8",
+      "SR-e0418640a897"
+    ],
+    "evidence_complaint_refs": [
+      "RC-000001",
+      "RC-000002",
+      "RC-000003",
+      "RC-000004",
+      "RC-000005",
+      "RC-000006",
+      "RC-000007"
+    ],
+    "recommendation": "Recommandation : suspendre temporairement les retraits sur le compte bénéficiaire et notifier les opérateurs concernés. Décision humaine requise chez l'opérateur — Réclam'Graph ne gèle rien.",
+    "detected_by": "consortium",
+    "human_validator": null,
+    "gt_campaign_id": "CMP-01",
+    "n_complainants_at_alert": 3,
+    "n_operators_at_alert": 3,
+    "total_fcfa_at_alert": 75000,
+    "last_update_at": "2026-11-17T15:02:00+01:00",
+    "score_features": {
+      "plaignants": 1.0,
+      "operateurs": 1.0,
+      "typologie_arnaque": 0.8571,
+      "intensite": 0.6604
+    },
+    "is_priority": true,
+    "total_fcfa_exact": 162000,
+    "freezable_at_last_update_fcfa": 118000,
+    "impact_note": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique)."
+  },
+  {
+    "alert_id": "ALERT-consortium-34746e987d",
+    "alias_hmac": "34746e987d94a4b6",
+    "alert_at": "2026-11-17T15:32:26+01:00",
+    "first_complaint_at": "2026-11-17T14:42:00+01:00",
+    "detection_delay_minutes": 50.43,
+    "n_complainants": 3,
+    "n_operators": 3,
+    "operators": [
+      "ALPHAMONEY",
+      "BETACASH",
+      "GAMMAPAY"
+    ],
+    "total_fcfa": 50000,
+    "freezable_fcfa": 0,
+    "score": 0.4946,
+    "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
+    "evidence_record_ids": [
+      "SR-f90787870716",
+      "SR-04835ec5eca8",
+      "SR-1075a2c45c45"
+    ],
+    "evidence_complaint_refs": [
+      "RC-011467",
+      "RC-002385",
+      "RC-009446"
+    ],
+    "recommendation": "Recommandation : suspendre temporairement les retraits sur le compte bénéficiaire et notifier les opérateurs concernés. Décision humaine requise chez l'opérateur — Réclam'Graph ne gèle rien.",
+    "detected_by": "consortium",
+    "human_validator": null,
+    "gt_campaign_id": null,
+    "n_complainants_at_alert": 3,
+    "n_operators_at_alert": 3,
+    "total_fcfa_at_alert": 50000,
+    "last_update_at": "2026-11-17T15:32:26+01:00",
+    "score_features": {
+      "plaignants": 1.0,
+      "operateurs": 1.0,
+      "typologie_arnaque": 0.0,
+      "intensite": 0.2974
+    },
+    "is_priority": false,
+    "total_fcfa_exact": null,
+    "freezable_at_last_update_fcfa": 0,
+    "impact_note": "aucune campagne rattachée (faux positif de la règle)"
+  },
+  {
+    "alert_id": "ALERT-consortium-12c7d1db26",
+    "alias_hmac": "12c7d1db265e5351",
+    "alert_at": "2026-11-18T09:24:00+01:00",
+    "first_complaint_at": "2026-11-18T09:12:00+01:00",
+    "detection_delay_minutes": 12.0,
+    "n_complainants": 7,
+    "n_operators": 3,
+    "operators": [
+      "ALPHAMONEY",
+      "BETACASH",
+      "GAMMAPAY"
+    ],
+    "total_fcfa": 120000,
+    "freezable_fcfa": 182000,
+    "score": 0.9812,
+    "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
+    "evidence_record_ids": [
+      "SR-fd0481beb47e",
+      "SR-d414b3c5c04f",
+      "SR-d842404ec390",
+      "SR-641945505f00",
+      "SR-7a5f31cb94db",
+      "SR-4037035c599f",
+      "SR-1c8f92efea89"
+    ],
+    "evidence_complaint_refs": [
+      "RC-000008",
+      "RC-000009",
+      "RC-000010",
+      "RC-000011",
+      "RC-000012",
+      "RC-000013",
+      "RC-000014"
+    ],
+    "recommendation": "Recommandation : suspendre temporairement les retraits sur le compte bénéficiaire et notifier les opérateurs concernés. Décision humaine requise chez l'opérateur — Réclam'Graph ne gèle rien.",
+    "detected_by": "consortium",
+    "human_validator": null,
+    "gt_campaign_id": "CMP-02",
+    "n_complainants_at_alert": 3,
+    "n_operators_at_alert": 2,
+    "total_fcfa_at_alert": 60000,
+    "last_update_at": "2026-11-18T09:52:00+01:00",
+    "score_features": {
+      "plaignants": 1.0,
+      "operateurs": 1.0,
+      "typologie_arnaque": 1.0,
+      "intensite": 0.875
+    },
+    "is_priority": true,
+    "total_fcfa_exact": 182000,
+    "freezable_at_last_update_fcfa": 127000,
+    "impact_note": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique)."
+  },
+  {
+    "alert_id": "ALERT-consortium-5ffab5b1a0",
+    "alias_hmac": "5ffab5b1a0817fb0",
+    "alert_at": "2026-11-18T18:33:00+01:00",
+    "first_complaint_at": "2026-11-18T18:04:00+01:00",
+    "detection_delay_minutes": 29.0,
+    "n_complainants": 3,
+    "n_operators": 2,
+    "operators": [
+      "ALPHAMONEY",
+      "BETACASH"
+    ],
+    "total_fcfa": 25000,
+    "freezable_fcfa": 0,
+    "score": 0.4276,
+    "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
+    "evidence_record_ids": [
+      "SR-fea92b1cc2b8",
+      "SR-448d23360b0c",
+      "SR-581e8110f246"
+    ],
+    "evidence_complaint_refs": [
+      "RC-000362",
+      "RC-000363",
+      "RC-000364"
+    ],
+    "recommendation": "Recommandation : suspendre temporairement les retraits sur le compte bénéficiaire et notifier les opérateurs concernés. Décision humaine requise chez l'opérateur — Réclam'Graph ne gèle rien.",
+    "detected_by": "consortium",
+    "human_validator": null,
+    "gt_campaign_id": null,
+    "n_complainants_at_alert": 3,
+    "n_operators_at_alert": 2,
+    "total_fcfa_at_alert": 25000,
+    "last_update_at": "2026-11-18T18:33:00+01:00",
+    "score_features": {
+      "plaignants": 1.0,
+      "operateurs": 0.5,
+      "typologie_arnaque": 0.0,
+      "intensite": 0.5172
+    },
+    "is_priority": false,
+    "total_fcfa_exact": null,
+    "freezable_at_last_update_fcfa": 0,
+    "impact_note": "aucune campagne rattachée (faux positif de la règle)"
+  },
+  {
+    "alert_id": "ALERT-consortium-aa3e69164d",
+    "alias_hmac": "aa3e69164ddef1b6",
+    "alert_at": "2026-11-19T11:33:00+01:00",
+    "first_complaint_at": "2026-11-19T11:18:00+01:00",
+    "detection_delay_minutes": 15.0,
+    "n_complainants": 6,
+    "n_operators": 3,
+    "operators": [
+      "ALPHAMONEY",
+      "BETACASH",
+      "GAMMAPAY"
+    ],
+    "total_fcfa": 50000,
+    "freezable_fcfa": 155000,
+    "score": 0.8716,
+    "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
+    "evidence_record_ids": [
+      "SR-03dde6dd1011",
+      "SR-ee064625f7d8",
+      "SR-32c02f490b72",
+      "SR-32657e0e86c5",
+      "SR-d1e7d3bead50",
+      "SR-3a5e6021e899"
+    ],
+    "evidence_complaint_refs": [
+      "RC-000017",
+      "RC-000018",
+      "RC-000019",
+      "RC-000020",
+      "RC-000021",
+      "RC-000022"
+    ],
+    "recommendation": "Recommandation : suspendre temporairement les retraits sur le compte bénéficiaire et notifier les opérateurs concernés. Décision humaine requise chez l'opérateur — Réclam'Graph ne gèle rien.",
+    "detected_by": "consortium",
+    "human_validator": null,
+    "gt_campaign_id": "CMP-03",
+    "n_complainants_at_alert": 3,
+    "n_operators_at_alert": 3,
+    "total_fcfa_at_alert": 35000,
+    "last_update_at": "2026-11-19T12:09:00+01:00",
+    "score_features": {
+      "plaignants": 1.0,
+      "operateurs": 1.0,
+      "typologie_arnaque": 0.8333,
+      "intensite": 0.5882
+    },
+    "is_priority": true,
+    "total_fcfa_exact": 155000,
+    "freezable_at_last_update_fcfa": 98000,
+    "impact_note": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique)."
+  },
+  {
+    "alert_id": "ALERT-consortium-3036e66d6f",
+    "alias_hmac": "3036e66d6fe562f2",
+    "alert_at": "2026-11-19T13:39:30+01:00",
+    "first_complaint_at": "2026-11-19T13:21:56+01:00",
+    "detection_delay_minutes": 17.57,
+    "n_complainants": 5,
+    "n_operators": 3,
+    "operators": [
+      "ALPHAMONEY",
+      "BETACASH",
+      "GAMMAPAY"
+    ],
+    "total_fcfa": 175000,
+    "freezable_fcfa": 0,
+    "score": 0.4686,
+    "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
+    "evidence_record_ids": [
+      "SR-b7e6ea83ab06",
+      "SR-b82efb2c0f80",
+      "SR-fab1caf304b6",
+      "SR-7fbafe432868",
+      "SR-918ae0b04d28"
+    ],
+    "evidence_complaint_refs": [
+      "RC-012042",
+      "RC-002473",
+      "RC-006282",
+      "RC-012223",
+      "RC-004353"
+    ],
+    "recommendation": "Recommandation : suspendre temporairement les retraits sur le compte bénéficiaire et notifier les opérateurs concernés. Décision humaine requise chez l'opérateur — Réclam'Graph ne gèle rien.",
+    "detected_by": "consortium",
+    "human_validator": null,
+    "gt_campaign_id": null,
+    "n_complainants_at_alert": 3,
+    "n_operators_at_alert": 2,
+    "total_fcfa_at_alert": 100000,
+    "last_update_at": "2026-11-19T16:43:01+01:00",
+    "score_features": {
+      "plaignants": 1.0,
+      "operateurs": 1.0,
+      "typologie_arnaque": 0.0,
+      "intensite": 0.1243
+    },
+    "is_priority": false,
+    "total_fcfa_exact": null,
+    "freezable_at_last_update_fcfa": 0,
+    "impact_note": "aucune campagne rattachée (faux positif de la règle)"
+  },
+  {
+    "alert_id": "ALERT-consortium-cab993af6c",
+    "alias_hmac": "cab993af6c029a90",
+    "alert_at": "2026-11-20T11:40:23+01:00",
+    "first_complaint_at": "2026-11-20T10:50:39+01:00",
+    "detection_delay_minutes": 49.73,
+    "n_complainants": 3,
+    "n_operators": 2,
+    "operators": [
+      "ALPHAMONEY",
+      "BETACASH"
+    ],
+    "total_fcfa": 110000,
+    "freezable_fcfa": 0,
+    "score": 0.3952,
+    "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
+    "evidence_record_ids": [
+      "SR-f84349761cd2",
+      "SR-871b1c53cf2a",
+      "SR-c0a50b100dab"
+    ],
+    "evidence_complaint_refs": [
+      "RC-008879",
+      "RC-010732",
+      "RC-002236"
+    ],
+    "recommendation": "Recommandation : suspendre temporairement les retraits sur le compte bénéficiaire et notifier les opérateurs concernés. Décision humaine requise chez l'opérateur — Réclam'Graph ne gèle rien.",
+    "detected_by": "consortium",
+    "human_validator": null,
+    "gt_campaign_id": null,
+    "n_complainants_at_alert": 3,
+    "n_operators_at_alert": 2,
+    "total_fcfa_at_alert": 110000,
+    "last_update_at": "2026-11-20T11:40:23+01:00",
+    "score_features": {
+      "plaignants": 1.0,
+      "operateurs": 0.5,
+      "typologie_arnaque": 0.0,
+      "intensite": 0.3016
+    },
+    "is_priority": false,
+    "total_fcfa_exact": null,
+    "freezable_at_last_update_fcfa": 0,
+    "impact_note": "aucune campagne rattachée (faux positif de la règle)"
+  },
+  {
+    "alert_id": "ALERT-consortium-75317619c8",
+    "alias_hmac": "75317619c8db2793",
+    "alert_at": "2026-11-20T16:23:00+01:00",
+    "first_complaint_at": "2026-11-20T16:10:00+01:00",
+    "detection_delay_minutes": 13.0,
+    "n_complainants": 10,
+    "n_operators": 3,
+    "operators": [
+      "ALPHAMONEY",
+      "BETACASH",
+      "GAMMAPAY"
+    ],
+    "total_fcfa": 195000,
+    "freezable_fcfa": 241000,
+    "score": 0.9062,
+    "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
+    "evidence_record_ids": [
+      "SR-17418d143466",
+      "SR-04419db946bb",
+      "SR-8ac883dbc97f",
+      "SR-77970f8264bc",
+      "SR-12aa69638bd7",
+      "SR-6f48c02a50a9",
+      "SR-9d60d835c6c5",
+      "SR-967e7c83f6ca",
+      "SR-ed3ddc384b02",
+      "SR-b598d4d42048"
+    ],
+    "evidence_complaint_refs": [
+      "RC-000023",
+      "RC-000024",
+      "RC-000025",
+      "RC-000026",
+      "RC-000027",
+      "RC-000029",
+      "RC-000030",
+      "RC-000031",
+      "RC-000032",
+      "RC-000033"
+    ],
+    "recommendation": "Recommandation : suspendre temporairement les retraits sur le compte bénéficiaire et notifier les opérateurs concernés. Décision humaine requise chez l'opérateur — Réclam'Graph ne gèle rien.",
+    "detected_by": "consortium",
+    "human_validator": null,
+    "gt_campaign_id": "CMP-04",
+    "n_complainants_at_alert": 3,
+    "n_operators_at_alert": 2,
+    "total_fcfa_at_alert": 65000,
+    "last_update_at": "2026-11-20T17:28:00+01:00",
+    "score_features": {
+      "plaignants": 1.0,
+      "operateurs": 1.0,
+      "typologie_arnaque": 0.9,
+      "intensite": 0.641
+    },
+    "is_priority": true,
+    "total_fcfa_exact": 241000,
+    "freezable_at_last_update_fcfa": 9000,
+    "impact_note": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique)."
+  },
+  {
+    "alert_id": "ALERT-consortium-68ae97f6f3",
+    "alias_hmac": "68ae97f6f31b81db",
+    "alert_at": "2026-11-20T19:23:53+01:00",
+    "first_complaint_at": "2026-11-20T18:51:08+01:00",
+    "detection_delay_minutes": 32.75,
+    "n_complainants": 3,
+    "n_operators": 2,
+    "operators": [
+      "ALPHAMONEY",
+      "BETACASH"
+    ],
+    "total_fcfa": 125000,
+    "freezable_fcfa": 0,
+    "score": 0.4187,
+    "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
+    "evidence_record_ids": [
+      "SR-838dd8e646a8",
+      "SR-7a57d2f4d590",
+      "SR-0a02e7007102"
+    ],
+    "evidence_complaint_refs": [
+      "RC-008496",
+      "RC-002645",
+      "RC-008476"
+    ],
+    "recommendation": "Recommandation : suspendre temporairement les retraits sur le compte bénéficiaire et notifier les opérateurs concernés. Décision humaine requise chez l'opérateur — Réclam'Graph ne gèle rien.",
+    "detected_by": "consortium",
+    "human_validator": null,
+    "gt_campaign_id": null,
+    "n_complainants_at_alert": 3,
+    "n_operators_at_alert": 2,
+    "total_fcfa_at_alert": 125000,
+    "last_update_at": "2026-11-20T19:23:53+01:00",
+    "score_features": {
+      "plaignants": 1.0,
+      "operateurs": 0.5,
+      "typologie_arnaque": 0.0,
+      "intensite": 0.458
+    },
+    "is_priority": false,
+    "total_fcfa_exact": null,
+    "freezable_at_last_update_fcfa": 0,
+    "impact_note": "aucune campagne rattachée (faux positif de la règle)"
+  },
+  {
+    "alert_id": "ALERT-consortium-f13a5a816c",
+    "alias_hmac": "f13a5a816c66749f",
+    "alert_at": "2026-11-21T10:03:11+01:00",
+    "first_complaint_at": "2026-11-21T09:39:15+01:00",
+    "detection_delay_minutes": 23.93,
+    "n_complainants": 3,
+    "n_operators": 3,
+    "operators": [
+      "ALPHAMONEY",
+      "BETACASH",
+      "GAMMAPAY"
+    ],
+    "total_fcfa": 105000,
+    "freezable_fcfa": 0,
+    "score": 0.544,
+    "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
+    "evidence_record_ids": [
+      "SR-e8c75f3c09df",
+      "SR-92fd7ea575b4",
+      "SR-9f77d67e2957"
+    ],
+    "evidence_complaint_refs": [
+      "RC-006168",
+      "RC-004128",
+      "RC-003073"
+    ],
+    "recommendation": "Recommandation : suspendre temporairement les retraits sur le compte bénéficiaire et notifier les opérateurs concernés. Décision humaine requise chez l'opérateur — Réclam'Graph ne gèle rien.",
+    "detected_by": "consortium",
+    "human_validator": null,
+    "gt_campaign_id": null,
+    "n_complainants_at_alert": 3,
+    "n_operators_at_alert": 3,
+    "total_fcfa_at_alert": 105000,
+    "last_update_at": "2026-11-21T10:03:11+01:00",
+    "score_features": {
+      "plaignants": 1.0,
+      "operateurs": 1.0,
+      "typologie_arnaque": 0.0,
+      "intensite": 0.6267
+    },
+    "is_priority": true,
+    "total_fcfa_exact": null,
+    "freezable_at_last_update_fcfa": 0,
+    "impact_note": "aucune campagne rattachée (faux positif de la règle)"
+  },
+  {
+    "alert_id": "ALERT-consortium-df1f1a1f07",
+    "alias_hmac": "df1f1a1f079d82ea",
+    "alert_at": "2026-11-21T13:42:05+01:00",
+    "first_complaint_at": "2026-11-21T12:45:14+01:00",
+    "detection_delay_minutes": 56.85,
+    "n_complainants": 3,
+    "n_operators": 2,
+    "operators": [
+      "BETACASH",
+      "GAMMAPAY"
+    ],
+    "total_fcfa": 60000,
+    "freezable_fcfa": 0,
+    "score": 0.3896,
+    "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
+    "evidence_record_ids": [
+      "SR-a0ed417166db",
+      "SR-0da443fd2574",
+      "SR-6618df9665d8"
+    ],
+    "evidence_complaint_refs": [
+      "RC-008087",
+      "RC-003070",
+      "RC-005580"
+    ],
+    "recommendation": "Recommandation : suspendre temporairement les retraits sur le compte bénéficiaire et notifier les opérateurs concernés. Décision humaine requise chez l'opérateur — Réclam'Graph ne gèle rien.",
+    "detected_by": "consortium",
+    "human_validator": null,
+    "gt_campaign_id": null,
+    "n_complainants_at_alert": 3,
+    "n_operators_at_alert": 2,
+    "total_fcfa_at_alert": 60000,
+    "last_update_at": "2026-11-21T13:42:05+01:00",
+    "score_features": {
+      "plaignants": 1.0,
+      "operateurs": 0.5,
+      "typologie_arnaque": 0.0,
+      "intensite": 0.2639
+    },
+    "is_priority": false,
+    "total_fcfa_exact": null,
+    "freezable_at_last_update_fcfa": 0,
+    "impact_note": "aucune campagne rattachée (faux positif de la règle)"
+  },
+  {
+    "alert_id": "ALERT-consortium-5f7027d329",
+    "alias_hmac": "5f7027d3294102f5",
+    "alert_at": "2026-11-22T10:27:00+01:00",
+    "first_complaint_at": "2026-11-22T10:12:00+01:00",
+    "detection_delay_minutes": 15.0,
+    "n_complainants": 8,
+    "n_operators": 3,
+    "operators": [
+      "ALPHAMONEY",
+      "BETACASH",
+      "GAMMAPAY"
+    ],
+    "total_fcfa": 110000,
+    "freezable_fcfa": 180000,
+    "score": 0.919,
+    "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
+    "evidence_record_ids": [
+      "SR-b1babeefd71f",
+      "SR-7a1dd21ffd52",
+      "SR-f03494c0b399",
+      "SR-202a68292e8d",
+      "SR-899cb2724587",
+      "SR-851853d64445",
+      "SR-512a85427b45",
+      "SR-880e9c6865c3"
+    ],
+    "evidence_complaint_refs": [
+      "RC-000034",
+      "RC-000035",
+      "RC-000036",
+      "RC-000037",
+      "RC-000038",
+      "RC-000039",
+      "RC-000040",
+      "RC-000041"
+    ],
+    "recommendation": "Recommandation : suspendre temporairement les retraits sur le compte bénéficiaire et notifier les opérateurs concernés. Décision humaine requise chez l'opérateur — Réclam'Graph ne gèle rien.",
+    "detected_by": "consortium",
+    "human_validator": null,
+    "gt_campaign_id": "CMP-05",
+    "n_complainants_at_alert": 3,
+    "n_operators_at_alert": 3,
+    "total_fcfa_at_alert": 65000,
+    "last_update_at": "2026-11-22T11:39:00+01:00",
+    "score_features": {
+      "plaignants": 1.0,
+      "operateurs": 1.0,
+      "typologie_arnaque": 1.0,
+      "intensite": 0.4598
+    },
+    "is_priority": true,
+    "total_fcfa_exact": 180000,
+    "freezable_at_last_update_fcfa": 39200,
+    "impact_note": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique)."
+  }
+]

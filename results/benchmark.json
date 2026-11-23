@@ -1,0 +1,1263 @@
+{
+  "meta": {
+    "genere_le": "2026-11-25T03:53:15.196077+01:00",
+    "etiquette_execution": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)",
+    "donnees": "SYNTHÉTIQUES — opérateurs fictifs, générateur publié",
+    "n_reclamations": 20000,
+    "config": {
+      "version": "1.0.0",
+      "hardware": {
+        "has_gpu": false,
+        "gpu_name": null,
+        "vram_mb": null,
+        "driver": null,
+        "run_label": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)",
+        "detection": "nvidia-smi introuvable"
+      },
+      "llm": {
+        "base_url": "http://localhost:8000/v1",
+        "model": "Qwen/Qwen2.5-7B-Instruct-AWQ",
+        "recommended_for_hardware": "Qwen/Qwen2.5-7B-Instruct-AWQ"
+      },
+      "embed_model": "BAAI/bge-m3",
+      "mule_rule": {
+        "min_complainants": 3,
+        "min_operators": 2,
+        "window_minutes": 60,
+        "decision": "humaine, chez l'opérateur (Réclam'Graph ne gèle jamais)"
+      },
+      "deadlines": {
+        "remboursement_jours_ouvres": 3,
+        "reponse_client_jours_calendaires": 30,
+        "pi_reclam_heures": 48,
+        "pi_reclam_public": false
+      },
+      "costs": {
+        "gpu_hourly_price_fcfa": null,
+        "cloud_api_price_per_1k_fcfa": null,
+        "human_cost_simple_fcfa": 270.0,
+        "human_cost_investigated_fcfa": 700.0,
+        "human_cost_label": "estimation (offres d'emploi, section 12)"
+      },
+      "dataset": {
+        "n_complaints": 20000,
+        "n_days": 7,
+        "operators": [
+          "ALPHAMONEY",
+          "BETACASH",
+          "GAMMAPAY"
+        ],
+        "n_mule_campaigns": 5,
+        "n_incidents": 1,
+        "seed": 20260112,
+        "synthetic": true
+      },
+      "pseudonymisation": {
+        "algo": "HMAC-SHA256",
+        "key_is_dev_default": true,
+        "amount_rounding_fcfa": 5000
+      },
+      "demo_mode": true
+    },
+    "avertissement": "Aucun chiffre de ce fichier n'est écrit en dur : tout provient d'une exécution de bench/benchmark.py sur les données du dépôt."
+  },
+  "typologie": {
+    "reference_mots_cles_regex": {
+      "f1_macro": 0.7776,
+      "exactitude": 0.7726,
+      "n": 20000,
+      "par_classe": {
+        "AGENT_DISTRIBUTEUR": {
+          "precision": 0.9668,
+          "rappel": 0.524,
+          "f1": 0.6796,
+          "support": 1332
+        },
+        "ARNAQUE_ERREUR_DEPOT": {
+          "precision": 1.0,
+          "rappel": 0.546,
+          "f1": 0.7064,
+          "support": 641
+        },
+        "AUTRE": {
+          "precision": 0.3562,
+          "rappel": 0.8662,
+          "f1": 0.5048,
+          "support": 1951
+        },
+        "CHANGEMENT_NUMERO": {
+          "precision": 1.0,
+          "rappel": 0.7588,
+          "f1": 0.8629,
+          "support": 908
+        },
+        "ERREUR_DESTINATAIRE_SINCERE": {
+          "precision": 0.9549,
+          "rappel": 0.688,
+          "f1": 0.7998,
+          "support": 6459
+        },
+        "FRAIS_CONTESTES": {
+          "precision": 0.8101,
+          "rappel": 0.7308,
+          "f1": 0.7684,
+          "support": 1716
+        },
+        "OTP_PHISHING": {
+          "precision": 0.8304,
+          "rappel": 0.9728,
+          "f1": 0.896,
+          "support": 1324
+        },
+        "RETARD_TIMEOUT": {
+          "precision": 1.0,
+          "rappel": 0.889,
+          "f1": 0.9412,
+          "support": 2603
+        },
+        "TRANSACTION_ECHOUEE_DEBITEE": {
+          "precision": 0.7952,
+          "rappel": 0.8888,
+          "f1": 0.8394,
+          "support": 3066
+        }
+      }
+    },
+    "reference_tfidf_logreg": {
+      "f1_macro": 0.9802,
+      "exactitude": 0.9897,
+      "n": 6000,
+      "par_classe": {
+        "AGENT_DISTRIBUTEUR": {
+          "precision": 1.0,
+          "rappel": 1.0,
+          "f1": 1.0,
+          "support": 400
+        },
+        "ARNAQUE_ERREUR_DEPOT": {
+          "precision": 0.8421,
+          "rappel": 0.8333,
+          "f1": 0.8377,
+          "support": 192
+        },
+        "AUTRE": {
+          "precision": 1.0,
+          "rappel": 1.0,
+          "f1": 1.0,
+          "support": 585
+        },
+        "CHANGEMENT_NUMERO": {
+          "precision": 1.0,
+          "rappel": 1.0,
+          "f1": 1.0,
+          "support": 272
+        },
+        "ERREUR_DESTINATAIRE_SINCERE": {
+          "precision": 0.9835,
+          "rappel": 0.9845,
+          "f1": 0.984,
+          "support": 1938
+        },
+        "FRAIS_CONTESTES": {
+          "precision": 1.0,
+          "rappel": 1.0,
+          "f1": 1.0,
+          "support": 515
+        },
+        "OTP_PHISHING": {
+          "precision": 1.0,
+          "rappel": 1.0,
+          "f1": 1.0,
+          "support": 397
+        },
+        "RETARD_TIMEOUT": {
+          "precision": 1.0,
+          "rappel": 1.0,
+          "f1": 1.0,
+          "support": 781
+        },
+        "TRANSACTION_ECHOUEE_DEBITEE": {
+          "precision": 1.0,
+          "rappel": 1.0,
+          "f1": 1.0,
+          "support": 920
+        }
+      },
+      "sous_corpus_ambigu": {
+        "n": 398,
+        "exactitude": 0.8442,
+        "classe_majoritaire": "ERREUR_DESTINATAIRE_SINCERE",
+        "taux_classe_majoritaire": 0.8945,
+        "gain_sur_classe_majoritaire": -0.0503,
+        "repartition_reelle": {
+          "ERREUR_DESTINATAIRE_SINCERE": 356,
+          "ARNAQUE_ERREUR_DEPOT": 42
+        },
+        "lecture": "Sur ces textes, le mot à mot ne suffit pas : la même phrase sert à une arnaque et à une erreur sincère. C'est exactement le cas où le signal doit venir du CROISEMENT inter-opérateurs, pas du texte."
+      },
+      "entrainement_s": 7.54,
+      "note": "Référence supervisée : TF-IDF caractères + régression logistique, entraînée sur 14000 réclamations, évaluée sur 6000. Elle a vu des étiquettes ; les extracteurs non."
+    },
+    "heuristique_locale": {
+      "f1_macro": 0.807,
+      "exactitude": 0.8162,
+      "n": 20000,
+      "par_classe": {
+        "AGENT_DISTRIBUTEUR": {
+          "precision": 0.979,
+          "rappel": 0.524,
+          "f1": 0.6826,
+          "support": 1332
+        },
+        "ARNAQUE_ERREUR_DEPOT": {
+          "precision": 1.0,
+          "rappel": 0.6895,
+          "f1": 0.8163,
+          "support": 641
+        },
+        "AUTRE": {
+          "precision": 0.4266,
+          "rappel": 0.8662,
+          "f1": 0.5716,
+          "support": 1951
+        },
+        "CHANGEMENT_NUMERO": {
+          "precision": 1.0,
+          "rappel": 0.7588,
+          "f1": 0.8629,
+          "support": 908
+        },
+        "ERREUR_DESTINATAIRE_SINCERE": {
+          "precision": 0.9755,
+          "rappel": 0.8086,
+          "f1": 0.8843,
+          "support": 6459
+        },
+        "FRAIS_CONTESTES": {
+          "precision": 0.8101,
+          "rappel": 0.7308,
+          "f1": 0.7684,
+          "support": 1716
+        },
+        "OTP_PHISHING": {
+          "precision": 0.8304,
+          "rappel": 0.9728,
+          "f1": 0.896,
+          "support": 1324
+        },
+        "RETARD_TIMEOUT": {
+          "precision": 1.0,
+          "rappel": 0.889,
+          "f1": 0.9412,
+          "support": 2603
+        },
+        "TRANSACTION_ECHOUEE_DEBITEE": {
+          "precision": 0.7952,
+          "rappel": 0.8888,
+          "f1": 0.8394,
+          "support": 3066
+        }
+      }
+    },
+    "llm": {
+      "mesure": false,
+      "note": "Non mesuré : aucun serveur LLM joignable. Lancer `make serve-llm` sur la machine GPU puis `make bench-llm`."
+    },
+    "sous_corpus_ambigu": {
+      "n": 1330,
+      "part_du_corpus": 0.0665,
+      "definition": "Plaintes produites à partir de gabarits identiques pour une arnaque « erreur de dépôt » et pour une erreur sincère de destinataire. Voir datagen/templates.py, AMBIGUOUS_TEMPLATES.",
+      "par_moteur": {
+        "reference_regex": {
+          "n": 1330,
+          "exactitude": 0.4805,
+          "classe_majoritaire": "ERREUR_DESTINATAIRE_SINCERE",
+          "taux_classe_majoritaire": 0.9045,
+          "gain_sur_classe_majoritaire": -0.4241,
+          "repartition_reelle": {
+            "ERREUR_DESTINATAIRE_SINCERE": 1203,
+            "ARNAQUE_ERREUR_DEPOT": 127
+          },
+          "lecture": "Sur ces textes, le mot à mot ne suffit pas : la même phrase sert à une arnaque et à une erreur sincère. C'est exactement le cas où le signal doit venir du CROISEMENT inter-opérateurs, pas du texte."
+        },
+        "heuristique_locale": {
+          "n": 1330,
+          "exactitude": 0.4812,
+          "classe_majoritaire": "ERREUR_DESTINATAIRE_SINCERE",
+          "taux_classe_majoritaire": 0.9045,
+          "gain_sur_classe_majoritaire": -0.4233,
+          "repartition_reelle": {
+            "ERREUR_DESTINATAIRE_SINCERE": 1203,
+            "ARNAQUE_ERREUR_DEPOT": 127
+          },
+          "lecture": "Sur ces textes, le mot à mot ne suffit pas : la même phrase sert à une arnaque et à une erreur sincère. C'est exactement le cas où le signal doit venir du CROISEMENT inter-opérateurs, pas du texte."
+        }
+      }
+    },
+    "avertissement_corpus": "ATTENTION À LA LECTURE DE CES F1. Ce corpus est synthétique et engendré par gabarits : des n-grammes de caractères y reconnaissent le gabarit plutôt que le sens, et toute F1 proche de 1,00 mesure donc la séparabilité des gabarits, PAS une capacité transposable au réel. Le repère réaliste est celui de la littérature citée dans le brief : environ 87 % d'exactitude pour un TF-IDF réglé sur la base CFPB. Le sous-corpus ambigu ci-dessous est la seule partie de cette section qui mesure quelque chose de transposable.",
+    "lecture": "Attendu et confirmé : la classification est « quasi ex aequo ». C'est pour cela que la démonstration ne repose PAS sur la classification mais sur la corrélation inter-opérateurs."
+  },
+  "extraction_champs": {
+    "reference_regex": {
+      "moteur": [
+        "regex-baseline"
+      ],
+      "moteur_detail": [
+        "mots-cles + regex (reference operateur)"
+      ],
+      "typologie": {
+        "f1_macro": 0.7776,
+        "exactitude": 0.7726,
+        "n": 20000,
+        "par_classe": {
+          "AGENT_DISTRIBUTEUR": {
+            "precision": 0.9668,
+            "rappel": 0.524,
+            "f1": 0.6796,
+            "support": 1332
+          },
+          "ARNAQUE_ERREUR_DEPOT": {
+            "precision": 1.0,
+            "rappel": 0.546,
+            "f1": 0.7064,
+            "support": 641
+          },
+          "AUTRE": {
+            "precision": 0.3562,
+            "rappel": 0.8662,
+            "f1": 0.5048,
+            "support": 1951
+          },
+          "CHANGEMENT_NUMERO": {
+            "precision": 1.0,
+            "rappel": 0.7588,
+            "f1": 0.8629,
+            "support": 908
+          },
+          "ERREUR_DESTINATAIRE_SINCERE": {
+            "precision": 0.9549,
+            "rappel": 0.688,
+            "f1": 0.7998,
+            "support": 6459
+          },
+          "FRAIS_CONTESTES": {
+            "precision": 0.8101,
+            "rappel": 0.7308,
+            "f1": 0.7684,
+            "support": 1716
+          },
+          "OTP_PHISHING": {
+            "precision": 0.8304,
+            "rappel": 0.9728,
+            "f1": 0.896,
+            "support": 1324
+          },
+          "RETARD_TIMEOUT": {
+            "precision": 1.0,
+            "rappel": 0.889,
+            "f1": 0.9412,
+            "support": 2603
+          },
+          "TRANSACTION_ECHOUEE_DEBITEE": {
+            "precision": 0.7952,
+            "rappel": 0.8888,
+            "f1": 0.8394,
+            "support": 3066
+          }
+        }
+      },
+      "champs": {
+        "montant_fcfa": {
+          "f1": 0.8536,
+          "precision": 0.9804,
+          "rappel": 0.7558,
+          "tp": 14248,
+          "fp": 285,
+          "fn": 4603,
+          "support": 18851,
+          "f1_recuperable": 0.8536,
+          "f1_brut": 0.8536,
+          "support_recuperable": 18851,
+          "support_brut": 18851,
+          "part_recuperable": 1.0
+        },
+        "alias_beneficiaire": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "rappel": 1.0,
+          "tp": 4937,
+          "fp": 0,
+          "fn": 0,
+          "support": 4937,
+          "f1_recuperable": 1.0,
+          "f1_brut": 0.8203,
+          "support_recuperable": 4937,
+          "support_brut": 7100,
+          "part_recuperable": 0.6954
+        },
+        "msisdn_beneficiaire": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "rappel": 1.0,
+          "tp": 1940,
+          "fp": 0,
+          "fn": 0,
+          "support": 1940,
+          "f1_recuperable": 1.0,
+          "f1_brut": 0.4294,
+          "support_recuperable": 1940,
+          "support_brut": 7093,
+          "part_recuperable": 0.2735
+        },
+        "reseau_destination": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "rappel": 1.0,
+          "tp": 7108,
+          "fp": 0,
+          "fn": 0,
+          "support": 7108,
+          "f1_recuperable": 1.0,
+          "f1_brut": 0.7152,
+          "support_recuperable": 7108,
+          "support_brut": 12769,
+          "part_recuperable": 0.5567
+        },
+        "heure_operation": {
+          "f1": 0.9396,
+          "precision": 1.0,
+          "rappel": 0.886,
+          "tp": 3436,
+          "fp": 0,
+          "fn": 442,
+          "support": 3878,
+          "f1_recuperable": 0.9396,
+          "f1_brut": 0.2932,
+          "support_recuperable": 3878,
+          "support_brut": 20000,
+          "part_recuperable": 0.1939
+        }
+      },
+      "f1_moyenne_champs": 0.9586,
+      "f1_moyenne_champs_brute": 0.6223,
+      "definition_des_deux_f1": "f1_recuperable : seulement les plaintes dont le texte contient réellement la valeur attendue — c'est la mesure d'une capacité. f1_brut : tous les cas où la vérité terrain a une valeur, y compris ceux que le texte ne mentionne pas et qu'aucun extracteur ne peut donc deviner. Les deux sont publiés."
+    },
+    "heuristique_locale": {
+      "moteur": [
+        "heuristic-fallback"
+      ],
+      "moteur_detail": [
+        "extracteur heuristique local, non-LLM — F1 optimiste par construction (ecrit en connaissant les gabarits du generateur)"
+      ],
+      "typologie": {
+        "f1_macro": 0.807,
+        "exactitude": 0.8162,
+        "n": 20000,
+        "par_classe": {
+          "AGENT_DISTRIBUTEUR": {
+            "precision": 0.979,
+            "rappel": 0.524,
+            "f1": 0.6826,
+            "support": 1332
+          },
+          "ARNAQUE_ERREUR_DEPOT": {
+            "precision": 1.0,
+            "rappel": 0.6895,
+            "f1": 0.8163,
+            "support": 641
+          },
+          "AUTRE": {
+            "precision": 0.4266,
+            "rappel": 0.8662,
+            "f1": 0.5716,
+            "support": 1951
+          },
+          "CHANGEMENT_NUMERO": {
+            "precision": 1.0,
+            "rappel": 0.7588,
+            "f1": 0.8629,
+            "support": 908
+          },
+          "ERREUR_DESTINATAIRE_SINCERE": {
+            "precision": 0.9755,
+            "rappel": 0.8086,
+            "f1": 0.8843,
+            "support": 6459
+          },
+          "FRAIS_CONTESTES": {
+            "precision": 0.8101,
+            "rappel": 0.7308,
+            "f1": 0.7684,
+            "support": 1716
+          },
+          "OTP_PHISHING": {
+            "precision": 0.8304,
+            "rappel": 0.9728,
+            "f1": 0.896,
+            "support": 1324
+          },
+          "RETARD_TIMEOUT": {
+            "precision": 1.0,
+            "rappel": 0.889,
+            "f1": 0.9412,
+            "support": 2603
+          },
+          "TRANSACTION_ECHOUEE_DEBITEE": {
+            "precision": 0.7952,
+            "rappel": 0.8888,
+            "f1": 0.8394,
+            "support": 3066
+          }
+        }
+      },
+      "champs": {
+        "montant_fcfa": {
+          "f1": 0.9691,
+          "precision": 0.9951,
+          "rappel": 0.9443,
+          "tp": 17801,
+          "fp": 87,
+          "fn": 1050,
+          "support": 18851,
+          "f1_recuperable": 0.9691,
+          "f1_brut": 0.9691,
+          "support_recuperable": 18851,
+          "support_brut": 18851,
+          "part_recuperable": 1.0
+        },
+        "alias_beneficiaire": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "rappel": 1.0,
+          "tp": 4937,
+          "fp": 0,
+          "fn": 0,
+          "support": 4937,
+          "f1_recuperable": 1.0,
+          "f1_brut": 0.8203,
+          "support_recuperable": 4937,
+          "support_brut": 7100,
+          "part_recuperable": 0.6954
+        },
+        "msisdn_beneficiaire": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "rappel": 1.0,
+          "tp": 1940,
+          "fp": 0,
+          "fn": 0,
+          "support": 1940,
+          "f1_recuperable": 1.0,
+          "f1_brut": 0.4294,
+          "support_recuperable": 1940,
+          "support_brut": 7093,
+          "part_recuperable": 0.2735
+        },
+        "reseau_destination": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "rappel": 1.0,
+          "tp": 7108,
+          "fp": 0,
+          "fn": 0,
+          "support": 7108,
+          "f1_recuperable": 1.0,
+          "f1_brut": 0.7152,
+          "support_recuperable": 7108,
+          "support_brut": 12769,
+          "part_recuperable": 0.5567
+        },
+        "heure_operation": {
+          "f1": 0.9396,
+          "precision": 1.0,
+          "rappel": 0.886,
+          "tp": 3436,
+          "fp": 0,
+          "fn": 442,
+          "support": 3878,
+          "f1_recuperable": 0.9396,
+          "f1_brut": 0.2932,
+          "support_recuperable": 3878,
+          "support_brut": 20000,
+          "part_recuperable": 0.1939
+        }
+      },
+      "f1_moyenne_champs": 0.9817,
+      "f1_moyenne_champs_brute": 0.6454,
+      "definition_des_deux_f1": "f1_recuperable : seulement les plaintes dont le texte contient réellement la valeur attendue — c'est la mesure d'une capacité. f1_brut : tous les cas où la vérité terrain a une valeur, y compris ceux que le texte ne mentionne pas et qu'aucun extracteur ne peut donc deviner. Les deux sont publiés."
+    },
+    "llm": {
+      "mesure": false,
+      "note": "Non mesuré : aucun serveur LLM joignable. Lancer `make serve-llm` sur la machine GPU puis `make bench-llm`."
+    },
+    "lecture": "L'écart se creuse sur les montants mal écrits (« 25mil », « vingt cinq mille ») que la regex ne sait pas lire. Les alias et numéros, eux, sont copiés tels quels et la regex les attrape."
+  },
+  "detection_mules": {
+    "avec_extraction_regex": {
+      "moteur_extraction": "regex-baseline",
+      "n_enregistrements_partages": 6825,
+      "consortium": {
+        "campagnes_injectees": 5,
+        "campagnes_detectees": 5,
+        "rappel": 1.0,
+        "alertes_totales": 7,
+        "alertes_vraies": 5,
+        "faux_positifs": 2,
+        "precision": 0.7143,
+        "delai_detection_median_minutes": 15.0,
+        "delai_detection_min_minutes": 12.0,
+        "delai_detection_max_minutes": 17.0,
+        "fcfa_encore_gelables_total": 920000,
+        "detail_faux_positifs": [
+          {
+            "alert_id": "ALERT-consortium-34746e987d",
+            "alerte_a": "2026-11-17T15:32:26+01:00",
+            "n_plaignants": 3,
+            "n_operateurs": 3,
+            "score": 0.3244
+          },
+          {
+            "alert_id": "ALERT-consortium-3036e66d6f",
+            "alerte_a": "2026-11-19T13:39:30+01:00",
+            "n_plaignants": 5,
+            "n_operateurs": 3,
+            "score": 0.2811
+          }
+        ],
+        "detail": [
+          {
+            "campagne": "CMP-01",
+            "libelle": "Arnaque erreur de dépôt — mule hébergée chez BETACASH",
+            "mule_chez": "BETACASH",
+            "total_fcfa": 162000,
+            "detectee": true,
+            "alerte_a": "2026-11-17T14:33:00+01:00",
+            "premiere_plainte_a": "2026-11-17T14:16:00+01:00",
+            "delai_detection_minutes": 17.0,
+            "n_plaignants": 6,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 162000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          },
+          {
+            "campagne": "CMP-02",
+            "libelle": "Arnaque erreur de dépôt — mule hébergée chez ALPHAMONEY",
+            "mule_chez": "ALPHAMONEY",
+            "total_fcfa": 182000,
+            "detectee": true,
+            "alerte_a": "2026-11-18T09:24:00+01:00",
+            "premiere_plainte_a": "2026-11-18T09:12:00+01:00",
+            "delai_detection_minutes": 12.0,
+            "n_plaignants": 7,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 182000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          },
+          {
+            "campagne": "CMP-03",
+            "libelle": "Arnaque erreur de dépôt — victimes réparties 2/2/2",
+            "mule_chez": "GAMMAPAY",
+            "total_fcfa": 155000,
+            "detectee": true,
+            "alerte_a": "2026-11-19T11:33:00+01:00",
+            "premiere_plainte_a": "2026-11-19T11:18:00+01:00",
+            "delai_detection_minutes": 15.0,
+            "n_plaignants": 6,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 155000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          },
+          {
+            "campagne": "CMP-04",
+            "libelle": "Arnaque erreur de dépôt — grosse campagne, retrait précoce",
+            "mule_chez": "BETACASH",
+            "total_fcfa": 241000,
+            "detectee": true,
+            "alerte_a": "2026-11-20T16:23:00+01:00",
+            "premiere_plainte_a": "2026-11-20T16:10:00+01:00",
+            "delai_detection_minutes": 13.0,
+            "n_plaignants": 10,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 241000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          },
+          {
+            "campagne": "CMP-05",
+            "libelle": "Arnaque erreur de dépôt — plaintes étalées, invisible en solo",
+            "mule_chez": "ALPHAMONEY",
+            "total_fcfa": 180000,
+            "detectee": true,
+            "alerte_a": "2026-11-22T10:27:00+01:00",
+            "premiere_plainte_a": "2026-11-22T10:12:00+01:00",
+            "delai_detection_minutes": 15.0,
+            "n_plaignants": 7,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 180000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          }
+        ]
+      },
+      "consortium_prioritaires": {
+        "campagnes_injectees": 5,
+        "campagnes_detectees": 5,
+        "rappel": 1.0,
+        "alertes_totales": 5,
+        "alertes_vraies": 5,
+        "faux_positifs": 0,
+        "precision": 1.0,
+        "delai_detection_median_minutes": 15.0,
+        "delai_detection_min_minutes": 12.0,
+        "delai_detection_max_minutes": 17.0,
+        "fcfa_encore_gelables_total": 920000,
+        "detail_faux_positifs": [],
+        "detail": [
+          {
+            "campagne": "CMP-01",
+            "libelle": "Arnaque erreur de dépôt — mule hébergée chez BETACASH",
+            "mule_chez": "BETACASH",
+            "total_fcfa": 162000,
+            "detectee": true,
+            "alerte_a": "2026-11-17T14:33:00+01:00",
+            "premiere_plainte_a": "2026-11-17T14:16:00+01:00",
+            "delai_detection_minutes": 17.0,
+            "n_plaignants": 6,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 162000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          },
+          {
+            "campagne": "CMP-02",
+            "libelle": "Arnaque erreur de dépôt — mule hébergée chez ALPHAMONEY",
+            "mule_chez": "ALPHAMONEY",
+            "total_fcfa": 182000,
+            "detectee": true,
+            "alerte_a": "2026-11-18T09:24:00+01:00",
+            "premiere_plainte_a": "2026-11-18T09:12:00+01:00",
+            "delai_detection_minutes": 12.0,
+            "n_plaignants": 7,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 182000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          },
+          {
+            "campagne": "CMP-03",
+            "libelle": "Arnaque erreur de dépôt — victimes réparties 2/2/2",
+            "mule_chez": "GAMMAPAY",
+            "total_fcfa": 155000,
+            "detectee": true,
+            "alerte_a": "2026-11-19T11:33:00+01:00",
+            "premiere_plainte_a": "2026-11-19T11:18:00+01:00",
+            "delai_detection_minutes": 15.0,
+            "n_plaignants": 6,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 155000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          },
+          {
+            "campagne": "CMP-04",
+            "libelle": "Arnaque erreur de dépôt — grosse campagne, retrait précoce",
+            "mule_chez": "BETACASH",
+            "total_fcfa": 241000,
+            "detectee": true,
+            "alerte_a": "2026-11-20T16:23:00+01:00",
+            "premiere_plainte_a": "2026-11-20T16:10:00+01:00",
+            "delai_detection_minutes": 13.0,
+            "n_plaignants": 10,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 241000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          },
+          {
+            "campagne": "CMP-05",
+            "libelle": "Arnaque erreur de dépôt — plaintes étalées, invisible en solo",
+            "mule_chez": "ALPHAMONEY",
+            "total_fcfa": 180000,
+            "detectee": true,
+            "alerte_a": "2026-11-22T10:27:00+01:00",
+            "premiere_plainte_a": "2026-11-22T10:12:00+01:00",
+            "delai_detection_minutes": 15.0,
+            "n_plaignants": 7,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 180000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          }
+        ]
+      },
+      "operateur_seul": {
+        "campagnes_injectees": 5,
+        "campagnes_detectees": 2,
+        "rappel": 0.4,
+        "alertes_totales": 3,
+        "alertes_vraies": 2,
+        "faux_positifs": 0,
+        "precision": 0.6667,
+        "delai_detection_median_minutes": 27.5,
+        "delai_detection_min_minutes": 26.0,
+        "delai_detection_max_minutes": 29.0,
+        "fcfa_encore_gelables_total": 367000,
+        "detail_faux_positifs": [],
+        "detail": [
+          {
+            "campagne": "CMP-01",
+            "libelle": "Arnaque erreur de dépôt — mule hébergée chez BETACASH",
+            "mule_chez": "BETACASH",
+            "total_fcfa": 162000,
+            "detectee": false,
+            "alerte_a": null,
+            "premiere_plainte_a": null,
+            "delai_detection_minutes": null,
+            "n_plaignants": null,
+            "n_operateurs": null,
+            "fcfa_encore_gelables": 0,
+            "note_impact": "non détectée",
+            "detectee_par": null
+          },
+          {
+            "campagne": "CMP-02",
+            "libelle": "Arnaque erreur de dépôt — mule hébergée chez ALPHAMONEY",
+            "mule_chez": "ALPHAMONEY",
+            "total_fcfa": 182000,
+            "detectee": true,
+            "alerte_a": "2026-11-18T09:38:00+01:00",
+            "premiere_plainte_a": "2026-11-18T09:12:00+01:00",
+            "delai_detection_minutes": 26.0,
+            "n_plaignants": 4,
+            "n_operateurs": 1,
+            "fcfa_encore_gelables": 162000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "operateur-seul:ALPHAMONEY"
+          },
+          {
+            "campagne": "CMP-03",
+            "libelle": "Arnaque erreur de dépôt — victimes réparties 2/2/2",
+            "mule_chez": "GAMMAPAY",
+            "total_fcfa": 155000,
+            "detectee": false,
+            "alerte_a": null,
+            "premiere_plainte_a": null,
+            "delai_detection_minutes": null,
+            "n_plaignants": null,
+            "n_operateurs": null,
+            "fcfa_encore_gelables": 0,
+            "note_impact": "non détectée",
+            "detectee_par": null
+          },
+          {
+            "campagne": "CMP-04",
+            "libelle": "Arnaque erreur de dépôt — grosse campagne, retrait précoce",
+            "mule_chez": "BETACASH",
+            "total_fcfa": 241000,
+            "detectee": true,
+            "alerte_a": "2026-11-20T16:39:00+01:00",
+            "premiere_plainte_a": "2026-11-20T16:10:00+01:00",
+            "delai_detection_minutes": 29.0,
+            "n_plaignants": 5,
+            "n_operateurs": 1,
+            "fcfa_encore_gelables": 205000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "operateur-seul:BETACASH"
+          },
+          {
+            "campagne": "CMP-05",
+            "libelle": "Arnaque erreur de dépôt — plaintes étalées, invisible en solo",
+            "mule_chez": "ALPHAMONEY",
+            "total_fcfa": 180000,
+            "detectee": false,
+            "alerte_a": null,
+            "premiere_plainte_a": null,
+            "delai_detection_minutes": null,
+            "n_plaignants": null,
+            "n_operateurs": null,
+            "fcfa_encore_gelables": 0,
+            "note_impact": "non détectée",
+            "detectee_par": null
+          }
+        ]
+      }
+    },
+    "avec_extraction_heuristique": {
+      "moteur_extraction": "heuristic-fallback",
+      "n_enregistrements_partages": 6825,
+      "consortium": {
+        "campagnes_injectees": 5,
+        "campagnes_detectees": 5,
+        "rappel": 1.0,
+        "alertes_totales": 12,
+        "alertes_vraies": 5,
+        "faux_positifs": 7,
+        "precision": 0.4167,
+        "delai_detection_median_minutes": 13.0,
+        "delai_detection_min_minutes": 12.0,
+        "delai_detection_max_minutes": 15.0,
+        "fcfa_encore_gelables_total": 920000,
+        "detail_faux_positifs": [
+          {
+            "alert_id": "ALERT-consortium-34746e987d",
+            "alerte_a": "2026-11-17T15:32:26+01:00",
+            "n_plaignants": 3,
+            "n_operateurs": 3,
+            "score": 0.3244
+          },
+          {
+            "alert_id": "ALERT-consortium-5ffab5b1a0",
+            "alerte_a": "2026-11-18T18:33:00+01:00",
+            "n_plaignants": 3,
+            "n_operateurs": 2,
+            "score": 0.3293
+          },
+          {
+            "alert_id": "ALERT-consortium-3036e66d6f",
+            "alerte_a": "2026-11-19T13:39:30+01:00",
+            "n_plaignants": 5,
+            "n_operateurs": 3,
+            "score": 0.2811
+          },
+          {
+            "alert_id": "ALERT-consortium-cab993af6c",
+            "alerte_a": "2026-11-20T11:40:23+01:00",
+            "n_plaignants": 3,
+            "n_operateurs": 2,
+            "score": 0.2754
+          },
+          {
+            "alert_id": "ALERT-consortium-68ae97f6f3",
+            "alerte_a": "2026-11-20T19:23:53+01:00",
+            "n_plaignants": 3,
+            "n_operateurs": 2,
+            "score": 0.3145
+          },
+          {
+            "alert_id": "ALERT-consortium-f13a5a816c",
+            "alerte_a": "2026-11-21T10:03:11+01:00",
+            "n_plaignants": 3,
+            "n_operateurs": 3,
+            "score": 0.4067
+          },
+          {
+            "alert_id": "ALERT-consortium-df1f1a1f07",
+            "alerte_a": "2026-11-21T13:42:05+01:00",
+            "n_plaignants": 3,
+            "n_operateurs": 2,
+            "score": 0.266
+          }
+        ],
+        "detail": [
+          {
+            "campagne": "CMP-01",
+            "libelle": "Arnaque erreur de dépôt — mule hébergée chez BETACASH",
+            "mule_chez": "BETACASH",
+            "total_fcfa": 162000,
+            "detectee": true,
+            "alerte_a": "2026-11-17T14:21:00+01:00",
+            "premiere_plainte_a": "2026-11-17T14:09:00+01:00",
+            "delai_detection_minutes": 12.0,
+            "n_plaignants": 7,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 162000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          },
+          {
+            "campagne": "CMP-02",
+            "libelle": "Arnaque erreur de dépôt — mule hébergée chez ALPHAMONEY",
+            "mule_chez": "ALPHAMONEY",
+            "total_fcfa": 182000,
+            "detectee": true,
+            "alerte_a": "2026-11-18T09:24:00+01:00",
+            "premiere_plainte_a": "2026-11-18T09:12:00+01:00",
+            "delai_detection_minutes": 12.0,
+            "n_plaignants": 7,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 182000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          },
+          {
+            "campagne": "CMP-03",
+            "libelle": "Arnaque erreur de dépôt — victimes réparties 2/2/2",
+            "mule_chez": "GAMMAPAY",
+            "total_fcfa": 155000,
+            "detectee": true,
+            "alerte_a": "2026-11-19T11:33:00+01:00",
+            "premiere_plainte_a": "2026-11-19T11:18:00+01:00",
+            "delai_detection_minutes": 15.0,
+            "n_plaignants": 6,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 155000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          },
+          {
+            "campagne": "CMP-04",
+            "libelle": "Arnaque erreur de dépôt — grosse campagne, retrait précoce",
+            "mule_chez": "BETACASH",
+            "total_fcfa": 241000,
+            "detectee": true,
+            "alerte_a": "2026-11-20T16:23:00+01:00",
+            "premiere_plainte_a": "2026-11-20T16:10:00+01:00",
+            "delai_detection_minutes": 13.0,
+            "n_plaignants": 10,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 241000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          },
+          {
+            "campagne": "CMP-05",
+            "libelle": "Arnaque erreur de dépôt — plaintes étalées, invisible en solo",
+            "mule_chez": "ALPHAMONEY",
+            "total_fcfa": 180000,
+            "detectee": true,
+            "alerte_a": "2026-11-22T10:27:00+01:00",
+            "premiere_plainte_a": "2026-11-22T10:12:00+01:00",
+            "delai_detection_minutes": 15.0,
+            "n_plaignants": 8,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 180000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          }
+        ]
+      },
+      "consortium_prioritaires": {
+        "campagnes_injectees": 5,
+        "campagnes_detectees": 5,
+        "rappel": 1.0,
+        "alertes_totales": 5,
+        "alertes_vraies": 5,
+        "faux_positifs": 0,
+        "precision": 1.0,
+        "delai_detection_median_minutes": 13.0,
+        "delai_detection_min_minutes": 12.0,
+        "delai_detection_max_minutes": 15.0,
+        "fcfa_encore_gelables_total": 920000,
+        "detail_faux_positifs": [],
+        "detail": [
+          {
+            "campagne": "CMP-01",
+            "libelle": "Arnaque erreur de dépôt — mule hébergée chez BETACASH",
+            "mule_chez": "BETACASH",
+            "total_fcfa": 162000,
+            "detectee": true,
+            "alerte_a": "2026-11-17T14:21:00+01:00",
+            "premiere_plainte_a": "2026-11-17T14:09:00+01:00",
+            "delai_detection_minutes": 12.0,
+            "n_plaignants": 7,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 162000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          },
+          {
+            "campagne": "CMP-02",
+            "libelle": "Arnaque erreur de dépôt — mule hébergée chez ALPHAMONEY",
+            "mule_chez": "ALPHAMONEY",
+            "total_fcfa": 182000,
+            "detectee": true,
+            "alerte_a": "2026-11-18T09:24:00+01:00",
+            "premiere_plainte_a": "2026-11-18T09:12:00+01:00",
+            "delai_detection_minutes": 12.0,
+            "n_plaignants": 7,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 182000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          },
+          {
+            "campagne": "CMP-03",
+            "libelle": "Arnaque erreur de dépôt — victimes réparties 2/2/2",
+            "mule_chez": "GAMMAPAY",
+            "total_fcfa": 155000,
+            "detectee": true,
+            "alerte_a": "2026-11-19T11:33:00+01:00",
+            "premiere_plainte_a": "2026-11-19T11:18:00+01:00",
+            "delai_detection_minutes": 15.0,
+            "n_plaignants": 6,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 155000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          },
+          {
+            "campagne": "CMP-04",
+            "libelle": "Arnaque erreur de dépôt — grosse campagne, retrait précoce",
+            "mule_chez": "BETACASH",
+            "total_fcfa": 241000,
+            "detectee": true,
+            "alerte_a": "2026-11-20T16:23:00+01:00",
+            "premiere_plainte_a": "2026-11-20T16:10:00+01:00",
+            "delai_detection_minutes": 13.0,
+            "n_plaignants": 10,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 241000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          },
+          {
+            "campagne": "CMP-05",
+            "libelle": "Arnaque erreur de dépôt — plaintes étalées, invisible en solo",
+            "mule_chez": "ALPHAMONEY",
+            "total_fcfa": 180000,
+            "detectee": true,
+            "alerte_a": "2026-11-22T10:27:00+01:00",
+            "premiere_plainte_a": "2026-11-22T10:12:00+01:00",
+            "delai_detection_minutes": 15.0,
+            "n_plaignants": 8,
+            "n_operateurs": 3,
+            "fcfa_encore_gelables": 180000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "consortium"
+          }
+        ]
+      },
+      "operateur_seul": {
+        "campagnes_injectees": 5,
+        "campagnes_detectees": 3,
+        "rappel": 0.6,
+        "alertes_totales": 4,
+        "alertes_vraies": 3,
+        "faux_positifs": 0,
+        "precision": 0.75,
+        "delai_detection_median_minutes": 29.0,
+        "delai_detection_min_minutes": 26.0,
+        "delai_detection_max_minutes": 43.0,
+        "fcfa_encore_gelables_total": 367000,
+        "detail_faux_positifs": [],
+        "detail": [
+          {
+            "campagne": "CMP-01",
+            "libelle": "Arnaque erreur de dépôt — mule hébergée chez BETACASH",
+            "mule_chez": "BETACASH",
+            "total_fcfa": 162000,
+            "detectee": true,
+            "alerte_a": "2026-11-17T14:52:00+01:00",
+            "premiere_plainte_a": "2026-11-17T14:09:00+01:00",
+            "delai_detection_minutes": 43.0,
+            "n_plaignants": 3,
+            "n_operateurs": 1,
+            "fcfa_encore_gelables": 0,
+            "note_impact": "motif repéré, mais le compte mule est hébergé chez BETACASH : l'opérateur qui détecte ne peut pas suspendre le compte d'un concurrent (demande manuelle, J+5).",
+            "detectee_par": "operateur-seul:ALPHAMONEY"
+          },
+          {
+            "campagne": "CMP-02",
+            "libelle": "Arnaque erreur de dépôt — mule hébergée chez ALPHAMONEY",
+            "mule_chez": "ALPHAMONEY",
+            "total_fcfa": 182000,
+            "detectee": true,
+            "alerte_a": "2026-11-18T09:38:00+01:00",
+            "premiere_plainte_a": "2026-11-18T09:12:00+01:00",
+            "delai_detection_minutes": 26.0,
+            "n_plaignants": 4,
+            "n_operateurs": 1,
+            "fcfa_encore_gelables": 162000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "operateur-seul:ALPHAMONEY"
+          },
+          {
+            "campagne": "CMP-03",
+            "libelle": "Arnaque erreur de dépôt — victimes réparties 2/2/2",
+            "mule_chez": "GAMMAPAY",
+            "total_fcfa": 155000,
+            "detectee": false,
+            "alerte_a": null,
+            "premiere_plainte_a": null,
+            "delai_detection_minutes": null,
+            "n_plaignants": null,
+            "n_operateurs": null,
+            "fcfa_encore_gelables": 0,
+            "note_impact": "non détectée",
+            "detectee_par": null
+          },
+          {
+            "campagne": "CMP-04",
+            "libelle": "Arnaque erreur de dépôt — grosse campagne, retrait précoce",
+            "mule_chez": "BETACASH",
+            "total_fcfa": 241000,
+            "detectee": true,
+            "alerte_a": "2026-11-20T16:39:00+01:00",
+            "premiere_plainte_a": "2026-11-20T16:10:00+01:00",
+            "delai_detection_minutes": 29.0,
+            "n_plaignants": 5,
+            "n_operateurs": 1,
+            "fcfa_encore_gelables": 205000,
+            "note_impact": "FCFA sauvés si le compte est suspendu à l'instant de l'alerte (modèle de retrait du scénario synthétique).",
+            "detectee_par": "operateur-seul:BETACASH"
+          },
+          {
+            "campagne": "CMP-05",
+            "libelle": "Arnaque erreur de dépôt — plaintes étalées, invisible en solo",
+            "mule_chez": "ALPHAMONEY",
+            "total_fcfa": 180000,
+            "detectee": false,
+            "alerte_a": null,
+            "premiere_plainte_a": null,
+            "delai_detection_minutes": null,
+            "n_plaignants": null,
+            "n_operateurs": null,
+            "fcfa_encore_gelables": 0,
+            "note_impact": "non détectée",
+            "detectee_par": null
+          }
+        ]
+      }
+    },
+    "regle": "3 plaignants indépendants, 2 opérateurs distincts, fenêtre de 60 minutes",
+    "lecture": "C'est l'écart principal de la démonstration : non pas la qualité du texte, mais le fait de voir les autres réseaux."
+  },
+  "debit": {
+    "reference_regex": {
+      "reclamations_par_seconde": 44662.3,
+      "secondes": 0.448,
+      "etiquette": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)"
+    },
+    "heuristique_locale": {
+      "reclamations_par_seconde": 29158.51,
+      "secondes": 0.686,
+      "etiquette": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)"
+    },
+    "llm": {
+      "mesure": "non mesuré"
+    }
+  },
+  "cout": {
+    "etiquette_execution": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)",
+    "moteur_mesure": "heuristique locale (CPU)",
+    "debit_mesure_reclamations_par_seconde": 29158.51,
+    "debit_llm_mesure": null,
+    "prix_horaire_gpu_fcfa": "non calculé",
+    "cout_inference_locale_pour_1000_fcfa": "non calculé",
+    "cout_api_cloud_pour_1000_fcfa": "non calculé",
+    "cout_humain_pour_1000_fcfa": {
+      "reclamation_simple": 270000.0,
+      "reclamation_investiguee": 700000.0,
+      "etiquette": "estimation (offres d'emploi, section 12)"
+    },
+    "reperes_editeurs_pour_1000_fcfa": {
+      "Intercom Fin (par résolution)": 590000.0,
+      "Thematic (par commentaire)": 600000.0
+    },
+    "prix_propose_pour_1000_fcfa": 5000.0,
+    "avertissements": [
+      "Le prix horaire du GPU et le tarif API cloud sont des paramètres de `config.py` à remplir depuis leurs sources. Vides, ils donnent « non calculé » — aucun coût n'est inventé.",
+      "Les coûts humains (270 / 700 FCFA par réclamation) sont des ESTIMATIONS issues d'offres d'emploi, pas des mesures.",
+      "Les repères éditeurs (Intercom Fin, Thematic) sont des prix publics affichés, pas des mesures de notre part.",
+      "Le prix proposé de 5 FCFA par réclamation est une HYPOTHÈSE de modèle économique.",
+      "AUCUN GPU DÉTECTÉ : le débit ci-dessus est un débit CPU. Il ne doit pas être présenté comme un débit GPU."
+    ]
+  },
+  "gpu": {
+    "disponible": false,
+    "note": "results/gpu_log.txt absent. Lancer `scripts/record_gpu_evidence.sh` pendant un traitement sur la machine GPU."
+  }
+}
