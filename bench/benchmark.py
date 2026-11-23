@@ -213,10 +213,29 @@ def field_extraction_report(
             _norm_minute,
         ),
     }
-    per_field = {
-        name: slot_f1(truths, preds, normalize=norm)
-        for name, (truths, preds, norm) in fields.items()
-    }
+    per_field: dict[str, Any] = {}
+    for name, (truths, preds, norm) in fields.items():
+        brut = slot_f1(truths, preds, normalize=norm)
+        mask = [is_recoverable(name, c) for c in complaints]
+        rec_truths = [t for t, m in zip(truths, mask) if m]
+        rec_preds = [p for p, m in zip(preds, mask) if m]
+        recuperable = (
+            slot_f1(rec_truths, rec_preds, normalize=norm)
+            if rec_truths
+            else {"f1": None, "support": 0, "note": "aucun cas récupérable"}
+        )
+        per_field[name] = {
+            **recuperable,
+            "f1_recuperable": recuperable.get("f1"),
+            "f1_brut": brut["f1"],
+            "support_recuperable": recuperable.get("support", 0),
+            "support_brut": brut["support"],
+            "part_recuperable": (
+                round(recuperable.get("support", 0) / brut["support"], 4)
+                if brut["support"]
+                else None
+            ),
+        }
     typology = macro_f1(
         [c.gt_typology.value for c in complaints],
         [e.typology.value for e in extractions],
@@ -227,9 +246,74 @@ def field_extraction_report(
         "typologie": typology,
         "champs": per_field,
         "f1_moyenne_champs": round(
-            sum(v["f1"] for v in per_field.values()) / len(per_field), 4
+            sum(v["f1_recuperable"] or 0.0 for v in per_field.values()) / len(per_field), 4
+        ),
+        "f1_moyenne_champs_brute": round(
+            sum(v["f1_brut"] for v in per_field.values()) / len(per_field), 4
+        ),
+        "definition_des_deux_f1": (
+            "f1_recuperable : seulement les plaintes dont le texte contient "
+            "réellement la valeur attendue — c'est la mesure d'une capacité. "
+            "f1_brut : tous les cas où la vérité terrain a une valeur, y compris "
+            "ceux que le texte ne mentionne pas et qu'aucun extracteur ne peut "
+            "donc deviner. Les deux sont publiés."
         ),
     }
+
+
+
+# ---------------------------------------------------------------------------
+# Validité de la mesure d'extraction
+# ---------------------------------------------------------------------------
+# La vérité terrain du générateur contient l'heure de l'opération, le numéro du
+# bénéficiaire et le réseau de destination pour presque toutes les plaintes —
+# alors que le TEXTE ne les mentionne que parfois. Mesurer un extracteur sur
+# l'ensemble des cas le punit donc pour ne pas avoir inventé une valeur
+# absente du texte, ce que la consigne lui interdit explicitement.
+#
+# On publie donc deux F1 par champ :
+#   * `f1_brut`        : tous les cas où la vérité terrain a une valeur ;
+#   * `f1_recuperable` : seulement les cas où la valeur est effectivement
+#                        présente dans le texte, donc récupérables.
+# C'est le second qui mesure une capacité ; le premier est conservé pour que
+# personne ne puisse nous accuser d'avoir choisi le périmètre favorable.
+def _digits(value: Any) -> str:
+    return "".join(ch for ch in str(value) if ch.isdigit())
+
+
+def is_recoverable(field: str, complaint: Complaint) -> bool:
+    """La valeur attendue est-elle réellement présente dans le texte ?"""
+    low = complaint.text.lower()
+    if field == "montant_fcfa":
+        return complaint.gt_amount_fcfa is not None
+    if field == "alias_beneficiaire":
+        alias = (complaint.gt_beneficiary_alias or "").lower()
+        return bool(alias) and alias in low
+    if field == "msisdn_beneficiaire":
+        number = _digits(complaint.gt_beneficiary_msisdn or "")
+        return bool(number) and number in _digits(complaint.text)
+    if field == "reseau_destination":
+        operator = (complaint.gt_destination_operator or "").lower()
+        if not operator:
+            return False
+        if operator in low:
+            return True
+        alias = (complaint.gt_beneficiary_alias or "").lower()
+        return bool(alias) and alias in low and alias.endswith("@" + operator)
+    if field == "heure_operation":
+        event = complaint.gt_event_at
+        if event is None:
+            return False
+        return any(
+            form in low
+            for form in (
+                f"{event.hour}h{event.minute:02d}",
+                f"{event.hour:02d}h{event.minute:02d}",
+                f"{event.hour}:{event.minute:02d}",
+                f"{event.hour:02d}:{event.minute:02d}",
+            )
+        )
+    return True
 
 
 # ---------------------------------------------------------------------------
@@ -642,14 +726,21 @@ def render_markdown(r: dict[str, Any]) -> str:
         "",
         "## 3. Extraction de champs, champ par champ",
         "",
-        "| Champ | Référence regex (F1) | Extracteur local (F1) | Support |",
+        "F1 sur les cas **récupérables** (la valeur est bien dans le texte), et "
+        "entre parenthèses la F1 brute sur tous les cas de la vérité terrain.",
+        "",
+        "| Champ | Référence regex | Extracteur local | Cas récupérables |",
         "|---|---|---|---|",
     ]
     for name, ref in champs["reference_regex"]["champs"].items():
         ours = champs["heuristique_locale"]["champs"][name]
         lines.append(
-            f"| {name} | {_fmt(ref['f1'])} | {_fmt(ours['f1'])} | {ref['support']} |"
+            f"| {name} | {_fmt(ref['f1_recuperable'])} ({_fmt(ref['f1_brut'])}) | "
+            f"{_fmt(ours['f1_recuperable'])} ({_fmt(ours['f1_brut'])}) | "
+            f"{ref['support_recuperable']} / {ref['support_brut']} |"
         )
+    lines.append("")
+    lines.append(champs["reference_regex"]["definition_des_deux_f1"])
     lines += [
         "",
         champs["lecture"],
