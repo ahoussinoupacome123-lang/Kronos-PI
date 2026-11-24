@@ -80,7 +80,7 @@ actuelle. Corpus : **20 000 réclamations synthétiques**, 7 jours, 3 opérateur
 | Délai médian de détection | **29 min** | **13 min** |
 | FCFA encore gelables (5 campagnes) | **367 000 FCFA** | **920 000 FCFA** |
 | Précision des alertes | 75 % | 42 % règle brute → **100 %** après score |
-| Rappel du radar d'incidents | — | **100 %** (1/1), pic à 29 σ |
+| Radar d'incidents | — | rappel **100%** (1/1), pic à 29 σ, précision **50%** (1 faux positif) |
 | F1 extraction des montants (cas récupérables) | **0,854** | **0,969** |
 | F1 macro typologie | **0,978** (TF-IDF + logreg, supervisée) | 0,807 (sans étiquettes) |
 | Part des données transmise au hub | — | **34 %** du corpus |
@@ -91,7 +91,7 @@ Fichiers de résultats : `results/benchmark.json`, `results/benchmark.md`,
 `results/baseline_alerts.json`, `results/incidents.json`, `results/dossiers.json`,
 `results/audit.jsonl`, `results/gpu_log.txt`.
 
-**103 tests** (`make test`) vérifient notamment : les 5 campagnes sont détectées, les
+**123 tests** (`make test`) vérifient notamment : les 5 campagnes sont détectées, les
 erreurs sincères produisent un dossier de remboursement **et aucune alerte**, le HMAC est
 déterministe par clé, les minuteurs calculent J+3 ouvrés et J+30, l'audit contient les
 preuves et le champ validateur, rien de nominatif ne quitte l'opérateur, et aucun

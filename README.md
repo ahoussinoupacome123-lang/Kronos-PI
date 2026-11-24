@@ -20,6 +20,13 @@ opérateur réel. Le générateur ([`src/reclam_graph/datagen/`](src/reclam_grap
 et la vérité terrain ([`data/ground_truth.json`](data/ground_truth.json)) sont publiés :
 la démonstration est reproductible, mais elle décrit un scénario simulé.
 
+Le corpus lui-même (`data/complaints.jsonl`, 12 Mo) n'est pas versionné : il se
+**régénère à l'identique en une seconde** avec `make data`, car le générateur est
+déterministe à graine fixe. Ce qui est versionné, c'est ce qui permet de vérifier —
+le générateur, la vérité terrain et l'annuaire d'alias. Un test
+(`test_le_generateur_est_deterministe`) vérifie que deux générations successives
+donnent le même fichier, octet pour octet.
+
 Deuxième engagement : **aucun débit, aucune exactitude et aucun coût n'est annoncé
 sans avoir été mesuré.** Chaque chiffre de ce README est régénéré depuis `results/`
 par [`scripts/refresh_results_block.py`](scripts/refresh_results_block.py). Ce qui
@@ -133,7 +140,7 @@ situation actuelle. Détail complet : [`results/benchmark.md`](results/benchmark
 > Chiffres régénérés depuis `results/` par `scripts/refresh_results_block.py`.  
 > **Exécution : CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)**  
 > Corpus : 20 000 réclamations synthétiques sur 7 jours, 3 opérateurs fictifs.  
-> Généré le 2026-11-25 à 03:53:15.
+> Généré le 2026-11-25 à 04:03:58.
 
 ### Détection de comptes mules — l'écart principal
 
@@ -150,9 +157,9 @@ Règle appliquée : **3 plaignants indépendants, 2 opérateurs distincts, fenê
 
 | Approche | F1 macro |
 |---|---|
-| Référence mots-clés + regex | 0.778 |
-| Référence TF-IDF + régression logistique (**supervisée**) | **0.98** |
-| Extracteur Réclam'Graph (sans étiquettes) | 0.807 |
+| Référence mots-clés + regex | 0,778 |
+| Référence TF-IDF + régression logistique (**supervisée**) | **0,98** |
+| Extracteur Réclam'Graph (sans étiquettes) | 0,807 |
 
 La référence supervisée **gagne**. C'est attendu, c'est publié tel quel, et c'est pourquoi la démonstration ne repose pas sur la classification.
 
@@ -174,34 +181,36 @@ F1 sur les cas **récupérables** (la valeur est réellement présente dans le t
 
 | Champ | Référence regex | Extracteur local | Cas récupérables |
 |---|---|---|---|
-| montant_fcfa | 0.854 (0.854) | 0.969 (0.969) | 18 851 / 18 851 |
-| alias_beneficiaire | 1 (0.82) | 1 (0.82) | 4 937 / 7 100 |
-| msisdn_beneficiaire | 1 (0.429) | 1 (0.429) | 1 940 / 7 093 |
-| reseau_destination | 1 (0.715) | 1 (0.715) | 7 108 / 12 769 |
-| heure_operation | 0.94 (0.293) | 0.94 (0.293) | 3 878 / 20 000 |
-| **moyenne** | **0.959** (0.622) | **0.982** (0.645) | |
+| montant_fcfa | 0,854 (0,854) | 0,969 (0,969) | 18 851 / 18 851 |
+| alias_beneficiaire | 1 (0,82) | 1 (0,82) | 4 937 / 7 100 |
+| msisdn_beneficiaire | 1 (0,429) | 1 (0,429) | 1 940 / 7 093 |
+| reseau_destination | 1 (0,715) | 1 (0,715) | 7 108 / 12 769 |
+| heure_operation | 0,94 (0,293) | 0,94 (0,293) | 3 878 / 20 000 |
+| **moyenne** | **0,959** (0,622) | **0,982** (0,645) | |
 
 Le seul champ qui sépare vraiment les deux moteurs est le **montant** : la regex lit « 25 000 » et « 25.000F », elle ne lit pas « 25mil », « 25k » ni « vingt cinq mille ». C'est là que le LLM est attendu.
 
 ### Radar d'incidents
 
 - Incidents injectés : **1** — détectés : **1** (rappel 100%)
-- Alertes émises au total : **2**
+- Alertes émises au total : **2** — précision **50%** (1 faux positif(s))
 - Délai de détection : **60 min** après le début réel du pic (granularité horaire), score de pic **29 σ**
+
+> Les faux positifs du radar sont des fluctuations au plancher de détection (quelques dizaines de plaintes au-dessus de l'ordinaire). Les seuils (25 plaintes minimum, x2.0 le volume habituel) n'ont PAS été ajustés pour les faire disparaître : les relever jusqu'à obtenir une précision parfaite sur ce jeu reviendrait à régler le détecteur sur les données d'évaluation.
 
 ### Partage minimal et traçabilité
 
 - Réclamations traitées : **20 000**
 - Enregistrements transmis au hub : **6 825** (**34.1%**) — une plainte sans bénéficiaire identifiable ne quitte pas l'opérateur
-- Décisions sur le corpus complet : {'REMBOURSER': 5521, 'A_INSTRUIRE': 14438, 'GELER': 41}
+- Décisions sur le corpus complet : {'REMBOURSER': 5524, 'A_INSTRUIRE': 14438, 'GELER': 38}
 - Entrées d'audit : **213**, chaîne de hachage intègre : **oui**
 
 ### Débit et coût
 
 | Grandeur | Valeur | Étiquette |
 |---|---|---|
-| Débit référence regex | 44 662.3 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
-| Débit extracteur local | 29 158.51 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
+| Débit référence regex | 28 639,24 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
+| Débit extracteur local | 18 283,47 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
 | Débit LLM | non mesuré requêtes/s | à mesurer sur la machine GPU (`make bench-llm`) |
 | Prix horaire GPU | non calculé | paramètre `config.py` |
 | Inférence locale / 1 000 réclamations | non calculé | calculé dès que le prix horaire est renseigné |
@@ -326,7 +335,7 @@ Les trois commandes qui suffisent pour tout reproduire :
 ```bash
 make setup && make all      # données, pipeline, banc de mesure, tests
 make demo                   # la démonstration
-make test                   # 103 tests
+make test                   # 123 tests
 ```
 
 ### Avec un GPU
@@ -454,7 +463,7 @@ app/dashboard.py       interface Streamlit (7 onglets, mode démo)
 bench/benchmark.py     banc référence contre solution
 bench/metrics.py       F1 macro, F1 par champ, détection de campagnes, coût
 results/               benchmark.{json,md}, demo_bundle.json, alertes, audit, gpu_log.txt
-tests/                 103 tests
+tests/                 123 tests
 scripts/               serve_llm.sh, record_gpu_evidence.sh, refresh_results_block.py
 ```
 
@@ -528,7 +537,7 @@ Cette section est volontairement longue. Elle liste ce que nous ne savons pas.
 ## 10. Reproduire et vérifier
 
 ```bash
-make test                                        # 103 tests
+make test                                        # 123 tests
 python scripts/refresh_results_block.py --check  # le README est-il à jour ?
 make env                                         # matériel détecté, modèle recommandé
 ```
