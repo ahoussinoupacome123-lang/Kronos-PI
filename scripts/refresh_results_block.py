@@ -32,7 +32,9 @@ def fnum(value, suffix="", none="non mesuré"):
     if value is None or isinstance(value, str):
         return value if isinstance(value, str) else none
     if isinstance(value, float) and value != int(value):
-        return f"{value:,.3f}".replace(",", " ").rstrip("0").rstrip(".") + suffix
+        # Séparateur décimal français : la virgule.
+        texte = f"{value:,.3f}".replace(",", " ").rstrip("0").rstrip(".")
+        return texte.replace(".", ",") + suffix
     return f"{int(value):,}".replace(",", " ") + suffix
 
 
@@ -147,10 +149,13 @@ def build_block() -> str:
         "",
         f"- Incidents injectés : **{inc['incidents_injectes']}** — détectés : "
         f"**{inc['incidents_detectes']}** (rappel {inc['rappel']:.0%})",
-        f"- Alertes émises au total : **{inc['alertes_radar_totales']}**",
+        f"- Alertes émises au total : **{inc['alertes_radar_totales']}** — précision "
+        f"**{inc['precision']:.0%}** ({inc.get('faux_positifs', 0)} faux positif(s))",
         f"- Délai de détection : **{fnum(inc['detail'][0]['delai_minutes'], ' min')}** "
         f"après le début réel du pic (granularité horaire), score de pic "
         f"**{fnum(inc['detail'][0]['zscore'])} σ**",
+        "",
+        f"> {inc['note_precision']}",
         "",
         "### Partage minimal et traçabilité",
         "",

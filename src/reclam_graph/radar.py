@@ -253,10 +253,39 @@ def evaluate_against_ground_truth(
             }
         )
     detected = sum(1 for m in matched if m["detecte"])
+    matched_ids = {m["alerte"] for m in matched if m["alerte"]}
+    false_positives = [
+        {
+            "incident_id": a.incident_id,
+            "detecte_a": a.detected_at.isoformat(),
+            "typologie": a.typology.value,
+            "operateur": a.operator,
+            "n_plaintes": a.count,
+            "volume_habituel": a.baseline_mean,
+            "zscore": a.zscore,
+            "label": a.label,
+        }
+        for a in alerts
+        if a.incident_id not in matched_ids
+    ]
     return {
         "incidents_injectes": len(truth),
         "incidents_detectes": detected,
         "rappel": round(detected / len(truth), 4) if truth else None,
         "alertes_radar_totales": len(alerts),
+        "faux_positifs": len(false_positives),
+        "precision": (
+            round(len(matched_ids) / len(alerts), 4) if alerts else None
+        ),
+        "detail_faux_positifs": false_positives,
+        "note_precision": (
+            "Les faux positifs du radar sont des fluctuations au plancher de "
+            "détection (quelques dizaines de plaintes au-dessus de l'ordinaire). "
+            "Les seuils (%d plaintes minimum, x%.1f le volume habituel) n'ont PAS "
+            "été ajustés pour les faire disparaître : les relever jusqu'à obtenir "
+            "une précision parfaite sur ce jeu reviendrait à régler le détecteur "
+            "sur les données d'évaluation."
+            % (MIN_SPIKE_COUNT, MIN_SPIKE_RATIO)
+        ),
         "detail": matched,
     }
