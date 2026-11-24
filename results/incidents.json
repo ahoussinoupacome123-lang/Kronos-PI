@@ -46,6 +46,21 @@
     "incidents_detectes": 1,
     "rappel": 1.0,
     "alertes_radar_totales": 2,
+    "faux_positifs": 1,
+    "precision": 0.5,
+    "detail_faux_positifs": [
+      {
+        "incident_id": "RADAR-01",
+        "detecte_a": "2026-11-22T12:00:00+01:00",
+        "typologie": "ERREUR_DESTINATAIRE_SINCERE",
+        "operateur": "GAMMAPAY",
+        "n_plaintes": 25,
+        "volume_habituel": 12.0,
+        "zscore": 8.77,
+        "label": "Pic de ERREUR_DESTINATAIRE_SINCERE sur GAMMAPAY"
+      }
+    ],
+    "note_precision": "Les faux positifs du radar sont des fluctuations au plancher de détection (quelques dizaines de plaintes au-dessus de l'ordinaire). Les seuils (25 plaintes minimum, x2.0 le volume habituel) n'ont PAS été ajustés pour les faire disparaître : les relever jusqu'à obtenir une précision parfaite sur ce jeu reviendrait à régler le détecteur sur les données d'évaluation.",
     "detail": [
       {
         "incident_id": "INC-01",

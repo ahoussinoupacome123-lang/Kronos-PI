@@ -12,7 +12,7 @@
     ],
     "total_fcfa": 60000,
     "freezable_fcfa": 0,
-    "score": 0.569,
+    "score": 0.5705,
     "rule": "3 plaignants distincts, 1 opérateur(s) distinct(s), fenêtre de 60 min",
     "evidence_record_ids": [
       "SR-d72575058ce6",
@@ -54,9 +54,9 @@
     "operators": [
       "ALPHAMONEY"
     ],
-    "total_fcfa": 55000,
+    "total_fcfa": 75000,
     "freezable_fcfa": 162000,
-    "score": 0.725,
+    "score": 0.775,
     "rule": "3 plaignants distincts, 1 opérateur(s) distinct(s), fenêtre de 60 min",
     "evidence_record_ids": [
       "SR-fd0481beb47e",
@@ -76,7 +76,7 @@
     "gt_campaign_id": "CMP-02",
     "n_complainants_at_alert": 3,
     "n_operators_at_alert": 1,
-    "total_fcfa_at_alert": 45000,
+    "total_fcfa_at_alert": 65000,
     "last_update_at": "2026-11-18T09:52:00+01:00",
     "score_features": {
       "plaignants": 1.0,
@@ -100,9 +100,9 @@
     "operators": [
       "BETACASH"
     ],
-    "total_fcfa": 100000,
+    "total_fcfa": 125000,
     "freezable_fcfa": 205000,
-    "score": 0.6243,
+    "score": 0.6406,
     "rule": "3 plaignants distincts, 1 opérateur(s) distinct(s), fenêtre de 60 min",
     "evidence_record_ids": [
       "SR-17418d143466",
@@ -150,7 +150,7 @@
     ],
     "total_fcfa": 60000,
     "freezable_fcfa": 0,
-    "score": 0.6895,
+    "score": 0.7158,
     "rule": "3 plaignants distincts, 1 opérateur(s) distinct(s), fenêtre de 60 min",
     "evidence_record_ids": [
       "SR-77970f8264bc",

@@ -14,7 +14,7 @@
     ],
     "total_fcfa": 160000,
     "freezable_fcfa": 162000,
-    "score": 0.8919,
+    "score": 0.8437,
     "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
     "evidence_record_ids": [
       "SR-d72575058ce6",
@@ -68,7 +68,7 @@
     ],
     "total_fcfa": 50000,
     "freezable_fcfa": 0,
-    "score": 0.4946,
+    "score": 0.3244,
     "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
     "evidence_record_ids": [
       "SR-f90787870716",
@@ -112,9 +112,9 @@
       "BETACASH",
       "GAMMAPAY"
     ],
-    "total_fcfa": 120000,
+    "total_fcfa": 140000,
     "freezable_fcfa": 182000,
-    "score": 0.9812,
+    "score": 0.9688,
     "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
     "evidence_record_ids": [
       "SR-fd0481beb47e",
@@ -165,9 +165,9 @@
       "ALPHAMONEY",
       "BETACASH"
     ],
-    "total_fcfa": 25000,
+    "total_fcfa": 35000,
     "freezable_fcfa": 0,
-    "score": 0.4276,
+    "score": 0.3293,
     "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
     "evidence_record_ids": [
       "SR-fea92b1cc2b8",
@@ -185,7 +185,7 @@
     "gt_campaign_id": null,
     "n_complainants_at_alert": 3,
     "n_operators_at_alert": 2,
-    "total_fcfa_at_alert": 25000,
+    "total_fcfa_at_alert": 35000,
     "last_update_at": "2026-11-18T18:33:00+01:00",
     "score_features": {
       "plaignants": 1.0,
@@ -211,9 +211,9 @@
       "BETACASH",
       "GAMMAPAY"
     ],
-    "total_fcfa": 50000,
+    "total_fcfa": 155000,
     "freezable_fcfa": 155000,
-    "score": 0.8716,
+    "score": 0.8137,
     "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
     "evidence_record_ids": [
       "SR-03dde6dd1011",
@@ -237,7 +237,7 @@
     "gt_campaign_id": "CMP-03",
     "n_complainants_at_alert": 3,
     "n_operators_at_alert": 3,
-    "total_fcfa_at_alert": 35000,
+    "total_fcfa_at_alert": 85000,
     "last_update_at": "2026-11-19T12:09:00+01:00",
     "score_features": {
       "plaignants": 1.0,
@@ -263,9 +263,9 @@
       "BETACASH",
       "GAMMAPAY"
     ],
-    "total_fcfa": 175000,
+    "total_fcfa": 180000,
     "freezable_fcfa": 0,
-    "score": 0.4686,
+    "score": 0.2811,
     "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
     "evidence_record_ids": [
       "SR-b7e6ea83ab06",
@@ -314,7 +314,7 @@
     ],
     "total_fcfa": 110000,
     "freezable_fcfa": 0,
-    "score": 0.3952,
+    "score": 0.2754,
     "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
     "evidence_record_ids": [
       "SR-f84349761cd2",
@@ -358,9 +358,9 @@
       "BETACASH",
       "GAMMAPAY"
     ],
-    "total_fcfa": 195000,
+    "total_fcfa": 220000,
     "freezable_fcfa": 241000,
-    "score": 0.9062,
+    "score": 0.8603,
     "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
     "evidence_record_ids": [
       "SR-17418d143466",
@@ -419,7 +419,7 @@
     ],
     "total_fcfa": 125000,
     "freezable_fcfa": 0,
-    "score": 0.4187,
+    "score": 0.3145,
     "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
     "evidence_record_ids": [
       "SR-838dd8e646a8",
@@ -463,9 +463,9 @@
       "BETACASH",
       "GAMMAPAY"
     ],
-    "total_fcfa": 105000,
+    "total_fcfa": 110000,
     "freezable_fcfa": 0,
-    "score": 0.544,
+    "score": 0.4067,
     "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
     "evidence_record_ids": [
       "SR-e8c75f3c09df",
@@ -483,7 +483,7 @@
     "gt_campaign_id": null,
     "n_complainants_at_alert": 3,
     "n_operators_at_alert": 3,
-    "total_fcfa_at_alert": 105000,
+    "total_fcfa_at_alert": 110000,
     "last_update_at": "2026-11-21T10:03:11+01:00",
     "score_features": {
       "plaignants": 1.0,
@@ -491,7 +491,7 @@
       "typologie_arnaque": 0.0,
       "intensite": 0.6267
     },
-    "is_priority": true,
+    "is_priority": false,
     "total_fcfa_exact": null,
     "freezable_at_last_update_fcfa": 0,
     "impact_note": "aucune campagne rattachée (faux positif de la règle)"
@@ -510,7 +510,7 @@
     ],
     "total_fcfa": 60000,
     "freezable_fcfa": 0,
-    "score": 0.3896,
+    "score": 0.266,
     "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
     "evidence_record_ids": [
       "SR-a0ed417166db",
@@ -554,9 +554,9 @@
       "BETACASH",
       "GAMMAPAY"
     ],
-    "total_fcfa": 110000,
+    "total_fcfa": 155000,
     "freezable_fcfa": 180000,
-    "score": 0.919,
+    "score": 0.8649,
     "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
     "evidence_record_ids": [
       "SR-b1babeefd71f",

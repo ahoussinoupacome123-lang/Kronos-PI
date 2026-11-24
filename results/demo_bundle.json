@@ -1,6 +1,6 @@
 {
   "meta": {
-    "genere_le": "2026-11-25T03:44:14.790270+01:00",
+    "genere_le": "2026-11-25T04:03:45.940844+01:00",
     "etiquette_execution": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)",
     "donnees": "SYNTHÉTIQUES — opérateurs fictifs",
     "config": {
@@ -69,8 +69,8 @@
       "engine_detail": "TF-IDF char_wb 3-5grammes + SVD(256) — repli local, ce n'est PAS bge-m3",
       "dim": 256,
       "n_texts": 329,
-      "seconds": 0.27,
-      "texts_per_second": 1219.75,
+      "seconds": 0.36,
+      "texts_per_second": 914.33,
       "device": "cpu"
     },
     "llm": {
@@ -89,12 +89,12 @@
       "mesure": "non mesuré"
     },
     "temps": {
-      "extraction_s": 3.554,
-      "pseudonymisation_s": 0.059,
-      "hub_s": 0.015,
-      "radar_s": 1.382,
-      "total_s": 5.173,
-      "reclamations_par_seconde_extraction": 5626.77
+      "extraction_s": 3.922,
+      "pseudonymisation_s": 0.087,
+      "hub_s": 0.024,
+      "radar_s": 1.41,
+      "total_s": 5.66,
+      "reclamations_par_seconde_extraction": 5099.3
     },
     "confidentialite": {
       "algorithme": "HMAC-SHA256 tronqué à 16 caractères hexadécimaux",
@@ -124,9 +124,9 @@
     "n_enregistrements_partages": 6825,
     "part_partagee": 0.3412,
     "decisions_corpus_complet": {
-      "REMBOURSER": 5521,
+      "REMBOURSER": 5524,
       "A_INSTRUIRE": 14438,
-      "GELER": 41
+      "GELER": 38
     }
   },
   "alertes_consortium": [
@@ -145,7 +145,7 @@
       ],
       "total_fcfa": 160000,
       "freezable_fcfa": 162000,
-      "score": 0.8919,
+      "score": 0.8437,
       "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-d72575058ce6",
@@ -199,7 +199,7 @@
       ],
       "total_fcfa": 50000,
       "freezable_fcfa": 0,
-      "score": 0.4946,
+      "score": 0.3244,
       "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-f90787870716",
@@ -243,9 +243,9 @@
         "BETACASH",
         "GAMMAPAY"
       ],
-      "total_fcfa": 120000,
+      "total_fcfa": 140000,
       "freezable_fcfa": 182000,
-      "score": 0.9812,
+      "score": 0.9688,
       "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-fd0481beb47e",
@@ -296,9 +296,9 @@
         "ALPHAMONEY",
         "BETACASH"
       ],
-      "total_fcfa": 25000,
+      "total_fcfa": 35000,
       "freezable_fcfa": 0,
-      "score": 0.4276,
+      "score": 0.3293,
       "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-fea92b1cc2b8",
@@ -316,7 +316,7 @@
       "gt_campaign_id": null,
       "n_complainants_at_alert": 3,
       "n_operators_at_alert": 2,
-      "total_fcfa_at_alert": 25000,
+      "total_fcfa_at_alert": 35000,
       "last_update_at": "2026-11-18T18:33:00+01:00",
       "score_features": {
         "plaignants": 1.0,
@@ -342,9 +342,9 @@
         "BETACASH",
         "GAMMAPAY"
       ],
-      "total_fcfa": 50000,
+      "total_fcfa": 155000,
       "freezable_fcfa": 155000,
-      "score": 0.8716,
+      "score": 0.8137,
       "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-03dde6dd1011",
@@ -368,7 +368,7 @@
       "gt_campaign_id": "CMP-03",
       "n_complainants_at_alert": 3,
       "n_operators_at_alert": 3,
-      "total_fcfa_at_alert": 35000,
+      "total_fcfa_at_alert": 85000,
       "last_update_at": "2026-11-19T12:09:00+01:00",
       "score_features": {
         "plaignants": 1.0,
@@ -394,9 +394,9 @@
         "BETACASH",
         "GAMMAPAY"
       ],
-      "total_fcfa": 175000,
+      "total_fcfa": 180000,
       "freezable_fcfa": 0,
-      "score": 0.4686,
+      "score": 0.2811,
       "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-b7e6ea83ab06",
@@ -445,7 +445,7 @@
       ],
       "total_fcfa": 110000,
       "freezable_fcfa": 0,
-      "score": 0.3952,
+      "score": 0.2754,
       "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-f84349761cd2",
@@ -489,9 +489,9 @@
         "BETACASH",
         "GAMMAPAY"
       ],
-      "total_fcfa": 195000,
+      "total_fcfa": 220000,
       "freezable_fcfa": 241000,
-      "score": 0.9062,
+      "score": 0.8603,
       "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-17418d143466",
@@ -550,7 +550,7 @@
       ],
       "total_fcfa": 125000,
       "freezable_fcfa": 0,
-      "score": 0.4187,
+      "score": 0.3145,
       "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-838dd8e646a8",
@@ -594,9 +594,9 @@
         "BETACASH",
         "GAMMAPAY"
       ],
-      "total_fcfa": 105000,
+      "total_fcfa": 110000,
       "freezable_fcfa": 0,
-      "score": 0.544,
+      "score": 0.4067,
       "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-e8c75f3c09df",
@@ -614,7 +614,7 @@
       "gt_campaign_id": null,
       "n_complainants_at_alert": 3,
       "n_operators_at_alert": 3,
-      "total_fcfa_at_alert": 105000,
+      "total_fcfa_at_alert": 110000,
       "last_update_at": "2026-11-21T10:03:11+01:00",
       "score_features": {
         "plaignants": 1.0,
@@ -622,7 +622,7 @@
         "typologie_arnaque": 0.0,
         "intensite": 0.6267
       },
-      "is_priority": true,
+      "is_priority": false,
       "total_fcfa_exact": null,
       "freezable_at_last_update_fcfa": 0,
       "impact_note": "aucune campagne rattachée (faux positif de la règle)"
@@ -641,7 +641,7 @@
       ],
       "total_fcfa": 60000,
       "freezable_fcfa": 0,
-      "score": 0.3896,
+      "score": 0.266,
       "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-a0ed417166db",
@@ -685,9 +685,9 @@
         "BETACASH",
         "GAMMAPAY"
       ],
-      "total_fcfa": 110000,
+      "total_fcfa": 155000,
       "freezable_fcfa": 180000,
-      "score": 0.919,
+      "score": 0.8649,
       "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-b1babeefd71f",
@@ -743,7 +743,7 @@
       ],
       "total_fcfa": 60000,
       "freezable_fcfa": 0,
-      "score": 0.569,
+      "score": 0.5705,
       "rule": "3 plaignants distincts, 1 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-d72575058ce6",
@@ -785,9 +785,9 @@
       "operators": [
         "ALPHAMONEY"
       ],
-      "total_fcfa": 55000,
+      "total_fcfa": 75000,
       "freezable_fcfa": 162000,
-      "score": 0.725,
+      "score": 0.775,
       "rule": "3 plaignants distincts, 1 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-fd0481beb47e",
@@ -807,7 +807,7 @@
       "gt_campaign_id": "CMP-02",
       "n_complainants_at_alert": 3,
       "n_operators_at_alert": 1,
-      "total_fcfa_at_alert": 45000,
+      "total_fcfa_at_alert": 65000,
       "last_update_at": "2026-11-18T09:52:00+01:00",
       "score_features": {
         "plaignants": 1.0,
@@ -831,9 +831,9 @@
       "operators": [
         "BETACASH"
       ],
-      "total_fcfa": 100000,
+      "total_fcfa": 125000,
       "freezable_fcfa": 205000,
-      "score": 0.6243,
+      "score": 0.6406,
       "rule": "3 plaignants distincts, 1 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-17418d143466",
@@ -881,7 +881,7 @@
       ],
       "total_fcfa": 60000,
       "freezable_fcfa": 0,
-      "score": 0.6895,
+      "score": 0.7158,
       "rule": "3 plaignants distincts, 1 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-77970f8264bc",
@@ -960,6 +960,21 @@
     "incidents_detectes": 1,
     "rappel": 1.0,
     "alertes_radar_totales": 2,
+    "faux_positifs": 1,
+    "precision": 0.5,
+    "detail_faux_positifs": [
+      {
+        "incident_id": "RADAR-01",
+        "detecte_a": "2026-11-22T12:00:00+01:00",
+        "typologie": "ERREUR_DESTINATAIRE_SINCERE",
+        "operateur": "GAMMAPAY",
+        "n_plaintes": 25,
+        "volume_habituel": 12.0,
+        "zscore": 8.77,
+        "label": "Pic de ERREUR_DESTINATAIRE_SINCERE sur GAMMAPAY"
+      }
+    ],
+    "note_precision": "Les faux positifs du radar sont des fluctuations au plancher de détection (quelques dizaines de plaintes au-dessus de l'ordinaire). Les seuils (25 plaintes minimum, x2.0 le volume habituel) n'ont PAS été ajustés pour les faire disparaître : les relever jusqu'à obtenir une précision parfaite sur ce jeu reviendrait à régler le détecteur sur les données d'évaluation.",
     "detail": [
       {
         "incident_id": "INC-01",
@@ -1252,7 +1267,7 @@
           "target": "12c7d1db265e5351",
           "ts": "2026-11-18T09:38:00+01:00",
           "operator": "ALPHAMONEY",
-          "amount_rounded_fcfa": 0,
+          "amount_rounded_fcfa": 20000,
           "typology": "ARNAQUE_ERREUR_DEPOT",
           "order": 4,
           "after_alert": true
@@ -1367,7 +1382,7 @@
           "target": "aa3e69164ddef1b6",
           "ts": "2026-11-19T11:26:00+01:00",
           "operator": "BETACASH",
-          "amount_rounded_fcfa": 0,
+          "amount_rounded_fcfa": 30000,
           "typology": "ARNAQUE_ERREUR_DEPOT",
           "order": 1,
           "after_alert": false
@@ -1377,7 +1392,7 @@
           "target": "aa3e69164ddef1b6",
           "ts": "2026-11-19T11:33:00+01:00",
           "operator": "GAMMAPAY",
-          "amount_rounded_fcfa": 0,
+          "amount_rounded_fcfa": 20000,
           "typology": "ERREUR_DESTINATAIRE_SINCERE",
           "order": 2,
           "after_alert": false
@@ -1387,7 +1402,7 @@
           "target": "aa3e69164ddef1b6",
           "ts": "2026-11-19T11:47:00+01:00",
           "operator": "ALPHAMONEY",
-          "amount_rounded_fcfa": 0,
+          "amount_rounded_fcfa": 25000,
           "typology": "ARNAQUE_ERREUR_DEPOT",
           "order": 3,
           "after_alert": true
@@ -1397,7 +1412,7 @@
           "target": "aa3e69164ddef1b6",
           "ts": "2026-11-19T11:58:00+01:00",
           "operator": "BETACASH",
-          "amount_rounded_fcfa": 0,
+          "amount_rounded_fcfa": 30000,
           "typology": "ARNAQUE_ERREUR_DEPOT",
           "order": 4,
           "after_alert": true
@@ -1574,7 +1589,7 @@
           "target": "75317619c8db2793",
           "ts": "2026-11-20T16:54:00+01:00",
           "operator": "BETACASH",
-          "amount_rounded_fcfa": 0,
+          "amount_rounded_fcfa": 25000,
           "typology": "ARNAQUE_ERREUR_DEPOT",
           "order": 5,
           "after_alert": true
@@ -1621,87 +1636,6 @@
         }
       ],
       "fires_at": "2026-11-20T16:23:00+01:00"
-    },
-    "ALERT-consortium-f13a5a816c": {
-      "nodes": [
-        {
-          "id": "f13a5a816c66749f",
-          "kind": "beneficiaire",
-          "label": "bénéficiaire f13a5a81…"
-        },
-        {
-          "id": "2fb10133fc754a24",
-          "kind": "plaignant",
-          "label": "plaignant 2fb101…",
-          "operator": "GAMMAPAY",
-          "order": 0,
-          "ts": "2026-11-21T09:39:15+01:00"
-        },
-        {
-          "id": "GAMMAPAY",
-          "kind": "operateur",
-          "label": "GAMMAPAY"
-        },
-        {
-          "id": "869e92d4c17ef27d",
-          "kind": "plaignant",
-          "label": "plaignant 869e92…",
-          "operator": "ALPHAMONEY",
-          "order": 1,
-          "ts": "2026-11-21T09:44:19+01:00"
-        },
-        {
-          "id": "ALPHAMONEY",
-          "kind": "operateur",
-          "label": "ALPHAMONEY"
-        },
-        {
-          "id": "5ee2d5ce0d2b249c",
-          "kind": "plaignant",
-          "label": "plaignant 5ee2d5…",
-          "operator": "BETACASH",
-          "order": 2,
-          "ts": "2026-11-21T10:03:11+01:00"
-        },
-        {
-          "id": "BETACASH",
-          "kind": "operateur",
-          "label": "BETACASH"
-        }
-      ],
-      "edges": [
-        {
-          "source": "2fb10133fc754a24",
-          "target": "f13a5a816c66749f",
-          "ts": "2026-11-21T09:39:15+01:00",
-          "operator": "GAMMAPAY",
-          "amount_rounded_fcfa": 100000,
-          "typology": "ERREUR_DESTINATAIRE_SINCERE",
-          "order": 0,
-          "after_alert": false
-        },
-        {
-          "source": "869e92d4c17ef27d",
-          "target": "f13a5a816c66749f",
-          "ts": "2026-11-21T09:44:19+01:00",
-          "operator": "ALPHAMONEY",
-          "amount_rounded_fcfa": 0,
-          "typology": "ERREUR_DESTINATAIRE_SINCERE",
-          "order": 1,
-          "after_alert": false
-        },
-        {
-          "source": "5ee2d5ce0d2b249c",
-          "target": "f13a5a816c66749f",
-          "ts": "2026-11-21T10:03:11+01:00",
-          "operator": "BETACASH",
-          "amount_rounded_fcfa": 5000,
-          "typology": "ERREUR_DESTINATAIRE_SINCERE",
-          "order": 2,
-          "after_alert": false
-        }
-      ],
-      "fires_at": "2026-11-21T10:03:11+01:00"
     },
     "ALERT-consortium-5f7027d329": {
       "nodes": [
@@ -1826,7 +1760,7 @@
           "target": "5f7027d3294102f5",
           "ts": "2026-11-22T10:44:00+01:00",
           "operator": "ALPHAMONEY",
-          "amount_rounded_fcfa": 0,
+          "amount_rounded_fcfa": 25000,
           "typology": "ARNAQUE_ERREUR_DEPOT",
           "order": 3,
           "after_alert": true
@@ -1846,7 +1780,7 @@
           "target": "5f7027d3294102f5",
           "ts": "2026-11-22T11:12:00+01:00",
           "operator": "GAMMAPAY",
-          "amount_rounded_fcfa": 0,
+          "amount_rounded_fcfa": 20000,
           "typology": "ARNAQUE_ERREUR_DEPOT",
           "order": 5,
           "after_alert": true
@@ -3060,7 +2994,7 @@
       ],
       "total_fcfa": 160000,
       "freezable_fcfa": 162000,
-      "score": 0.8919,
+      "score": 0.8437,
       "rule": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
       "evidence_record_ids": [
         "SR-d72575058ce6",
@@ -3102,7 +3036,7 @@
     "resume_alerte": "mule probable, 7 plaignants, 3 opérateurs, 162 000 FCFA dont 118 000 encore sur le compte",
     "dossier": {
       "dossier_id": "DOS-RC-000001",
-      "created_at": "2026-11-25T03:44:14.790117+01:00",
+      "created_at": "2026-11-25T04:03:45.940596+01:00",
       "complaint_id": "RC-000001",
       "operator": "ALPHAMONEY",
       "decision": "GELER",
@@ -3130,7 +3064,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.790127+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.940611+01:00"
             },
             "Undrlyg": [
               {
@@ -3206,7 +3140,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-17T14:21:00+01:00",
           "delai_detection_minutes": 12.0,
-          "score": 0.8919,
+          "score": 0.8437,
           "prioritaire": true,
           "preuves": [
             "RC-000001",
@@ -3280,7 +3214,7 @@
   "dossiers": [
     {
       "dossier_id": "DOS-RC-000001",
-      "created_at": "2026-11-25T03:44:14.776152+01:00",
+      "created_at": "2026-11-25T04:03:45.921768+01:00",
       "complaint_id": "RC-000001",
       "operator": "ALPHAMONEY",
       "decision": "GELER",
@@ -3308,7 +3242,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776170+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.921791+01:00"
             },
             "Undrlyg": [
               {
@@ -3384,7 +3318,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-17T14:21:00+01:00",
           "delai_detection_minutes": 12.0,
-          "score": 0.8919,
+          "score": 0.8437,
           "prioritaire": true,
           "preuves": [
             "RC-000001",
@@ -3404,7 +3338,7 @@
     },
     {
       "dossier_id": "DOS-RC-000002",
-      "created_at": "2026-11-25T03:44:14.776218+01:00",
+      "created_at": "2026-11-25T04:03:45.921860+01:00",
       "complaint_id": "RC-000002",
       "operator": "BETACASH",
       "decision": "GELER",
@@ -3432,7 +3366,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776224+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.921868+01:00"
             },
             "Undrlyg": [
               {
@@ -3512,7 +3446,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-17T14:21:00+01:00",
           "delai_detection_minutes": 12.0,
-          "score": 0.8919,
+          "score": 0.8437,
           "prioritaire": true,
           "preuves": [
             "RC-000001",
@@ -3532,7 +3466,7 @@
     },
     {
       "dossier_id": "DOS-RC-000003",
-      "created_at": "2026-11-25T03:44:14.776265+01:00",
+      "created_at": "2026-11-25T04:03:45.921922+01:00",
       "complaint_id": "RC-000003",
       "operator": "GAMMAPAY",
       "decision": "GELER",
@@ -3560,7 +3494,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776270+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.921928+01:00"
             },
             "Undrlyg": [
               {
@@ -3638,7 +3572,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-17T14:21:00+01:00",
           "delai_detection_minutes": 12.0,
-          "score": 0.8919,
+          "score": 0.8437,
           "prioritaire": true,
           "preuves": [
             "RC-000001",
@@ -3658,7 +3592,7 @@
     },
     {
       "dossier_id": "DOS-RC-000004",
-      "created_at": "2026-11-25T03:44:14.776297+01:00",
+      "created_at": "2026-11-25T04:03:45.921964+01:00",
       "complaint_id": "RC-000004",
       "operator": "ALPHAMONEY",
       "decision": "GELER",
@@ -3686,7 +3620,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776301+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.921971+01:00"
             },
             "Undrlyg": [
               {
@@ -3765,7 +3699,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-17T14:21:00+01:00",
           "delai_detection_minutes": 12.0,
-          "score": 0.8919,
+          "score": 0.8437,
           "prioritaire": true,
           "preuves": [
             "RC-000001",
@@ -3785,7 +3719,7 @@
     },
     {
       "dossier_id": "DOS-RC-000005",
-      "created_at": "2026-11-25T03:44:14.776346+01:00",
+      "created_at": "2026-11-25T04:03:45.922024+01:00",
       "complaint_id": "RC-000005",
       "operator": "BETACASH",
       "decision": "GELER",
@@ -3813,7 +3747,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776383+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922030+01:00"
             },
             "Undrlyg": [
               {
@@ -3893,7 +3827,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-17T14:21:00+01:00",
           "delai_detection_minutes": 12.0,
-          "score": 0.8919,
+          "score": 0.8437,
           "prioritaire": true,
           "preuves": [
             "RC-000001",
@@ -3913,7 +3847,7 @@
     },
     {
       "dossier_id": "DOS-RC-000006",
-      "created_at": "2026-11-25T03:44:14.776475+01:00",
+      "created_at": "2026-11-25T04:03:45.922062+01:00",
       "complaint_id": "RC-000006",
       "operator": "ALPHAMONEY",
       "decision": "GELER",
@@ -3941,7 +3875,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776481+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922067+01:00"
             },
             "Undrlyg": [
               {
@@ -4020,7 +3954,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-17T14:21:00+01:00",
           "delai_detection_minutes": 12.0,
-          "score": 0.8919,
+          "score": 0.8437,
           "prioritaire": true,
           "preuves": [
             "RC-000001",
@@ -4040,7 +3974,7 @@
     },
     {
       "dossier_id": "DOS-RC-000007",
-      "created_at": "2026-11-25T03:44:14.776511+01:00",
+      "created_at": "2026-11-25T04:03:45.922101+01:00",
       "complaint_id": "RC-000007",
       "operator": "GAMMAPAY",
       "decision": "GELER",
@@ -4068,7 +4002,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776515+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922106+01:00"
             },
             "Undrlyg": [
               {
@@ -4146,7 +4080,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-17T14:21:00+01:00",
           "delai_detection_minutes": 12.0,
-          "score": 0.8919,
+          "score": 0.8437,
           "prioritaire": true,
           "preuves": [
             "RC-000001",
@@ -4166,7 +4100,7 @@
     },
     {
       "dossier_id": "DOS-RC-011467",
-      "created_at": "2026-11-25T03:44:14.776542+01:00",
+      "created_at": "2026-11-25T04:03:45.922141+01:00",
       "complaint_id": "RC-011467",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
@@ -4194,7 +4128,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776546+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922145+01:00"
             },
             "Undrlyg": [
               {
@@ -4272,7 +4206,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-17T15:32:26+01:00",
           "delai_detection_minutes": 50.43,
-          "score": 0.4946,
+          "score": 0.3244,
           "prioritaire": false,
           "preuves": [
             "RC-011467",
@@ -4288,7 +4222,7 @@
     },
     {
       "dossier_id": "DOS-RC-002385",
-      "created_at": "2026-11-25T03:44:14.776570+01:00",
+      "created_at": "2026-11-25T04:03:45.922176+01:00",
       "complaint_id": "RC-002385",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -4316,7 +4250,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776574+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922180+01:00"
             },
             "Undrlyg": [
               {
@@ -4394,7 +4328,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-17T15:32:26+01:00",
           "delai_detection_minutes": 50.43,
-          "score": 0.4946,
+          "score": 0.3244,
           "prioritaire": false,
           "preuves": [
             "RC-011467",
@@ -4410,7 +4344,7 @@
     },
     {
       "dossier_id": "DOS-RC-009446",
-      "created_at": "2026-11-25T03:44:14.776595+01:00",
+      "created_at": "2026-11-25T04:03:45.922206+01:00",
       "complaint_id": "RC-009446",
       "operator": "GAMMAPAY",
       "decision": "REMBOURSER",
@@ -4438,7 +4372,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776599+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922211+01:00"
             },
             "Undrlyg": [
               {
@@ -4516,7 +4450,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-17T15:32:26+01:00",
           "delai_detection_minutes": 50.43,
-          "score": 0.4946,
+          "score": 0.3244,
           "prioritaire": false,
           "preuves": [
             "RC-011467",
@@ -4532,7 +4466,7 @@
     },
     {
       "dossier_id": "DOS-RC-000008",
-      "created_at": "2026-11-25T03:44:14.776624+01:00",
+      "created_at": "2026-11-25T04:03:45.922240+01:00",
       "complaint_id": "RC-000008",
       "operator": "ALPHAMONEY",
       "decision": "GELER",
@@ -4560,7 +4494,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776628+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922245+01:00"
             },
             "Undrlyg": [
               {
@@ -4639,7 +4573,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-18T09:24:00+01:00",
           "delai_detection_minutes": 12.0,
-          "score": 0.9812,
+          "score": 0.9688,
           "prioritaire": true,
           "preuves": [
             "RC-000008",
@@ -4659,7 +4593,7 @@
     },
     {
       "dossier_id": "DOS-RC-000009",
-      "created_at": "2026-11-25T03:44:14.776652+01:00",
+      "created_at": "2026-11-25T04:03:45.922275+01:00",
       "complaint_id": "RC-000009",
       "operator": "BETACASH",
       "decision": "GELER",
@@ -4687,7 +4621,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776655+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922279+01:00"
             },
             "Undrlyg": [
               {
@@ -4767,7 +4701,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-18T09:24:00+01:00",
           "delai_detection_minutes": 12.0,
-          "score": 0.9812,
+          "score": 0.9688,
           "prioritaire": true,
           "preuves": [
             "RC-000008",
@@ -4787,7 +4721,7 @@
     },
     {
       "dossier_id": "DOS-RC-000010",
-      "created_at": "2026-11-25T03:44:14.776679+01:00",
+      "created_at": "2026-11-25T04:03:45.922308+01:00",
       "complaint_id": "RC-000010",
       "operator": "ALPHAMONEY",
       "decision": "GELER",
@@ -4815,7 +4749,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776682+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922312+01:00"
             },
             "Undrlyg": [
               {
@@ -4894,7 +4828,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-18T09:24:00+01:00",
           "delai_detection_minutes": 12.0,
-          "score": 0.9812,
+          "score": 0.9688,
           "prioritaire": true,
           "preuves": [
             "RC-000008",
@@ -4914,7 +4848,7 @@
     },
     {
       "dossier_id": "DOS-RC-000011",
-      "created_at": "2026-11-25T03:44:14.776705+01:00",
+      "created_at": "2026-11-25T04:03:45.922339+01:00",
       "complaint_id": "RC-000011",
       "operator": "GAMMAPAY",
       "decision": "GELER",
@@ -4942,7 +4876,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776708+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922344+01:00"
             },
             "Undrlyg": [
               {
@@ -5022,7 +4956,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-18T09:24:00+01:00",
           "delai_detection_minutes": 12.0,
-          "score": 0.9812,
+          "score": 0.9688,
           "prioritaire": true,
           "preuves": [
             "RC-000008",
@@ -5042,12 +4976,12 @@
     },
     {
       "dossier_id": "DOS-RC-000012",
-      "created_at": "2026-11-25T03:44:14.776731+01:00",
+      "created_at": "2026-11-25T04:03:45.922373+01:00",
       "complaint_id": "RC-000012",
       "operator": "ALPHAMONEY",
       "decision": "GELER",
       "typology": "ARNAQUE_ERREUR_DEPOT",
-      "amount_fcfa": null,
+      "amount_fcfa": 18000,
       "beneficiary_alias": "rachelle.gbedo@alphamoney",
       "destination_operator": "ALPHAMONEY",
       "iso20022_inspired": {
@@ -5070,7 +5004,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776735+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922377+01:00"
             },
             "Undrlyg": [
               {
@@ -5083,7 +5017,7 @@
                   "OrgnlEndToEndId": "E2E-RC-000012",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 18000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-18",
                   "Cdtr": {
@@ -5129,7 +5063,7 @@
         "texte_brut": "BONSOIR ON MA APPELE EN DISANT KE 18000F EST PARTI CHEZ MOI PAR ERREUR, JAI EU PITIE JAI RENVOYE SUR rachelle.gbedo@alphamoney. MTN JE COMPRENDS KE CEST UNE ANRAQUE. AIDEZ MOI VITE SVP",
         "extraction": {
           "typologie": "ARNAQUE_ERREUR_DEPOT",
-          "montant_fcfa": null,
+          "montant_fcfa": 18000,
           "heure_operation": null,
           "alias_beneficiaire": "rachelle.gbedo@alphamoney",
           "msisdn_beneficiaire": null,
@@ -5149,7 +5083,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-18T09:24:00+01:00",
           "delai_detection_minutes": 12.0,
-          "score": 0.9812,
+          "score": 0.9688,
           "prioritaire": true,
           "preuves": [
             "RC-000008",
@@ -5169,7 +5103,7 @@
     },
     {
       "dossier_id": "DOS-RC-000013",
-      "created_at": "2026-11-25T03:44:14.776757+01:00",
+      "created_at": "2026-11-25T04:03:45.922403+01:00",
       "complaint_id": "RC-000013",
       "operator": "BETACASH",
       "decision": "GELER",
@@ -5197,7 +5131,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776760+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922408+01:00"
             },
             "Undrlyg": [
               {
@@ -5277,7 +5211,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-18T09:24:00+01:00",
           "delai_detection_minutes": 12.0,
-          "score": 0.9812,
+          "score": 0.9688,
           "prioritaire": true,
           "preuves": [
             "RC-000008",
@@ -5297,7 +5231,7 @@
     },
     {
       "dossier_id": "DOS-RC-000014",
-      "created_at": "2026-11-25T03:44:14.776781+01:00",
+      "created_at": "2026-11-25T04:03:45.922434+01:00",
       "complaint_id": "RC-000014",
       "operator": "ALPHAMONEY",
       "decision": "GELER",
@@ -5325,7 +5259,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776785+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922438+01:00"
             },
             "Undrlyg": [
               {
@@ -5405,7 +5339,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-18T09:24:00+01:00",
           "delai_detection_minutes": 12.0,
-          "score": 0.9812,
+          "score": 0.9688,
           "prioritaire": true,
           "preuves": [
             "RC-000008",
@@ -5425,7 +5359,7 @@
     },
     {
       "dossier_id": "DOS-RC-000362",
-      "created_at": "2026-11-25T03:44:14.776807+01:00",
+      "created_at": "2026-11-25T04:03:45.922553+01:00",
       "complaint_id": "RC-000362",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -5453,7 +5387,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776810+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922560+01:00"
             },
             "Undrlyg": [
               {
@@ -5525,11 +5459,11 @@
         "motivation": "Transfert vers un tiers identifié, sans signal inter-opérateurs suffisant pour une alerte mule : demande d'annulation PI-SPI pré-remplie et minutée.",
         "alerte_mule": {
           "alert_id": "ALERT-consortium-5ffab5b1a0",
-          "resume": "mule probable, 3 plaignants, 2 opérateurs, 25 000 FCFA dont 0 encore sur le compte",
+          "resume": "mule probable, 3 plaignants, 2 opérateurs, 35 000 FCFA dont 0 encore sur le compte",
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-18T18:33:00+01:00",
           "delai_detection_minutes": 29.0,
-          "score": 0.4276,
+          "score": 0.3293,
           "prioritaire": false,
           "preuves": [
             "RC-000362",
@@ -5545,12 +5479,12 @@
     },
     {
       "dossier_id": "DOS-RC-000363",
-      "created_at": "2026-11-25T03:44:14.776832+01:00",
+      "created_at": "2026-11-25T04:03:45.922592+01:00",
       "complaint_id": "RC-000363",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
       "typology": "ERREUR_DESTINATAIRE_SINCERE",
-      "amount_fcfa": null,
+      "amount_fcfa": 9500,
       "beneficiary_alias": "paiement.energie@gammapay",
       "destination_operator": "GAMMAPAY",
       "iso20022_inspired": {
@@ -5573,7 +5507,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776835+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922597+01:00"
             },
             "Undrlyg": [
               {
@@ -5586,7 +5520,7 @@
                   "OrgnlEndToEndId": "E2E-RC-000363",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 9500
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-18",
                   "Cdtr": {
@@ -5632,7 +5566,7 @@
         "texte_brut": "Bonsoir je me suis trompe de numero, jai envoye 9500F a paiement.energie@gammapay au lieu de ma soeur. pouvez vs annuler svp. c'est urgent",
         "extraction": {
           "typologie": "ERREUR_DESTINATAIRE_SINCERE",
-          "montant_fcfa": null,
+          "montant_fcfa": 9500,
           "heure_operation": null,
           "alias_beneficiaire": "paiement.energie@gammapay",
           "msisdn_beneficiaire": null,
@@ -5648,11 +5582,11 @@
         "motivation": "Transfert vers un tiers identifié, sans signal inter-opérateurs suffisant pour une alerte mule : demande d'annulation PI-SPI pré-remplie et minutée.",
         "alerte_mule": {
           "alert_id": "ALERT-consortium-5ffab5b1a0",
-          "resume": "mule probable, 3 plaignants, 2 opérateurs, 25 000 FCFA dont 0 encore sur le compte",
+          "resume": "mule probable, 3 plaignants, 2 opérateurs, 35 000 FCFA dont 0 encore sur le compte",
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-18T18:33:00+01:00",
           "delai_detection_minutes": 29.0,
-          "score": 0.4276,
+          "score": 0.3293,
           "prioritaire": false,
           "preuves": [
             "RC-000362",
@@ -5668,7 +5602,7 @@
     },
     {
       "dossier_id": "DOS-RC-000364",
-      "created_at": "2026-11-25T03:44:14.776858+01:00",
+      "created_at": "2026-11-25T04:03:45.922626+01:00",
       "complaint_id": "RC-000364",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -5696,7 +5630,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.776861+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922630+01:00"
             },
             "Undrlyg": [
               {
@@ -5768,11 +5702,11 @@
         "motivation": "Transfert vers un tiers identifié, sans signal inter-opérateurs suffisant pour une alerte mule : demande d'annulation PI-SPI pré-remplie et minutée.",
         "alerte_mule": {
           "alert_id": "ALERT-consortium-5ffab5b1a0",
-          "resume": "mule probable, 3 plaignants, 2 opérateurs, 25 000 FCFA dont 0 encore sur le compte",
+          "resume": "mule probable, 3 plaignants, 2 opérateurs, 35 000 FCFA dont 0 encore sur le compte",
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-18T18:33:00+01:00",
           "delai_detection_minutes": 29.0,
-          "score": 0.4276,
+          "score": 0.3293,
           "prioritaire": false,
           "preuves": [
             "RC-000362",
@@ -5788,7 +5722,7 @@
     },
     {
       "dossier_id": "DOS-RC-000017",
-      "created_at": "2026-11-25T03:44:14.777004+01:00",
+      "created_at": "2026-11-25T04:03:45.922665+01:00",
       "complaint_id": "RC-000017",
       "operator": "ALPHAMONEY",
       "decision": "GELER",
@@ -5816,7 +5750,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777017+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922670+01:00"
             },
             "Undrlyg": [
               {
@@ -5897,7 +5831,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-19T11:33:00+01:00",
           "delai_detection_minutes": 15.0,
-          "score": 0.8716,
+          "score": 0.8137,
           "prioritaire": true,
           "preuves": [
             "RC-000017",
@@ -5916,12 +5850,12 @@
     },
     {
       "dossier_id": "DOS-RC-000018",
-      "created_at": "2026-11-25T03:44:14.777063+01:00",
+      "created_at": "2026-11-25T04:03:45.922702+01:00",
       "complaint_id": "RC-000018",
       "operator": "BETACASH",
       "decision": "GELER",
       "typology": "ARNAQUE_ERREUR_DEPOT",
-      "amount_fcfa": null,
+      "amount_fcfa": 28000,
       "beneficiary_alias": "ibrahim.tidjani@gammapay",
       "destination_operator": "GAMMAPAY",
       "iso20022_inspired": {
@@ -5944,7 +5878,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777068+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922706+01:00"
             },
             "Undrlyg": [
               {
@@ -5957,7 +5891,7 @@
                   "OrgnlEndToEndId": "E2E-RC-000018",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 28000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-19",
                   "Cdtr": {
@@ -6003,7 +5937,7 @@
         "texte_brut": "Bonjour l'equipe une personne ma ecrit kelle sest trompe de numero et ma demande de renvoyer 28000F. jai envoye vers ibrahim.tidjani@gammapay (+22961389973) a 11h15 et apres silence total. merci",
         "extraction": {
           "typologie": "ARNAQUE_ERREUR_DEPOT",
-          "montant_fcfa": null,
+          "montant_fcfa": 28000,
           "heure_operation": "2026-11-19T11:15:00+01:00",
           "alias_beneficiaire": "ibrahim.tidjani@gammapay",
           "msisdn_beneficiaire": "+22961389973",
@@ -6024,7 +5958,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-19T11:33:00+01:00",
           "delai_detection_minutes": 15.0,
-          "score": 0.8716,
+          "score": 0.8137,
           "prioritaire": true,
           "preuves": [
             "RC-000017",
@@ -6043,12 +5977,12 @@
     },
     {
       "dossier_id": "DOS-RC-000019",
-      "created_at": "2026-11-25T03:44:14.777097+01:00",
+      "created_at": "2026-11-25T04:03:45.922733+01:00",
       "complaint_id": "RC-000019",
       "operator": "GAMMAPAY",
       "decision": "GELER",
       "typology": "ERREUR_DESTINATAIRE_SINCERE",
-      "amount_fcfa": null,
+      "amount_fcfa": 20000,
       "beneficiary_alias": "ibrahim.tidjani@gammapay",
       "destination_operator": "GAMMAPAY",
       "iso20022_inspired": {
@@ -6071,7 +6005,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777101+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922738+01:00"
             },
             "Undrlyg": [
               {
@@ -6084,7 +6018,7 @@
                   "OrgnlEndToEndId": "E2E-RC-000019",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 20000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-19",
                   "Cdtr": {
@@ -6130,7 +6064,7 @@
         "texte_brut": "Bonjour l'equipe jai envoye 20000F a ibrahim.tidjani@gammapay parce kon ma dit kil y avait une erreur de depot sur mon compte. apres verification je navais rien recu du tout. j'attends votre retour",
         "extraction": {
           "typologie": "ERREUR_DESTINATAIRE_SINCERE",
-          "montant_fcfa": null,
+          "montant_fcfa": 20000,
           "heure_operation": null,
           "alias_beneficiaire": "ibrahim.tidjani@gammapay",
           "msisdn_beneficiaire": null,
@@ -6149,7 +6083,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-19T11:33:00+01:00",
           "delai_detection_minutes": 15.0,
-          "score": 0.8716,
+          "score": 0.8137,
           "prioritaire": true,
           "preuves": [
             "RC-000017",
@@ -6168,12 +6102,12 @@
     },
     {
       "dossier_id": "DOS-RC-000020",
-      "created_at": "2026-11-25T03:44:14.777127+01:00",
+      "created_at": "2026-11-25T04:03:45.922765+01:00",
       "complaint_id": "RC-000020",
       "operator": "ALPHAMONEY",
       "decision": "GELER",
       "typology": "ARNAQUE_ERREUR_DEPOT",
-      "amount_fcfa": null,
+      "amount_fcfa": 24000,
       "beneficiary_alias": null,
       "destination_operator": "GAMMAPAY",
       "iso20022_inspired": {
@@ -6196,7 +6130,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777131+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922769+01:00"
             },
             "Undrlyg": [
               {
@@ -6209,7 +6143,7 @@
                   "OrgnlEndToEndId": "E2E-RC-000020",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 24000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-19",
                   "Cdtr": {
@@ -6255,7 +6189,7 @@
         "texte_brut": "Bonjour mr arnaque erreur de depot. ils mont fait renvoyer 24000F vers +22961389973. le compte est sur Gammapay. bloquez le vite avant kil retire. merci de regler ca a do ganji",
         "extraction": {
           "typologie": "ARNAQUE_ERREUR_DEPOT",
-          "montant_fcfa": null,
+          "montant_fcfa": 24000,
           "heure_operation": null,
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": "+22961389973",
@@ -6276,7 +6210,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-19T11:33:00+01:00",
           "delai_detection_minutes": 15.0,
-          "score": 0.8716,
+          "score": 0.8137,
           "prioritaire": true,
           "preuves": [
             "RC-000017",
@@ -6295,12 +6229,12 @@
     },
     {
       "dossier_id": "DOS-RC-000021",
-      "created_at": "2026-11-25T03:44:14.777154+01:00",
+      "created_at": "2026-11-25T04:03:45.922798+01:00",
       "complaint_id": "RC-000021",
       "operator": "BETACASH",
       "decision": "GELER",
       "typology": "ARNAQUE_ERREUR_DEPOT",
-      "amount_fcfa": null,
+      "amount_fcfa": 31000,
       "beneficiary_alias": null,
       "destination_operator": null,
       "iso20022_inspired": {
@@ -6323,7 +6257,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777158+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922803+01:00"
             },
             "Undrlyg": [
               {
@@ -6336,7 +6270,7 @@
                   "OrgnlEndToEndId": "E2E-RC-000021",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 31000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-19",
                   "Cdtr": {
@@ -6382,7 +6316,7 @@
         "texte_brut": "Bnjour mr arnque rreur de depot. is omnt fait renvoyer 31.000F vers +22961389973. le compte est usr Gamampay. bloquez le ivte avatn kil retiire. c'est urgnet",
         "extraction": {
           "typologie": "ARNAQUE_ERREUR_DEPOT",
-          "montant_fcfa": null,
+          "montant_fcfa": 31000,
           "heure_operation": null,
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": "+22961389973",
@@ -6401,7 +6335,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-19T11:33:00+01:00",
           "delai_detection_minutes": 15.0,
-          "score": 0.8716,
+          "score": 0.8137,
           "prioritaire": true,
           "preuves": [
             "RC-000017",
@@ -6420,7 +6354,7 @@
     },
     {
       "dossier_id": "DOS-RC-000022",
-      "created_at": "2026-11-25T03:44:14.777181+01:00",
+      "created_at": "2026-11-25T04:03:45.922831+01:00",
       "complaint_id": "RC-000022",
       "operator": "GAMMAPAY",
       "decision": "GELER",
@@ -6448,7 +6382,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777184+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922836+01:00"
             },
             "Undrlyg": [
               {
@@ -6528,7 +6462,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-19T11:33:00+01:00",
           "delai_detection_minutes": 15.0,
-          "score": 0.8716,
+          "score": 0.8137,
           "prioritaire": true,
           "preuves": [
             "RC-000017",
@@ -6547,7 +6481,7 @@
     },
     {
       "dossier_id": "DOS-RC-012042",
-      "created_at": "2026-11-25T03:44:14.777212+01:00",
+      "created_at": "2026-11-25T04:03:45.922870+01:00",
       "complaint_id": "RC-012042",
       "operator": "GAMMAPAY",
       "decision": "REMBOURSER",
@@ -6575,7 +6509,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777216+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922874+01:00"
             },
             "Undrlyg": [
               {
@@ -6649,11 +6583,11 @@
         "motivation": "Transfert vers un tiers identifié, sans signal inter-opérateurs suffisant pour une alerte mule : demande d'annulation PI-SPI pré-remplie et minutée.",
         "alerte_mule": {
           "alert_id": "ALERT-consortium-3036e66d6f",
-          "resume": "mule probable, 5 plaignants, 3 opérateurs, 175 000 FCFA dont 0 encore sur le compte",
+          "resume": "mule probable, 5 plaignants, 3 opérateurs, 180 000 FCFA dont 0 encore sur le compte",
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-19T13:39:30+01:00",
           "delai_detection_minutes": 17.57,
-          "score": 0.4686,
+          "score": 0.2811,
           "prioritaire": false,
           "preuves": [
             "RC-012042",
@@ -6671,7 +6605,7 @@
     },
     {
       "dossier_id": "DOS-RC-002473",
-      "created_at": "2026-11-25T03:44:14.777240+01:00",
+      "created_at": "2026-11-25T04:03:45.922903+01:00",
       "complaint_id": "RC-002473",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
@@ -6699,7 +6633,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777244+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922908+01:00"
             },
             "Undrlyg": [
               {
@@ -6771,11 +6705,11 @@
         "motivation": "Transfert vers un tiers identifié, sans signal inter-opérateurs suffisant pour une alerte mule : demande d'annulation PI-SPI pré-remplie et minutée.",
         "alerte_mule": {
           "alert_id": "ALERT-consortium-3036e66d6f",
-          "resume": "mule probable, 5 plaignants, 3 opérateurs, 175 000 FCFA dont 0 encore sur le compte",
+          "resume": "mule probable, 5 plaignants, 3 opérateurs, 180 000 FCFA dont 0 encore sur le compte",
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-19T13:39:30+01:00",
           "delai_detection_minutes": 17.57,
-          "score": 0.4686,
+          "score": 0.2811,
           "prioritaire": false,
           "preuves": [
             "RC-012042",
@@ -6793,7 +6727,7 @@
     },
     {
       "dossier_id": "DOS-RC-006282",
-      "created_at": "2026-11-25T03:44:14.777265+01:00",
+      "created_at": "2026-11-25T04:03:45.922935+01:00",
       "complaint_id": "RC-006282",
       "operator": "GAMMAPAY",
       "decision": "REMBOURSER",
@@ -6821,7 +6755,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777269+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922939+01:00"
             },
             "Undrlyg": [
               {
@@ -6893,11 +6827,11 @@
         "motivation": "Transfert vers un tiers identifié, sans signal inter-opérateurs suffisant pour une alerte mule : demande d'annulation PI-SPI pré-remplie et minutée.",
         "alerte_mule": {
           "alert_id": "ALERT-consortium-3036e66d6f",
-          "resume": "mule probable, 5 plaignants, 3 opérateurs, 175 000 FCFA dont 0 encore sur le compte",
+          "resume": "mule probable, 5 plaignants, 3 opérateurs, 180 000 FCFA dont 0 encore sur le compte",
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-19T13:39:30+01:00",
           "delai_detection_minutes": 17.57,
-          "score": 0.4686,
+          "score": 0.2811,
           "prioritaire": false,
           "preuves": [
             "RC-012042",
@@ -6915,12 +6849,12 @@
     },
     {
       "dossier_id": "DOS-RC-012223",
-      "created_at": "2026-11-25T03:44:14.777292+01:00",
+      "created_at": "2026-11-25T04:03:45.922967+01:00",
       "complaint_id": "RC-012223",
       "operator": "GAMMAPAY",
       "decision": "REMBOURSER",
       "typology": "ERREUR_DESTINATAIRE_SINCERE",
-      "amount_fcfa": null,
+      "amount_fcfa": 2500,
       "beneficiary_alias": null,
       "destination_operator": "BETACASH",
       "iso20022_inspired": {
@@ -6943,7 +6877,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777296+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.922971+01:00"
             },
             "Undrlyg": [
               {
@@ -6956,7 +6890,7 @@
                   "OrgnlEndToEndId": "E2E-RC-012223",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 2500
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-19",
                   "Cdtr": {
@@ -7002,7 +6936,7 @@
         "texte_brut": "Salut erreur de ma part, 2.500F parti sur +22997049359 (Betacash) a 14h29 au lieu du bon numero. merci dannuler la transaction. j'attends votre retour",
         "extraction": {
           "typologie": "ERREUR_DESTINATAIRE_SINCERE",
-          "montant_fcfa": null,
+          "montant_fcfa": 2500,
           "heure_operation": "2026-11-19T14:29:00+01:00",
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": "+22997049359",
@@ -7017,11 +6951,11 @@
         "motivation": "Transfert vers un tiers identifié, sans signal inter-opérateurs suffisant pour une alerte mule : demande d'annulation PI-SPI pré-remplie et minutée.",
         "alerte_mule": {
           "alert_id": "ALERT-consortium-3036e66d6f",
-          "resume": "mule probable, 5 plaignants, 3 opérateurs, 175 000 FCFA dont 0 encore sur le compte",
+          "resume": "mule probable, 5 plaignants, 3 opérateurs, 180 000 FCFA dont 0 encore sur le compte",
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-19T13:39:30+01:00",
           "delai_detection_minutes": 17.57,
-          "score": 0.4686,
+          "score": 0.2811,
           "prioritaire": false,
           "preuves": [
             "RC-012042",
@@ -7039,7 +6973,7 @@
     },
     {
       "dossier_id": "DOS-RC-004353",
-      "created_at": "2026-11-25T03:44:14.777318+01:00",
+      "created_at": "2026-11-25T04:03:45.922998+01:00",
       "complaint_id": "RC-004353",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -7067,7 +7001,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777321+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923003+01:00"
             },
             "Undrlyg": [
               {
@@ -7141,11 +7075,11 @@
         "motivation": "Transfert vers un tiers identifié, sans signal inter-opérateurs suffisant pour une alerte mule : demande d'annulation PI-SPI pré-remplie et minutée.",
         "alerte_mule": {
           "alert_id": "ALERT-consortium-3036e66d6f",
-          "resume": "mule probable, 5 plaignants, 3 opérateurs, 175 000 FCFA dont 0 encore sur le compte",
+          "resume": "mule probable, 5 plaignants, 3 opérateurs, 180 000 FCFA dont 0 encore sur le compte",
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-19T13:39:30+01:00",
           "delai_detection_minutes": 17.57,
-          "score": 0.4686,
+          "score": 0.2811,
           "prioritaire": false,
           "preuves": [
             "RC-012042",
@@ -7163,7 +7097,7 @@
     },
     {
       "dossier_id": "DOS-RC-008879",
-      "created_at": "2026-11-25T03:44:14.777345+01:00",
+      "created_at": "2026-11-25T04:03:45.923032+01:00",
       "complaint_id": "RC-008879",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -7191,7 +7125,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777348+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923036+01:00"
             },
             "Undrlyg": [
               {
@@ -7269,7 +7203,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-20T11:40:23+01:00",
           "delai_detection_minutes": 49.73,
-          "score": 0.3952,
+          "score": 0.2754,
           "prioritaire": false,
           "preuves": [
             "RC-008879",
@@ -7285,7 +7219,7 @@
     },
     {
       "dossier_id": "DOS-RC-010732",
-      "created_at": "2026-11-25T03:44:14.777368+01:00",
+      "created_at": "2026-11-25T04:03:45.923066+01:00",
       "complaint_id": "RC-010732",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
@@ -7313,7 +7247,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777371+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923070+01:00"
             },
             "Undrlyg": [
               {
@@ -7389,7 +7323,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-20T11:40:23+01:00",
           "delai_detection_minutes": 49.73,
-          "score": 0.3952,
+          "score": 0.2754,
           "prioritaire": false,
           "preuves": [
             "RC-008879",
@@ -7405,7 +7339,7 @@
     },
     {
       "dossier_id": "DOS-RC-002236",
-      "created_at": "2026-11-25T03:44:14.777390+01:00",
+      "created_at": "2026-11-25T04:03:45.923096+01:00",
       "complaint_id": "RC-002236",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -7433,7 +7367,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777394+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923100+01:00"
             },
             "Undrlyg": [
               {
@@ -7509,7 +7443,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-20T11:40:23+01:00",
           "delai_detection_minutes": 49.73,
-          "score": 0.3952,
+          "score": 0.2754,
           "prioritaire": false,
           "preuves": [
             "RC-008879",
@@ -7525,7 +7459,7 @@
     },
     {
       "dossier_id": "DOS-RC-000023",
-      "created_at": "2026-11-25T03:44:14.777417+01:00",
+      "created_at": "2026-11-25T04:03:45.923130+01:00",
       "complaint_id": "RC-000023",
       "operator": "BETACASH",
       "decision": "GELER",
@@ -7553,7 +7487,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777420+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923134+01:00"
             },
             "Undrlyg": [
               {
@@ -7632,7 +7566,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-20T16:23:00+01:00",
           "delai_detection_minutes": 13.0,
-          "score": 0.9062,
+          "score": 0.8603,
           "prioritaire": true,
           "preuves": [
             "RC-000023",
@@ -7655,7 +7589,7 @@
     },
     {
       "dossier_id": "DOS-RC-000024",
-      "created_at": "2026-11-25T03:44:14.777441+01:00",
+      "created_at": "2026-11-25T04:03:45.923160+01:00",
       "complaint_id": "RC-000024",
       "operator": "ALPHAMONEY",
       "decision": "GELER",
@@ -7683,7 +7617,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777444+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923164+01:00"
             },
             "Undrlyg": [
               {
@@ -7763,7 +7697,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-20T16:23:00+01:00",
           "delai_detection_minutes": 13.0,
-          "score": 0.9062,
+          "score": 0.8603,
           "prioritaire": true,
           "preuves": [
             "RC-000023",
@@ -7786,7 +7720,7 @@
     },
     {
       "dossier_id": "DOS-RC-000025",
-      "created_at": "2026-11-25T03:44:14.777465+01:00",
+      "created_at": "2026-11-25T04:03:45.923190+01:00",
       "complaint_id": "RC-000025",
       "operator": "BETACASH",
       "decision": "GELER",
@@ -7814,7 +7748,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777468+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923194+01:00"
             },
             "Undrlyg": [
               {
@@ -7895,7 +7829,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-20T16:23:00+01:00",
           "delai_detection_minutes": 13.0,
-          "score": 0.9062,
+          "score": 0.8603,
           "prioritaire": true,
           "preuves": [
             "RC-000023",
@@ -7918,7 +7852,7 @@
     },
     {
       "dossier_id": "DOS-RC-000026",
-      "created_at": "2026-11-25T03:44:14.777489+01:00",
+      "created_at": "2026-11-25T04:03:45.923221+01:00",
       "complaint_id": "RC-000026",
       "operator": "GAMMAPAY",
       "decision": "GELER",
@@ -7946,7 +7880,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777492+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923225+01:00"
             },
             "Undrlyg": [
               {
@@ -8022,7 +7956,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-20T16:23:00+01:00",
           "delai_detection_minutes": 13.0,
-          "score": 0.9062,
+          "score": 0.8603,
           "prioritaire": true,
           "preuves": [
             "RC-000023",
@@ -8045,7 +7979,7 @@
     },
     {
       "dossier_id": "DOS-RC-000027",
-      "created_at": "2026-11-25T03:44:14.777511+01:00",
+      "created_at": "2026-11-25T04:03:45.923251+01:00",
       "complaint_id": "RC-000027",
       "operator": "BETACASH",
       "decision": "GELER",
@@ -8073,7 +8007,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777515+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923255+01:00"
             },
             "Undrlyg": [
               {
@@ -8153,7 +8087,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-20T16:23:00+01:00",
           "delai_detection_minutes": 13.0,
-          "score": 0.9062,
+          "score": 0.8603,
           "prioritaire": true,
           "preuves": [
             "RC-000023",
@@ -8176,12 +8110,12 @@
     },
     {
       "dossier_id": "DOS-RC-000029",
-      "created_at": "2026-11-25T03:44:14.777536+01:00",
+      "created_at": "2026-11-25T04:03:45.923282+01:00",
       "complaint_id": "RC-000029",
       "operator": "BETACASH",
       "decision": "GELER",
       "typology": "ARNAQUE_ERREUR_DEPOT",
-      "amount_fcfa": null,
+      "amount_fcfa": 23000,
       "beneficiary_alias": "fatou.diallo@betacash",
       "destination_operator": "BETACASH",
       "iso20022_inspired": {
@@ -8204,7 +8138,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777539+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923286+01:00"
             },
             "Undrlyg": [
               {
@@ -8217,7 +8151,7 @@
                   "OrgnlEndToEndId": "E2E-RC-000029",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 23000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-20",
                   "Cdtr": {
@@ -8263,7 +8197,7 @@
         "texte_brut": "Salut une personne ma ecrit kelle sest trompe de numero et ma demande de renvoyer 23.000F. jai envoye vers fatou.diallo@betacash (+22997482222) a 16h33 et apres silence total. repondez moi svp",
         "extraction": {
           "typologie": "ARNAQUE_ERREUR_DEPOT",
-          "montant_fcfa": null,
+          "montant_fcfa": 23000,
           "heure_operation": "2026-11-20T16:33:00+01:00",
           "alias_beneficiaire": "fatou.diallo@betacash",
           "msisdn_beneficiaire": "+22997482222",
@@ -8284,7 +8218,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-20T16:23:00+01:00",
           "delai_detection_minutes": 13.0,
-          "score": 0.9062,
+          "score": 0.8603,
           "prioritaire": true,
           "preuves": [
             "RC-000023",
@@ -8307,7 +8241,7 @@
     },
     {
       "dossier_id": "DOS-RC-000030",
-      "created_at": "2026-11-25T03:44:14.777559+01:00",
+      "created_at": "2026-11-25T04:03:45.923313+01:00",
       "complaint_id": "RC-000030",
       "operator": "GAMMAPAY",
       "decision": "GELER",
@@ -8335,7 +8269,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777562+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923317+01:00"
             },
             "Undrlyg": [
               {
@@ -8416,7 +8350,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-20T16:23:00+01:00",
           "delai_detection_minutes": 13.0,
-          "score": 0.9062,
+          "score": 0.8603,
           "prioritaire": true,
           "preuves": [
             "RC-000023",
@@ -8439,7 +8373,7 @@
     },
     {
       "dossier_id": "DOS-RC-000031",
-      "created_at": "2026-11-25T03:44:14.777582+01:00",
+      "created_at": "2026-11-25T04:03:45.923346+01:00",
       "complaint_id": "RC-000031",
       "operator": "ALPHAMONEY",
       "decision": "GELER",
@@ -8467,7 +8401,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777585+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923351+01:00"
             },
             "Undrlyg": [
               {
@@ -8547,7 +8481,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-20T16:23:00+01:00",
           "delai_detection_minutes": 13.0,
-          "score": 0.9062,
+          "score": 0.8603,
           "prioritaire": true,
           "preuves": [
             "RC-000023",
@@ -8570,7 +8504,7 @@
     },
     {
       "dossier_id": "DOS-RC-000032",
-      "created_at": "2026-11-25T03:44:14.777606+01:00",
+      "created_at": "2026-11-25T04:03:45.923403+01:00",
       "complaint_id": "RC-000032",
       "operator": "BETACASH",
       "decision": "GELER",
@@ -8598,7 +8532,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777609+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923410+01:00"
             },
             "Undrlyg": [
               {
@@ -8676,7 +8610,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-20T16:23:00+01:00",
           "delai_detection_minutes": 13.0,
-          "score": 0.9062,
+          "score": 0.8603,
           "prioritaire": true,
           "preuves": [
             "RC-000023",
@@ -8699,7 +8633,7 @@
     },
     {
       "dossier_id": "DOS-RC-000033",
-      "created_at": "2026-11-25T03:44:14.777630+01:00",
+      "created_at": "2026-11-25T04:03:45.923449+01:00",
       "complaint_id": "RC-000033",
       "operator": "GAMMAPAY",
       "decision": "GELER",
@@ -8727,7 +8661,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777634+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923453+01:00"
             },
             "Undrlyg": [
               {
@@ -8803,7 +8737,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-20T16:23:00+01:00",
           "delai_detection_minutes": 13.0,
-          "score": 0.9062,
+          "score": 0.8603,
           "prioritaire": true,
           "preuves": [
             "RC-000023",
@@ -8826,7 +8760,7 @@
     },
     {
       "dossier_id": "DOS-RC-008496",
-      "created_at": "2026-11-25T03:44:14.777655+01:00",
+      "created_at": "2026-11-25T04:03:45.923484+01:00",
       "complaint_id": "RC-008496",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -8854,7 +8788,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777658+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923488+01:00"
             },
             "Undrlyg": [
               {
@@ -8930,7 +8864,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-20T19:23:53+01:00",
           "delai_detection_minutes": 32.75,
-          "score": 0.4187,
+          "score": 0.3145,
           "prioritaire": false,
           "preuves": [
             "RC-008496",
@@ -8946,7 +8880,7 @@
     },
     {
       "dossier_id": "DOS-RC-002645",
-      "created_at": "2026-11-25T03:44:14.777680+01:00",
+      "created_at": "2026-11-25T04:03:45.923517+01:00",
       "complaint_id": "RC-002645",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
@@ -8974,7 +8908,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777683+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923521+01:00"
             },
             "Undrlyg": [
               {
@@ -9052,7 +8986,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-20T19:23:53+01:00",
           "delai_detection_minutes": 32.75,
-          "score": 0.4187,
+          "score": 0.3145,
           "prioritaire": false,
           "preuves": [
             "RC-008496",
@@ -9068,7 +9002,7 @@
     },
     {
       "dossier_id": "DOS-RC-008476",
-      "created_at": "2026-11-25T03:44:14.777705+01:00",
+      "created_at": "2026-11-25T04:03:45.923552+01:00",
       "complaint_id": "RC-008476",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -9096,7 +9030,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777708+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923556+01:00"
             },
             "Undrlyg": [
               {
@@ -9172,7 +9106,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-20T19:23:53+01:00",
           "delai_detection_minutes": 32.75,
-          "score": 0.4187,
+          "score": 0.3145,
           "prioritaire": false,
           "preuves": [
             "RC-008496",
@@ -9188,10 +9122,10 @@
     },
     {
       "dossier_id": "DOS-RC-006168",
-      "created_at": "2026-11-25T03:44:14.777729+01:00",
+      "created_at": "2026-11-25T04:03:45.923585+01:00",
       "complaint_id": "RC-006168",
       "operator": "GAMMAPAY",
-      "decision": "GELER",
+      "decision": "REMBOURSER",
       "typology": "ERREUR_DESTINATAIRE_SINCERE",
       "amount_fcfa": 100250,
       "beneficiary_alias": "sylvie.lokossou@gammapay",
@@ -9216,7 +9150,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777732+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923589+01:00"
             },
             "Undrlyg": [
               {
@@ -9244,11 +9178,11 @@
                   },
                   "CxlRsnInf": {
                     "Rsn": {
-                      "Cd": "FRAD"
+                      "Cd": "CUST"
                     },
                     "AddtlInf": [
-                      "Origine frauduleuse suspectée (compte mule probable)",
-                      "Rattachée à une alerte « mule probable » (3 plaignants, 3 opérateurs, règle : 3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min). Recommandation de suspension des retraits ; décision humaine chez l'opérateur."
+                      "Annulation demandée par le client (erreur de destinataire)",
+                      "Transfert vers un tiers identifié, sans signal inter-opérateurs suffisant pour une alerte mule : demande d'annulation PI-SPI pré-remplie et minutée."
                     ]
                   }
                 }
@@ -9285,15 +9219,15 @@
           "moteur": "heuristic-fallback",
           "moteur_detail": "extracteur heuristique local, non-LLM — F1 optimiste par construction (ecrit en connaissant les gabarits du generateur)"
         },
-        "motivation": "Rattachée à une alerte « mule probable » (3 plaignants, 3 opérateurs, règle : 3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min). Recommandation de suspension des retraits ; décision humaine chez l'opérateur.",
+        "motivation": "Transfert vers un tiers identifié, sans signal inter-opérateurs suffisant pour une alerte mule : demande d'annulation PI-SPI pré-remplie et minutée.",
         "alerte_mule": {
           "alert_id": "ALERT-consortium-f13a5a816c",
-          "resume": "mule probable, 3 plaignants, 3 opérateurs, 105 000 FCFA dont 0 encore sur le compte",
+          "resume": "mule probable, 3 plaignants, 3 opérateurs, 110 000 FCFA dont 0 encore sur le compte",
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-21T10:03:11+01:00",
           "delai_detection_minutes": 23.93,
-          "score": 0.544,
-          "prioritaire": true,
+          "score": 0.4067,
+          "prioritaire": false,
           "preuves": [
             "RC-006168",
             "RC-004128",
@@ -9308,12 +9242,12 @@
     },
     {
       "dossier_id": "DOS-RC-004128",
-      "created_at": "2026-11-25T03:44:14.777753+01:00",
+      "created_at": "2026-11-25T04:03:45.923616+01:00",
       "complaint_id": "RC-004128",
       "operator": "ALPHAMONEY",
-      "decision": "GELER",
+      "decision": "REMBOURSER",
       "typology": "ERREUR_DESTINATAIRE_SINCERE",
-      "amount_fcfa": null,
+      "amount_fcfa": 1000,
       "beneficiary_alias": "sylvie.lokossou@gammapay",
       "destination_operator": "GAMMAPAY",
       "iso20022_inspired": {
@@ -9336,7 +9270,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777756+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923621+01:00"
             },
             "Undrlyg": [
               {
@@ -9349,7 +9283,7 @@
                   "OrgnlEndToEndId": "E2E-RC-004128",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 1000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-21",
                   "Cdtr": {
@@ -9364,11 +9298,11 @@
                   },
                   "CxlRsnInf": {
                     "Rsn": {
-                      "Cd": "FRAD"
+                      "Cd": "CUST"
                     },
                     "AddtlInf": [
-                      "Origine frauduleuse suspectée (compte mule probable)",
-                      "Rattachée à une alerte « mule probable » (3 plaignants, 3 opérateurs, règle : 3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min). Recommandation de suspension des retraits ; décision humaine chez l'opérateur."
+                      "Annulation demandée par le client (erreur de destinataire)",
+                      "Transfert vers un tiers identifié, sans signal inter-opérateurs suffisant pour une alerte mule : demande d'annulation PI-SPI pré-remplie et minutée."
                     ]
                   }
                 }
@@ -9395,7 +9329,7 @@
         "texte_brut": "Bonsoir mauvais destinataire. montant 1.000F, reference TX3462109955, heure 05h56. le beneficiaire sylvie.lokossou@gammapay nest pas la bonne personne. je compte sur vous",
         "extraction": {
           "typologie": "ERREUR_DESTINATAIRE_SINCERE",
-          "montant_fcfa": null,
+          "montant_fcfa": 1000,
           "heure_operation": "2026-11-21T05:56:00+01:00",
           "alias_beneficiaire": "sylvie.lokossou@gammapay",
           "msisdn_beneficiaire": null,
@@ -9405,15 +9339,15 @@
           "moteur": "heuristic-fallback",
           "moteur_detail": "extracteur heuristique local, non-LLM — F1 optimiste par construction (ecrit en connaissant les gabarits du generateur)"
         },
-        "motivation": "Rattachée à une alerte « mule probable » (3 plaignants, 3 opérateurs, règle : 3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min). Recommandation de suspension des retraits ; décision humaine chez l'opérateur.",
+        "motivation": "Transfert vers un tiers identifié, sans signal inter-opérateurs suffisant pour une alerte mule : demande d'annulation PI-SPI pré-remplie et minutée.",
         "alerte_mule": {
           "alert_id": "ALERT-consortium-f13a5a816c",
-          "resume": "mule probable, 3 plaignants, 3 opérateurs, 105 000 FCFA dont 0 encore sur le compte",
+          "resume": "mule probable, 3 plaignants, 3 opérateurs, 110 000 FCFA dont 0 encore sur le compte",
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-21T10:03:11+01:00",
           "delai_detection_minutes": 23.93,
-          "score": 0.544,
-          "prioritaire": true,
+          "score": 0.4067,
+          "prioritaire": false,
           "preuves": [
             "RC-006168",
             "RC-004128",
@@ -9428,10 +9362,10 @@
     },
     {
       "dossier_id": "DOS-RC-003073",
-      "created_at": "2026-11-25T03:44:14.777777+01:00",
+      "created_at": "2026-11-25T04:03:45.923646+01:00",
       "complaint_id": "RC-003073",
       "operator": "BETACASH",
-      "decision": "GELER",
+      "decision": "REMBOURSER",
       "typology": "ERREUR_DESTINATAIRE_SINCERE",
       "amount_fcfa": 2500,
       "beneficiary_alias": "sylvie.lokossou@gammapay",
@@ -9456,7 +9390,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777780+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923650+01:00"
             },
             "Undrlyg": [
               {
@@ -9484,11 +9418,11 @@
                   },
                   "CxlRsnInf": {
                     "Rsn": {
-                      "Cd": "FRAD"
+                      "Cd": "CUST"
                     },
                     "AddtlInf": [
-                      "Origine frauduleuse suspectée (compte mule probable)",
-                      "Rattachée à une alerte « mule probable » (3 plaignants, 3 opérateurs, règle : 3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min). Recommandation de suspension des retraits ; décision humaine chez l'opérateur."
+                      "Annulation demandée par le client (erreur de destinataire)",
+                      "Transfert vers un tiers identifié, sans signal inter-opérateurs suffisant pour une alerte mule : demande d'annulation PI-SPI pré-remplie et minutée."
                     ]
                   }
                 }
@@ -9525,15 +9459,15 @@
           "moteur": "heuristic-fallback",
           "moteur_detail": "extracteur heuristique local, non-LLM — F1 optimiste par construction (ecrit en connaissant les gabarits du generateur)"
         },
-        "motivation": "Rattachée à une alerte « mule probable » (3 plaignants, 3 opérateurs, règle : 3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min). Recommandation de suspension des retraits ; décision humaine chez l'opérateur.",
+        "motivation": "Transfert vers un tiers identifié, sans signal inter-opérateurs suffisant pour une alerte mule : demande d'annulation PI-SPI pré-remplie et minutée.",
         "alerte_mule": {
           "alert_id": "ALERT-consortium-f13a5a816c",
-          "resume": "mule probable, 3 plaignants, 3 opérateurs, 105 000 FCFA dont 0 encore sur le compte",
+          "resume": "mule probable, 3 plaignants, 3 opérateurs, 110 000 FCFA dont 0 encore sur le compte",
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-21T10:03:11+01:00",
           "delai_detection_minutes": 23.93,
-          "score": 0.544,
-          "prioritaire": true,
+          "score": 0.4067,
+          "prioritaire": false,
           "preuves": [
             "RC-006168",
             "RC-004128",
@@ -9548,7 +9482,7 @@
     },
     {
       "dossier_id": "DOS-RC-008087",
-      "created_at": "2026-11-25T03:44:14.777801+01:00",
+      "created_at": "2026-11-25T04:03:45.923677+01:00",
       "complaint_id": "RC-008087",
       "operator": "GAMMAPAY",
       "decision": "REMBOURSER",
@@ -9576,7 +9510,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777804+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923681+01:00"
             },
             "Undrlyg": [
               {
@@ -9654,7 +9588,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-21T13:42:05+01:00",
           "delai_detection_minutes": 56.85,
-          "score": 0.3896,
+          "score": 0.266,
           "prioritaire": false,
           "preuves": [
             "RC-008087",
@@ -9670,7 +9604,7 @@
     },
     {
       "dossier_id": "DOS-RC-003070",
-      "created_at": "2026-11-25T03:44:14.777823+01:00",
+      "created_at": "2026-11-25T04:03:45.923708+01:00",
       "complaint_id": "RC-003070",
       "operator": "GAMMAPAY",
       "decision": "REMBOURSER",
@@ -9698,7 +9632,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777827+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923712+01:00"
             },
             "Undrlyg": [
               {
@@ -9774,7 +9708,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-21T13:42:05+01:00",
           "delai_detection_minutes": 56.85,
-          "score": 0.3896,
+          "score": 0.266,
           "prioritaire": false,
           "preuves": [
             "RC-008087",
@@ -9790,7 +9724,7 @@
     },
     {
       "dossier_id": "DOS-RC-005580",
-      "created_at": "2026-11-25T03:44:14.777846+01:00",
+      "created_at": "2026-11-25T04:03:45.923738+01:00",
       "complaint_id": "RC-005580",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
@@ -9818,7 +9752,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777849+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923742+01:00"
             },
             "Undrlyg": [
               {
@@ -9894,7 +9828,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-21T13:42:05+01:00",
           "delai_detection_minutes": 56.85,
-          "score": 0.3896,
+          "score": 0.266,
           "prioritaire": false,
           "preuves": [
             "RC-008087",
@@ -9910,7 +9844,7 @@
     },
     {
       "dossier_id": "DOS-RC-000034",
-      "created_at": "2026-11-25T03:44:14.777871+01:00",
+      "created_at": "2026-11-25T04:03:45.923771+01:00",
       "complaint_id": "RC-000034",
       "operator": "ALPHAMONEY",
       "decision": "GELER",
@@ -9938,7 +9872,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777875+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923776+01:00"
             },
             "Undrlyg": [
               {
@@ -10017,7 +9951,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-22T10:27:00+01:00",
           "delai_detection_minutes": 15.0,
-          "score": 0.919,
+          "score": 0.8649,
           "prioritaire": true,
           "preuves": [
             "RC-000034",
@@ -10038,7 +9972,7 @@
     },
     {
       "dossier_id": "DOS-RC-000035",
-      "created_at": "2026-11-25T03:44:14.777896+01:00",
+      "created_at": "2026-11-25T04:03:45.923802+01:00",
       "complaint_id": "RC-000035",
       "operator": "BETACASH",
       "decision": "GELER",
@@ -10066,7 +10000,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777899+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923806+01:00"
             },
             "Undrlyg": [
               {
@@ -10145,7 +10079,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-22T10:27:00+01:00",
           "delai_detection_minutes": 15.0,
-          "score": 0.919,
+          "score": 0.8649,
           "prioritaire": true,
           "preuves": [
             "RC-000034",
@@ -10166,7 +10100,7 @@
     },
     {
       "dossier_id": "DOS-RC-000036",
-      "created_at": "2026-11-25T03:44:14.777923+01:00",
+      "created_at": "2026-11-25T04:03:45.923832+01:00",
       "complaint_id": "RC-000036",
       "operator": "GAMMAPAY",
       "decision": "GELER",
@@ -10194,7 +10128,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777926+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923836+01:00"
             },
             "Undrlyg": [
               {
@@ -10270,7 +10204,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-22T10:27:00+01:00",
           "delai_detection_minutes": 15.0,
-          "score": 0.919,
+          "score": 0.8649,
           "prioritaire": true,
           "preuves": [
             "RC-000034",
@@ -10291,12 +10225,12 @@
     },
     {
       "dossier_id": "DOS-RC-000037",
-      "created_at": "2026-11-25T03:44:14.777947+01:00",
+      "created_at": "2026-11-25T04:03:45.923865+01:00",
       "complaint_id": "RC-000037",
       "operator": "ALPHAMONEY",
       "decision": "GELER",
       "typology": "ARNAQUE_ERREUR_DEPOT",
-      "amount_fcfa": null,
+      "amount_fcfa": 23000,
       "beneficiary_alias": null,
       "destination_operator": "ALPHAMONEY",
       "iso20022_inspired": {
@@ -10319,7 +10253,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777950+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923869+01:00"
             },
             "Undrlyg": [
               {
@@ -10332,7 +10266,7 @@
                   "OrgnlEndToEndId": "E2E-RC-000037",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 23000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-22",
                   "Cdtr": {
@@ -10378,7 +10312,7 @@
         "texte_brut": "svp bonjour jai ete trompe. le mr a dit cest sa paye kil a envoye par erreur, jai remis 23.000F au +22996070866 reseau Alphamoney. il a bloque mon numero apres. aidez moi vite svp",
         "extraction": {
           "typologie": "ARNAQUE_ERREUR_DEPOT",
-          "montant_fcfa": null,
+          "montant_fcfa": 23000,
           "heure_operation": null,
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": "+22996070866",
@@ -10400,7 +10334,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-22T10:27:00+01:00",
           "delai_detection_minutes": 15.0,
-          "score": 0.919,
+          "score": 0.8649,
           "prioritaire": true,
           "preuves": [
             "RC-000034",
@@ -10421,7 +10355,7 @@
     },
     {
       "dossier_id": "DOS-RC-000038",
-      "created_at": "2026-11-25T03:44:14.777971+01:00",
+      "created_at": "2026-11-25T04:03:45.923899+01:00",
       "complaint_id": "RC-000038",
       "operator": "BETACASH",
       "decision": "GELER",
@@ -10449,7 +10383,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.777975+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923903+01:00"
             },
             "Undrlyg": [
               {
@@ -10530,7 +10464,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-22T10:27:00+01:00",
           "delai_detection_minutes": 15.0,
-          "score": 0.919,
+          "score": 0.8649,
           "prioritaire": true,
           "preuves": [
             "RC-000034",
@@ -10551,12 +10485,12 @@
     },
     {
       "dossier_id": "DOS-RC-000039",
-      "created_at": "2026-11-25T03:44:14.777996+01:00",
+      "created_at": "2026-11-25T04:03:45.923931+01:00",
       "complaint_id": "RC-000039",
       "operator": "GAMMAPAY",
       "decision": "GELER",
       "typology": "ARNAQUE_ERREUR_DEPOT",
-      "amount_fcfa": null,
+      "amount_fcfa": 19000,
       "beneficiary_alias": null,
       "destination_operator": "ALPHAMONEY",
       "iso20022_inspired": {
@@ -10579,7 +10513,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778046+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923935+01:00"
             },
             "Undrlyg": [
               {
@@ -10592,7 +10526,7 @@
                   "OrgnlEndToEndId": "E2E-RC-000039",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 19000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-22",
                   "Cdtr": {
@@ -10638,7 +10572,7 @@
         "texte_brut": "Bjr jai ete trompe. le mr a dit cest sa paye kil a envoye par erreur, jai remis 19000F au +22996070866 reseau Alphamoney. il a bloque mno nmuero apres. svp aiidez moi",
         "extraction": {
           "typologie": "ARNAQUE_ERREUR_DEPOT",
-          "montant_fcfa": null,
+          "montant_fcfa": 19000,
           "heure_operation": null,
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": "+22996070866",
@@ -10659,7 +10593,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-22T10:27:00+01:00",
           "delai_detection_minutes": 15.0,
-          "score": 0.919,
+          "score": 0.8649,
           "prioritaire": true,
           "preuves": [
             "RC-000034",
@@ -10680,7 +10614,7 @@
     },
     {
       "dossier_id": "DOS-RC-000040",
-      "created_at": "2026-11-25T03:44:14.778083+01:00",
+      "created_at": "2026-11-25T04:03:45.923963+01:00",
       "complaint_id": "RC-000040",
       "operator": "BETACASH",
       "decision": "GELER",
@@ -10708,7 +10642,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778087+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923967+01:00"
             },
             "Undrlyg": [
               {
@@ -10786,7 +10720,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-22T10:27:00+01:00",
           "delai_detection_minutes": 15.0,
-          "score": 0.919,
+          "score": 0.8649,
           "prioritaire": true,
           "preuves": [
             "RC-000034",
@@ -10807,7 +10741,7 @@
     },
     {
       "dossier_id": "DOS-RC-000041",
-      "created_at": "2026-11-25T03:44:14.778114+01:00",
+      "created_at": "2026-11-25T04:03:45.923993+01:00",
       "complaint_id": "RC-000041",
       "operator": "GAMMAPAY",
       "decision": "GELER",
@@ -10835,7 +10769,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778118+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.923997+01:00"
             },
             "Undrlyg": [
               {
@@ -10914,7 +10848,7 @@
           "regle": "3 plaignants distincts, 2 opérateur(s) distinct(s), fenêtre de 60 min",
           "alerte_a": "2026-11-22T10:27:00+01:00",
           "delai_detection_minutes": 15.0,
-          "score": 0.919,
+          "score": 0.8649,
           "prioritaire": true,
           "preuves": [
             "RC-000034",
@@ -10935,7 +10869,7 @@
     },
     {
       "dossier_id": "DOS-RC-004716",
-      "created_at": "2026-11-25T03:44:14.778137+01:00",
+      "created_at": "2026-11-25T04:03:45.924021+01:00",
       "complaint_id": "RC-004716",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -10963,7 +10897,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778140+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924026+01:00"
             },
             "Undrlyg": [
               {
@@ -11039,7 +10973,7 @@
     },
     {
       "dossier_id": "DOS-RC-010396",
-      "created_at": "2026-11-25T03:44:14.778159+01:00",
+      "created_at": "2026-11-25T04:03:45.924127+01:00",
       "complaint_id": "RC-010396",
       "operator": "GAMMAPAY",
       "decision": "REMBOURSER",
@@ -11067,7 +11001,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778163+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924134+01:00"
             },
             "Undrlyg": [
               {
@@ -11143,12 +11077,12 @@
     },
     {
       "dossier_id": "DOS-RC-008055",
-      "created_at": "2026-11-25T03:44:14.778183+01:00",
+      "created_at": "2026-11-25T04:03:45.924165+01:00",
       "complaint_id": "RC-008055",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
       "typology": "ERREUR_DESTINATAIRE_SINCERE",
-      "amount_fcfa": null,
+      "amount_fcfa": 30000,
       "beneficiary_alias": null,
       "destination_operator": "GAMMAPAY",
       "iso20022_inspired": {
@@ -11171,7 +11105,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778187+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924169+01:00"
             },
             "Undrlyg": [
               {
@@ -11184,7 +11118,7 @@
                   "OrgnlEndToEndId": "E2E-RC-008055",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 30000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-15",
                   "Cdtr": {
@@ -11230,7 +11164,7 @@
         "texte_brut": "erreur de ma part, 30.000F parti sur +22961348320 (Gammapay) a 21h42 au lieu du bon numero. mci dannuler la transaction. svp aidez moi",
         "extraction": {
           "typologie": "ERREUR_DESTINATAIRE_SINCERE",
-          "montant_fcfa": null,
+          "montant_fcfa": 30000,
           "heure_operation": "2026-11-15T21:42:00+01:00",
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": "+22961348320",
@@ -11249,7 +11183,7 @@
     },
     {
       "dossier_id": "DOS-RC-012399",
-      "created_at": "2026-11-25T03:44:14.778204+01:00",
+      "created_at": "2026-11-25T04:03:45.924196+01:00",
       "complaint_id": "RC-012399",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -11277,7 +11211,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778208+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924201+01:00"
             },
             "Undrlyg": [
               {
@@ -11353,12 +11287,12 @@
     },
     {
       "dossier_id": "DOS-RC-002198",
-      "created_at": "2026-11-25T03:44:14.778227+01:00",
+      "created_at": "2026-11-25T04:03:45.924226+01:00",
       "complaint_id": "RC-002198",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
       "typology": "FRAIS_CONTESTES",
-      "amount_fcfa": null,
+      "amount_fcfa": 6250,
       "beneficiary_alias": null,
       "destination_operator": null,
       "iso20022_inspired": {
@@ -11381,7 +11315,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778230+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924230+01:00"
             },
             "Undrlyg": [
               {
@@ -11394,7 +11328,7 @@
                   "OrgnlEndToEndId": "E2E-RC-002198",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 6250
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -11440,7 +11374,7 @@
         "texte_brut": "jBr madame je conteste les frais appliques a loperation TX2450682267, montant 6250F. c'est urgent",
         "extraction": {
           "typologie": "FRAIS_CONTESTES",
-          "montant_fcfa": null,
+          "montant_fcfa": 6250,
           "heure_operation": null,
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": null,
@@ -11459,12 +11393,12 @@
     },
     {
       "dossier_id": "DOS-RC-005258",
-      "created_at": "2026-11-25T03:44:14.778248+01:00",
+      "created_at": "2026-11-25T04:03:45.924253+01:00",
       "complaint_id": "RC-005258",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
       "typology": "FRAIS_CONTESTES",
-      "amount_fcfa": null,
+      "amount_fcfa": 75000,
       "beneficiary_alias": null,
       "destination_operator": null,
       "iso20022_inspired": {
@@ -11487,7 +11421,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778251+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924257+01:00"
             },
             "Undrlyg": [
               {
@@ -11500,7 +11434,7 @@
                   "OrgnlEndToEndId": "E2E-RC-005258",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 75000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -11546,7 +11480,7 @@
         "texte_brut": "BONJOUR LES FRAIS ONT CHANGE SANS INFORMATIONN. JAI PAYE PLUS CHER POUR 75000F. SVP AIDEZ MOI",
         "extraction": {
           "typologie": "FRAIS_CONTESTES",
-          "montant_fcfa": null,
+          "montant_fcfa": 75000,
           "heure_operation": null,
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": null,
@@ -11563,7 +11497,7 @@
     },
     {
       "dossier_id": "DOS-RC-019938",
-      "created_at": "2026-11-25T03:44:14.778270+01:00",
+      "created_at": "2026-11-25T04:03:45.924277+01:00",
       "complaint_id": "RC-019938",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -11591,7 +11525,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778273+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924281+01:00"
             },
             "Undrlyg": [
               {
@@ -11667,7 +11601,7 @@
     },
     {
       "dossier_id": "DOS-RC-019246",
-      "created_at": "2026-11-25T03:44:14.778290+01:00",
+      "created_at": "2026-11-25T04:03:45.924304+01:00",
       "complaint_id": "RC-019246",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -11695,7 +11629,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778295+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924308+01:00"
             },
             "Undrlyg": [
               {
@@ -11771,7 +11705,7 @@
     },
     {
       "dossier_id": "DOS-RC-004427",
-      "created_at": "2026-11-25T03:44:14.778312+01:00",
+      "created_at": "2026-11-25T04:03:45.924328+01:00",
       "complaint_id": "RC-004427",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -11799,7 +11733,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778315+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924332+01:00"
             },
             "Undrlyg": [
               {
@@ -11875,7 +11809,7 @@
     },
     {
       "dossier_id": "DOS-RC-008185",
-      "created_at": "2026-11-25T03:44:14.778333+01:00",
+      "created_at": "2026-11-25T04:03:45.924356+01:00",
       "complaint_id": "RC-008185",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -11903,7 +11837,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778337+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924360+01:00"
             },
             "Undrlyg": [
               {
@@ -11982,7 +11916,7 @@
     },
     {
       "dossier_id": "DOS-RC-012773",
-      "created_at": "2026-11-25T03:44:14.778352+01:00",
+      "created_at": "2026-11-25T04:03:45.924382+01:00",
       "complaint_id": "RC-012773",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -12010,7 +11944,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778356+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924386+01:00"
             },
             "Undrlyg": [
               {
@@ -12088,7 +12022,7 @@
     },
     {
       "dossier_id": "DOS-RC-018107",
-      "created_at": "2026-11-25T03:44:14.778376+01:00",
+      "created_at": "2026-11-25T04:03:45.924409+01:00",
       "complaint_id": "RC-018107",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -12116,7 +12050,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778379+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924414+01:00"
             },
             "Undrlyg": [
               {
@@ -12195,7 +12129,7 @@
     },
     {
       "dossier_id": "DOS-RC-007737",
-      "created_at": "2026-11-25T03:44:14.778397+01:00",
+      "created_at": "2026-11-25T04:03:45.924436+01:00",
       "complaint_id": "RC-007737",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -12223,7 +12157,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778401+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924441+01:00"
             },
             "Undrlyg": [
               {
@@ -12301,12 +12235,12 @@
     },
     {
       "dossier_id": "DOS-RC-008312",
-      "created_at": "2026-11-25T03:44:14.778417+01:00",
+      "created_at": "2026-11-25T04:03:45.924461+01:00",
       "complaint_id": "RC-008312",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
       "typology": "AGENT_DISTRIBUTEUR",
-      "amount_fcfa": null,
+      "amount_fcfa": 500,
       "beneficiary_alias": null,
       "destination_operator": null,
       "iso20022_inspired": {
@@ -12329,7 +12263,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778421+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924465+01:00"
             },
             "Undrlyg": [
               {
@@ -12342,7 +12276,7 @@
                   "OrgnlEndToEndId": "E2E-RC-008312",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 500
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -12388,7 +12322,7 @@
         "texte_brut": "Bojnour jai depoes 500F chez un agent, il na jjamais credite mon compte. il dit ke cest le eseau. merci de ergler ca mon frère",
         "extraction": {
           "typologie": "AGENT_DISTRIBUTEUR",
-          "montant_fcfa": null,
+          "montant_fcfa": 500,
           "heure_operation": null,
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": null,
@@ -12405,7 +12339,7 @@
     },
     {
       "dossier_id": "DOS-RC-011522",
-      "created_at": "2026-11-25T03:44:14.778468+01:00",
+      "created_at": "2026-11-25T04:03:45.924486+01:00",
       "complaint_id": "RC-011522",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -12433,7 +12367,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778474+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924490+01:00"
             },
             "Undrlyg": [
               {
@@ -12509,7 +12443,7 @@
     },
     {
       "dossier_id": "DOS-RC-010483",
-      "created_at": "2026-11-25T03:44:14.778494+01:00",
+      "created_at": "2026-11-25T04:03:45.924511+01:00",
       "complaint_id": "RC-010483",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -12537,7 +12471,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778498+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924515+01:00"
             },
             "Undrlyg": [
               {
@@ -12613,7 +12547,7 @@
     },
     {
       "dossier_id": "DOS-RC-008400",
-      "created_at": "2026-11-25T03:44:14.778522+01:00",
+      "created_at": "2026-11-25T04:03:45.924537+01:00",
       "complaint_id": "RC-008400",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -12641,7 +12575,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778526+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924541+01:00"
             },
             "Undrlyg": [
               {
@@ -12719,12 +12653,12 @@
     },
     {
       "dossier_id": "DOS-RC-006050",
-      "created_at": "2026-11-25T03:44:14.778542+01:00",
+      "created_at": "2026-11-25T04:03:45.924562+01:00",
       "complaint_id": "RC-006050",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
       "typology": "ERREUR_DESTINATAIRE_SINCERE",
-      "amount_fcfa": null,
+      "amount_fcfa": 100,
       "beneficiary_alias": "prudence.sossou@gammapay",
       "destination_operator": "GAMMAPAY",
       "iso20022_inspired": {
@@ -12747,7 +12681,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778546+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924567+01:00"
             },
             "Undrlyg": [
               {
@@ -12760,7 +12694,7 @@
                   "OrgnlEndToEndId": "E2E-RC-006050",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 100
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -12806,7 +12740,7 @@
         "texte_brut": "je me suis trompe de numero, jai envoye 100mmil a prudence.sossou@gammapay au lieu de ma soeur. pouvez vs annuler svp. c'est urgnt",
         "extraction": {
           "typologie": "ERREUR_DESTINATAIRE_SINCERE",
-          "montant_fcfa": null,
+          "montant_fcfa": 100,
           "heure_operation": null,
           "alias_beneficiaire": "prudence.sossou@gammapay",
           "msisdn_beneficiaire": null,
@@ -12825,7 +12759,7 @@
     },
     {
       "dossier_id": "DOS-RC-005896",
-      "created_at": "2026-11-25T03:44:14.778568+01:00",
+      "created_at": "2026-11-25T04:03:45.924588+01:00",
       "complaint_id": "RC-005896",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -12853,7 +12787,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778571+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924592+01:00"
             },
             "Undrlyg": [
               {
@@ -12929,7 +12863,7 @@
     },
     {
       "dossier_id": "DOS-RC-003379",
-      "created_at": "2026-11-25T03:44:14.778589+01:00",
+      "created_at": "2026-11-25T04:03:45.924614+01:00",
       "complaint_id": "RC-003379",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -12957,7 +12891,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778592+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924618+01:00"
             },
             "Undrlyg": [
               {
@@ -13033,7 +12967,7 @@
     },
     {
       "dossier_id": "DOS-RC-015093",
-      "created_at": "2026-11-25T03:44:14.778606+01:00",
+      "created_at": "2026-11-25T04:03:45.924639+01:00",
       "complaint_id": "RC-015093",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -13061,7 +12995,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778609+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924643+01:00"
             },
             "Undrlyg": [
               {
@@ -13139,12 +13073,12 @@
     },
     {
       "dossier_id": "DOS-RC-009148",
-      "created_at": "2026-11-25T03:44:14.778628+01:00",
+      "created_at": "2026-11-25T04:03:45.924663+01:00",
       "complaint_id": "RC-009148",
       "operator": "GAMMAPAY",
       "decision": "REMBOURSER",
       "typology": "ERREUR_DESTINATAIRE_SINCERE",
-      "amount_fcfa": null,
+      "amount_fcfa": 75000,
       "beneficiary_alias": null,
       "destination_operator": null,
       "iso20022_inspired": {
@@ -13167,7 +13101,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778631+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924666+01:00"
             },
             "Undrlyg": [
               {
@@ -13180,7 +13114,7 @@
                   "OrgnlEndToEndId": "E2E-RC-009148",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 75000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -13226,7 +13160,7 @@
         "texte_brut": "Bonsoir jai envoye 75.000F a un mauvais numero +22961709784 par ianttention, la personne dit kelle evut bien remmbourseer mais elle ne sait pas comment. mci davnce",
         "extraction": {
           "typologie": "ERREUR_DESTINATAIRE_SINCERE",
-          "montant_fcfa": null,
+          "montant_fcfa": 75000,
           "heure_operation": null,
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": "+22961709784",
@@ -13243,7 +13177,7 @@
     },
     {
       "dossier_id": "DOS-RC-013375",
-      "created_at": "2026-11-25T03:44:14.778647+01:00",
+      "created_at": "2026-11-25T04:03:45.924686+01:00",
       "complaint_id": "RC-013375",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -13271,7 +13205,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778664+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924690+01:00"
             },
             "Undrlyg": [
               {
@@ -13349,7 +13283,7 @@
     },
     {
       "dossier_id": "DOS-RC-008269",
-      "created_at": "2026-11-25T03:44:14.778691+01:00",
+      "created_at": "2026-11-25T04:03:45.924710+01:00",
       "complaint_id": "RC-008269",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -13377,7 +13311,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778695+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924714+01:00"
             },
             "Undrlyg": [
               {
@@ -13453,7 +13387,7 @@
     },
     {
       "dossier_id": "DOS-RC-010397",
-      "created_at": "2026-11-25T03:44:14.778716+01:00",
+      "created_at": "2026-11-25T04:03:45.924736+01:00",
       "complaint_id": "RC-010397",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -13481,7 +13415,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778720+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924740+01:00"
             },
             "Undrlyg": [
               {
@@ -13557,7 +13491,7 @@
     },
     {
       "dossier_id": "DOS-RC-012645",
-      "created_at": "2026-11-25T03:44:14.778735+01:00",
+      "created_at": "2026-11-25T04:03:45.924760+01:00",
       "complaint_id": "RC-012645",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -13585,7 +13519,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778739+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924764+01:00"
             },
             "Undrlyg": [
               {
@@ -13661,7 +13595,7 @@
     },
     {
       "dossier_id": "DOS-RC-018400",
-      "created_at": "2026-11-25T03:44:14.778783+01:00",
+      "created_at": "2026-11-25T04:03:45.924785+01:00",
       "complaint_id": "RC-018400",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -13689,7 +13623,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778788+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924789+01:00"
             },
             "Undrlyg": [
               {
@@ -13765,7 +13699,7 @@
     },
     {
       "dossier_id": "DOS-RC-004598",
-      "created_at": "2026-11-25T03:44:14.778808+01:00",
+      "created_at": "2026-11-25T04:03:45.924809+01:00",
       "complaint_id": "RC-004598",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -13793,7 +13727,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778811+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924813+01:00"
             },
             "Undrlyg": [
               {
@@ -13869,7 +13803,7 @@
     },
     {
       "dossier_id": "DOS-RC-009314",
-      "created_at": "2026-11-25T03:44:14.778829+01:00",
+      "created_at": "2026-11-25T04:03:45.924834+01:00",
       "complaint_id": "RC-009314",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -13897,7 +13831,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778832+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924838+01:00"
             },
             "Undrlyg": [
               {
@@ -13973,7 +13907,7 @@
     },
     {
       "dossier_id": "DOS-RC-012981",
-      "created_at": "2026-11-25T03:44:14.778849+01:00",
+      "created_at": "2026-11-25T04:03:45.924857+01:00",
       "complaint_id": "RC-012981",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -14001,7 +13935,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778853+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924862+01:00"
             },
             "Undrlyg": [
               {
@@ -14077,7 +14011,7 @@
     },
     {
       "dossier_id": "DOS-RC-011148",
-      "created_at": "2026-11-25T03:44:14.778870+01:00",
+      "created_at": "2026-11-25T04:03:45.924882+01:00",
       "complaint_id": "RC-011148",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -14105,7 +14039,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778873+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924886+01:00"
             },
             "Undrlyg": [
               {
@@ -14181,7 +14115,7 @@
     },
     {
       "dossier_id": "DOS-RC-006714",
-      "created_at": "2026-11-25T03:44:14.778888+01:00",
+      "created_at": "2026-11-25T04:03:45.924908+01:00",
       "complaint_id": "RC-006714",
       "operator": "GAMMAPAY",
       "decision": "REMBOURSER",
@@ -14209,7 +14143,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778891+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924912+01:00"
             },
             "Undrlyg": [
               {
@@ -14288,7 +14222,7 @@
     },
     {
       "dossier_id": "DOS-RC-010616",
-      "created_at": "2026-11-25T03:44:14.778906+01:00",
+      "created_at": "2026-11-25T04:03:45.924933+01:00",
       "complaint_id": "RC-010616",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -14316,7 +14250,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778910+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924937+01:00"
             },
             "Undrlyg": [
               {
@@ -14392,7 +14326,7 @@
     },
     {
       "dossier_id": "DOS-RC-005147",
-      "created_at": "2026-11-25T03:44:14.778926+01:00",
+      "created_at": "2026-11-25T04:03:45.924957+01:00",
       "complaint_id": "RC-005147",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
@@ -14420,7 +14354,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778929+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924961+01:00"
             },
             "Undrlyg": [
               {
@@ -14498,7 +14432,7 @@
     },
     {
       "dossier_id": "DOS-RC-008264",
-      "created_at": "2026-11-25T03:44:14.778945+01:00",
+      "created_at": "2026-11-25T04:03:45.924980+01:00",
       "complaint_id": "RC-008264",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -14526,7 +14460,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778948+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.924984+01:00"
             },
             "Undrlyg": [
               {
@@ -14602,12 +14536,12 @@
     },
     {
       "dossier_id": "DOS-RC-000492",
-      "created_at": "2026-11-25T03:44:14.778965+01:00",
+      "created_at": "2026-11-25T04:03:45.925004+01:00",
       "complaint_id": "RC-000492",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
       "typology": "ARNAQUE_ERREUR_DEPOT",
-      "amount_fcfa": null,
+      "amount_fcfa": 15000,
       "beneficiary_alias": null,
       "destination_operator": "ALPHAMONEY",
       "iso20022_inspired": {
@@ -14630,7 +14564,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778968+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925009+01:00"
             },
             "Undrlyg": [
               {
@@ -14643,7 +14577,7 @@
                   "OrgnlEndToEndId": "E2E-RC-000492",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 15000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -14689,7 +14623,7 @@
         "texte_brut": "Bonjour l'equipe arnaque rerur de depot. ils mont fat renvoyer 15.000F vers +22996374399. le cmpte est sur Alphamoney. blloquez le vite avant kil retire. je compte sur vous pardon dêh",
         "extraction": {
           "typologie": "ARNAQUE_ERREUR_DEPOT",
-          "montant_fcfa": null,
+          "montant_fcfa": 15000,
           "heure_operation": null,
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": "+22996374399",
@@ -14709,7 +14643,7 @@
     },
     {
       "dossier_id": "DOS-RC-016439",
-      "created_at": "2026-11-25T03:44:14.778985+01:00",
+      "created_at": "2026-11-25T04:03:45.925029+01:00",
       "complaint_id": "RC-016439",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -14737,7 +14671,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.778988+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925033+01:00"
             },
             "Undrlyg": [
               {
@@ -14813,7 +14747,7 @@
     },
     {
       "dossier_id": "DOS-RC-012934",
-      "created_at": "2026-11-25T03:44:14.779005+01:00",
+      "created_at": "2026-11-25T04:03:45.925055+01:00",
       "complaint_id": "RC-012934",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -14841,7 +14775,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779008+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925059+01:00"
             },
             "Undrlyg": [
               {
@@ -14917,7 +14851,7 @@
     },
     {
       "dossier_id": "DOS-RC-016409",
-      "created_at": "2026-11-25T03:44:14.779026+01:00",
+      "created_at": "2026-11-25T04:03:45.925080+01:00",
       "complaint_id": "RC-016409",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
@@ -14945,7 +14879,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779029+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925084+01:00"
             },
             "Undrlyg": [
               {
@@ -15024,7 +14958,7 @@
     },
     {
       "dossier_id": "DOS-RC-007471",
-      "created_at": "2026-11-25T03:44:14.779045+01:00",
+      "created_at": "2026-11-25T04:03:45.925103+01:00",
       "complaint_id": "RC-007471",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -15052,7 +14986,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779048+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925107+01:00"
             },
             "Undrlyg": [
               {
@@ -15128,12 +15062,12 @@
     },
     {
       "dossier_id": "DOS-RC-017807",
-      "created_at": "2026-11-25T03:44:14.779064+01:00",
+      "created_at": "2026-11-25T04:03:45.925127+01:00",
       "complaint_id": "RC-017807",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
       "typology": "TRANSACTION_ECHOUEE_DEBITEE",
-      "amount_fcfa": null,
+      "amount_fcfa": 10000,
       "beneficiary_alias": null,
       "destination_operator": null,
       "iso20022_inspired": {
@@ -15156,7 +15090,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779068+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925131+01:00"
             },
             "Undrlyg": [
               {
@@ -15169,7 +15103,7 @@
                   "OrgnlEndToEndId": "E2E-RC-017807",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 10000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -15215,7 +15149,7 @@
         "texte_brut": "svp bjr ransac echouee mias jai ete dbeite de 10.000F. reference TX3806340331 a 04h02. le beneficiaire na rien du tt recu. aidez moi vite svp",
         "extraction": {
           "typologie": "TRANSACTION_ECHOUEE_DEBITEE",
-          "montant_fcfa": null,
+          "montant_fcfa": 10000,
           "heure_operation": "2026-11-16T04:02:00+01:00",
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": null,
@@ -15234,7 +15168,7 @@
     },
     {
       "dossier_id": "DOS-RC-002938",
-      "created_at": "2026-11-25T03:44:14.779083+01:00",
+      "created_at": "2026-11-25T04:03:45.925151+01:00",
       "complaint_id": "RC-002938",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -15262,7 +15196,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779087+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925155+01:00"
             },
             "Undrlyg": [
               {
@@ -15338,7 +15272,7 @@
     },
     {
       "dossier_id": "DOS-RC-015363",
-      "created_at": "2026-11-25T03:44:14.779102+01:00",
+      "created_at": "2026-11-25T04:03:45.925176+01:00",
       "complaint_id": "RC-015363",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -15366,7 +15300,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779105+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925180+01:00"
             },
             "Undrlyg": [
               {
@@ -15442,12 +15376,12 @@
     },
     {
       "dossier_id": "DOS-RC-010933",
-      "created_at": "2026-11-25T03:44:14.779119+01:00",
+      "created_at": "2026-11-25T04:03:45.925202+01:00",
       "complaint_id": "RC-010933",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
       "typology": "RETARD_TIMEOUT",
-      "amount_fcfa": null,
+      "amount_fcfa": 500,
       "beneficiary_alias": null,
       "destination_operator": null,
       "iso20022_inspired": {
@@ -15470,7 +15404,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779122+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925207+01:00"
             },
             "Undrlyg": [
               {
@@ -15483,7 +15417,7 @@
                   "OrgnlEndToEndId": "E2E-RC-010933",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 500
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -15529,7 +15463,7 @@
         "texte_brut": "Bonsir probleme sur le reseau? mes envois vres Alpamoy tombent en timeout. montaant concerne 500F. mci daavance",
         "extraction": {
           "typologie": "RETARD_TIMEOUT",
-          "montant_fcfa": null,
+          "montant_fcfa": 500,
           "heure_operation": null,
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": null,
@@ -15546,7 +15480,7 @@
     },
     {
       "dossier_id": "DOS-RC-010821",
-      "created_at": "2026-11-25T03:44:14.779138+01:00",
+      "created_at": "2026-11-25T04:03:45.925228+01:00",
       "complaint_id": "RC-010821",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
@@ -15574,7 +15508,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779142+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925233+01:00"
             },
             "Undrlyg": [
               {
@@ -15652,7 +15586,7 @@
     },
     {
       "dossier_id": "DOS-RC-015791",
-      "created_at": "2026-11-25T03:44:14.779158+01:00",
+      "created_at": "2026-11-25T04:03:45.925253+01:00",
       "complaint_id": "RC-015791",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -15680,7 +15614,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779161+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925257+01:00"
             },
             "Undrlyg": [
               {
@@ -15756,7 +15690,7 @@
     },
     {
       "dossier_id": "DOS-RC-014132",
-      "created_at": "2026-11-25T03:44:14.779177+01:00",
+      "created_at": "2026-11-25T04:03:45.925277+01:00",
       "complaint_id": "RC-014132",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -15784,7 +15718,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779181+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925281+01:00"
             },
             "Undrlyg": [
               {
@@ -15860,7 +15794,7 @@
     },
     {
       "dossier_id": "DOS-RC-018371",
-      "created_at": "2026-11-25T03:44:14.779196+01:00",
+      "created_at": "2026-11-25T04:03:45.925300+01:00",
       "complaint_id": "RC-018371",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -15888,7 +15822,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779199+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925304+01:00"
             },
             "Undrlyg": [
               {
@@ -15964,7 +15898,7 @@
     },
     {
       "dossier_id": "DOS-RC-010700",
-      "created_at": "2026-11-25T03:44:14.779213+01:00",
+      "created_at": "2026-11-25T04:03:45.925325+01:00",
       "complaint_id": "RC-010700",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -15992,7 +15926,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779216+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925329+01:00"
             },
             "Undrlyg": [
               {
@@ -16070,7 +16004,7 @@
     },
     {
       "dossier_id": "DOS-RC-000474",
-      "created_at": "2026-11-25T03:44:14.779232+01:00",
+      "created_at": "2026-11-25T04:03:45.925350+01:00",
       "complaint_id": "RC-000474",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -16098,7 +16032,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779236+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925354+01:00"
             },
             "Undrlyg": [
               {
@@ -16179,7 +16113,7 @@
     },
     {
       "dossier_id": "DOS-RC-010767",
-      "created_at": "2026-11-25T03:44:14.779253+01:00",
+      "created_at": "2026-11-25T04:03:45.925376+01:00",
       "complaint_id": "RC-010767",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -16207,7 +16141,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779256+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925380+01:00"
             },
             "Undrlyg": [
               {
@@ -16283,7 +16217,7 @@
     },
     {
       "dossier_id": "DOS-RC-015385",
-      "created_at": "2026-11-25T03:44:14.779271+01:00",
+      "created_at": "2026-11-25T04:03:45.925431+01:00",
       "complaint_id": "RC-015385",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -16311,7 +16245,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779274+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925437+01:00"
             },
             "Undrlyg": [
               {
@@ -16387,7 +16321,7 @@
     },
     {
       "dossier_id": "DOS-RC-007357",
-      "created_at": "2026-11-25T03:44:14.779291+01:00",
+      "created_at": "2026-11-25T04:03:45.925462+01:00",
       "complaint_id": "RC-007357",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -16415,7 +16349,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779293+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925467+01:00"
             },
             "Undrlyg": [
               {
@@ -16491,7 +16425,7 @@
     },
     {
       "dossier_id": "DOS-RC-009409",
-      "created_at": "2026-11-25T03:44:14.779308+01:00",
+      "created_at": "2026-11-25T04:03:45.925488+01:00",
       "complaint_id": "RC-009409",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -16519,7 +16453,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779311+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925492+01:00"
             },
             "Undrlyg": [
               {
@@ -16595,7 +16529,7 @@
     },
     {
       "dossier_id": "DOS-RC-007857",
-      "created_at": "2026-11-25T03:44:14.779328+01:00",
+      "created_at": "2026-11-25T04:03:45.925515+01:00",
       "complaint_id": "RC-007857",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -16623,7 +16557,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779330+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925519+01:00"
             },
             "Undrlyg": [
               {
@@ -16703,7 +16637,7 @@
     },
     {
       "dossier_id": "DOS-RC-009079",
-      "created_at": "2026-11-25T03:44:14.779346+01:00",
+      "created_at": "2026-11-25T04:03:45.925540+01:00",
       "complaint_id": "RC-009079",
       "operator": "GAMMAPAY",
       "decision": "REMBOURSER",
@@ -16731,7 +16665,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779349+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925544+01:00"
             },
             "Undrlyg": [
               {
@@ -16807,7 +16741,7 @@
     },
     {
       "dossier_id": "DOS-RC-014645",
-      "created_at": "2026-11-25T03:44:14.779365+01:00",
+      "created_at": "2026-11-25T04:03:45.925563+01:00",
       "complaint_id": "RC-014645",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -16835,7 +16769,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779368+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925567+01:00"
             },
             "Undrlyg": [
               {
@@ -16913,12 +16847,12 @@
     },
     {
       "dossier_id": "DOS-RC-009957",
-      "created_at": "2026-11-25T03:44:14.779385+01:00",
+      "created_at": "2026-11-25T04:03:45.925589+01:00",
       "complaint_id": "RC-009957",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
       "typology": "RETARD_TIMEOUT",
-      "amount_fcfa": null,
+      "amount_fcfa": 15000,
       "beneficiary_alias": null,
       "destination_operator": "BETACASH",
       "iso20022_inspired": {
@@ -16941,7 +16875,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779388+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925593+01:00"
             },
             "Undrlyg": [
               {
@@ -16954,7 +16888,7 @@
                   "OrgnlEndToEndId": "E2E-RC-009957",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 15000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -17000,7 +16934,7 @@
         "texte_brut": "Bjr mon transfert de 15.000F vers Betacash est bloque depuis 04h39, ca affiche en cours de traitement. aidez moi vite svp c'est chaud",
         "extraction": {
           "typologie": "RETARD_TIMEOUT",
-          "montant_fcfa": null,
+          "montant_fcfa": 15000,
           "heure_operation": "2026-11-16T04:39:00+01:00",
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": null,
@@ -17019,7 +16953,7 @@
     },
     {
       "dossier_id": "DOS-RC-017559",
-      "created_at": "2026-11-25T03:44:14.779403+01:00",
+      "created_at": "2026-11-25T04:03:45.925613+01:00",
       "complaint_id": "RC-017559",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -17047,7 +16981,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779406+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925617+01:00"
             },
             "Undrlyg": [
               {
@@ -17123,12 +17057,12 @@
     },
     {
       "dossier_id": "DOS-RC-011011",
-      "created_at": "2026-11-25T03:44:14.779422+01:00",
+      "created_at": "2026-11-25T04:03:45.925638+01:00",
       "complaint_id": "RC-011011",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
       "typology": "RETARD_TIMEOUT",
-      "amount_fcfa": null,
+      "amount_fcfa": 2750,
       "beneficiary_alias": null,
       "destination_operator": null,
       "iso20022_inspired": {
@@ -17151,7 +17085,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779425+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925642+01:00"
             },
             "Undrlyg": [
               {
@@ -17164,7 +17098,7 @@
                   "OrgnlEndToEndId": "E2E-RC-011011",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 2750
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -17210,7 +17144,7 @@
         "texte_brut": "svp bjr inetrerabiltie en panne on dirait, 2.750F ni arrive ni rmbouursee. ca fat des heures. merci de rgler ca y'a problème",
         "extraction": {
           "typologie": "RETARD_TIMEOUT",
-          "montant_fcfa": null,
+          "montant_fcfa": 2750,
           "heure_operation": null,
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": null,
@@ -17227,12 +17161,12 @@
     },
     {
       "dossier_id": "DOS-RC-019243",
-      "created_at": "2026-11-25T03:44:14.779440+01:00",
+      "created_at": "2026-11-25T04:03:45.925661+01:00",
       "complaint_id": "RC-019243",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
       "typology": "FRAIS_CONTESTES",
-      "amount_fcfa": null,
+      "amount_fcfa": 15000,
       "beneficiary_alias": null,
       "destination_operator": null,
       "iso20022_inspired": {
@@ -17255,7 +17189,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779443+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925665+01:00"
             },
             "Undrlyg": [
               {
@@ -17268,7 +17202,7 @@
                   "OrgnlEndToEndId": "E2E-RC-019243",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 15000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -17314,7 +17248,7 @@
         "texte_brut": "Salut pourquoi des frrais sur 15000F alors ke je suis en dessous du plafond gratuit? j'attends votre retour",
         "extraction": {
           "typologie": "FRAIS_CONTESTES",
-          "montant_fcfa": null,
+          "montant_fcfa": 15000,
           "heure_operation": null,
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": null,
@@ -17331,7 +17265,7 @@
     },
     {
       "dossier_id": "DOS-RC-006115",
-      "created_at": "2026-11-25T03:44:14.779460+01:00",
+      "created_at": "2026-11-25T04:03:45.925686+01:00",
       "complaint_id": "RC-006115",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
@@ -17359,7 +17293,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779464+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925690+01:00"
             },
             "Undrlyg": [
               {
@@ -17437,7 +17371,7 @@
     },
     {
       "dossier_id": "DOS-RC-014674",
-      "created_at": "2026-11-25T03:44:14.779478+01:00",
+      "created_at": "2026-11-25T04:03:45.925710+01:00",
       "complaint_id": "RC-014674",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -17465,7 +17399,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779481+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925714+01:00"
             },
             "Undrlyg": [
               {
@@ -17544,7 +17478,7 @@
     },
     {
       "dossier_id": "DOS-RC-002712",
-      "created_at": "2026-11-25T03:44:14.779495+01:00",
+      "created_at": "2026-11-25T04:03:45.925733+01:00",
       "complaint_id": "RC-002712",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -17572,7 +17506,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779498+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925737+01:00"
             },
             "Undrlyg": [
               {
@@ -17648,7 +17582,7 @@
     },
     {
       "dossier_id": "DOS-RC-014590",
-      "created_at": "2026-11-25T03:44:14.779514+01:00",
+      "created_at": "2026-11-25T04:03:45.925758+01:00",
       "complaint_id": "RC-014590",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -17676,7 +17610,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779517+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925762+01:00"
             },
             "Undrlyg": [
               {
@@ -17754,7 +17688,7 @@
     },
     {
       "dossier_id": "DOS-RC-004627",
-      "created_at": "2026-11-25T03:44:14.779534+01:00",
+      "created_at": "2026-11-25T04:03:45.925784+01:00",
       "complaint_id": "RC-004627",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
@@ -17782,7 +17716,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779537+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925788+01:00"
             },
             "Undrlyg": [
               {
@@ -17858,7 +17792,7 @@
     },
     {
       "dossier_id": "DOS-RC-010830",
-      "created_at": "2026-11-25T03:44:14.779552+01:00",
+      "created_at": "2026-11-25T04:03:45.925808+01:00",
       "complaint_id": "RC-010830",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -17886,7 +17820,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779555+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925813+01:00"
             },
             "Undrlyg": [
               {
@@ -17964,7 +17898,7 @@
     },
     {
       "dossier_id": "DOS-RC-003527",
-      "created_at": "2026-11-25T03:44:14.779570+01:00",
+      "created_at": "2026-11-25T04:03:45.925832+01:00",
       "complaint_id": "RC-003527",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -17992,7 +17926,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779573+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925837+01:00"
             },
             "Undrlyg": [
               {
@@ -18068,7 +18002,7 @@
     },
     {
       "dossier_id": "DOS-RC-016366",
-      "created_at": "2026-11-25T03:44:14.779588+01:00",
+      "created_at": "2026-11-25T04:03:45.925858+01:00",
       "complaint_id": "RC-016366",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -18096,7 +18030,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779591+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925862+01:00"
             },
             "Undrlyg": [
               {
@@ -18172,12 +18106,12 @@
     },
     {
       "dossier_id": "DOS-RC-018270",
-      "created_at": "2026-11-25T03:44:14.779606+01:00",
+      "created_at": "2026-11-25T04:03:45.925881+01:00",
       "complaint_id": "RC-018270",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
       "typology": "FRAIS_CONTESTES",
-      "amount_fcfa": null,
+      "amount_fcfa": 30250,
       "beneficiary_alias": null,
       "destination_operator": null,
       "iso20022_inspired": {
@@ -18200,7 +18134,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779609+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925885+01:00"
             },
             "Undrlyg": [
               {
@@ -18213,7 +18147,7 @@
                   "OrgnlEndToEndId": "E2E-RC-018270",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 30250
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -18259,7 +18193,7 @@
         "texte_brut": "BONSOIR LAGENT DU KIOSQUE A PRIS UNE COMMISSION EN PLUS SUR MON DEPOT DE 30250F. MERCI DE REGLER CA",
         "extraction": {
           "typologie": "FRAIS_CONTESTES",
-          "montant_fcfa": null,
+          "montant_fcfa": 30250,
           "heure_operation": null,
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": null,
@@ -18276,12 +18210,12 @@
     },
     {
       "dossier_id": "DOS-RC-010084",
-      "created_at": "2026-11-25T03:44:14.779624+01:00",
+      "created_at": "2026-11-25T04:03:45.925906+01:00",
       "complaint_id": "RC-010084",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
       "typology": "TRANSACTION_ECHOUEE_DEBITEE",
-      "amount_fcfa": null,
+      "amount_fcfa": 5250,
       "beneficiary_alias": null,
       "destination_operator": null,
       "iso20022_inspired": {
@@ -18304,7 +18238,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779627+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925910+01:00"
             },
             "Undrlyg": [
               {
@@ -18317,7 +18251,7 @@
                   "OrgnlEndToEndId": "E2E-RC-010084",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 5250
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -18363,7 +18297,7 @@
         "texte_brut": "Bonsoir le distributeur refuse de me rembourser 5.250F apres une operation ratee. merci faut pas me gaou",
         "extraction": {
           "typologie": "TRANSACTION_ECHOUEE_DEBITEE",
-          "montant_fcfa": null,
+          "montant_fcfa": 5250,
           "heure_operation": null,
           "alias_beneficiaire": null,
           "msisdn_beneficiaire": null,
@@ -18380,7 +18314,7 @@
     },
     {
       "dossier_id": "DOS-RC-004458",
-      "created_at": "2026-11-25T03:44:14.779642+01:00",
+      "created_at": "2026-11-25T04:03:45.925932+01:00",
       "complaint_id": "RC-004458",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -18408,7 +18342,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779646+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925937+01:00"
             },
             "Undrlyg": [
               {
@@ -18486,7 +18420,7 @@
     },
     {
       "dossier_id": "DOS-RC-009535",
-      "created_at": "2026-11-25T03:44:14.779661+01:00",
+      "created_at": "2026-11-25T04:03:45.925957+01:00",
       "complaint_id": "RC-009535",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
@@ -18514,7 +18448,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779665+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925961+01:00"
             },
             "Undrlyg": [
               {
@@ -18590,7 +18524,7 @@
     },
     {
       "dossier_id": "DOS-RC-005015",
-      "created_at": "2026-11-25T03:44:14.779679+01:00",
+      "created_at": "2026-11-25T04:03:45.925981+01:00",
       "complaint_id": "RC-005015",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
@@ -18618,7 +18552,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779682+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.925985+01:00"
             },
             "Undrlyg": [
               {
@@ -18696,7 +18630,7 @@
     },
     {
       "dossier_id": "DOS-RC-005459",
-      "created_at": "2026-11-25T03:44:14.779698+01:00",
+      "created_at": "2026-11-25T04:03:45.926006+01:00",
       "complaint_id": "RC-005459",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -18724,7 +18658,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779701+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926010+01:00"
             },
             "Undrlyg": [
               {
@@ -18800,7 +18734,7 @@
     },
     {
       "dossier_id": "DOS-RC-002323",
-      "created_at": "2026-11-25T03:44:14.779716+01:00",
+      "created_at": "2026-11-25T04:03:45.926030+01:00",
       "complaint_id": "RC-002323",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -18828,7 +18762,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779719+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926034+01:00"
             },
             "Undrlyg": [
               {
@@ -18906,7 +18840,7 @@
     },
     {
       "dossier_id": "DOS-RC-010386",
-      "created_at": "2026-11-25T03:44:14.779733+01:00",
+      "created_at": "2026-11-25T04:03:45.926054+01:00",
       "complaint_id": "RC-010386",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -18934,7 +18868,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779736+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926058+01:00"
             },
             "Undrlyg": [
               {
@@ -19010,7 +18944,7 @@
     },
     {
       "dossier_id": "DOS-RC-006565",
-      "created_at": "2026-11-25T03:44:14.779750+01:00",
+      "created_at": "2026-11-25T04:03:45.926078+01:00",
       "complaint_id": "RC-006565",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
@@ -19038,7 +18972,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779753+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926082+01:00"
             },
             "Undrlyg": [
               {
@@ -19114,12 +19048,12 @@
     },
     {
       "dossier_id": "DOS-RC-018453",
-      "created_at": "2026-11-25T03:44:14.779768+01:00",
+      "created_at": "2026-11-25T04:03:45.926102+01:00",
       "complaint_id": "RC-018453",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
       "typology": "ERREUR_DESTINATAIRE_SINCERE",
-      "amount_fcfa": null,
+      "amount_fcfa": 2500,
       "beneficiary_alias": "zinsou.agbodjan@gammapay",
       "destination_operator": "GAMMAPAY",
       "iso20022_inspired": {
@@ -19142,7 +19076,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779771+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926107+01:00"
             },
             "Undrlyg": [
               {
@@ -19155,7 +19089,7 @@
                   "OrgnlEndToEndId": "E2E-RC-018453",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 2500
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -19201,7 +19135,7 @@
         "texte_brut": "BJR JAI TAPE UN CHIFFRE DE TROP, 2500F EST ALLE CHEZ zinsou.agbodjan@gammapay. JE VOUDRAIS RECUPERER MON ARGENT SVP. J'ATTENDS VOTRE RETOUR DÈH",
         "extraction": {
           "typologie": "ERREUR_DESTINATAIRE_SINCERE",
-          "montant_fcfa": null,
+          "montant_fcfa": 2500,
           "heure_operation": null,
           "alias_beneficiaire": "zinsou.agbodjan@gammapay",
           "msisdn_beneficiaire": null,
@@ -19218,7 +19152,7 @@
     },
     {
       "dossier_id": "DOS-RC-003933",
-      "created_at": "2026-11-25T03:44:14.779787+01:00",
+      "created_at": "2026-11-25T04:03:45.926128+01:00",
       "complaint_id": "RC-003933",
       "operator": "GAMMAPAY",
       "decision": "REMBOURSER",
@@ -19246,7 +19180,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779791+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926132+01:00"
             },
             "Undrlyg": [
               {
@@ -19324,7 +19258,7 @@
     },
     {
       "dossier_id": "DOS-RC-017619",
-      "created_at": "2026-11-25T03:44:14.779806+01:00",
+      "created_at": "2026-11-25T04:03:45.926153+01:00",
       "complaint_id": "RC-017619",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -19352,7 +19286,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779809+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926157+01:00"
             },
             "Undrlyg": [
               {
@@ -19430,7 +19364,7 @@
     },
     {
       "dossier_id": "DOS-RC-005679",
-      "created_at": "2026-11-25T03:44:14.779823+01:00",
+      "created_at": "2026-11-25T04:03:45.926176+01:00",
       "complaint_id": "RC-005679",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -19458,7 +19392,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779826+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926180+01:00"
             },
             "Undrlyg": [
               {
@@ -19534,7 +19468,7 @@
     },
     {
       "dossier_id": "DOS-RC-014361",
-      "created_at": "2026-11-25T03:44:14.779840+01:00",
+      "created_at": "2026-11-25T04:03:45.926199+01:00",
       "complaint_id": "RC-014361",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -19562,7 +19496,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779843+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926204+01:00"
             },
             "Undrlyg": [
               {
@@ -19640,7 +19574,7 @@
     },
     {
       "dossier_id": "DOS-RC-000481",
-      "created_at": "2026-11-25T03:44:14.779858+01:00",
+      "created_at": "2026-11-25T04:03:45.926223+01:00",
       "complaint_id": "RC-000481",
       "operator": "GAMMAPAY",
       "decision": "REMBOURSER",
@@ -19668,7 +19602,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779861+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926227+01:00"
             },
             "Undrlyg": [
               {
@@ -19746,7 +19680,7 @@
     },
     {
       "dossier_id": "DOS-RC-016419",
-      "created_at": "2026-11-25T03:44:14.779876+01:00",
+      "created_at": "2026-11-25T04:03:45.926246+01:00",
       "complaint_id": "RC-016419",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -19774,7 +19708,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779879+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926300+01:00"
             },
             "Undrlyg": [
               {
@@ -19850,7 +19784,7 @@
     },
     {
       "dossier_id": "DOS-RC-011718",
-      "created_at": "2026-11-25T03:44:14.779893+01:00",
+      "created_at": "2026-11-25T04:03:45.926337+01:00",
       "complaint_id": "RC-011718",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -19878,7 +19812,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779896+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926342+01:00"
             },
             "Undrlyg": [
               {
@@ -19956,7 +19890,7 @@
     },
     {
       "dossier_id": "DOS-RC-010297",
-      "created_at": "2026-11-25T03:44:14.779911+01:00",
+      "created_at": "2026-11-25T04:03:45.926417+01:00",
       "complaint_id": "RC-010297",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -19984,7 +19918,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779913+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926425+01:00"
             },
             "Undrlyg": [
               {
@@ -20062,7 +19996,7 @@
     },
     {
       "dossier_id": "DOS-RC-019751",
-      "created_at": "2026-11-25T03:44:14.779927+01:00",
+      "created_at": "2026-11-25T04:03:45.926455+01:00",
       "complaint_id": "RC-019751",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -20090,7 +20024,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779930+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926460+01:00"
             },
             "Undrlyg": [
               {
@@ -20166,7 +20100,7 @@
     },
     {
       "dossier_id": "DOS-RC-004835",
-      "created_at": "2026-11-25T03:44:14.779945+01:00",
+      "created_at": "2026-11-25T04:03:45.926488+01:00",
       "complaint_id": "RC-004835",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -20194,7 +20128,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779948+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926494+01:00"
             },
             "Undrlyg": [
               {
@@ -20272,7 +20206,7 @@
     },
     {
       "dossier_id": "DOS-RC-009987",
-      "created_at": "2026-11-25T03:44:14.779964+01:00",
+      "created_at": "2026-11-25T04:03:45.926523+01:00",
       "complaint_id": "RC-009987",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -20300,7 +20234,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779967+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926530+01:00"
             },
             "Undrlyg": [
               {
@@ -20378,7 +20312,7 @@
     },
     {
       "dossier_id": "DOS-RC-014114",
-      "created_at": "2026-11-25T03:44:14.779982+01:00",
+      "created_at": "2026-11-25T04:03:45.926553+01:00",
       "complaint_id": "RC-014114",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -20406,7 +20340,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.779985+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926557+01:00"
             },
             "Undrlyg": [
               {
@@ -20484,7 +20418,7 @@
     },
     {
       "dossier_id": "DOS-RC-006327",
-      "created_at": "2026-11-25T03:44:14.779999+01:00",
+      "created_at": "2026-11-25T04:03:45.926580+01:00",
       "complaint_id": "RC-006327",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -20512,7 +20446,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780002+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926584+01:00"
             },
             "Undrlyg": [
               {
@@ -20588,7 +20522,7 @@
     },
     {
       "dossier_id": "DOS-RC-004360",
-      "created_at": "2026-11-25T03:44:14.780016+01:00",
+      "created_at": "2026-11-25T04:03:45.926610+01:00",
       "complaint_id": "RC-004360",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -20616,7 +20550,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780019+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926615+01:00"
             },
             "Undrlyg": [
               {
@@ -20692,7 +20626,7 @@
     },
     {
       "dossier_id": "DOS-RC-011832",
-      "created_at": "2026-11-25T03:44:14.780033+01:00",
+      "created_at": "2026-11-25T04:03:45.926641+01:00",
       "complaint_id": "RC-011832",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -20720,7 +20654,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780037+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926645+01:00"
             },
             "Undrlyg": [
               {
@@ -20798,7 +20732,7 @@
     },
     {
       "dossier_id": "DOS-RC-007445",
-      "created_at": "2026-11-25T03:44:14.780124+01:00",
+      "created_at": "2026-11-25T04:03:45.926670+01:00",
       "complaint_id": "RC-007445",
       "operator": "GAMMAPAY",
       "decision": "REMBOURSER",
@@ -20826,7 +20760,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780128+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926676+01:00"
             },
             "Undrlyg": [
               {
@@ -20904,12 +20838,12 @@
     },
     {
       "dossier_id": "DOS-RC-016885",
-      "created_at": "2026-11-25T03:44:14.780146+01:00",
+      "created_at": "2026-11-25T04:03:45.926699+01:00",
       "complaint_id": "RC-016885",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
       "typology": "AUTRE",
-      "amount_fcfa": 100,
+      "amount_fcfa": 100000,
       "beneficiary_alias": "bernadette.assogba@betacash",
       "destination_operator": "BETACASH",
       "iso20022_inspired": {
@@ -20932,7 +20866,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780152+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926704+01:00"
             },
             "Undrlyg": [
               {
@@ -20945,7 +20879,7 @@
                   "OrgnlEndToEndId": "E2E-RC-016885",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": 100
+                    "Amt": 100000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -20991,7 +20925,7 @@
         "texte_brut": "transfet de 100.000F vers bernadette.assogba@betacash fat par ereur ce matin a 04h51. cetait pour un autre numero. merci de fare le necsesaire. mreci de regler ca",
         "extraction": {
           "typologie": "AUTRE",
-          "montant_fcfa": 100,
+          "montant_fcfa": 100000,
           "heure_operation": "2026-11-16T04:51:00+01:00",
           "alias_beneficiaire": "bernadette.assogba@betacash",
           "msisdn_beneficiaire": null,
@@ -21008,12 +20942,12 @@
     },
     {
       "dossier_id": "DOS-RC-000426",
-      "created_at": "2026-11-25T03:44:14.780178+01:00",
+      "created_at": "2026-11-25T04:03:45.926764+01:00",
       "complaint_id": "RC-000426",
       "operator": "GAMMAPAY",
       "decision": "REMBOURSER",
       "typology": "ARNAQUE_ERREUR_DEPOT",
-      "amount_fcfa": null,
+      "amount_fcfa": 40000,
       "beneficiary_alias": "nadege.tchibozo@betacash",
       "destination_operator": "BETACASH",
       "iso20022_inspired": {
@@ -21036,7 +20970,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780183+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926770+01:00"
             },
             "Undrlyg": [
               {
@@ -21049,7 +20983,7 @@
                   "OrgnlEndToEndId": "E2E-RC-000426",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 40000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -21095,7 +21029,7 @@
         "texte_brut": "Bjr sms recu: 'bonjour cest une erreur jai envoye 40000F renvoie moi stp'. jai renvoye a nadege.tchibozo@betacash. maintenant le numero est injoignable, cest une arnaque dêh. repondez moi svp c'est chaud",
         "extraction": {
           "typologie": "ARNAQUE_ERREUR_DEPOT",
-          "montant_fcfa": null,
+          "montant_fcfa": 40000,
           "heure_operation": null,
           "alias_beneficiaire": "nadege.tchibozo@betacash",
           "msisdn_beneficiaire": null,
@@ -21116,7 +21050,7 @@
     },
     {
       "dossier_id": "DOS-RC-005059",
-      "created_at": "2026-11-25T03:44:14.780199+01:00",
+      "created_at": "2026-11-25T04:03:45.926797+01:00",
       "complaint_id": "RC-005059",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -21144,7 +21078,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780202+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926801+01:00"
             },
             "Undrlyg": [
               {
@@ -21220,7 +21154,7 @@
     },
     {
       "dossier_id": "DOS-RC-001940",
-      "created_at": "2026-11-25T03:44:14.780218+01:00",
+      "created_at": "2026-11-25T04:03:45.926827+01:00",
       "complaint_id": "RC-001940",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -21248,7 +21182,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780222+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926832+01:00"
             },
             "Undrlyg": [
               {
@@ -21324,7 +21258,7 @@
     },
     {
       "dossier_id": "DOS-RC-007901",
-      "created_at": "2026-11-25T03:44:14.780239+01:00",
+      "created_at": "2026-11-25T04:03:45.926856+01:00",
       "complaint_id": "RC-007901",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -21352,7 +21286,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780242+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926862+01:00"
             },
             "Undrlyg": [
               {
@@ -21430,7 +21364,7 @@
     },
     {
       "dossier_id": "DOS-RC-008332",
-      "created_at": "2026-11-25T03:44:14.780259+01:00",
+      "created_at": "2026-11-25T04:03:45.926926+01:00",
       "complaint_id": "RC-008332",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -21458,7 +21392,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780262+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926933+01:00"
             },
             "Undrlyg": [
               {
@@ -21536,7 +21470,7 @@
     },
     {
       "dossier_id": "DOS-RC-012693",
-      "created_at": "2026-11-25T03:44:14.780276+01:00",
+      "created_at": "2026-11-25T04:03:45.926967+01:00",
       "complaint_id": "RC-012693",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -21564,7 +21498,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780279+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.926972+01:00"
             },
             "Undrlyg": [
               {
@@ -21640,7 +21574,7 @@
     },
     {
       "dossier_id": "DOS-RC-005572",
-      "created_at": "2026-11-25T03:44:14.780294+01:00",
+      "created_at": "2026-11-25T04:03:45.926996+01:00",
       "complaint_id": "RC-005572",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
@@ -21668,7 +21602,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780297+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927000+01:00"
             },
             "Undrlyg": [
               {
@@ -21746,7 +21680,7 @@
     },
     {
       "dossier_id": "DOS-RC-010474",
-      "created_at": "2026-11-25T03:44:14.780313+01:00",
+      "created_at": "2026-11-25T04:03:45.927030+01:00",
       "complaint_id": "RC-010474",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -21774,7 +21708,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780316+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927035+01:00"
             },
             "Undrlyg": [
               {
@@ -21850,7 +21784,7 @@
     },
     {
       "dossier_id": "DOS-RC-015502",
-      "created_at": "2026-11-25T03:44:14.780333+01:00",
+      "created_at": "2026-11-25T04:03:45.927062+01:00",
       "complaint_id": "RC-015502",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -21878,7 +21812,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780353+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927067+01:00"
             },
             "Undrlyg": [
               {
@@ -21956,7 +21890,7 @@
     },
     {
       "dossier_id": "DOS-RC-010783",
-      "created_at": "2026-11-25T03:44:14.780369+01:00",
+      "created_at": "2026-11-25T04:03:45.927090+01:00",
       "complaint_id": "RC-010783",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -21984,7 +21918,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780373+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927094+01:00"
             },
             "Undrlyg": [
               {
@@ -22060,7 +21994,7 @@
     },
     {
       "dossier_id": "DOS-RC-014584",
-      "created_at": "2026-11-25T03:44:14.780389+01:00",
+      "created_at": "2026-11-25T04:03:45.927118+01:00",
       "complaint_id": "RC-014584",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -22088,7 +22022,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780392+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927123+01:00"
             },
             "Undrlyg": [
               {
@@ -22164,7 +22098,7 @@
     },
     {
       "dossier_id": "DOS-RC-009623",
-      "created_at": "2026-11-25T03:44:14.780411+01:00",
+      "created_at": "2026-11-25T04:03:45.927146+01:00",
       "complaint_id": "RC-009623",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -22192,7 +22126,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780414+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927150+01:00"
             },
             "Undrlyg": [
               {
@@ -22268,7 +22202,7 @@
     },
     {
       "dossier_id": "DOS-RC-006883",
-      "created_at": "2026-11-25T03:44:14.780429+01:00",
+      "created_at": "2026-11-25T04:03:45.927177+01:00",
       "complaint_id": "RC-006883",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -22296,7 +22230,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780432+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927181+01:00"
             },
             "Undrlyg": [
               {
@@ -22372,7 +22306,7 @@
     },
     {
       "dossier_id": "DOS-RC-001821",
-      "created_at": "2026-11-25T03:44:14.780447+01:00",
+      "created_at": "2026-11-25T04:03:45.927202+01:00",
       "complaint_id": "RC-001821",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -22400,7 +22334,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780451+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927207+01:00"
             },
             "Undrlyg": [
               {
@@ -22476,7 +22410,7 @@
     },
     {
       "dossier_id": "DOS-RC-009429",
-      "created_at": "2026-11-25T03:44:14.780466+01:00",
+      "created_at": "2026-11-25T04:03:45.927231+01:00",
       "complaint_id": "RC-009429",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -22504,7 +22438,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780469+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927236+01:00"
             },
             "Undrlyg": [
               {
@@ -22580,7 +22514,7 @@
     },
     {
       "dossier_id": "DOS-RC-010715",
-      "created_at": "2026-11-25T03:44:14.780486+01:00",
+      "created_at": "2026-11-25T04:03:45.927261+01:00",
       "complaint_id": "RC-010715",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -22608,7 +22542,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780489+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927265+01:00"
             },
             "Undrlyg": [
               {
@@ -22686,7 +22620,7 @@
     },
     {
       "dossier_id": "DOS-RC-016386",
-      "created_at": "2026-11-25T03:44:14.780503+01:00",
+      "created_at": "2026-11-25T04:03:45.927328+01:00",
       "complaint_id": "RC-016386",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -22714,7 +22648,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780507+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927334+01:00"
             },
             "Undrlyg": [
               {
@@ -22792,7 +22726,7 @@
     },
     {
       "dossier_id": "DOS-RC-004218",
-      "created_at": "2026-11-25T03:44:14.780524+01:00",
+      "created_at": "2026-11-25T04:03:45.927366+01:00",
       "complaint_id": "RC-004218",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -22820,7 +22754,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780527+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927371+01:00"
             },
             "Undrlyg": [
               {
@@ -22896,7 +22830,7 @@
     },
     {
       "dossier_id": "DOS-RC-003650",
-      "created_at": "2026-11-25T03:44:14.780542+01:00",
+      "created_at": "2026-11-25T04:03:45.927407+01:00",
       "complaint_id": "RC-003650",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -22924,7 +22858,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780572+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927415+01:00"
             },
             "Undrlyg": [
               {
@@ -23003,7 +22937,7 @@
     },
     {
       "dossier_id": "DOS-RC-019499",
-      "created_at": "2026-11-25T03:44:14.780597+01:00",
+      "created_at": "2026-11-25T04:03:45.927452+01:00",
       "complaint_id": "RC-019499",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -23031,7 +22965,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780601+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927457+01:00"
             },
             "Undrlyg": [
               {
@@ -23107,7 +23041,7 @@
     },
     {
       "dossier_id": "DOS-RC-006075",
-      "created_at": "2026-11-25T03:44:14.780622+01:00",
+      "created_at": "2026-11-25T04:03:45.927487+01:00",
       "complaint_id": "RC-006075",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -23135,7 +23069,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780625+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927499+01:00"
             },
             "Undrlyg": [
               {
@@ -23213,7 +23147,7 @@
     },
     {
       "dossier_id": "DOS-RC-010021",
-      "created_at": "2026-11-25T03:44:14.780641+01:00",
+      "created_at": "2026-11-25T04:03:45.927541+01:00",
       "complaint_id": "RC-010021",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -23241,7 +23175,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780644+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927547+01:00"
             },
             "Undrlyg": [
               {
@@ -23317,7 +23251,7 @@
     },
     {
       "dossier_id": "DOS-RC-011595",
-      "created_at": "2026-11-25T03:44:14.780677+01:00",
+      "created_at": "2026-11-25T04:03:45.927578+01:00",
       "complaint_id": "RC-011595",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -23345,7 +23279,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780681+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927584+01:00"
             },
             "Undrlyg": [
               {
@@ -23421,7 +23355,7 @@
     },
     {
       "dossier_id": "DOS-RC-002850",
-      "created_at": "2026-11-25T03:44:14.780703+01:00",
+      "created_at": "2026-11-25T04:03:45.927607+01:00",
       "complaint_id": "RC-002850",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -23449,7 +23383,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780708+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927612+01:00"
             },
             "Undrlyg": [
               {
@@ -23525,7 +23459,7 @@
     },
     {
       "dossier_id": "DOS-RC-001138",
-      "created_at": "2026-11-25T03:44:14.780726+01:00",
+      "created_at": "2026-11-25T04:03:45.927638+01:00",
       "complaint_id": "RC-001138",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -23553,7 +23487,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780729+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927645+01:00"
             },
             "Undrlyg": [
               {
@@ -23629,7 +23563,7 @@
     },
     {
       "dossier_id": "DOS-RC-014972",
-      "created_at": "2026-11-25T03:44:14.780746+01:00",
+      "created_at": "2026-11-25T04:03:45.927712+01:00",
       "complaint_id": "RC-014972",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -23657,7 +23591,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780749+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927719+01:00"
             },
             "Undrlyg": [
               {
@@ -23733,7 +23667,7 @@
     },
     {
       "dossier_id": "DOS-RC-016266",
-      "created_at": "2026-11-25T03:44:14.780767+01:00",
+      "created_at": "2026-11-25T04:03:45.927750+01:00",
       "complaint_id": "RC-016266",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
@@ -23761,7 +23695,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780770+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927756+01:00"
             },
             "Undrlyg": [
               {
@@ -23839,7 +23773,7 @@
     },
     {
       "dossier_id": "DOS-RC-009497",
-      "created_at": "2026-11-25T03:44:14.780790+01:00",
+      "created_at": "2026-11-25T04:03:45.927783+01:00",
       "complaint_id": "RC-009497",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -23867,7 +23801,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780793+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927787+01:00"
             },
             "Undrlyg": [
               {
@@ -23943,7 +23877,7 @@
     },
     {
       "dossier_id": "DOS-RC-003899",
-      "created_at": "2026-11-25T03:44:14.780832+01:00",
+      "created_at": "2026-11-25T04:03:45.927809+01:00",
       "complaint_id": "RC-003899",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -23971,7 +23905,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780838+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927815+01:00"
             },
             "Undrlyg": [
               {
@@ -24047,7 +23981,7 @@
     },
     {
       "dossier_id": "DOS-RC-003196",
-      "created_at": "2026-11-25T03:44:14.780856+01:00",
+      "created_at": "2026-11-25T04:03:45.927843+01:00",
       "complaint_id": "RC-003196",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -24075,7 +24009,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780860+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927848+01:00"
             },
             "Undrlyg": [
               {
@@ -24151,7 +24085,7 @@
     },
     {
       "dossier_id": "DOS-RC-018798",
-      "created_at": "2026-11-25T03:44:14.780877+01:00",
+      "created_at": "2026-11-25T04:03:45.927873+01:00",
       "complaint_id": "RC-018798",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -24179,7 +24113,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780881+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927879+01:00"
             },
             "Undrlyg": [
               {
@@ -24257,7 +24191,7 @@
     },
     {
       "dossier_id": "DOS-RC-007404",
-      "created_at": "2026-11-25T03:44:14.780896+01:00",
+      "created_at": "2026-11-25T04:03:45.927905+01:00",
       "complaint_id": "RC-007404",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -24285,7 +24219,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780900+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927909+01:00"
             },
             "Undrlyg": [
               {
@@ -24361,7 +24295,7 @@
     },
     {
       "dossier_id": "DOS-RC-018155",
-      "created_at": "2026-11-25T03:44:14.780917+01:00",
+      "created_at": "2026-11-25T04:03:45.927933+01:00",
       "complaint_id": "RC-018155",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -24389,7 +24323,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780920+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927938+01:00"
             },
             "Undrlyg": [
               {
@@ -24465,7 +24399,7 @@
     },
     {
       "dossier_id": "DOS-RC-001846",
-      "created_at": "2026-11-25T03:44:14.780936+01:00",
+      "created_at": "2026-11-25T04:03:45.927959+01:00",
       "complaint_id": "RC-001846",
       "operator": "BETACASH",
       "decision": "REMBOURSER",
@@ -24493,7 +24427,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780940+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.927964+01:00"
             },
             "Undrlyg": [
               {
@@ -24572,7 +24506,7 @@
     },
     {
       "dossier_id": "DOS-RC-006243",
-      "created_at": "2026-11-25T03:44:14.780969+01:00",
+      "created_at": "2026-11-25T04:03:45.928033+01:00",
       "complaint_id": "RC-006243",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -24600,7 +24534,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780973+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.928076+01:00"
             },
             "Undrlyg": [
               {
@@ -24679,12 +24613,12 @@
     },
     {
       "dossier_id": "DOS-RC-002928",
-      "created_at": "2026-11-25T03:44:14.780994+01:00",
+      "created_at": "2026-11-25T04:03:45.928122+01:00",
       "complaint_id": "RC-002928",
       "operator": "ALPHAMONEY",
       "decision": "REMBOURSER",
       "typology": "ERREUR_DESTINATAIRE_SINCERE",
-      "amount_fcfa": null,
+      "amount_fcfa": 15000,
       "beneficiary_alias": "serge.amoussou@betacash",
       "destination_operator": "BETACASH",
       "iso20022_inspired": {
@@ -24707,7 +24641,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.780997+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.928128+01:00"
             },
             "Undrlyg": [
               {
@@ -24720,7 +24654,7 @@
                   "OrgnlEndToEndId": "E2E-RC-002928",
                   "OrgnlIntrBkSttlmAmt": {
                     "Ccy": "XOF",
-                    "Amt": null
+                    "Amt": 15000
                   },
                   "OrgnlIntrBkSttlmDt": "2026-11-16",
                   "Cdtr": {
@@ -24766,7 +24700,7 @@
         "texte_brut": "svp bjr mauvais destinataire. omntant 15.000F, reference TX6352436761, heure 07h11. le beneficiaire serge.amoussou@betacash nest pas la bonne personne. repondez moi svp",
         "extraction": {
           "typologie": "ERREUR_DESTINATAIRE_SINCERE",
-          "montant_fcfa": null,
+          "montant_fcfa": 15000,
           "heure_operation": "2026-11-16T07:11:00+01:00",
           "alias_beneficiaire": "serge.amoussou@betacash",
           "msisdn_beneficiaire": null,
@@ -24783,7 +24717,7 @@
     },
     {
       "dossier_id": "DOS-RC-010157",
-      "created_at": "2026-11-25T03:44:14.781014+01:00",
+      "created_at": "2026-11-25T04:03:45.928157+01:00",
       "complaint_id": "RC-010157",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -24811,7 +24745,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.781017+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.928162+01:00"
             },
             "Undrlyg": [
               {
@@ -24887,7 +24821,7 @@
     },
     {
       "dossier_id": "DOS-RC-010046",
-      "created_at": "2026-11-25T03:44:14.781034+01:00",
+      "created_at": "2026-11-25T04:03:45.928188+01:00",
       "complaint_id": "RC-010046",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -24915,7 +24849,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.781038+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.928192+01:00"
             },
             "Undrlyg": [
               {
@@ -24991,7 +24925,7 @@
     },
     {
       "dossier_id": "DOS-RC-018460",
-      "created_at": "2026-11-25T03:44:14.781054+01:00",
+      "created_at": "2026-11-25T04:03:45.928218+01:00",
       "complaint_id": "RC-018460",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -25019,7 +24953,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.781073+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.928223+01:00"
             },
             "Undrlyg": [
               {
@@ -25097,7 +25031,7 @@
     },
     {
       "dossier_id": "DOS-RC-000982",
-      "created_at": "2026-11-25T03:44:14.781102+01:00",
+      "created_at": "2026-11-25T04:03:45.928250+01:00",
       "complaint_id": "RC-000982",
       "operator": "GAMMAPAY",
       "decision": "A_INSTRUIRE",
@@ -25125,7 +25059,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.781106+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.928254+01:00"
             },
             "Undrlyg": [
               {
@@ -25201,7 +25135,7 @@
     },
     {
       "dossier_id": "DOS-RC-018333",
-      "created_at": "2026-11-25T03:44:14.781126+01:00",
+      "created_at": "2026-11-25T04:03:45.928281+01:00",
       "complaint_id": "RC-018333",
       "operator": "BETACASH",
       "decision": "A_INSTRUIRE",
@@ -25229,7 +25163,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.781129+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.928286+01:00"
             },
             "Undrlyg": [
               {
@@ -25305,7 +25239,7 @@
     },
     {
       "dossier_id": "DOS-RC-007360",
-      "created_at": "2026-11-25T03:44:14.781147+01:00",
+      "created_at": "2026-11-25T04:03:45.928311+01:00",
       "complaint_id": "RC-007360",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -25333,7 +25267,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.781151+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.928316+01:00"
             },
             "Undrlyg": [
               {
@@ -25409,7 +25343,7 @@
     },
     {
       "dossier_id": "DOS-RC-001378",
-      "created_at": "2026-11-25T03:44:14.781169+01:00",
+      "created_at": "2026-11-25T04:03:45.928395+01:00",
       "complaint_id": "RC-001378",
       "operator": "ALPHAMONEY",
       "decision": "A_INSTRUIRE",
@@ -25437,7 +25371,7 @@
                   }
                 }
               },
-              "CreDtTm": "2026-11-25T03:44:14.781174+01:00"
+              "CreDtTm": "2026-11-25T04:03:45.928403+01:00"
             },
             "Undrlyg": [
               {
@@ -25519,8 +25453,8 @@
     "n_dossiers": 261,
     "par_decision": {
       "A_INSTRUIRE": 142,
-      "GELER": 41,
-      "REMBOURSER": 78
+      "GELER": 38,
+      "REMBOURSER": 81
     },
     "principe": "Réclam'Graph recommande et documente ; il ne gèle jamais de lui-même. La décision reste humaine, chez l'opérateur.",
     "seuils_affiches": {

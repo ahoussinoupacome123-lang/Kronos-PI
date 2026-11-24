@@ -2,7 +2,7 @@
 
 > **Données synthétiques.** SYNTHÉTIQUES — opérateurs fictifs, générateur publié  
 > **Exécution :** CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)  
-> **Généré le :** 2026-11-25T03:53:15.196077+01:00  
+> **Généré le :** 2026-11-25T04:03:58.741792+01:00  
 > **Corpus :** 20 000 réclamations  
 > Aucun chiffre de ce fichier n'est écrit en dur : tout provient d'une exécution de bench/benchmark.py sur les données du dépôt.
 
@@ -62,8 +62,8 @@ L'écart se creuse sur les montants mal écrits (« 25mil », « vingt cinq mill
 
 | Grandeur | Valeur | Étiquette |
 |---|---|---|
-| Débit référence regex | 44 662.3 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
-| Débit extracteur local | 29 158.51 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
+| Débit référence regex | 28 639.24 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
+| Débit extracteur local | 18 283.47 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
 | Débit LLM | non mesuré requêtes/s | non mesuré |
 | Prix horaire GPU | non calculé | paramètre `config.py` |
 | Inférence locale / 1 000 réclamations | non calculé | calculé si le prix horaire est rempli |
