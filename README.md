@@ -198,6 +198,17 @@ Le seul champ qui sépare vraiment les deux moteurs est le **montant** : la rege
 
 > Les faux positifs du radar sont des fluctuations au plancher de détection (quelques dizaines de plaintes au-dessus de l'ordinaire). Les seuils (25 plaintes minimum, x2.0 le volume habituel) n'ont PAS été ajustés pour les faire disparaître : les relever jusqu'à obtenir une précision parfaite sur ce jeu reviendrait à régler le détecteur sur les données d'évaluation.
 
+### Moteur d'embeddings — bge-m3 contre le repli TF-IDF
+
+Mesuré sur 300 réclamations — *CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)* :
+
+| Moteur | Dimension | Débit | Durée |
+|---|---|---|---|
+| `bge-m3` (la cible) | 1024 | 5,02 textes/s | 59,715 s |
+| `tfidf-svd` (le repli) | 256 | 237,66 textes/s | 1,262 s |
+
+> bge-m3 tourne et produit des vecteurs de dimension 1024, mais à 5.02 textes/s sur ce matériel, les 20000 réclamations demanderaient environ 1.1 h. C'est la raison chiffrée pour laquelle le pipeline livré utilise le repli TF-IDF au-delà de 2000 textes sur CPU, et bge-m3 dès qu'un GPU est présent. Le choix est mesuré, pas supposé.
+
 ### Partage minimal et traçabilité
 
 - Réclamations traitées : **20 000**

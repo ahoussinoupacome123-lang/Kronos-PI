@@ -41,6 +41,8 @@ def fnum(value, suffix="", none="non mesuré"):
 def build_block() -> str:
     bench = json.loads((ROOT / "results" / "benchmark.json").read_text(encoding="utf-8"))
     bundle = json.loads((ROOT / "results" / "demo_bundle.json").read_text(encoding="utf-8"))
+    embed_path = ROOT / "results" / "embed_bench.json"
+    embed = json.loads(embed_path.read_text(encoding="utf-8")) if embed_path.exists() else None
 
     mules = bench["detection_mules"]["avec_extraction_heuristique"]
     cons, prio, seul = mules["consortium"], mules["consortium_prioritaires"], mules["operateur_seul"]
@@ -157,6 +159,34 @@ def build_block() -> str:
         "",
         f"> {inc['note_precision']}",
         "",
+        "### Moteur d'embeddings — bge-m3 contre le repli TF-IDF",
+        "",
+    ]
+    if embed:
+        bge = embed["moteurs"].get("bge-m3", {})
+        tfidf = embed["moteurs"].get("tfidf-svd", {})
+        lines += [
+            f"Mesuré sur {fnum(embed['n_textes'])} réclamations — "
+            f"*{embed['etiquette_execution']}* :",
+            "",
+            "| Moteur | Dimension | Débit | Durée |",
+            "|---|---|---|---|",
+            f"| `bge-m3` (la cible) | {bge.get('dim', '—')} | "
+            f"{fnum(bge.get('texts_per_second'))} textes/s | "
+            f"{fnum(bge.get('seconds'), ' s')} |",
+            f"| `tfidf-svd` (le repli) | {tfidf.get('dim', '—')} | "
+            f"{fnum(tfidf.get('texts_per_second'))} textes/s | "
+            f"{fnum(tfidf.get('seconds'), ' s')} |",
+            "",
+        ]
+        if embed.get("conclusion"):
+            lines += [f"> {embed['conclusion']}", ""]
+    else:
+        lines += [
+            "Non mesuré. Lancer `make bench-embed`.",
+            "",
+        ]
+    lines += [
         "### Partage minimal et traçabilité",
         "",
         f"- Réclamations traitées : **{fnum(vol['n_reclamations'])}**",
