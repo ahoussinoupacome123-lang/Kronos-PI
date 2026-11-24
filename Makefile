@@ -7,8 +7,8 @@ STREAM  ?= .venv/bin/streamlit
 export PYTHONPATH := src
 
 .DEFAULT_GOAL := help
-.PHONY: help setup setup-gpu env data pipeline pipeline-llm bench bench-llm demo demo-live \
-        test lint serve-llm serve-ollama gpu-log all clean clean-results
+.PHONY: help setup setup-gpu env data pipeline pipeline-llm bench bench-llm bench-embed \
+        demo demo-live test lint serve-llm serve-ollama gpu-log all clean clean-results
 
 help: ## Affiche cette aide
 	@echo "Réclam'Graph — cibles disponibles :"
@@ -45,6 +45,9 @@ bench: ## Banc de mesure référence contre solution -> results/benchmark.{json,
 
 bench-llm: ## Banc avec mesure LLM sur échantillon (nécessite make serve-llm)
 	$(PY) -m bench.benchmark --with-llm
+
+bench-embed: ## Mesure bge-m3 contre le repli TF-IDF -> results/embed_bench.json
+	$(PY) -m bench.embed_bench --n 300
 
 demo: ## Lance l'interface en MODE DÉMO (résultats pré-calculés, sans GPU)
 	RECLAM_DEMO_MODE=1 $(STREAM) run app/dashboard.py
