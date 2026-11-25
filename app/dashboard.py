@@ -34,6 +34,143 @@ st.set_page_config(
     layout="wide",
 )
 
+st.markdown(
+    """
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <style>
+      :root{
+        --ink:#0b1220; --ink-2:#1e293b; --mut:#64748b; --line:rgba(15,23,42,.10);
+        --bg-soft:#f7f9fc; --card:#ffffff;
+        --brand:#1d4ed8; --brand-2:#0891b2;
+        --bad:#be123c; --bad-bg:rgba(190,18,60,.05);
+        --good:#047857; --good-bg:rgba(4,120,87,.05);
+      }
+      @media (prefers-color-scheme: dark){
+        :root{ --ink:#f1f5f9; --ink-2:#cbd5e1; --mut:#94a3b8;
+               --line:rgba(148,163,184,.16); --bg-soft:#0f172a; --card:#131c2e;
+               --brand:#60a5fa; --brand-2:#22d3ee;
+               --bad:#fb7185; --bad-bg:rgba(251,113,133,.07);
+               --good:#34d399; --good-bg:rgba(52,211,153,.07); }
+      }
+      html,body,[class*="css"]{ font-family:'Inter',system-ui,sans-serif; }
+      .block-container{ padding-top:1.6rem; padding-bottom:4rem; max-width:1320px; }
+      #MainMenu, footer{ visibility:hidden; }
+
+      /* ---------- Hero ---------- */
+      .rg-hero{ padding:.4rem 0 1.6rem; border-bottom:1px solid var(--line);
+                margin-bottom:2.2rem; }
+      .rg-eyebrow{ font-size:.76rem; font-weight:700; letter-spacing:.17em;
+                text-transform:uppercase; color:var(--brand); margin-bottom:.7rem; }
+      .rg-title{ font-size:clamp(2.6rem,6vw,4.1rem); font-weight:900;
+                letter-spacing:-.045em; line-height:1; margin:0 0 1.1rem;
+                color:var(--ink); }
+      .rg-lede{ font-size:clamp(1.15rem,2.1vw,1.6rem); font-weight:400;
+                line-height:1.45; color:var(--ink-2); max-width:60ch; margin:0 0 .55rem; }
+      .rg-lede strong{ font-weight:700; color:var(--bad); }
+      .rg-sub{ font-size:clamp(1.05rem,1.8vw,1.35rem); color:var(--ink);
+                font-weight:500; margin:0; }
+      .rg-sub strong{ color:var(--brand); font-weight:800; }
+
+      /* ---------- Cartes ---------- */
+      .rg-split{ display:grid; grid-template-columns:1fr 1fr; gap:1.1rem;
+                margin-bottom:1rem; }
+      @media(max-width:860px){ .rg-split{ grid-template-columns:1fr; } }
+      .rg-card{ border:1px solid var(--line); border-radius:16px;
+                padding:1.5rem 1.6rem; background:var(--card); }
+      .rg-card p{ font-size:1rem; line-height:1.62; color:var(--ink-2);
+                margin:0 0 .6rem; }
+      .rg-card--bad{ background:var(--bad-bg); border-left:3px solid var(--bad); }
+      .rg-card--good{ background:var(--good-bg); border-left:3px solid var(--good); }
+      .rg-card__tag{ font-size:.7rem; font-weight:800; letter-spacing:.15em;
+                text-transform:uppercase; margin-bottom:.5rem; }
+      .rg-card--bad .rg-card__tag{ color:var(--bad); }
+      .rg-card--good .rg-card__tag{ color:var(--good); }
+      .rg-card__title{ font-size:1.3rem; font-weight:800; letter-spacing:-.02em;
+                color:var(--ink); margin-bottom:.8rem; }
+      .rg-card__foot{ margin-top:1rem; padding-top:.85rem;
+                border-top:1px dashed var(--line); font-size:.93rem;
+                font-weight:650; color:var(--ink); }
+
+      /* ---------- Sections ---------- */
+      .rg-section{ font-size:.78rem; font-weight:800; letter-spacing:.16em;
+                text-transform:uppercase; color:var(--mut);
+                margin:2.6rem 0 1rem; display:flex; align-items:center; gap:.8rem; }
+      .rg-section:after{ content:""; flex:1; height:1px; background:var(--line); }
+
+      /* ---------- KPI ---------- */
+      .rg-kpis{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; }
+      @media(max-width:860px){ .rg-kpis{ grid-template-columns:1fr; } }
+      .rg-kpi{ border:1px solid var(--line); border-radius:16px;
+                padding:1.5rem 1.6rem; background:var(--card); position:relative;
+                overflow:hidden; }
+      .rg-kpi:before{ content:""; position:absolute; inset:0 auto 0 0; width:3px;
+                background:linear-gradient(180deg,var(--brand),var(--brand-2)); }
+      .rg-kpi__v{ font-size:3.3rem; font-weight:900; letter-spacing:-.05em;
+                line-height:1; color:var(--ink); }
+      .rg-kpi__v span{ font-size:1.15rem; font-weight:700; margin-left:.3rem;
+                color:var(--mut); letter-spacing:-.01em; }
+      .rg-kpi__l{ margin-top:.6rem; font-size:.74rem; font-weight:800;
+                letter-spacing:.13em; text-transform:uppercase; color:var(--mut); }
+      .rg-kpi__d{ margin-top:.7rem; font-size:.92rem; color:var(--ink-2); }
+      .rg-up:before{ content:"vs "; color:var(--mut); }
+
+      /* ---------- Etapes ---------- */
+      .rg-steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+      @media(max-width:1000px){ .rg-steps{ grid-template-columns:1fr 1fr; } }
+      .rg-step{ border-top:2px solid var(--brand); padding:1rem .2rem 0; }
+      .rg-step__n{ font-family:'JetBrains Mono',monospace; font-size:.8rem;
+                font-weight:500; color:var(--brand); letter-spacing:.08em; }
+      .rg-step__t{ font-size:1.18rem; font-weight:800; color:var(--ink);
+                margin:.35rem 0 .5rem; letter-spacing:-.02em; }
+      .rg-step p{ font-size:.95rem; line-height:1.6; color:var(--ink-2); margin:0; }
+
+      /* ---------- Principe ---------- */
+      .rg-principle{ margin-top:2.6rem; padding:1.6rem 1.8rem; border-radius:16px;
+                background:linear-gradient(135deg,rgba(29,78,216,.07),rgba(8,145,178,.05));
+                border:1px solid var(--line); border-left:3px solid var(--brand); }
+      .rg-principle__k{ font-size:.72rem; font-weight:800; letter-spacing:.15em;
+                text-transform:uppercase; color:var(--brand); margin-bottom:.6rem; }
+      .rg-principle__v{ font-size:1.45rem; font-weight:800; letter-spacing:-.025em;
+                color:var(--ink); line-height:1.3; }
+      .rg-principle__n{ margin-top:.7rem; font-size:.98rem; color:var(--ink-2);
+                line-height:1.6; }
+      .rg-note{ margin:1.6rem 0 .4rem; font-size:.86rem; color:var(--mut);
+                font-style:italic; }
+
+      /* ---------- Onglets ---------- */
+      .stTabs [data-baseweb="tab-list"]{ gap:0; border-bottom:1px solid var(--line);
+                margin-top:1.4rem; flex-wrap:wrap; }
+      .stTabs [data-baseweb="tab"]{ height:3.2rem; padding:0 1.15rem;
+                font-weight:650; font-size:.96rem; color:var(--mut);
+                background:transparent; border-radius:0; }
+      .stTabs [aria-selected="true"]{ color:var(--brand) !important;
+                box-shadow:inset 0 -2px 0 var(--brand); }
+      .stTabs [data-baseweb="tab-highlight"]{ display:none; }
+
+      /* ---------- Widgets Streamlit restants ---------- */
+      h2,h3{ font-weight:800 !important; letter-spacing:-.025em !important;
+                color:var(--ink) !important; }
+      h4{ font-weight:750 !important; color:var(--ink) !important;
+                letter-spacing:-.015em !important; }
+      [data-testid="stMetricValue"]{ font-size:2.3rem !important;
+                font-weight:850 !important; letter-spacing:-.035em; }
+      [data-testid="stMetricLabel"]{ font-size:.73rem !important;
+                font-weight:800 !important; text-transform:uppercase;
+                letter-spacing:.12em; color:var(--mut) !important; }
+      [data-testid="stMetric"]{ background:var(--card); border:1px solid var(--line);
+                border-radius:14px; padding:1.1rem 1.25rem; }
+      [data-testid="stAlert"]{ border-radius:13px; border-width:0 0 0 3px;
+                line-height:1.6; }
+      [data-testid="stSidebar"]{ border-right:1px solid var(--line); }
+      [data-testid="stSidebar"] .block-container{ padding-top:2rem; }
+      code{ font-family:'JetBrains Mono',monospace !important; font-size:.88em; }
+      hr{ opacity:.3; }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 OPERATOR_COLORS = {
     "ALPHAMONEY": "#2563eb",
     "BETACASH": "#d97706",
@@ -939,16 +1076,104 @@ def tab_privacy(bundle: dict[str, Any]) -> None:
 def main() -> None:
     bundle, demo_mode = sidebar()
 
-    st.title("Réclam'Graph")
     st.markdown(
-        "#### Analyse intelligente des réclamations clients : croiser les plaintes "
-        "de plusieurs opérateurs pour démasquer les comptes mules avant le retrait, "
-        "et transformer chaque plainte légitime en dossier de litige PI-SPI dans les délais."
+        """
+<div class="rg-hero">
+  <div class="rg-eyebrow">Analyse intelligente des réclamations clients</div>
+  <h1 class="rg-title">Réclam'Graph</h1>
+  <p class="rg-lede">
+    Trois victimes du même escroc se plaignent chez trois opérateurs différents.
+    <strong>Personne ne fait le lien.</strong> L'argent part.
+  </p>
+  <p class="rg-sub">
+    Réclam'Graph fait le lien en <strong>13 minutes</strong> — et laisse l'humain décider.
+  </p>
+</div>
+""",
+        unsafe_allow_html=True,
     )
-    st.caption(
-        "« Chaque plainte est un capteur. Seule, elle ne dit rien. Croisée entre "
-        "opérateurs, elle révèle le compte mule avant le retrait, et elle devient "
-        "d'elle-même un dossier de litige PI-SPI conforme aux délais. »"
+
+    st.markdown(
+        """
+<div class="rg-split">
+  <div class="rg-card rg-card--bad">
+    <div class="rg-card__tag">Aujourd'hui</div>
+    <div class="rg-card__title">Chacun dans son coin</div>
+    <p>Aïcha se plaint chez Moov. Un autre chez MTN. Un troisième chez Celtiis.</p>
+    <p>Chaque opérateur ne voit qu'<strong>une plainte isolée</strong>. Rien d'anormal.</p>
+    <div class="rg-card__foot">L'escroc retire tout — on le découvre 5 jours plus tard</div>
+  </div>
+  <div class="rg-card rg-card--good">
+    <div class="rg-card__tag">Avec Réclam'Graph</div>
+    <div class="rg-card__title">Les plaintes se parlent</div>
+    <p>Les trois plaintes sont rapprochées, <strong>sans qu'aucun numéro de
+       téléphone ne circule</strong> entre opérateurs.</p>
+    <p>3 plaignants, 2 opérateurs, moins d'une heure &rarr; alerte.</p>
+    <div class="rg-card__foot">L'agent est prévenu pendant que l'argent est encore là</div>
+  </div>
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        """
+<div class="rg-section">Ce que ça change — mesuré sur 20 000 réclamations</div>
+<div class="rg-kpis">
+  <div class="rg-kpi">
+    <div class="rg-kpi__v">100<span>%</span></div>
+    <div class="rg-kpi__l">Escroqueries détectées</div>
+    <div class="rg-kpi__d rg-up">60 % pour un opérateur seul</div>
+  </div>
+  <div class="rg-kpi">
+    <div class="rg-kpi__v">13<span>min</span></div>
+    <div class="rg-kpi__l">Délai de détection</div>
+    <div class="rg-kpi__d rg-up">29 min pour un opérateur seul</div>
+  </div>
+  <div class="rg-kpi">
+    <div class="rg-kpi__v">920<span>k FCFA</span></div>
+    <div class="rg-kpi__l">Encore saisissable</div>
+    <div class="rg-kpi__d rg-up">367 k FCFA pour un opérateur seul</div>
+  </div>
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        """
+<div class="rg-section">Comment ça marche</div>
+<div class="rg-steps">
+  <div class="rg-step"><div class="rg-step__n">01</div>
+    <div class="rg-step__t">Lire</div>
+    <p>Un modèle lit la plainte — français, abrégé SMS ou nouchi — et en extrait
+       le montant, l'heure et le bénéficiaire.</p></div>
+  <div class="rg-step"><div class="rg-step__n">02</div>
+    <div class="rg-step__t">Masquer</div>
+    <p>Le numéro du bénéficiaire devient une empreinte. Aucun opérateur ne voit
+       les clients d'un autre.</p></div>
+  <div class="rg-step"><div class="rg-step__n">03</div>
+    <div class="rg-step__t">Croiser</div>
+    <p>3 plaignants, 2 opérateurs, 60 minutes, même empreinte
+       &rarr; compte mule probable.</p></div>
+  <div class="rg-step"><div class="rg-step__n">04</div>
+    <div class="rg-step__t">Agir</div>
+    <p>L'agent reçoit l'alerte et le dossier de litige déjà rempli.
+       C'est lui qui décide.</p></div>
+</div>
+
+<div class="rg-principle">
+  <div class="rg-principle__k">Le principe que nous ne négocions pas</div>
+  <div class="rg-principle__v">Réclam'Graph recommande et documente.
+    Il ne gèle jamais de lui-même.</div>
+  <div class="rg-principle__n">La décision reste humaine, chez l'opérateur.
+    Chaque étape est tracée dans un journal vérifiable.</div>
+</div>
+
+<div class="rg-note">Tous les chiffres affichés proviennent d'un script et d'un
+fichier de résultats du dépôt. Aucun n'est saisi à la main.</div>
+""",
+        unsafe_allow_html=True,
     )
 
     if bundle is None:
@@ -968,13 +1193,13 @@ def main() -> None:
 
     tabs = st.tabs(
         [
-            "🎬 Le cas",
-            "⚖️ Opérateur seul / consortium",
-            "🕸️ Graphe animé",
-            "📄 Détail et dossier",
-            "📡 Radar d'incidents",
-            "📊 Résultats",
-            "🔒 Confidentialité",
+            "1 · L'histoire d'Aïcha",
+            "2 · Seul ou ensemble ?",
+            "3 · Qui est relié à qui",
+            "4 · Le dossier auto-rempli",
+            "5 · Les pannes en direct",
+            "6 · Les preuves chiffrées",
+            "7 · Et la vie privée ?",
         ]
     )
     with tabs[0]:
