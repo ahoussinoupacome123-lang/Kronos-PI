@@ -1,7 +1,7 @@
 {
   "meta": {
-    "genere_le": "2026-11-25T10:21:20.070601+00:00",
-    "etiquette_execution": "repli CPU sur machine équipée d'une Tesla T4 — aucun calcul sur GPU (heuristique locale (CPU) + )",
+    "genere_le": "2026-11-25T12:48:04.654783+00:00",
+    "etiquette_execution": "GPU run — Tesla T4 (15360 MiB) — calculé sur GPU : LLM",
     "donnees": "SYNTHÉTIQUES — opérateurs fictifs, générateur publié",
     "n_reclamations": 20000,
     "config": {
@@ -196,7 +196,7 @@
         },
         "lecture": "Sur ces textes, le mot à mot ne suffit pas : la même phrase sert à une arnaque et à une erreur sincère. C'est exactement le cas où le signal doit venir du CROISEMENT inter-opérateurs, pas du texte."
       },
-      "entrainement_s": 9.76,
+      "entrainement_s": 9.86,
       "note": "Référence supervisée : TF-IDF caractères + régression logistique, entraînée sur 14000 réclamations, évaluée sur 6000. Elle a vu des étiquettes ; les extracteurs non."
     },
     "heuristique_locale": {
@@ -261,8 +261,65 @@
       }
     },
     "llm": {
-      "mesure": false,
-      "note": "Non mesuré : aucun serveur LLM joignable. Lancer `make serve-llm` sur la machine GPU puis `make bench-llm`."
+      "f1_macro": 0.7014,
+      "exactitude": 0.79,
+      "n": 400,
+      "par_classe": {
+        "AGENT_DISTRIBUTEUR": {
+          "precision": 0.0,
+          "rappel": 0.0,
+          "f1": 0.0,
+          "support": 39
+        },
+        "ARNAQUE_ERREUR_DEPOT": {
+          "precision": 0.3448,
+          "rappel": 0.6667,
+          "f1": 0.4545,
+          "support": 15
+        },
+        "AUTRE": {
+          "precision": 1.0,
+          "rappel": 0.5,
+          "f1": 0.6667,
+          "support": 32
+        },
+        "CHANGEMENT_NUMERO": {
+          "precision": 1.0,
+          "rappel": 1.0,
+          "f1": 1.0,
+          "support": 16
+        },
+        "ERREUR_DESTINATAIRE_SINCERE": {
+          "precision": 0.9618,
+          "rappel": 0.913,
+          "f1": 0.9368,
+          "support": 138
+        },
+        "FRAIS_CONTESTES": {
+          "precision": 0.641,
+          "rappel": 1.0,
+          "f1": 0.7813,
+          "support": 25
+        },
+        "OTP_PHISHING": {
+          "precision": 0.8537,
+          "rappel": 1.0,
+          "f1": 0.9211,
+          "support": 35
+        },
+        "RETARD_TIMEOUT": {
+          "precision": 0.8298,
+          "rappel": 0.78,
+          "f1": 0.8041,
+          "support": 50
+        },
+        "TRANSACTION_ECHOUEE_DEBITEE": {
+          "precision": 0.6049,
+          "rappel": 0.98,
+          "f1": 0.7481,
+          "support": 50
+        }
+      }
     },
     "sous_corpus_ambigu": {
       "n": 1330,
@@ -588,8 +645,167 @@
       "definition_des_deux_f1": "f1_recuperable : seulement les plaintes dont le texte contient réellement la valeur attendue — c'est la mesure d'une capacité. f1_brut : tous les cas où la vérité terrain a une valeur, y compris ceux que le texte ne mentionne pas et qu'aucun extracteur ne peut donc deviner. Les deux sont publiés."
     },
     "llm": {
-      "mesure": false,
-      "note": "Non mesuré : aucun serveur LLM joignable. Lancer `make serve-llm` sur la machine GPU puis `make bench-llm`."
+      "mesure": true,
+      "n_echantillon": 400,
+      "debit": {
+        "model": "Qwen/Qwen2.5-7B-Instruct-AWQ",
+        "base_url": "http://localhost:8000/v1",
+        "concurrency": 16,
+        "requests": 400,
+        "failures": 0,
+        "prompt_tokens": 282494,
+        "completion_tokens": 36454,
+        "total_tokens": 318948,
+        "wall_seconds": 129.556,
+        "requests_per_second": 3.087,
+        "tokens_per_second": 2461.85,
+        "median_latency_ms": 5045.02,
+        "mesure": "mesuré sur cette machine"
+      },
+      "extraction": {
+        "moteur": [
+          "llm"
+        ],
+        "moteur_detail": [
+          "vLLM guided decoding, modele Qwen/Qwen2.5-7B-Instruct-AWQ"
+        ],
+        "typologie": {
+          "f1_macro": 0.7014,
+          "exactitude": 0.79,
+          "n": 400,
+          "par_classe": {
+            "AGENT_DISTRIBUTEUR": {
+              "precision": 0.0,
+              "rappel": 0.0,
+              "f1": 0.0,
+              "support": 39
+            },
+            "ARNAQUE_ERREUR_DEPOT": {
+              "precision": 0.3448,
+              "rappel": 0.6667,
+              "f1": 0.4545,
+              "support": 15
+            },
+            "AUTRE": {
+              "precision": 1.0,
+              "rappel": 0.5,
+              "f1": 0.6667,
+              "support": 32
+            },
+            "CHANGEMENT_NUMERO": {
+              "precision": 1.0,
+              "rappel": 1.0,
+              "f1": 1.0,
+              "support": 16
+            },
+            "ERREUR_DESTINATAIRE_SINCERE": {
+              "precision": 0.9618,
+              "rappel": 0.913,
+              "f1": 0.9368,
+              "support": 138
+            },
+            "FRAIS_CONTESTES": {
+              "precision": 0.641,
+              "rappel": 1.0,
+              "f1": 0.7813,
+              "support": 25
+            },
+            "OTP_PHISHING": {
+              "precision": 0.8537,
+              "rappel": 1.0,
+              "f1": 0.9211,
+              "support": 35
+            },
+            "RETARD_TIMEOUT": {
+              "precision": 0.8298,
+              "rappel": 0.78,
+              "f1": 0.8041,
+              "support": 50
+            },
+            "TRANSACTION_ECHOUEE_DEBITEE": {
+              "precision": 0.6049,
+              "rappel": 0.98,
+              "f1": 0.7481,
+              "support": 50
+            }
+          }
+        },
+        "champs": {
+          "montant_fcfa": {
+            "f1": 0.9448,
+            "precision": 0.9856,
+            "rappel": 0.9072,
+            "tp": 342,
+            "fp": 5,
+            "fn": 35,
+            "support": 377,
+            "f1_recuperable": 0.9448,
+            "f1_brut": 0.9448,
+            "support_recuperable": 377,
+            "support_brut": 377,
+            "part_recuperable": 1.0
+          },
+          "alias_beneficiaire": {
+            "f1": 0.9633,
+            "precision": 0.9633,
+            "rappel": 0.9633,
+            "tp": 105,
+            "fp": 4,
+            "fn": 4,
+            "support": 109,
+            "f1_recuperable": 0.9633,
+            "f1_brut": 0.8015,
+            "support_recuperable": 109,
+            "support_brut": 153,
+            "part_recuperable": 0.7124
+          },
+          "msisdn_beneficiaire": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "rappel": 1.0,
+            "tp": 42,
+            "fp": 0,
+            "fn": 0,
+            "support": 42,
+            "f1_recuperable": 1.0,
+            "f1_brut": 0.4308,
+            "support_recuperable": 42,
+            "support_brut": 153,
+            "part_recuperable": 0.2745
+          },
+          "reseau_destination": {
+            "f1": 0.9557,
+            "precision": 0.9557,
+            "rappel": 0.9557,
+            "tp": 151,
+            "fp": 7,
+            "fn": 7,
+            "support": 158,
+            "f1_recuperable": 0.9557,
+            "f1_brut": 0.5657,
+            "support_recuperable": 158,
+            "support_brut": 253,
+            "part_recuperable": 0.6245
+          },
+          "heure_operation": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "rappel": 1.0,
+            "tp": 90,
+            "fp": 0,
+            "fn": 0,
+            "support": 90,
+            "f1_recuperable": 1.0,
+            "f1_brut": 0.2353,
+            "support_recuperable": 90,
+            "support_brut": 400,
+            "part_recuperable": 0.225
+          }
+        },
+        "f1_moyenne_champs": 0.9728,
+        "f1_moyenne_champs_brute": 0.5956,
+        "definition_des_deux_f1": "f1_recuperable : seulement les plaintes dont le texte contient réellement la valeur attendue — c'est la mesure d'une capacité. f1_brut : tous les cas où la vérité terrain a une valeur, y compris ceux que le texte ne mentionne pas et qu'aucun extracteur ne peut donc deviner. Les deux sont publiés."
+      }
     },
     "lecture": "L'écart se creuse sur les montants mal écrits (« 25mil », « vingt cinq mille ») que la regex ne sait pas lire. Les alias et numéros, eux, sont copiés tels quels et la regex les attrape."
   },
@@ -1218,30 +1434,57 @@
   },
   "debit": {
     "reference_regex": {
-      "reclamations_par_seconde": 19204.28,
-      "secondes": 1.041,
+      "reclamations_par_seconde": 14167.27,
+      "secondes": 1.412,
       "etiquette": "GPU run — Tesla T4 (15360 MiB)"
     },
     "heuristique_locale": {
-      "reclamations_par_seconde": 9220.7,
-      "secondes": 2.169,
+      "reclamations_par_seconde": 13642.97,
+      "secondes": 1.466,
       "etiquette": "GPU run — Tesla T4 (15360 MiB)"
     },
     "llm": {
-      "mesure": "non mesuré"
+      "model": "Qwen/Qwen2.5-7B-Instruct-AWQ",
+      "base_url": "http://localhost:8000/v1",
+      "concurrency": 16,
+      "requests": 400,
+      "failures": 0,
+      "prompt_tokens": 282494,
+      "completion_tokens": 36454,
+      "total_tokens": 318948,
+      "wall_seconds": 129.556,
+      "requests_per_second": 3.087,
+      "tokens_per_second": 2461.85,
+      "median_latency_ms": 5045.02,
+      "mesure": "mesuré sur cette machine"
     }
   },
   "cout": {
-    "etiquette_execution": "repli CPU sur machine équipée d'une Tesla T4 — aucun calcul sur GPU (heuristique locale (CPU))",
-    "moteur_mesure": "heuristique locale (CPU)",
-    "debit_mesure_reclamations_par_seconde": 9220.7,
-    "debit_llm_mesure": null,
+    "etiquette_execution": "GPU run — Tesla T4 (15360 MiB) — calculé sur GPU : LLM",
+    "materiel_present": "GPU run — Tesla T4 (15360 MiB)",
+    "moteur_mesure": "LLM mesuré",
+    "debit_mesure_reclamations_par_seconde": 3.087,
+    "debit_llm_mesure": {
+      "model": "Qwen/Qwen2.5-7B-Instruct-AWQ",
+      "base_url": "http://localhost:8000/v1",
+      "concurrency": 16,
+      "requests": 400,
+      "failures": 0,
+      "prompt_tokens": 282494,
+      "completion_tokens": 36454,
+      "total_tokens": 318948,
+      "wall_seconds": 129.556,
+      "requests_per_second": 3.087,
+      "tokens_per_second": 2461.85,
+      "median_latency_ms": 5045.02,
+      "mesure": "mesuré sur cette machine"
+    },
     "prix_horaire_gpu_fcfa": 314.56,
     "prix_horaire_gpu_source": "AWS g4dn.xlarge (T4 16 Go) à la demande, 0,526 USD/h × 598,03 FCFA/USD — prix public relevé le 25/11/2026",
-    "cout_inference_locale_pour_1000_fcfa": "non calculé",
-    "cout_inference_locale_note": "débit LLM non mesuré sur ce GPU (make bench-llm)",
+    "cout_inference_locale_pour_1000_fcfa": 28.31,
+    "cout_inference_locale_note": "prix horaire ÷ débit LLM mesuré (3.087 réclamations/s)",
     "cout_api_cloud_pour_1000_fcfa": 70.68,
-    "cout_api_cloud_note": "dérivé des tokens mesurés (642,19 entrée + 107,93 sortie par réclamation) × Claude Haiku 5.5 (palier ≤ 100 k tokens) — voir results/token_cost.json",
+    "cout_api_cloud_note": "dérivé des tokens mesurés (642,19 entrée + 107,93 sortie par réclamation) × API cloud commerciale (palier ≤ 100 k tokens) — voir results/token_cost.json",
     "cout_humain_pour_1000_fcfa": {
       "reclamation_simple": 270000.0,
       "reclamation_investiguee": 700000.0,
@@ -1258,15 +1501,14 @@
       "Les coûts humains (270 / 700 FCFA par réclamation) sont des ESTIMATIONS issues d'offres d'emploi, pas des mesures.",
       "Les repères éditeurs (Intercom Fin, Thematic) sont des prix publics affichés, pas des mesures de notre part.",
       "Le prix proposé de 5 FCFA par réclamation est une HYPOTHÈSE de modèle économique."
-    ],
-    "materiel_present": "GPU run — Tesla T4 (15360 MiB)"
+    ]
   },
   "gpu": {
     "disponible": true,
-    "n_echantillons": 120,
-    "utilisation_moyenne_pct": 4.58,
+    "n_echantillons": 2215,
+    "utilisation_moyenne_pct": 13.81,
     "utilisation_max_pct": 100.0,
-    "memoire_max_mib": 2649.0,
+    "memoire_max_mib": 12829.0,
     "memoire_totale_mib": 15360.0
   }
 }

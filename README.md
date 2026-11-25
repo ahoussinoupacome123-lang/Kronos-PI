@@ -138,9 +138,9 @@ situation actuelle. Détail complet : [`results/benchmark.md`](results/benchmark
 <!-- RESULTATS:DEBUT -->
 
 > Chiffres régénérés depuis `results/` par `scripts/refresh_results_block.py`.  
-> **Exécution : repli CPU sur machine équipée d'une Tesla T4 — aucun calcul sur GPU (heuristique locale (CPU) + )**  
+> **Exécution : GPU run — Tesla T4 (15360 MiB) — calculé sur GPU : LLM**  
 > Corpus : 20 000 réclamations synthétiques sur 7 jours, 3 opérateurs fictifs.  
-> Généré le 2026-11-25 à 10:21:20.
+> Généré le 2026-11-25 à 12:48:04.
 
 ### Détection de comptes mules — l'écart principal
 
@@ -204,10 +204,10 @@ Mesuré sur 300 réclamations — *GPU run — Tesla T4 (15360 MiB) — calculé
 
 | Moteur | Dimension | Débit | Durée |
 |---|---|---|---|
-| `bge-m3` (la cible) | 1024 | 32,83 textes/s | 9,139 s |
-| `tfidf-svd` (le repli) | 256 | 496,55 textes/s | 0,604 s |
+| `bge-m3` (la cible) | 1024 | 25,65 textes/s | 11,696 s |
+| `tfidf-svd` (le repli) | 256 | 492,92 textes/s | 0,609 s |
 
-> bge-m3 tourne et produit des vecteurs de dimension 1024, mais à 32.83 textes/s sur ce matériel, les 20000 réclamations demanderaient environ 0.2 h. C'est la raison chiffrée pour laquelle le pipeline livré utilise le repli TF-IDF au-delà de 2000 textes sur CPU, et bge-m3 dès qu'un GPU est présent. Le choix est mesuré, pas supposé.
+> bge-m3 tourne et produit des vecteurs de dimension 1024, mais à 25.65 textes/s sur ce matériel, les 20000 réclamations demanderaient environ 0.2 h. C'est la raison chiffrée pour laquelle le pipeline livré utilise le repli TF-IDF au-delà de 2000 textes sur CPU, et bge-m3 dès qu'un GPU est présent. Le choix est mesuré, pas supposé.
 
 ### Partage minimal et traçabilité
 
@@ -220,12 +220,12 @@ Mesuré sur 300 réclamations — *GPU run — Tesla T4 (15360 MiB) — calculé
 
 | Grandeur | Valeur | Étiquette |
 |---|---|---|
-| Débit référence regex | 19 204,28 réclamations/s | GPU run — Tesla T4 (15360 MiB) |
-| Débit extracteur local | 9 220,7 réclamations/s | GPU run — Tesla T4 (15360 MiB) |
-| Débit LLM | non mesuré requêtes/s | à mesurer sur la machine GPU (`make bench-llm`) |
+| Débit référence regex | 14 167,27 réclamations/s | GPU run — Tesla T4 (15360 MiB) |
+| Débit extracteur local | 13 642,97 réclamations/s | GPU run — Tesla T4 (15360 MiB) |
+| Débit LLM | 3,087 requêtes/s | à mesurer sur la machine GPU (`make bench-llm`) |
 | Prix horaire GPU | 314,56 FCFA/h | AWS g4dn.xlarge (T4 16 Go) à la demande, 0,526 USD/h × 598,03 FCFA/USD — prix public relevé le 25/11/2026 |
-| Inférence locale / 1 000 réclamations | non calculé | débit LLM non mesuré sur ce GPU (make bench-llm) |
-| API cloud / 1 000 réclamations | 70,68 FCFA | dérivé des tokens mesurés (642,19 entrée + 107,93 sortie par réclamation) × Claude Haiku 5.5 (palier ≤ 100 k tokens) — voir results/token_cost.json |
+| Inférence locale / 1 000 réclamations | 28.31 | prix horaire ÷ débit LLM mesuré (3.087 réclamations/s) |
+| API cloud / 1 000 réclamations | 70,68 FCFA | dérivé des tokens mesurés (642,19 entrée + 107,93 sortie par réclamation) × API cloud commerciale (palier ≤ 100 k tokens) — voir results/token_cost.json |
 | Agent humain / 1 000 (simple) | 270 000 FCFA | estimation (offres d'emploi, section 12) |
 | Agent humain / 1 000 (investiguée) | 700 000 FCFA | estimation (offres d'emploi, section 12) |
 | Repère — Intercom Fin (par résolution) / 1 000 | 590 000 FCFA | prix public affiché |

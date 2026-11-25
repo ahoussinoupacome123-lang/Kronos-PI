@@ -48,7 +48,7 @@ Décidée le 25/11/2026. Plus aucune modification de code après 14 h 30 le 25/1
 
 | ID | Tâche | Responsable | Échéance | Statut | Lien avec les exigences |
 |---|---|---|---|---|---|
-| T-01 | Servir le LLM sur la T4 (`make serve-llm`), puis `make pipeline-llm` et `make bench-llm` | Pacôme | 25/11 14 h | À faire | EXT, BUG-001 |
+| T-01 | Servir le LLM sur la T4 (`make serve-llm`), puis `make pipeline-llm` et `make bench-llm` | Pacôme | 25/11 14 h | Terminé | vLLM servi sur T4, `bench-llm` : 3,087 req/s sur Qwen2.5-7B-AWQ |
 | T-02 | Mesurer bge-m3 sur le corpus (`make bench-embed`) avec `record_gpu_evidence.sh` en parallèle | Pacôme | 25/11 14 h | Terminé | RAD, preuve GPU |
 | T-03 | Corriger BUG-001 : l'étiquette d'exécution nomme le moteur réellement utilisé | Pacôme | 25/11 14 h | Terminé | BUG-001 |
 | T-04 | Régénérer `README`, `benchmark.md`, pousser `results/` ; puis `cd web && npm run sync` | Pacôme, Joachim | 25/11 14 h 15 | À faire | WEB-04 |
@@ -71,7 +71,7 @@ Décidée le 25/11/2026. Plus aucune modification de code après 14 h 30 le 25/1
 |---|---|---|---|---|---|---|---|
 | EXT-01 | Fiche structurée depuis le texte brut | P0 | Terminé | Pacôme | 2026-11-17 | `feat/extraction` | Regex, heuristique et LLM codés |
 | EXT-02 | Robustesse au bruit (25mil, nouchi, fautes) | P0 | Terminé | Pacôme | 2026-11-22 | `feat/extraction` | Regex montant corrigée (BUG-004) |
-| EXT-03 | JSON guidé, aucune valeur inventée | P0 | En cours | Pacôme | — | `feat/extraction` | Codé ; jamais exécuté sur le GPU (BUG-001) |
+| EXT-03 | JSON guidé, aucune valeur inventée | P0 | Terminé | Pacôme | 2026-11-25 | `feat/extraction` | Exécuté sur Tesla T4 : 400 appels, 3,087 req/s |
 | EXT-04 | Moteurs nommés dans chaque sortie | P0 | Terminé | Pacôme | 2026-11-17 | `feat/extraction` | L'étiquette d'exécution, elle, ne suit pas le moteur (BUG-001) |
 | EXT-05 | Entrées multicanal, voix française | P1 | En cours | Pacôme | 2026-11-24 | `feat/voice` | Voix FR en bonus, non mesurée |
 | EXT-06 | Inférence chez l'opérateur | P1 | À faire | — | — | — | Pilote |

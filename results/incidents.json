@@ -10,12 +10,12 @@
       "count": 329,
       "baseline_mean": 6.11,
       "zscore": 29.0,
-      "cluster_id": 2,
-      "cluster_size": 131,
+      "cluster_id": 3,
+      "cluster_size": 145,
       "sample_texts": [
-        "Bjr madame transac TX9560409563 de 10.000F en attente depuis plus dune heure. le eneficiaire na rien recu, mon solde est debite.",
-        "svp bonjour mon transfert de 25000F vers Betacash est bloque depuis 12h02, ca affiche en cours de traitement. idez moi vite svp on dit quoi",
-        "SVP BONJOUR TRANSAC TX6882918331 DE 20000 FCFA EN ATTENTE DEPUIS PLUS DUNE HEURE. LE BENEFICIAIRE NA RIEN DU TT RECU, MON SOLDE EST DEBIT. MCI DE REGLER CA"
+        "Bonsoir probleme sur le reseau? mes envois vers Betacash tombent en timeout. montant concerne 20 000 FCFA. j'attends votre retour",
+        "Slt probleme sur le reseau? mes envois vers Alphamoney tombent en timeout. montant concerne 25000 FCFA.",
+        "svp bonjour mon transfert de 25000F vers Betacash est bloque depuis 12h02, ca affiche en cours de traitement. idez moi vite svp on dit quoi"
       ],
       "label": "Panne d'interopérabilité probable (PI-SPI) — vague de timeouts sur les 3 réseaux",
       "gt_incident_id": null
@@ -30,12 +30,12 @@
       "count": 25,
       "baseline_mean": 12.0,
       "zscore": 8.77,
-      "cluster_id": 0,
-      "cluster_size": 9,
+      "cluster_id": 2,
+      "cluster_size": 7,
       "sample_texts": [
-        "Brj jai tape un chiffre de trop, 50mil est alle chez bernadette.djossou@alphamoney. je voudrais recupeerer mon argent svp. mci de regler ac",
-        "Bonjour l'equiep je me suis trompe de numero, jai envoye 100mil a nadege.quenum@alphamoney au lieu de ma sooeur. pouvvez ovuus annnuler svp. j'attends votre ertuor",
-        "Slt svp jai fait une erreur de destintaire sur 20000, le beneficiiare est prudence.soglo@betacash sur le reseau Betacash. comment on annule? svp aidez moi nukun"
+        "Slt transfert de 30 mil vers emmanuel.dagba@alphamoney fait par erreur ce matin a 09h53. cetait pour un autre numero. merci de faire le necessaire. je compte sur vs mi kplon",
+        "Bonjour l'equipe transfert de soixante quinze mille vers fatou.dossou@alphamoney fait par erreur ce matin a 09h28. cetait pour un autre numero. merci de faire le necessaire. mon frère",
+        "Salut transfert de 15.000F vesr emmanuel.adjovi@gammapay fati par erreur ce matin a 07h57. cetait pour un autre numero. merci de faire le necessaire. svp aidez moi kudo"
       ],
       "label": "Pic de ERREUR_DESTINATAIRE_SINCERE sur GAMMAPAY",
       "gt_incident_id": null

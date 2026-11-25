@@ -2,7 +2,7 @@
 
 > **Données synthétiques.** SYNTHÉTIQUES — opérateurs fictifs, générateur publié  
 > **Exécution :** GPU run — Tesla T4 (15360 MiB)  
-> **Généré le :** 2026-11-25T10:21:20.070601+00:00  
+> **Généré le :** 2026-11-25T12:48:04.654783+00:00  
 > **Corpus :** 20 000 réclamations  
 > Aucun chiffre de ce fichier n'est écrit en dur : tout provient d'une exécution de bench/benchmark.py sur les données du dépôt.
 
@@ -62,11 +62,11 @@ L'écart se creuse sur les montants mal écrits (« 25mil », « vingt cinq mill
 
 | Grandeur | Valeur | Étiquette |
 |---|---|---|
-| Débit référence regex | 19 204.28 réclamations/s | GPU run — Tesla T4 (15360 MiB) |
-| Débit extracteur local | 9 220.7 réclamations/s | GPU run — Tesla T4 (15360 MiB) |
-| Débit LLM | non mesuré requêtes/s | non mesuré |
+| Débit référence regex | 14 167.27 réclamations/s | GPU run — Tesla T4 (15360 MiB) |
+| Débit extracteur local | 13 642.97 réclamations/s | GPU run — Tesla T4 (15360 MiB) |
+| Débit LLM | 3.09 requêtes/s | mesuré sur cette machine |
 | Prix horaire GPU | 314.56 | paramètre `config.py` |
-| Inférence locale / 1 000 réclamations | non calculé | calculé si le prix horaire est rempli |
+| Inférence locale / 1 000 réclamations | 28.31 | calculé si le prix horaire est rempli |
 | API cloud / 1 000 | 70.68 | paramètre `config.py` |
 | Agent humain / 1 000 (simple) | 270 000 FCFA | estimation (offres d'emploi, section 12) |
 | Agent humain / 1 000 (investiguée) | 700 000 FCFA | estimation (offres d'emploi, section 12) |
@@ -84,10 +84,10 @@ L'écart se creuse sur les montants mal écrits (« 25mil », « vingt cinq mill
 
 ## 5. Preuve d'utilisation du GPU
 
-- Échantillons `nvidia-smi` : 120
-- Utilisation moyenne : 4.58 %
+- Échantillons `nvidia-smi` : 2215
+- Utilisation moyenne : 13.81 %
 - Utilisation maximale : 100.0 %
-- Mémoire maximale : 2649.0 / 15360.0 MiB
+- Mémoire maximale : 12829.0 / 15360.0 MiB
 
 ## 6. Ce que ce tableau ne dit pas
 
