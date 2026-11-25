@@ -102,9 +102,36 @@ Le journal détaillé et horodaté reste [DECISIONS.md](DECISIONS.md) (une ligne
 
 | Qui | Rôle |
 |---|---|
-| **Joachim** | Porteur du projet, plateforme web, pitch, décisions produit |
-| **Pacôme** | Pipeline Python, données synthétiques, banc de mesure, exécution GPU (T4) |
+| **Joachim** | Porteur du projet, pitch, mise en ligne, partenaires, décisions produit (dont le nom), visuels du deck |
+| **Pacôme** | Tout ce qui est GPU et LLM : pipeline Python, données synthétiques, banc de mesure, exécution sur T4, serveur vLLM |
+| **Ange Marie** | Design, refonte de la plateforme web et nouvelles fonctionnalités de l'interface |
 | **Claude (agents)** | Cadrage, documentation, plateforme web, revues (founder, juridique), sous la validation de Joachim |
+
+### Répartition des tâches restantes (décidée le 25/11/2026)
+
+Règle commune : **plus aucune modification de code après 14 h 30 le 25/11**, on répète. Détail et statut : [suivi du cahier des charges](docs/03-suivi/suivi-cahier-des-charges.md#répartition-de-léquipe).
+
+| Qui | Avant le passage (25/11, 16 h) | Avant la finale (26/11, 14 h) | Après le challenge |
+|---|---|---|---|
+| **Pacôme** | `make serve-llm`, `make pipeline-llm`, `make bench-llm`, `make bench-embed` sur la T4, avec `record_gpu_evidence.sh` ; corriger BUG-001 (étiquette du moteur réel) ; régénérer et pousser `results/` ; vidéo de secours | Exposer le vLLM à la plateforme (`LLM_BASE_URL`) pour Nexus | Mesures sur données réelles anonymisées (pilote) |
+| **Ange Marie** | Retouches seulement : vérification mobile de la landing, du tableau de bord et de Nexus | Écran de l'opérateur hôte qui valide la suspension ; essai d'une réclamation porté dans le web | Refonte avec le nouveau nom, mode sombre, vues par rôle, export PDF du dossier, `DESIGN.md` |
+| **Joachim** | Corriger `PITCH.md` ; mettre la plateforme en ligne (adresse de secours) ; deux répétitions chronométrées de 13 min ; 5 réponses de 20 s | Visuels et captures du deck ; « on serait prêts à tester » de Moov ou Payfonte au forum ; trancher le nom | Relecture juridique, lettre d'intérêt, pilote de 8 semaines |
+
+Si la mesure LLM échoue avant 14 h : retirer l'étiquette « GPU run » partout et l'annoncer d'entrée au jury.
+
+### Nom de la solution (à trancher par Joachim)
+
+**Réclam'Graph est conservé pour le passage du 25/11** : les livrables ont été déposés sous ce nom. Changement envisagé pour la finale ou après, en présentant « nouveau nom, anciennement Réclam'Graph ».
+
+| Proposition | Origine et sens | Réserve |
+|---|---|---|
+| **Nunya** (recommandé) | Éwé : « la connaissance ». Proverbe *Nunya adidoe, asi metunee o* : le savoir est un baobab, un seul bras ne peut en faire le tour, comme un opérateur seul face à une arnaque | Sens et orthographe à faire vérifier par un locuteur |
+| **Zangbeto** | Bénin : les gardiens de la nuit, qui veillent et attrapent les voleurs | Tradition vodoun : vérifier l'accueil avant usage commercial |
+| **Gbé** | Fon et éwé : « la langue, la voix » ; chaque plainte est une voix | Mot très courant, difficile à protéger |
+| **Tresse** | Une mèche seule casse, tressées elles tiennent | — |
+| **Faisceau** | « Faisceau d'indices concordants », vocabulaire du régulateur | Pas d'ancrage culturel |
+
+Avant adoption : vérifier la disponibilité de la marque et du nom de domaine.
 
 ## 7. Documents
 
@@ -133,6 +160,7 @@ Le journal détaillé et horodaté reste [DECISIONS.md](DECISIONS.md) (une ligne
 | 25/11/2026 matin | Dépendances GPU corrigées, coûts depuis prix publics, exécution sur Tesla T4 (en repli CPU), refonte de l'UI Streamlit, essai interactif |
 | 25/11/2026 midi | Cadrage complet (`docs/`), `context.md`, branche `feat/plateforme-web` : plateforme web Next.js et assistant Nexus |
 | 25/11/2026 12h33 | PR #1 fusionnée dans `main` : cadrage, juridique, revues founder et plateforme web ; branche supprimée |
+| 25/11/2026 | Arrivée d'Ange Marie (design) ; tâches restantes réparties entre Pacôme, Ange Marie et Joachim ; cinq propositions de nouveau nom |
 
 ## 9. Documents non applicables
 

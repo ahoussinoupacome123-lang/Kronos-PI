@@ -25,8 +25,8 @@
 | DOS — Dossier de litige | 5 | 3 | 60 % |
 | MIN — Minuteur | 4 | 3 | 75 % |
 | AUD — Audit | 4 | 2 | 50 % |
-| WEB — Plateforme web | 8 | 0 | 0 % (6 en cours) |
-| ASSIST — Nexus | 5 | 0 | 0 % (4 en cours) |
+| WEB — Plateforme web | 8 | 6 | 75 % (1 en cours) |
+| ASSIST — Nexus | 5 | 4 | 80 % |
 | API | 4 | 0 | 0 % |
 | SEC — Sécurité | 6 | 1 | 17 % |
 
@@ -41,6 +41,29 @@
 | F1 extraction LLM | — | non mesuré | ≥ 0,95 (montant) | **Bloqué par BUG-001** |
 | Débit GPU | — | non mesuré | ≥ 50/s | **Bloqué par BUG-001** |
 | Coût local / 1 000 | — | non calculé | publié | **Bloqué par BUG-001** |
+
+## Répartition de l'équipe
+
+Décidée le 25/11/2026. Plus aucune modification de code après 14 h 30 le 25/11. Résumé par personne : [context.md, section 6](../../context.md#6-intervenants).
+
+| ID | Tâche | Responsable | Échéance | Statut | Lien avec les exigences |
+|---|---|---|---|---|---|
+| T-01 | Servir le LLM sur la T4 (`make serve-llm`), puis `make pipeline-llm` et `make bench-llm` | Pacôme | 25/11 14 h | À faire | EXT, BUG-001 |
+| T-02 | Mesurer bge-m3 sur le corpus (`make bench-embed`) avec `record_gpu_evidence.sh` en parallèle | Pacôme | 25/11 14 h | À faire | RAD, preuve GPU |
+| T-03 | Corriger BUG-001 : l'étiquette d'exécution nomme le moteur réellement utilisé | Pacôme | 25/11 14 h | À faire | BUG-001 |
+| T-04 | Régénérer `README`, `benchmark.md`, pousser `results/` ; puis `cd web && npm run sync` | Pacôme, Joachim | 25/11 14 h 15 | À faire | WEB-04 |
+| T-05 | Vidéo de secours (OBS) du pipeline sur GPU | Pacôme | 25/11 14 h 30 | À faire | — |
+| T-06 | Brancher Nexus sur le vLLM (`LLM_BASE_URL`) | Pacôme | 26/11 | À faire | ASSIST-05 |
+| T-07 | Vérification mobile de la landing, du tableau de bord et de Nexus (retouches seulement) | Ange Marie | 25/11 14 h 30 | À faire | WEB-01, WEB-03 |
+| T-08 | Écran de l'opérateur hôte qui valide la suspension | Ange Marie | 26/11 | À faire | WEB-08 |
+| T-09 | Essai d'une réclamation dans le web (écrire une plainte, voir la chaîne réagir) | Ange Marie | 26/11 | À faire | WEB-03 |
+| T-10 | Refonte avec le nouveau nom, mode sombre, vues par rôle, export PDF, `DESIGN.md` | Ange Marie | Après le challenge | À faire | WEB-07 |
+| T-11 | Corriger `PITCH.md` selon la revue founder | Joachim | 25/11 13 h | À faire | — |
+| T-12 | Mettre la plateforme en ligne (adresse de secours) | Joachim | 25/11 14 h | À faire | WEB |
+| T-13 | Deux répétitions chronométrées de 13 min, 5 réponses de 20 s | Joachim, équipe | 25/11 16 h | À faire | — |
+| T-14 | Visuels et captures du deck | Joachim | 26/11 | À faire | — |
+| T-15 | Obtenir un « on serait prêts à tester » de Moov ou Payfonte au forum | Joachim | 26/11 midi | À faire | — |
+| T-16 | Trancher le nouveau nom (propositions dans `context.md`) | Joachim | 26/11 | À faire | — |
 
 ## EXT — Extraction
 
