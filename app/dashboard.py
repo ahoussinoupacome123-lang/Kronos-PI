@@ -8,32 +8,25 @@ Le **mode démo** est le mode par défaut, volontairement : le brief impose de
 pré-calculer les résultats et de ne pas faire dépendre les trois minutes de
 démonstration d'une session GPU en direct.
 """
-
 from __future__ import annotations
-
 import json
 import math
 import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Any
-
 import streamlit as st
-
 ROOT = Path(__file__).resolve().parents[1]
 for _p in (str(ROOT), str(ROOT / "src")):
     if _p not in sys.path:
         sys.path.insert(0, _p)
-
 from reclam_graph import config as cfg  # noqa: E402
 from reclam_graph.llm import get_client  # noqa: E402
-
 st.set_page_config(
     page_title="Réclam'Graph — analyse intelligente des réclamations clients",
     page_icon="🕸️",
     layout="wide",
 )
-
 st.markdown(
     """
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +49,6 @@ st.markdown(
       html,body,[class*="css"]{ font-family:'Inter',system-ui,sans-serif; }
       .block-container{ padding-top:1.6rem; padding-bottom:4rem; max-width:1320px; }
       #MainMenu, footer{ visibility:hidden; }
-
       /* ---------- Hero ---------- */
       .rg-hero{ padding:.4rem 0 1.6rem; border-bottom:1px solid var(--line);
                 margin-bottom:2.2rem; }
@@ -71,7 +63,6 @@ st.markdown(
       .rg-sub{ font-size:clamp(1.05rem,1.8vw,1.35rem); color:var(--ink);
                 font-weight:500; margin:0; }
       .rg-sub strong{ color:var(--brand); font-weight:800; }
-
       /* ---------- Cartes ---------- */
       .rg-split{ display:grid; grid-template-columns:1fr 1fr; gap:1.1rem;
                 margin-bottom:1rem; }
@@ -91,13 +82,11 @@ st.markdown(
       .rg-card__foot{ margin-top:1rem; padding-top:.85rem;
                 border-top:1px dashed var(--line); font-size:.93rem;
                 font-weight:650; color:var(--ink); }
-
       /* ---------- Sections ---------- */
       .rg-section{ font-size:.78rem; font-weight:800; letter-spacing:.16em;
                 text-transform:uppercase; color:var(--mut);
                 margin:2.6rem 0 1rem; display:flex; align-items:center; gap:.8rem; }
       .rg-section:after{ content:""; flex:1; height:1px; background:var(--line); }
-
       /* ---------- KPI ---------- */
       .rg-kpis{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; }
       @media(max-width:860px){ .rg-kpis{ grid-template-columns:1fr; } }
@@ -114,7 +103,6 @@ st.markdown(
                 letter-spacing:.13em; text-transform:uppercase; color:var(--mut); }
       .rg-kpi__d{ margin-top:.7rem; font-size:.92rem; color:var(--ink-2); }
       .rg-up:before{ content:"vs "; color:var(--mut); }
-
       /* ---------- Etapes ---------- */
       .rg-steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
       @media(max-width:1000px){ .rg-steps{ grid-template-columns:1fr 1fr; } }
@@ -124,7 +112,6 @@ st.markdown(
       .rg-step__t{ font-size:1.18rem; font-weight:800; color:var(--ink);
                 margin:.35rem 0 .5rem; letter-spacing:-.02em; }
       .rg-step p{ font-size:.95rem; line-height:1.6; color:var(--ink-2); margin:0; }
-
       /* ---------- Principe ---------- */
       .rg-principle{ margin-top:2.6rem; padding:1.6rem 1.8rem; border-radius:16px;
                 background:linear-gradient(135deg,rgba(29,78,216,.07),rgba(8,145,178,.05));
@@ -137,7 +124,6 @@ st.markdown(
                 line-height:1.6; }
       .rg-note{ margin:1.6rem 0 .4rem; font-size:.86rem; color:var(--mut);
                 font-style:italic; }
-
       /* ---------- Onglets ---------- */
       .stTabs [data-baseweb="tab-list"]{ gap:0; border-bottom:1px solid var(--line);
                 margin-top:1.4rem; flex-wrap:wrap; }
@@ -147,7 +133,6 @@ st.markdown(
       .stTabs [aria-selected="true"]{ color:var(--brand) !important;
                 box-shadow:inset 0 -2px 0 var(--brand); }
       .stTabs [data-baseweb="tab-highlight"]{ display:none; }
-
       /* ---------- Widgets Streamlit restants ---------- */
       h2,h3{ font-weight:800 !important; letter-spacing:-.025em !important;
                 color:var(--ink) !important; }
@@ -170,7 +155,6 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-
 OPERATOR_COLORS = {
     "ALPHAMONEY": "#2563eb",
     "BETACASH": "#d97706",
@@ -178,48 +162,35 @@ OPERATOR_COLORS = {
 }
 MULE_RED = "#dc2626"
 NEUTRAL = "#94a3b8"
-
-
 def fcfa(value: Any) -> str:
     if value is None or isinstance(value, str):
         return str(value if value is not None else "—")
     return f"{int(value):,}".replace(",", " ") + " FCFA"
-
-
 # ---------------------------------------------------------------------------
 # Chargement
 # ---------------------------------------------------------------------------
 @st.cache_data(show_spinner=False)
 def load_bundle(path_str: str, mtime: float) -> dict[str, Any]:
     return json.loads(Path(path_str).read_text(encoding="utf-8"))
-
-
 @st.cache_data(show_spinner=False)
 def load_benchmark(path_str: str, mtime: float) -> dict[str, Any]:
     return json.loads(Path(path_str).read_text(encoding="utf-8"))
-
-
 @st.cache_data(show_spinner="Recalcul du pipeline en direct…")
 def run_live(engine: str, embed_engine: str) -> dict[str, Any]:
     from reclam_graph.pipeline import run as run_pipeline
-
     return run_pipeline(engine=engine, embed_engine=embed_engine, write=False, verbose=False)
-
-
 # ---------------------------------------------------------------------------
 # Barre latérale
 # ---------------------------------------------------------------------------
 def sidebar() -> tuple[dict[str, Any] | None, bool]:
     st.sidebar.title("Réclam'Graph")
     st.sidebar.caption("Équipe Token Titans — équipe 12 — GPU Challenge 2026")
-
     st.sidebar.warning(
         "**Données synthétiques.** Les opérateurs ALPHAMONEY, BETACASH et "
         "GAMMAPAY sont fictifs. Le générateur et la vérité terrain sont publiés "
         "dans ce dépôt.",
         icon="⚠️",
     )
-
     demo_mode = st.sidebar.toggle(
         "Mode démo (résultats pré-calculés)",
         value=cfg.DEMO_MODE,
@@ -228,7 +199,6 @@ def sidebar() -> tuple[dict[str, Any] | None, bool]:
             "C'est le mode à utiliser pendant la démonstration."
         ),
     )
-
     bundle: dict[str, Any] | None = None
     if demo_mode:
         if cfg.DEMO_BUNDLE.exists():
@@ -255,7 +225,6 @@ def sidebar() -> tuple[dict[str, Any] | None, bool]:
         elif cfg.DEMO_BUNDLE.exists():
             bundle = load_bundle(str(cfg.DEMO_BUNDLE), cfg.DEMO_BUNDLE.stat().st_mtime)
             st.sidebar.info("Affichage du dernier paquet en attendant un calcul direct.")
-
     st.sidebar.divider()
     st.sidebar.subheader("Règle visible")
     st.sidebar.markdown(
@@ -263,16 +232,35 @@ def sidebar() -> tuple[dict[str, Any] | None, bool]:
 - **{cfg.MULE_MIN_COMPLAINANTS} plaignants** indépendants minimum
 - **{cfg.MULE_MIN_OPERATORS} opérateurs** distincts minimum
 - fenêtre glissante de **{cfg.MULE_WINDOW_MINUTES} minutes**
-
 > Réclam'Graph **recommande et documente ; il ne gèle jamais de lui-même.**
 > La décision reste humaine, chez l'opérateur, et elle est tracée.
 """
     )
-
     st.sidebar.divider()
     st.sidebar.subheader("Environnement")
+    # Deux machines differentes peuvent etre en jeu : celle qui a PRODUIT les
+    # mesures affichees, et celle qui fait tourner l'interface. On nomme les
+    # deux, sinon la barre laterale contredit l'onglet des resultats.
+    mesures_sur = None
+    if cfg.BENCHMARK_JSON.exists():
+        try:
+            mesures_sur = json.loads(cfg.BENCHMARK_JSON.read_text(encoding="utf-8"))[
+                "cout"
+            ]["etiquette_execution"]
+        except (OSError, json.JSONDecodeError, KeyError):
+            mesures_sur = None
+
+    st.sidebar.caption("Mesures affichées, produites sur :")
+    st.sidebar.code(mesures_sur or "aucune mesure disponible", language=None)
+    st.sidebar.caption("Interface exécutée sur :")
     st.sidebar.code(cfg.HARDWARE.run_label, language=None)
-    if not cfg.HARDWARE.has_gpu:
+
+    if mesures_sur and "GPU run" in mesures_sur:
+        st.sidebar.caption(
+            "Les débits publiés viennent de la machine GPU ci-dessus, pas de "
+            "celle qui affiche cette page."
+        )
+    elif not cfg.HARDWARE.has_gpu:
         st.sidebar.caption(
             "Aucun GPU détecté ici : les débits affichés sont des débits CPU et "
             "sont étiquetés comme tels."
@@ -289,8 +277,6 @@ def sidebar() -> tuple[dict[str, Any] | None, bool]:
             "elle est détenue par un tiers de confiance et hors du dépôt."
         )
     return bundle, demo_mode
-
-
 # ---------------------------------------------------------------------------
 # Onglet 1 — Le cas
 # ---------------------------------------------------------------------------
@@ -299,7 +285,6 @@ def tab_case(bundle: dict[str, Any]) -> None:
     if not case:
         st.info("Aucun cas de démonstration dans le paquet.")
         return
-
     st.subheader("Le cas — mardi, 14 h 02")
     st.markdown(
         "Aïcha, cliente **ALPHAMONEY** à Cotonou, reçoit un SMS : "
@@ -311,7 +296,6 @@ def tab_case(bundle: dict[str, Any]) -> None:
         "autres plaignants chez deux concurrents. Ici, les trois opérateurs sont "
         "fictifs et les données synthétiques."
     )
-
     reclamation = case["reclamation"]
     left, right = st.columns([3, 2])
     with left:
@@ -348,7 +332,6 @@ def tab_case(bundle: dict[str, Any]) -> None:
             f"bénéficiaire {truth['alias_beneficiaire']}",
             icon="✅" if ok else "⚠️",
         )
-
     st.divider()
     st.markdown("**Chronologie de la campagne (vérité terrain du scénario)**")
     rows = [
@@ -362,8 +345,6 @@ def tab_case(bundle: dict[str, Any]) -> None:
         for r in case.get("chronologie", [])
     ]
     st.dataframe(rows, width="stretch", hide_index=True)
-
-
 # ---------------------------------------------------------------------------
 # Onglet 2 — Opérateur seul vs consortium
 # ---------------------------------------------------------------------------
@@ -373,7 +354,6 @@ def tab_comparison(bundle: dict[str, Any]) -> None:
         "La référence est l'opérateur seul avec son tri par mots-clés, "
         "c'est-à-dire la situation actuelle."
     )
-
     campaigns = {c["campaign_id"]: c for c in bundle["verite_terrain"]["campagnes"]}
     if not campaigns:
         st.info("Aucune campagne dans le paquet.")
@@ -386,10 +366,8 @@ def tab_comparison(bundle: dict[str, Any]) -> None:
         "Campagne", list(campaigns), format_func=lambda c: labels[c], index=0
     )
     campaign = campaigns[chosen]
-
     cons = _best_alert(bundle["alertes_consortium"], chosen)
     seul = _best_alert(bundle["alertes_operateur_seul"], chosen)
-
     col_a, col_b = st.columns(2)
     with col_a:
         st.markdown("#### 🔴 Opérateur seul")
@@ -434,7 +412,6 @@ def tab_comparison(bundle: dict[str, Any]) -> None:
             st.caption(f"Règle appliquée : {cons['rule']} — score {cons['score']}")
         else:
             st.metric("Délai de détection", "non détectée")
-
     st.divider()
     st.markdown("#### Compteur « FCFA encore gelables » — ce que le temps coûte")
     curve = bundle.get("courbes_gelables", {}).get(chosen, [])
@@ -442,7 +419,6 @@ def tab_comparison(bundle: dict[str, Any]) -> None:
         _plot_freezable(curve, cons, seul, campaign)
     else:
         st.info("Courbe absente du paquet.")
-
     st.divider()
     st.markdown("#### Les cinq campagnes du scénario")
     rows = []
@@ -477,11 +453,8 @@ def tab_comparison(bundle: dict[str, Any]) -> None:
         "Montants issus du modèle de retrait du scénario synthétique "
         "(`datagen/scenarios.py`) : une grandeur du scénario, pas une mesure de terrain."
     )
-
-
 def _headline(alert: dict[str, Any]) -> str:
     """Le texte d'alerte de la démo, dans le format exact du brief.
-
     Chiffres de l'opérateur qui HÉBERGE le compte (montants exacts, solde
     réel) : une fois alerté, c'est lui qui voit le compte. La vue hub,
     volontairement arrondie, reste dans `total_fcfa`.
@@ -494,15 +467,11 @@ def _headline(alert: dict[str, Any]) -> str:
         f"{alert['n_operators']} opérateurs, {plain(total)} FCFA dont "
         f"{plain(frozen)} encore sur le compte"
     )
-
-
 def _best_alert(alerts: list[dict[str, Any]], campaign_id: str) -> dict[str, Any] | None:
     rows = [a for a in alerts if a.get("gt_campaign_id") == campaign_id]
     if not rows:
         return None
     return min(rows, key=lambda a: a["alert_at"])
-
-
 def _plot_freezable(
     curve: list[list[Any]],
     cons: dict[str, Any] | None,
@@ -510,7 +479,6 @@ def _plot_freezable(
     campaign: dict[str, Any],
 ) -> None:
     import plotly.graph_objects as go
-
     times = [datetime.fromisoformat(t) for t, _ in curve]
     values = [v for _, v in curve]
     fig = go.Figure()
@@ -553,8 +521,6 @@ def _plot_freezable(
         f"à partir de {campaign['cashout_start_at'][11:16]}. "
         "Alerter plus tôt sauve toujours plus : la courbe ne remonte jamais.".replace(",", " ")
     )
-
-
 # ---------------------------------------------------------------------------
 # Onglet 3 — Graphe animé
 # ---------------------------------------------------------------------------
@@ -568,17 +534,14 @@ def tab_graph(bundle: dict[str, Any]) -> None:
     if not graphs:
         st.info("Aucun graphe dans le paquet.")
         return
-
     alerts_by_id = {a["alert_id"]: a for a in bundle["alertes_consortium"]}
     def _label(aid: str) -> str:
         a = alerts_by_id.get(aid, {})
         return f"{a.get('gt_campaign_id') or 'faux positif'} — {aid}"
-
     chosen = st.selectbox("Alerte", list(graphs), format_func=_label)
     graph = graphs[chosen]
     alert = alerts_by_id.get(chosen, {})
     edges = sorted(graph["edges"], key=lambda e: e["order"])
-
     fire_index = next(
         (i for i, e in enumerate(edges) if e["ts"] >= graph["fires_at"]), len(edges) - 1
     )
@@ -591,7 +554,6 @@ def tab_graph(bundle: dict[str, Any]) -> None:
     )
     fired = step >= fire_index + 1
     _plot_graph(graph, edges[:step], fired)
-
     if fired and alert:
         st.error(f"🚨 **{_headline(alert)}**")
         c1, c2, c3, c4 = st.columns(4)
@@ -608,15 +570,11 @@ def tab_graph(bundle: dict[str, Any]) -> None:
             f"{cfg.MULE_WINDOW_MINUTES} minutes. Aucune alerte.",
             icon="✅",
         )
-
-
 def _plot_graph(graph: dict[str, Any], edges: list[dict[str, Any]], fired: bool) -> None:
     import plotly.graph_objects as go
-
     beneficiary = next(n for n in graph["nodes"] if n["kind"] == "beneficiaire")
     complainants = [n for n in graph["nodes"] if n["kind"] == "plaignant"]
     operators = sorted({n["operator"] for n in complainants})
-
     pos: dict[str, tuple[float, float]] = {beneficiary["id"]: (0.0, 0.0)}
     for i, op in enumerate(operators):
         angle = 2 * math.pi * i / max(1, len(operators)) + math.pi / 2
@@ -631,7 +589,6 @@ def _plot_graph(graph: dict[str, Any], edges: list[dict[str, Any]], fired: bool)
         angle = base - spread / 2 + (spread * (k / max(1, total - 1)) if total > 1 else 0)
         pos[node["id"]] = (1.45 * math.cos(angle), 1.45 * math.sin(angle))
         per_op[op] = k + 1
-
     fig = go.Figure()
     shown = {e["source"] for e in edges}
     for e in edges:
@@ -689,8 +646,6 @@ def _plot_graph(graph: dict[str, Any], edges: list[dict[str, Any]], fired: bool)
         plot_bgcolor="rgba(0,0,0,0)",
     )
     st.plotly_chart(fig, width="stretch")
-
-
 # ---------------------------------------------------------------------------
 # Onglet 4 — Détail réclamation
 # ---------------------------------------------------------------------------
@@ -700,7 +655,6 @@ def tab_detail(bundle: dict[str, Any]) -> None:
     if not dossiers:
         st.info("Aucun dossier dans le paquet.")
         return
-
     with_alert = [d for d in dossiers if d["evidence"].get("alerte_mule")]
     without = [d for d in dossiers if not d["evidence"].get("alerte_mule")]
     only_alerts = st.checkbox(
@@ -710,7 +664,6 @@ def tab_detail(bundle: dict[str, Any]) -> None:
     pool = with_alert if only_alerts else dossiers
     if not pool:
         pool = dossiers
-
     chosen = st.selectbox(
         "Dossier",
         range(len(pool)),
@@ -720,7 +673,6 @@ def tab_detail(bundle: dict[str, Any]) -> None:
         ),
     )
     d = pool[chosen]
-
     badge = {"GELER": "🔴", "REMBOURSER": "🟢", "A_INSTRUIRE": "🟡"}.get(d["decision"], "")
     st.markdown(f"### {badge} Décision proposée : **{d['decision']}**")
     if d["decision"] == "GELER":
@@ -729,7 +681,6 @@ def tab_detail(bundle: dict[str, Any]) -> None:
             "action. Réclam'Graph ne gèle rien.",
             icon="🤝",
         )
-
     c1, c2 = st.columns([3, 2])
     with c1:
         st.markdown("**Réclamation brute**")
@@ -760,12 +711,10 @@ def tab_detail(bundle: dict[str, Any]) -> None:
             "paramètre de configuration."
         )
         st.caption(f"Ouvert le {opened:%Y-%m-%d à %H:%M}.")
-
     st.divider()
     st.markdown("**Demande d'annulation PI-SPI pré-remplie**")
     st.warning(d["irrevocability_notice"], icon="⚖️")
     st.json(d["iso20022_inspired"], expanded=False)
-
     st.divider()
     st.markdown("**Validation humaine**")
     validator = st.text_input(
@@ -800,7 +749,6 @@ def tab_detail(bundle: dict[str, Any]) -> None:
         },
         expanded=False,
     )
-
     audit = bundle.get("audit", {})
     st.divider()
     st.markdown("**Piste d'audit du traitement complet**")
@@ -810,8 +758,6 @@ def tab_detail(bundle: dict[str, Any]) -> None:
     a3.metric("En attente de validation", audit.get("entrees_en_attente_de_validation", 0))
     st.caption(audit.get("portee_du_chainage", ""))
     st.caption(audit.get("base_reglementaire", ""))
-
-
 # ---------------------------------------------------------------------------
 # Onglet 5 — Radar d'incidents
 # ---------------------------------------------------------------------------
@@ -823,12 +769,10 @@ def tab_radar(bundle: dict[str, Any]) -> None:
     )
     incidents = bundle.get("incidents", [])
     evaluation = bundle.get("evaluation_incidents", {})
-
     c1, c2, c3 = st.columns(3)
     c1.metric("Incidents injectés dans le scénario", evaluation.get("incidents_injectes", 0))
     c2.metric("Incidents détectés", evaluation.get("incidents_detectes", 0))
     c3.metric("Alertes émises par le radar", evaluation.get("alertes_radar_totales", 0))
-
     if not incidents:
         st.info("Aucun incident détecté dans ce paquet.")
         return
@@ -853,7 +797,6 @@ def tab_radar(bundle: dict[str, Any]) -> None:
                 )
             for text in inc.get("sample_texts", [])[:3]:
                 st.code(text, language=None)
-
     for row in evaluation.get("detail", []):
         if row["detecte"]:
             st.success(
@@ -868,8 +811,6 @@ def tab_radar(bundle: dict[str, Any]) -> None:
         "exige donc quelques jours d'historique : les premières heures du corpus "
         "ne sont pas jugées."
     )
-
-
 # ---------------------------------------------------------------------------
 # Onglet 6 — Résultats
 # ---------------------------------------------------------------------------
@@ -879,10 +820,8 @@ def tab_results(bundle: dict[str, Any]) -> None:
         st.warning("results/benchmark.json est absent. Lancez `make bench`.", icon="📊")
         return
     r = load_benchmark(str(cfg.BENCHMARK_JSON), cfg.BENCHMARK_JSON.stat().st_mtime)
-
     st.code(r["meta"]["etiquette_execution"], language=None)
     st.caption(r["meta"]["avertissement"])
-
     mules = r["detection_mules"]["avec_extraction_heuristique"]
     cons, prio, seul = mules["consortium"], mules["consortium_prioritaires"], mules["operateur_seul"]
     st.markdown("#### Détection de mules — l'écart principal")
@@ -905,7 +844,6 @@ def tab_results(bundle: dict[str, Any]) -> None:
     u[1].metric("FCFA gelables — opérateur seul", fcfa(seul["fcfa_encore_gelables_total"]))
     u[2].metric("Précision après score", f"{prio['precision']:.0%}",
                 delta=f"{prio['precision'] - cons['precision']:+.0%} vs règle brute")
-
     st.divider()
     st.markdown("#### Typologie — « quasi ex aequo », et nous le disons")
     typ = r["typologie"]
@@ -919,7 +857,6 @@ def tab_results(bundle: dict[str, Any]) -> None:
         width="stretch", hide_index=True,
     )
     st.caption(typ["lecture"])
-
     amb = typ.get("sous_corpus_ambigu", {})
     if amb.get("n"):
         st.markdown("#### Le sous-corpus ambigu — la mesure qui porte l'argument")
@@ -951,7 +888,6 @@ def tab_results(bundle: dict[str, Any]) -> None:
             f"pourquoi le signal doit venir du croisement inter-opérateurs.",
             icon="🎯",
         )
-
     st.divider()
     st.markdown("#### Extraction de champs — là où la regex décroche")
     champs = r["extraction_champs"]
@@ -971,7 +907,6 @@ def tab_results(bundle: dict[str, Any]) -> None:
     llm = champs.get("llm", {})
     if not llm.get("mesure"):
         st.warning(f"**Mesure LLM : {llm.get('note', 'non mesurée')}**", icon="🧪")
-
     st.divider()
     st.markdown("#### Débit et coût")
     cout = r["cout"]
@@ -994,15 +929,11 @@ def tab_results(bundle: dict[str, Any]) -> None:
     )
     for w in cout["avertissements"]:
         st.caption(f"• {w}")
-
     st.divider()
     st.markdown("#### Courbe GPU")
     _gpu_curve(r)
-
-
 def _gpu_curve(r: dict[str, Any]) -> None:
     import plotly.graph_objects as go
-
     gpu = r.get("gpu", {})
     if not gpu.get("disponible"):
         st.warning(
@@ -1036,8 +967,6 @@ def _gpu_curve(r: dict[str, Any]) -> None:
     c[0].metric("Utilisation moyenne", f"{gpu['utilisation_moyenne_pct']} %")
     c[1].metric("Utilisation maximale", f"{gpu['utilisation_max_pct']} %")
     c[2].metric("Mémoire maximale", f"{gpu['memoire_max_mib']:.0f} / {gpu['memoire_totale_mib']:.0f} MiB")
-
-
 # ---------------------------------------------------------------------------
 # Onglet 7 — Confidentialité
 # ---------------------------------------------------------------------------
@@ -1052,7 +981,6 @@ def tab_privacy(bundle: dict[str, Any]) -> None:
         "Une réclamation sans bénéficiaire identifiable ne quitte pas l'opérateur : "
         "elle n'apporterait rien au hub et augmenterait la surface de données."
     )
-
     priv = bundle["meta"]["confidentialite"]
     a, b = st.columns(2)
     with a:
@@ -1068,14 +996,11 @@ def tab_privacy(bundle: dict[str, Any]) -> None:
     st.info(f"**En production :** {priv['production']}", icon="🏛️")
     st.caption(priv["contexte"])
     st.code(f"Algorithme : {priv['algorithme']}\nClé : {priv['cle']}", language=None)
-
-
 # ---------------------------------------------------------------------------
 # Programme principal
 # ---------------------------------------------------------------------------
 def main() -> None:
     bundle, demo_mode = sidebar()
-
     st.markdown(
         """
 <div class="rg-hero">
@@ -1161,7 +1086,6 @@ def main() -> None:
     <p>L'agent reçoit l'alerte et le dossier de litige déjà rempli.
        C'est lui qui décide.</p></div>
 </div>
-
 <div class="rg-principle">
   <div class="rg-principle__k">Le principe que nous ne négocions pas</div>
   <div class="rg-principle__v">Réclam'Graph recommande et documente.
@@ -1169,7 +1093,6 @@ def main() -> None:
   <div class="rg-principle__n">La décision reste humaine, chez l'opérateur.
     Chaque étape est tracée dans un journal vérifiable.</div>
 </div>
-
 <div class="rg-note">Tous les chiffres affichés proviennent d'un script et d'un
 fichier de résultats du dépôt. Aucun n'est saisi à la main.</div>
 """,
