@@ -28,7 +28,7 @@ export default function NextActions({ items }: { items: ActionItem[] }) {
   const remaining = enriched.filter((x) => !x.done).length;
 
   return (
-    <section aria-labelledby="next-title" className="rounded-[22px] bg-white shadow-[0_10px_34px_-24px_rgba(11,27,75,0.45)]">
+    <section aria-labelledby="next-title" className="rounded-[22px] bg-white shadow-[0_10px_34px_-24px_rgba(30,43,37,0.45)]">
       <div className="flex items-center justify-between border-b border-paper-line px-5 py-3.5">
         <h2 id="next-title" className="font-medium">
           À faire maintenant, dans cet ordre

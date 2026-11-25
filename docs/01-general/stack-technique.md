@@ -49,7 +49,9 @@
 | React / React DOM | 19.3.0 | Interface | — |
 | TypeScript | 5 | Typage | — |
 | Tailwind CSS | 4.3.3 | Styles | Design system rapide |
-| three | 0.187.0 | Animation 3D du hero (graphe de réseaux) | Différencier la landing |
+| gsap + @gsap/react | 3.15.1 / 2.1.2 | Animations de la page d'accueil (révélations, séquence fixée au défilement, compteurs) via `useGSAP` | Référence de l'animation liée au défilement ; nettoyage automatique en React |
+| lenis | 1.3.28 | Défilement fluide de la page d'accueil, synchronisé avec ScrollTrigger | Transitions continues entre sections ; désactivé si `prefers-reduced-motion` |
+| lucide-react | 1.80.0 | Icônes de la page d'accueil | Bibliothèque d'icônes reconnue, trait homogène |
 | jose | 6.2.x | Session signée (JWT HS256) en cookie `HttpOnly` | Léger, compatible runtime Node |
 | react-markdown + remark-gfm | 10.1 / 4.0 | Rendu des CGU et de la politique de confidentialité depuis `web/content/legal/*.md` | Textes juridiques éditables en Markdown |
 

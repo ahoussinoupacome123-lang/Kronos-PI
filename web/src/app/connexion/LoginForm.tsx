@@ -25,7 +25,7 @@ export default function LoginForm({ suite }: { suite: string }) {
           placeholder="prenom.nom@etablissement.com"
           aria-invalid={Boolean(state.error)}
           aria-describedby={state.error ? "login-error" : undefined}
-          className="mt-2 block w-full rounded-xl border border-paper-line bg-paper-2 px-4 py-3 text-ink outline-none transition-[border-color,box-shadow] placeholder:text-slate/70 focus:border-indigo-deep focus:shadow-[0_0_0_4px_rgba(61,75,196,0.12)]"
+          className="mt-2 block w-full rounded-xl border border-paper-line bg-paper-2 px-4 py-3 text-ink outline-none transition-[border-color,box-shadow] placeholder:text-slate/70 focus:border-indigo-deep focus:shadow-[0_0_0_4px_rgba(30,43,37,0.12)]"
         />
       </div>
       <div>
@@ -44,7 +44,7 @@ export default function LoginForm({ suite }: { suite: string }) {
           autoComplete="current-password"
           required
           aria-invalid={Boolean(state.error)}
-          className="mt-2 block w-full rounded-xl border border-paper-line bg-paper-2 px-4 py-3 text-ink outline-none transition-[border-color,box-shadow] focus:border-indigo-deep focus:shadow-[0_0_0_4px_rgba(61,75,196,0.12)]"
+          className="mt-2 block w-full rounded-xl border border-paper-line bg-paper-2 px-4 py-3 text-ink outline-none transition-[border-color,box-shadow] focus:border-indigo-deep focus:shadow-[0_0_0_4px_rgba(30,43,37,0.12)]"
         />
       </div>
       {state.error && (

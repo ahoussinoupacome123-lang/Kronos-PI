@@ -29,7 +29,7 @@
 
 | Route | Accès | Rôle |
 |---|---|---|
-| `/` | Public | Landing : hero Three.js (graphe vivant des réseaux), proposition de valeur, défilement des EME du consortium, fonctionnement en quatre temps, résultats mesurés, sécurité et vie privée, appel à l'action, pied de page |
+| `/` | Public | Accueil (DA claire, vert lime) : photo dont l'écran de téléphone rejoue la campagne CMP-01, logos des émetteurs visés, deux plaintes ambiguës du corpus, fonctionnement en quatre temps fixé au défilement, preuves mesurées en grille, responsable litiges et dossier minuté, confidentialité, appel au pilote. Composants dans `web/src/components/accueil/`, chiffres dans `web/src/lib/accueil.ts` |
 | `/connexion` | Public | Connexion professionnelle, comptes de démonstration |
 | `/tableau-de-bord` | Connecté | Vue d'ensemble : ce qui demande une décision maintenant, indicateurs clés face à la référence |
 | `/tableau-de-bord/alertes` | Connecté | Alertes mules : prioritaires, à qualifier ; preuves, montant gelable, opérateurs à prévenir |
@@ -69,10 +69,13 @@ Les sous-routes exactes du tableau de bord suivent l'implémentation de `web/src
 | Élément | Règle |
 |---|---|
 | Ton | Fintech de confiance : sobre, précis, chiffres au premier plan |
-| Icônes | SVG en ligne, trait cohérent |
-| Accessibilité | Contraste AA, navigation clavier, `prefers-reduced-motion` respecté pour les animations Three.js |
+| Couleurs | Une seule palette (DA vert lime) dans `web/src/app/globals.css`. Les noms historiques (`ink`, `paper`, `laterite`, `sage`…) gardent leur rôle : nuit vert-anthracite pour la barre latérale, rouge = geler, vert = rembourser, ambre = échéance proche. Réseaux fictifs : `reseau-a/b/c`, mêmes couleurs partout. Aucune couleur écrite en dur dans les composants |
+| Icônes | Tableau de bord : SVG en ligne (`components/ui/icons.tsx`). Accueil : bibliothèque Lucide (`lucide-react`) |
+| Accessibilité | Contraste AA, navigation clavier, `prefers-reduced-motion` respecté : animations GSAP déclarées sous `gsap.matchMedia`, défilement fluide coupé |
 | Responsive | Mobile, tablette, bureau |
-| EME du consortium | Logos SVG des opérateurs **fictifs** de la démo (ALPHAMONEY, BETACASH, GAMMAPAY…) ; les marques réelles ne sont citées que comme contexte de marché, jamais associées à des fraudes |
+| EME du consortium | Données et alertes : opérateurs **fictifs** uniquement (ALPHAMONEY, BETACASH, GAMMAPAY). Logos officiels des émetteurs réels (`web/public/visuels/emetteurs/`, sources : Wikimedia Commons et sites officiels) : uniquement dans la bande « marché visé » de l'accueil, jamais présentés comme clients ni associés à une fraude |
+| Visuels | `web/public/visuels/` : photos (héros, responsable fraude, agente au kiosque), fond, série d'objets 3D (PNG transparents : téléphone, bouclier, réseau, dossier, sablier, billets, carte UEMOA, bulles, puce GPU, cible, clé). Produits pour le projet par l'équipe ; photos en JPEG, objets limités à 900 px. Connexion : photo de la responsable fraude et alerte prioritaire réelle. Tableau de bord : `PageHead` accepte un `objet` 3D par page |
+| Mobile | Toute grille responsive déclare `grid-cols-1` par défaut ; l'accueil rogne l'horizontal (`overflow-x: clip`) pour que les animations venues des côtés n'élargissent jamais la page. Vérifié : aucune page ne dépasse 390 px de large |
 
 ## 4. Interface Streamlit
 

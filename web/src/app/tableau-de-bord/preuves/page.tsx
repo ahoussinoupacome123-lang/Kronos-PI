@@ -18,7 +18,7 @@ export default function ProofsPage() {
 
   return (
     <div className="mx-auto max-w-6xl">
-      <PageHead
+      <PageHead objet="puce-gpu"
         title="Preuves mesurées"
         lead={
           <>
@@ -42,14 +42,14 @@ export default function ProofsPage() {
       )}
 
       <h2 className="mb-3 font-medium">Comptes mules : opérateur seul contre consortium</h2>
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Kpi label="Rappel des campagnes" value={pct(cons.rappel)} compare={`Opérateur seul : ${pct(solo.rappel)}`} help="Campagnes détectées sur campagnes injectées. 5 campagnes : l'incertitude est large." tone="laterite" />
         <Kpi label="Délai médian" value={`${num(cons.delai_detection_median_minutes)} min`} compare={`Opérateur seul : ${num(solo.delai_detection_median_minutes)} min`} help="Depuis la première plainte de la campagne." />
         <Kpi label="FCFA gelables" value={fcfa(cons.fcfa_encore_gelables_total)} compare={`Opérateur seul : ${fcfa(solo.fcfa_encore_gelables_total)}`} help="Modèle de retrait du scénario synthétique : grandeur simulée." tone="sage" />
         <Kpi label="Précision après score" value={`${prio.alertes_vraies} sur ${prio.alertes_totales}`} compare={`Règle brute ${pct(cons.precision)} · opérateur seul ${pct(solo.precision)}`} help="Alertes vraies sur alertes prioritaires. Le score a été réglé sur ce même corpus synthétique : chiffre à confirmer sur données réelles. Les autres alertes restent « à qualifier »." tone="amber" />
       </div>
 
-      <div className="mt-8 grid gap-6 xl:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-6 xl:grid-cols-2">
         <Panel title="Typologie : la référence supervisée gagne, nous le disons">
           <table className="w-full text-sm">
             <tbody className="divide-y divide-paper-line">

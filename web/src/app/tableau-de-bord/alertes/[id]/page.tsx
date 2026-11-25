@@ -55,7 +55,7 @@ export default async function AlertDetail({ params }: { params: Promise<{ id: st
         </div>
       </header>
 
-      <div className="grid gap-6 xl:grid-cols-[1.35fr_1fr]">
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.35fr_1fr]">
         <div className="space-y-6">
           <Panel title="Comment les plaintes ont convergé" aside={<span className="text-xs text-slate">rejouable</span>}>
             {graph ? (

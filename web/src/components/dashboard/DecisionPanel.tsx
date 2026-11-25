@@ -30,10 +30,10 @@ export default function DecisionPanel({ alertId, user, hostOperator, freezable }
   }
 
   return (
-    <div className="rounded-[22px] bg-white shadow-[0_10px_34px_-24px_rgba(11,27,75,0.45)] p-5">
+    <div className="rounded-[22px] bg-white shadow-[0_10px_34px_-24px_rgba(30,43,37,0.45)] p-5">
       <h3 className="font-medium text-ink">Votre décision</h3>
       <p className="mt-1 text-sm text-slate">{BRAND.name} ne gèle rien. Le compte est chez {hostOperator} : c&apos;est à eux de suspendre.</p>
-      <div className="mt-4 grid gap-2 sm:grid-cols-2" role="radiogroup" aria-label="Décision">
+      <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2" role="radiogroup" aria-label="Décision">
         <button
           type="button"
           role="radio"

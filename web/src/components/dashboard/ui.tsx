@@ -1,10 +1,18 @@
 // Briques visuelles du tableau de bord (serveur ou client).
-export function PageHead({ title, lead, children }: { title: string; lead?: React.ReactNode; children?: React.ReactNode }) {
+import Image from "next/image";
+
+/** En-tête de page. `objet` : nom d'un objet 3D de `public/visuels/` (sans « objet- » ni extension). */
+export function PageHead({ title, lead, objet, children }: { title: string; lead?: React.ReactNode; objet?: string; children?: React.ReactNode }) {
   return (
     <header className="mb-8 flex flex-wrap items-end justify-between gap-4">
-      <div>
-        <h1 className="font-display text-[2.1rem] font-bold leading-[1.05] tracking-[-0.03em] text-ink text-balance">{title}</h1>
-        {lead && <p className="mt-2 max-w-2xl text-slate">{lead}</p>}
+      <div className="flex items-center gap-5">
+        {objet && (
+          <Image src={`/visuels/objet-${objet}.png`} alt="" width={900} height={900} sizes="96px" className="flotte-css hidden w-[84px] shrink-0 drop-shadow-[0_16px_16px_rgba(15,23,18,.18)] sm:block md:w-[96px]" />
+        )}
+        <div>
+          <h1 className="font-display text-[2.1rem] font-bold leading-[1.05] tracking-[-0.03em] text-ink text-balance">{title}</h1>
+          {lead && <p className="mt-2 max-w-2xl text-slate">{lead}</p>}
+        </div>
       </div>
       {children}
     </header>
@@ -13,10 +21,10 @@ export function PageHead({ title, lead, children }: { title: string; lead?: Reac
 
 export function Panel({ title, aside, children, className = "" }: { title?: string; aside?: React.ReactNode; children: React.ReactNode; className?: string }) {
   return (
-    <section className={`rounded-[22px] bg-white shadow-[0_10px_34px_-24px_rgba(11,27,75,0.45)] ${className}`}>
+    <section className={`rounded-[22px] bg-white shadow-[0_10px_34px_-24px_rgba(30,43,37,0.45)] ${className}`}>
       {title && (
-        <div className="flex items-center justify-between gap-3 border-b border-paper-line px-5 py-3.5">
-          <h2 className="font-display text-[15px] font-bold text-ink">{title}</h2>
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-paper-line px-5 py-3.5">
+          <h2 className="min-w-0 font-display text-[15px] font-bold text-ink">{title}</h2>
           {aside}
         </div>
       )}
@@ -29,7 +37,7 @@ export function Panel({ title, aside, children, className = "" }: { title?: stri
 export function Kpi({ label, value, compare, help, tone = "ink" }: { label: string; value: string; compare?: string; help: string; tone?: "ink" | "laterite" | "sage" | "amber" }) {
   const color = { ink: "text-ink", laterite: "text-laterite-deep", sage: "text-sage-deep", amber: "text-amber-deep" }[tone];
   return (
-    <div className="group relative rounded-[22px] bg-white p-5 shadow-[0_10px_34px_-24px_rgba(11,27,75,0.45)]">
+    <div className="group relative rounded-[22px] bg-white p-5 shadow-[0_10px_34px_-24px_rgba(30,43,37,0.45)]">
       <div className="flex items-start justify-between gap-2">
         <p className="text-sm text-slate">{label}</p>
         <button
@@ -41,7 +49,7 @@ export function Kpi({ label, value, compare, help, tone = "ink" }: { label: stri
         </button>
         <span
           role="tooltip"
-          className="pointer-events-none absolute right-3 top-11 z-20 w-64 translate-y-1 rounded-xl bg-ink p-3 text-xs leading-relaxed text-cream opacity-0 shadow-[0_12px_30px_-10px_rgba(10,14,26,0.6)] transition-[opacity,transform] duration-200 peer-hover:translate-y-0 peer-hover:opacity-100 peer-focus-visible:translate-y-0 peer-focus-visible:opacity-100"
+          className="pointer-events-none absolute right-3 top-11 z-20 w-64 translate-y-1 rounded-xl bg-ink p-3 text-xs leading-relaxed text-cream opacity-0 shadow-[0_12px_30px_-10px_rgba(15,23,18,0.6)] transition-[opacity,transform] duration-200 peer-hover:translate-y-0 peer-hover:opacity-100 peer-focus-visible:translate-y-0 peer-focus-visible:opacity-100"
         >
           {help}
         </span>
@@ -64,7 +72,7 @@ export function Pill({ tone, children }: { tone: "laterite" | "sage" | "amber" |
 }
 
 export function OperatorDot({ op }: { op: string }) {
-  const c = { ALPHAMONEY: "#7d8cff", BETACASH: "#7cc4a4", GAMMAPAY: "#e8b04b" }[op] ?? "#5b6172";
+  const c = { ALPHAMONEY: "var(--color-reseau-a)", BETACASH: "var(--color-reseau-b)", GAMMAPAY: "var(--color-reseau-c)" }[op] ?? "var(--color-slate)";
   return <span aria-hidden className="inline-block h-2 w-2 rounded-full" style={{ background: c }} />;
 }
 
@@ -97,7 +105,7 @@ export function FreezableChart({ points, alertAt, soloAlertAt, height = 180 }: {
     return (
       <g>
         <line x1={mx} x2={mx} y1={pad.t} y2={H - pad.b} stroke={color} strokeDasharray="3 4" />
-        <circle cx={mx} cy={y(v)} r="5" fill={color} stroke="#fbf8f2" strokeWidth="2" />
+        <circle cx={mx} cy={y(v)} r="5" fill={color} stroke="var(--color-cream)" strokeWidth="2" />
         <text x={mx + 8} y={pad.t + 12} fontSize="11" fill={color} style={{ fontFamily: "var(--font-plex)" }}>
           {label} {fmt(iso)}
         </text>
@@ -108,20 +116,20 @@ export function FreezableChart({ points, alertAt, soloAlertAt, height = 180 }: {
     <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label="FCFA encore gelables au fil du temps">
       {[0, 0.5, 1].map((k) => (
         <g key={k}>
-          <line x1={pad.l} x2={W - pad.r} y1={y(max * k)} y2={y(max * k)} stroke="#d9d0be" strokeWidth="1" />
-          <text x={pad.l - 8} y={y(max * k) + 4} textAnchor="end" fontSize="10.5" fill="#5b6172" style={{ fontFamily: "var(--font-plex-mono)" }}>
+          <line x1={pad.l} x2={W - pad.r} y1={y(max * k)} y2={y(max * k)} stroke="var(--color-mist)" strokeWidth="1" />
+          <text x={pad.l - 8} y={y(max * k) + 4} textAnchor="end" fontSize="10.5" fill="var(--color-slate)" style={{ fontFamily: "var(--font-donnee)" }}>
             {new Intl.NumberFormat("fr-FR", { notation: "compact" }).format(max * k)}
           </text>
         </g>
       ))}
-      <path d={area} fill="#e0643a" fillOpacity=".08" />
-      <path d={d} fill="none" stroke="#e0643a" strokeWidth="2" strokeLinejoin="round" />
-      {marker(alertAt, "#b8461f", "Consortium")}
-      {marker(soloAlertAt, "#5b6172", "Opérateur seul")}
-      <text x={pad.l} y={H - 6} fontSize="10.5" fill="#5b6172" style={{ fontFamily: "var(--font-plex-mono)" }}>
+      <path d={area} fill="var(--color-laterite)" fillOpacity=".08" />
+      <path d={d} fill="none" stroke="var(--color-laterite)" strokeWidth="2" strokeLinejoin="round" />
+      {marker(alertAt, "var(--color-laterite-deep)", "Consortium")}
+      {marker(soloAlertAt, "var(--color-slate)", "Opérateur seul")}
+      <text x={pad.l} y={H - 6} fontSize="10.5" fill="var(--color-slate)" style={{ fontFamily: "var(--font-donnee)" }}>
         {fmt(points[0][0])}
       </text>
-      <text x={W - pad.r} y={H - 6} textAnchor="end" fontSize="10.5" fill="#5b6172" style={{ fontFamily: "var(--font-plex-mono)" }}>
+      <text x={W - pad.r} y={H - 6} textAnchor="end" fontSize="10.5" fill="var(--color-slate)" style={{ fontFamily: "var(--font-donnee)" }}>
         {fmt(points[points.length - 1][0])}
       </text>
     </svg>

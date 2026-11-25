@@ -13,7 +13,7 @@ export default async function DossiersPage({ searchParams }: { searchParams: Pro
   });
   return (
     <div className="mx-auto max-w-7xl">
-      <PageHead
+      <PageHead objet="dossier"
         title="Dossiers de litige et délais"
         lead={
           <>

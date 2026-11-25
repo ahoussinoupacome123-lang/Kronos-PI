@@ -60,8 +60,8 @@ export default async function Today() {
   return (
     <div className="space-y-4">
       {/* Rangée d'accueil, façon cockpit */}
-      <div className="grid gap-4 xl:grid-cols-[1.35fr_1fr_1fr]">
-        <section className="relative overflow-hidden rounded-[26px] bg-white p-6 shadow-[0_10px_34px_-24px_rgba(11,27,75,0.45)] md:p-7">
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1.35fr_1fr_1fr]">
+        <section className="relative overflow-hidden rounded-[26px] bg-white p-6 shadow-[0_10px_34px_-24px_rgba(30,43,37,0.45)] md:p-7">
           <h1 className="font-display text-[2.3rem] font-extrabold leading-none tracking-[-0.035em] text-ink">Bonjour {first} !</h1>
           <Link href="/tableau-de-bord/alertes" className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-blue hover:underline">
             Votre consortium a croisé {num(volumes.n_reclamations)} réclamations <IconArrowRight size={14} />
@@ -132,7 +132,7 @@ export default async function Today() {
 
       <NextActions items={actions} />
 
-      <div className="grid gap-4 xl:grid-cols-[1.4fr_1fr]">
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1.4fr_1fr]">
         <Panel title={`Ce que le délai coûte : campagne ${narrative.id}`} aside={<span className="text-xs text-slate">{fcfa(narrative.totalFcfa)} détournés · {narrative.victims} victimes</span>}>
           <FreezableChart points={freezableCurves[narrative.id] ?? []} alertAt={demoCase.alerte.alert_at} soloAlertAt={soloNarr?.alertAt} />
           <p className="mt-3 text-sm text-slate">

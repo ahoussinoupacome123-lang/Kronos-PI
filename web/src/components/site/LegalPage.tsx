@@ -20,7 +20,7 @@ export default async function LegalPage({ slug }: { slug: "cgu" | "confidentiali
   return (
     <>
       <SiteHeader />
-      <main className="mx-auto grid max-w-6xl gap-12 px-6 py-16 lg:grid-cols-[1fr_15rem]">
+      <main className="mx-auto grid grid-cols-1 max-w-6xl gap-12 px-6 py-16 lg:grid-cols-[1fr_15rem]">
         <article className="legal max-w-[72ch]">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{md}</ReactMarkdown>
         </article>

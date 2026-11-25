@@ -162,6 +162,7 @@ Avant adoption : vérifier la disponibilité de la marque et du nom de domaine.
 | 25/11/2026 midi | Cadrage complet (`docs/`), `context.md`, branche `feat/plateforme-web` : plateforme web Next.js et assistant Nexus |
 | 25/11/2026 12h33 | PR #1 fusionnée dans `main` : cadrage, juridique, revues founder et plateforme web ; branche supprimée |
 | 25/11/2026 | Arrivée d'Ange Marie (design) ; tâches restantes réparties entre Pacôme, Ange Marie et Joachim ; cinq propositions de nouveau nom |
+| 25/11/2026 après-midi | Branche `feat/refonte-da-lime` (Ange Marie) : accueil web refait en DA claire vert lime, animations GSAP et Lenis, logos officiels des émetteurs ; fusion soumise à l'accord de Joachim (voir `DECISIONS.md`) ; la même palette est appliquée à toute la plateforme (tableau de bord, connexion, pages légales, Nexus) |
 
 ## 9. Documents non applicables
 

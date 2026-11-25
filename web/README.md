@@ -18,7 +18,7 @@ Entrée en démo : `/connexion`, bouton « Entrer » d'un des quatre comptes fic
 
 | Route | Rôle |
 |---|---|
-| `/` | Landing : hero Three.js qui rejoue la campagne CMP-01, émetteurs, preuves, confidentialité |
+| `/` | Accueil : écran de téléphone qui rejoue la campagne CMP-01, émetteurs visés, preuves mesurées, fonctionnement fixé au défilement, confidentialité (GSAP, Lenis) |
 | `/connexion` | Connexion, comptes de démonstration |
 | `/tableau-de-bord` | « Aujourd'hui » : actions à faire dans l'ordre, indicateurs mesurés |
 | `/tableau-de-bord/alertes` · `/[id]` | Alertes du consortium, graphe rejouable, décision humaine signée |

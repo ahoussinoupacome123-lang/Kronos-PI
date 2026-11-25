@@ -19,10 +19,10 @@ export function LogoMark({ size = 28, ...p }: P) {
     <svg width={size} height={size} viewBox="0 0 32 32" fill="none" aria-hidden {...p}>
       <circle cx="16" cy="16" r="15" stroke="currentColor" strokeOpacity=".25" />
       <path d="M7 10.5 16 17M25 9 16 17M15 26.5 16 17" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-      <circle cx="7" cy="10.5" r="2.4" fill="#7d8cff" />
-      <circle cx="25" cy="9" r="2.4" fill="#7cc4a4" />
-      <circle cx="15" cy="26.5" r="2.4" fill="#e8b04b" />
-      <circle cx="16" cy="17" r="3.6" fill="#e0643a" />
+      <circle cx="7" cy="10.5" r="2.4" fill="var(--color-reseau-a)" />
+      <circle cx="25" cy="9" r="2.4" fill="var(--color-reseau-b)" />
+      <circle cx="15" cy="26.5" r="2.4" fill="var(--color-reseau-c)" />
+      <circle cx="16" cy="17" r="3.6" fill="var(--color-laterite)" />
     </svg>
   );
 }
