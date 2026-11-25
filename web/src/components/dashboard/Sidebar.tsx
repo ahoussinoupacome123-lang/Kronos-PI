@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Wordmark } from "@/components/site/SiteChrome";
 import { IconChart, IconFile, IconGraph, IconHome, IconLogout, IconRadar, IconShield } from "@/components/ui/icons";
 import { logout } from "@/app/connexion/actions";
 import { useDecisions } from "./decisions";
@@ -24,11 +23,9 @@ export default function Sidebar({ user, pendingPriority, dueSoon }: { user: { na
   ];
 
   return (
-    <aside className="on-ink sticky top-0 hidden h-dvh w-[17rem] shrink-0 flex-col bg-ink px-4 py-5 text-cream lg:flex">
-      <Link href="/" className="rounded-lg px-2">
-        <Wordmark />
-      </Link>
-      <nav aria-label="Espace établissement" className="mt-9 flex-1">
+    <aside className="on-ink sticky top-4 hidden h-[calc(100dvh-7.5rem)] w-[16.5rem] shrink-0 flex-col rounded-[28px] bg-ink px-4 py-6 text-cream shadow-[0_24px_60px_-30px_rgba(11,27,75,0.8)] lg:flex">
+      <p className="px-3 text-[11px] font-bold tracking-[0.12em] text-mist">ESPACE ÉTABLISSEMENT</p>
+      <nav aria-label="Espace établissement" className="mt-4 flex-1">
         <ul className="space-y-1">
           {items.map((it) => {
             const active = it.href === "/tableau-de-bord" ? path === it.href : path.startsWith(it.href);
@@ -38,7 +35,7 @@ export default function Sidebar({ user, pendingPriority, dueSoon }: { user: { na
                   href={it.href}
                   aria-current={active ? "page" : undefined}
                   className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors ${
-                    active ? "bg-white/10 text-cream" : "text-cream/70 hover:bg-white/5 hover:text-cream"
+                    active ? "bg-white/12 font-semibold text-white" : "text-cream/75 hover:bg-white/6 hover:text-white"
                   }`}
                 >
                   <span className={active ? "text-amber" : ""}>{it.icon}</span>
@@ -52,7 +49,7 @@ export default function Sidebar({ user, pendingPriority, dueSoon }: { user: { na
           })}
         </ul>
       </nav>
-      <div className="rounded-2xl border border-ink-line p-3">
+      <div className="rounded-2xl bg-white/6 p-3">
         <p className="truncate text-sm font-medium">{user.name}</p>
         <p className="truncate text-xs text-mist">{user.role}</p>
         <p className="truncate text-xs text-mist">{user.org}</p>
@@ -77,11 +74,11 @@ export function MobileNav() {
     ["/tableau-de-bord/audit", "Audit"],
   ];
   return (
-    <nav aria-label="Espace établissement" className="flex gap-1 overflow-x-auto border-b border-paper-line bg-paper-2 px-3 py-2 lg:hidden">
+    <nav aria-label="Espace établissement" className="mt-3 flex gap-1 overflow-x-auto rounded-2xl bg-white px-2 py-2 lg:hidden">
       {items.map(([href, label]) => {
         const active = href === "/tableau-de-bord" ? path === href : path.startsWith(href);
         return (
-          <Link key={href} href={href} className={`shrink-0 rounded-full px-3 py-1.5 text-sm ${active ? "bg-ink text-cream" : "text-slate"}`}>
+          <Link key={href} href={href} className={`shrink-0 rounded-full px-3 py-1.5 text-sm font-semibold ${active ? "bg-ink text-white" : "text-slate"}`}>
             {label}
           </Link>
         );

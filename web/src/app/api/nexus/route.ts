@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import { readSession } from "@/lib/auth";
 import { groundedAnswer, llmContext, type NexusAnswer } from "@/lib/nexus";
+import { BRAND } from "@/lib/brand";
 
-const SYSTEM = `Tu es Nexus, l'assistant de Réclam'Graph, plateforme qui croise les réclamations de plusieurs émetteurs de monnaie électronique de l'UEMOA pour repérer les comptes mules et préparer les dossiers de litige PI-SPI.
+const SYSTEM = `Tu es Nexus, l'assistant de ${BRAND.name}, plateforme qui croise les réclamations de plusieurs émetteurs de monnaie électronique de l'UEMOA pour repérer les comptes mules et préparer les dossiers de litige PI-SPI.
 Règles : réponds en français, en 4 phrases au plus, ton direct et professionnel. N'utilise QUE les faits du CONTEXTE ; si l'information n'y est pas, dis-le. Ne recommande jamais un gel automatique : la décision est humaine. Ne donne aucun chiffre absent du contexte.`;
 
 export async function POST(req: Request) {

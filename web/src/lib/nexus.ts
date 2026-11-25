@@ -1,8 +1,9 @@
-// Nexus : l'assistant de Réclam'Graph. Il relie les émetteurs à travers le graphe et guide l'utilisateur.
+// Nexus : l'assistant du produit. Il relie les émetteurs à travers le graphe et guide l'utilisateur.
 // Deux moteurs : (1) un LLM open-weight compatible OpenAI (le vLLM du pipeline, LLM_BASE_URL), cadré par le contexte mesuré ;
 // (2) sans LLM, un moteur de réponses ancrées qui ne dit que ce que les résultats contiennent. Jamais d'invention de chiffres.
 import { alerts, bench, demoCase, engineTruth, fcfa, headline, incidentEval, incidents, meta, num, pct, tokenCost, typologyLabel } from "./data";
 import { dueSoon, humanHours, priorityAlerts, toQualifyAlerts } from "./derive";
+import { BRAND } from "@/lib/brand";
 
 export type NexusLink = { href: string; label: string };
 export type NexusAnswer = { text: string; links: NexusLink[]; engine: "llm" | "ancré" };
@@ -27,7 +28,7 @@ export function groundedAnswer(question: string, decided: string[] = []): NexusA
   if (has(q, "innocent", "tort", "faux positif", "se tromp", "erreur du systeme", "fiable")) {
     return {
       engine: "ancré",
-      text: `Réclam'Graph ne gèle rien : il recommande une suspension temporaire des retraits, et c'est votre équipe qui décide. Pour qu'une alerte parte, il faut au moins ${headline.rule}. Sur le corpus de démonstration, la règle brute donne ${pct(headline.consortium.precision)} de précision ; après le score, les alertes prioritaires sont à ${pct(headline.prioritized.precision)}. Les autres restent affichées « à qualifier », jamais supprimées. Chaque décision, avec son motif et son auteur, va dans l'audit.`,
+      text: `${BRAND.name} ne gèle rien : il recommande une suspension temporaire des retraits, et c'est votre équipe qui décide. Pour qu'une alerte parte, il faut au moins ${headline.rule}. Sur le corpus de démonstration, la règle brute donne ${pct(headline.consortium.precision)} de précision ; après le score, les alertes prioritaires sont à ${pct(headline.prioritized.precision)}. Les autres restent affichées « à qualifier », jamais supprimées. Chaque décision, avec son motif et son auteur, va dans l'audit.`,
       links: [
         { href: "/tableau-de-bord/alertes?vue=a-qualifier", label: "Alertes à qualifier" },
         { href: "/tableau-de-bord/audit", label: "Piste d'audit" },
@@ -129,7 +130,7 @@ function fmtTime(iso: string) {
 export function llmContext() {
   return JSON.stringify({
     regle: headline.rule,
-    principe: "Réclam'Graph recommande et documente ; il ne gèle jamais seul. Décision humaine chez l'opérateur.",
+    principe: `${BRAND.name} recommande et documente ; il ne gèle jamais seul. Décision humaine chez l'opérateur.`,
     alertes_prioritaires: priorityAlerts.map((a) => ({ alias: a.alias.slice(0, 10), plaignants: a.complainants, reseaux: a.operators, score: a.score, fcfa_gelables: a.freezableFcfa, delai_min: a.delayMin })),
     alertes_a_qualifier: toQualifyAlerts.length,
     echeances_48h: dueSoon.slice(0, 5).map((d) => ({ dossier: d.dossier.id, type: d.kind, heures: Math.round(d.hoursLeft) })),
