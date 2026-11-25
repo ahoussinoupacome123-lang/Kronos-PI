@@ -145,9 +145,9 @@ export const engineTruth = {
 
 export const OPERATORS = ["ALPHAMONEY", "BETACASH", "GAMMAPAY"] as const;
 export const operatorColor: Record<string, string> = {
-  ALPHAMONEY: "var(--color-indigo)",
-  BETACASH: "var(--color-sage)",
-  GAMMAPAY: "var(--color-amber)",
+  ALPHAMONEY: "var(--color-reseau-a)",
+  BETACASH: "var(--color-reseau-b)",
+  GAMMAPAY: "var(--color-reseau-c)",
 };
 
 const nf = new Intl.NumberFormat("fr-FR");

@@ -1,37 +1,62 @@
 @import "tailwindcss";
 
-/* Monde visuel (brief imposé) : landing façon Evalis, tableau de bord façon GeneX.
-   Fond clair et aéré, bleu roi franc, marine profond pour les bandes et la barre latérale,
-   jaune pour l'argent, corail = geler (mule probable), vert = rembourser (erreur sincère). */
+/* Monde visuel : DA claire vert lime, commune à l'accueil et au tableau de bord.
+   Les noms historiques (ink, paper, laterite…) sont gardés pour ne réécrire aucune page :
+   seules leurs valeurs ont changé. Rôles : nuit vert-anthracite pour la barre latérale et
+   les surfaces sombres, fond sol clair, rouge = geler (mule probable), vert = rembourser
+   (erreur sincère), ambre = échéance proche. */
 @theme {
-  --color-ink: #0b1b4b;
-  --color-ink-2: #12275f;
-  --color-ink-3: #1b3375;
-  --color-ink-line: #2a4384;
-  --color-paper: #eef3fb;
+  --color-ink: #1e2b25;
+  --color-ink-2: #26352e;
+  --color-ink-3: #2f4038;
+  --color-ink-line: #3a4d44;
+  --color-paper: #f2f5ee;
   --color-paper-2: #ffffff;
-  --color-paper-3: #e4ebf8;
-  --color-paper-line: #d5dff0;
-  --color-cream: #f3f6ff;
-  --color-mist: #b3c0de;
-  --color-slate: #56627e;
-  --color-laterite: #f2542d;
-  --color-laterite-deep: #c63a17;
-  --color-sage: #22b07d;
-  --color-sage-deep: #0d7a54;
-  --color-amber: #ffc531;
-  --color-amber-deep: #8a6000;
-  --color-indigo: #4d74ff;
-  --color-indigo-deep: #1e40d8;
-  --color-blue: #2347e8;
-  --color-blue-deep: #1733b8;
-  --color-sky: #dce7ff;
+  --color-paper-3: #e8ede2;
+  --color-paper-line: #dde4d5;
+  --color-cream: #f4f7ef;
+  --color-mist: #a9b8ae;
+  --color-slate: #5e6b63;
+  --color-laterite: #e0383e;
+  --color-laterite-deep: #b4232a;
+  --color-sage: #7fbf1f;
+  --color-sage-deep: #3f6a00;
+  --color-amber: #f2b035;
+  --color-amber-deep: #7a5300;
+  --color-indigo: #2e62f5;
+  --color-indigo-deep: #1e47c8;
+  --color-blue: #1e2b25;
+  --color-blue-deep: #0f1712;
+  --color-sky: #eef6d9;
 
-  --font-display: var(--font-lexend), ui-sans-serif, system-ui;
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui;
-  --font-mono: var(--font-jbmono), ui-monospace, monospace;
+  /* Les trois réseaux fictifs, mêmes couleurs partout (accueil, graphes, tableaux). */
+  --color-reseau-a: #2e62f5;
+  --color-reseau-b: #e28a00;
+  --color-reseau-c: #1e9e68;
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Accueil, DA claire vert lime (refonte d'Ange Marie). Ajoutée à côté du monde
+     du tableau de bord, qui n'en dépend pas. */
+  --color-sol: #f7f9f4;
+  --color-blanc: #ffffff;
+  --color-brume: #edf1e8;
+  --color-encre: #0f1712; /* texte : très foncé pour le contraste */
+  --color-nuit: #1e2b25; /* grandes surfaces sombres : vert-anthracite, moins dur que l'encre */
+  --color-encre-2: #3b463f;
+  --color-gris: #66726a;
+  --color-lime: #c8f04a;
+  --color-lime-vif: #a9d62a;
+  --color-lime-texte: #3f6a00;
+  --color-alerte: #e0383e;
+  --color-alerte-fond: #fdecec;
+  --font-titre: var(--font-bricolage), ui-sans-serif, system-ui;
+  --font-texte: var(--font-geist), ui-sans-serif, system-ui;
+  --font-donnee: var(--font-geist-mono), ui-monospace, monospace;
 }
 
 html {
@@ -48,18 +73,18 @@ body {
 }
 
 ::selection {
-  background: var(--color-laterite);
-  color: var(--color-paper-2);
+  background: var(--color-lime);
+  color: var(--color-encre);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-indigo-deep);
+  outline: 2px solid var(--color-encre);
   outline-offset: 3px;
   border-radius: 6px;
 }
 .on-ink :focus-visible,
 .on-ink:focus-visible {
-  outline-color: var(--color-amber);
+  outline-color: var(--color-lime);
 }
 
 * {
@@ -76,7 +101,7 @@ body {
 
 input,
 textarea {
-  caret-color: var(--color-laterite);
+  caret-color: var(--color-lime-texte);
 }
 
 a {
@@ -231,4 +256,34 @@ a {
 /* Hachures du disque du hero */
 .stripes {
   background: repeating-linear-gradient(-45deg, var(--color-amber) 0 10px, transparent 10px 22px);
+}
+
+/* Accueil : défilement continu des logos. La liste est doublée ; on glisse d'une moitié
+   (plus la moitié de l'écart de 16 px) pour que la boucle soit invisible. */
+@keyframes defile {
+  to {
+    transform: translateX(calc(-50% - 8px));
+  }
+}
+
+/* Accueil : fils pointillés qui courent des plaintes vers le titre (motif de 14 px). */
+@keyframes fil {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+/* Accueil : flottement doux des objets 3D (coupé si le visiteur demande moins de mouvement). */
+@keyframes flotte {
+  50% {
+    transform: translateY(-12px) rotate(-1.5deg);
+  }
+}
+.flotte-css {
+  animation: flotte 5.5s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .flotte-css {
+    animation: none;
+  }
 }
