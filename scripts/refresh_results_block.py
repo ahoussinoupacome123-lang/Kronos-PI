@@ -207,10 +207,12 @@ def build_block() -> str:
         f"{bench['debit']['heuristique_locale']['etiquette']} |",
         f"| Débit LLM | {fnum(bench['debit']['llm'].get('requests_per_second') if isinstance(bench['debit']['llm'], dict) else None)} requêtes/s | "
         f"à mesurer sur la machine GPU (`make bench-llm`) |",
-        f"| Prix horaire GPU | {cout['prix_horaire_gpu_fcfa']} | paramètre `config.py` |",
+        f"| Prix horaire GPU | {fnum(cout['prix_horaire_gpu_fcfa'], ' FCFA/h')} | "
+        f"{cout['prix_horaire_gpu_source']} |",
         f"| Inférence locale / 1 000 réclamations | {cout['cout_inference_locale_pour_1000_fcfa']} | "
-        f"calculé dès que le prix horaire est renseigné |",
-        f"| API cloud / 1 000 | {cout['cout_api_cloud_pour_1000_fcfa']} | paramètre `config.py` |",
+        f"{cout['cout_inference_locale_note']} |",
+        f"| API cloud / 1 000 réclamations | {fnum(cout['cout_api_cloud_pour_1000_fcfa'], ' FCFA')} | "
+        f"{cout['cout_api_cloud_note']} |",
         f"| Agent humain / 1 000 (simple) | {fnum(cout['cout_humain_pour_1000_fcfa']['reclamation_simple'], ' FCFA')} | "
         f"{cout['cout_humain_pour_1000_fcfa']['etiquette']} |",
         f"| Agent humain / 1 000 (investiguée) | {fnum(cout['cout_humain_pour_1000_fcfa']['reclamation_investiguee'], ' FCFA')} | "

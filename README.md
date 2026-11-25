@@ -140,7 +140,7 @@ situation actuelle. Détail complet : [`results/benchmark.md`](results/benchmark
 > Chiffres régénérés depuis `results/` par `scripts/refresh_results_block.py`.  
 > **Exécution : CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)**  
 > Corpus : 20 000 réclamations synthétiques sur 7 jours, 3 opérateurs fictifs.  
-> Généré le 2026-11-25 à 08:21:38.
+> Généré le 2026-11-25 à 10:13:19.
 
 ### Détection de comptes mules — l'écart principal
 
@@ -220,25 +220,53 @@ Mesuré sur 300 réclamations — *CPU run — aucun GPU détecté (ne pas prés
 
 | Grandeur | Valeur | Étiquette |
 |---|---|---|
-| Débit référence regex | 45 215,96 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
-| Débit extracteur local | 29 408,78 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
+| Débit référence regex | 19 119,73 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
+| Débit extracteur local | 10 604,92 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
 | Débit LLM | non mesuré requêtes/s | à mesurer sur la machine GPU (`make bench-llm`) |
-| Prix horaire GPU | non calculé | paramètre `config.py` |
-| Inférence locale / 1 000 réclamations | non calculé | calculé dès que le prix horaire est renseigné |
-| API cloud / 1 000 | non calculé | paramètre `config.py` |
+| Prix horaire GPU | 314,56 FCFA/h | AWS g4dn.xlarge (T4 16 Go) à la demande, 0,526 USD/h × 598,03 FCFA/USD — prix public relevé le 25/11/2026 |
+| Inférence locale / 1 000 réclamations | non calculé | aucun GPU détecté : le débit disponible est un débit CPU, le diviser par un prix horaire de GPU n'aurait aucun sens |
+| API cloud / 1 000 réclamations | 70,68 FCFA | dérivé des tokens mesurés (642,19 entrée + 107,93 sortie par réclamation) × Claude Haiku 5.5 (palier ≤ 100 k tokens) — voir results/token_cost.json |
 | Agent humain / 1 000 (simple) | 270 000 FCFA | estimation (offres d'emploi, section 12) |
 | Agent humain / 1 000 (investiguée) | 700 000 FCFA | estimation (offres d'emploi, section 12) |
 | Repère — Intercom Fin (par résolution) / 1 000 | 590 000 FCFA | prix public affiché |
 | Repère — Thematic (par commentaire) / 1 000 | 600 000 FCFA | prix public affiché |
 | Prix proposé / 1 000 | 5 000 FCFA | **hypothèse** de modèle économique |
 
-- Le prix horaire du GPU et le tarif API cloud sont des paramètres de `config.py` à remplir depuis leurs sources. Vides, ils donnent « non calculé » — aucun coût n'est inventé.
+- Le prix horaire du GPU et le tarif API cloud sont des PRIX PUBLICS AFFICHÉS relevés le 25/11/2026, pas des mesures de notre part. Ils bougent, et le taux USD/FCFA avec eux.
+- Le coût d'inférence locale n'est calculé que si le débit a été mesuré sur un GPU : diviser un prix horaire de GPU par un débit CPU donnerait un chiffre flatteur et faux.
 - Les coûts humains (270 / 700 FCFA par réclamation) sont des ESTIMATIONS issues d'offres d'emploi, pas des mesures.
 - Les repères éditeurs (Intercom Fin, Thematic) sont des prix publics affichés, pas des mesures de notre part.
 - Le prix proposé de 5 FCFA par réclamation est une HYPOTHÈSE de modèle économique.
 - AUCUN GPU DÉTECTÉ : le débit ci-dessus est un débit CPU. Il ne doit pas être présenté comme un débit GPU.
 
 <!-- RESULTATS:FIN -->
+
+### Sources des tarifs
+
+Les deux tarifs ci-dessus sont des **prix publics affichés**, relevés le
+25/11/2026. Ce ne sont pas des mesures de notre part, et ils bougent :
+
+| Paramètre | Valeur relevée | Source |
+|---|---|---|
+| GPU T4 16 Go, à la demande | 0,526 USD/h | [AWS EC2 `g4dn.xlarge`, Linux, `us-east-1`](https://idlefy.com/cloud-costs/aws/g4dn.xlarge/) — prix catalogue, hors stockage et transfert |
+| API cloud, entrée / sortie | 0,10 / 0,50 USD par million de tokens | [Claude Haiku 5.5, palier ≤ 100 k tokens](https://platform.claude.com/docs/en/about-claude/pricing) |
+| Taux USD → FCFA | 598,03 | [XE, 24/11/2026 19:18 UTC](https://www.xe.com/en-us/currencyconverter/convert/?Amount=1&From=USD&To=XOF) |
+
+Deux précautions que nous énonçons avant qu'on nous les oppose :
+
+1. **Le FCFA est arrimé à l'euro, pas au dollar** (parité fixe statutaire
+   1 EUR = 655,957 FCFA). Les deux fournisseurs facturant en dollars, le taux
+   USD/FCFA flotte : c'est la principale fragilité de ces deux chiffres.
+2. **Le coût d'inférence locale reste « non calculé »** tant que le débit LLM
+   n'a pas été mesuré sur un vrai GPU. Nous refusons de diviser un prix horaire
+   de T4 par un débit mesuré sur CPU : le résultat serait flatteur et faux.
+   Il se calculera tout seul après `make bench-llm` sur la machine GPU.
+
+Le coût API pour 1 000 réclamations n'est pas saisi à la main : il est dérivé
+des tokens réellement comptés sur le corpus par `make token-cost`
+(→ [`results/token_cost.json`](results/token_cost.json)), avec sa limite
+assumée — le décompte utilise le tokeniseur de bge-m3, pas celui du
+fournisseur, donc c'est un **ordre de grandeur mesuré**, pas une facture.
 
 ---
 
