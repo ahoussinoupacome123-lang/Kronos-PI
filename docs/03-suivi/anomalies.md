@@ -7,7 +7,7 @@
 
 | ID | Titre | Gravité | Statut |
 |---|---|---|---|
-| BUG-001 | Étiquette « GPU run » sur une exécution en repli CPU | Critique | Ouvert |
+| BUG-001 | Étiquette « GPU run » sur une exécution en repli CPU | Critique | Corrigé |
 | BUG-002 | Alias de mules pollués par des clients du bruit | Majeure | Corrigé |
 | BUG-003 | Pins GPU incompatibles avec vLLM (`ResolutionImpossible`) | Majeure | Corrigé |
 | BUG-004 | Regex de montant qui rate « 25.000F » | Majeure | Corrigé |
@@ -25,11 +25,12 @@
 | Description | `results/demo_bundle.json`, `benchmark.{json,md}`, `embed_bench.json` et l'audit portent « GPU run — Tesla T4 (15360 MiB) » alors que `moteurs_extraction = ["heuristic-fallback"]` et `moteur_embeddings = "tfidf-svd"`. Débit LLM « non mesuré », coût local « non calculé », GPU moyen 4,58 %. Attendu : l'étiquette décrit ce qui a réellement calculé |
 | Reproduction | Sur une machine avec GPU, `make all` (qui appelle `make pipeline`, en repli), puis lire `meta` dans `results/demo_bundle.json` |
 | Gravité | Critique (présentation trompeuse dans un *GPU* Challenge, contraire à la posture d'honnêteté du projet) |
-| Statut | Ouvert |
+| Statut | Corrigé le 25/11/2026 |
 | Détection | 25/11/2026 — audit du dépôt (agent) |
 | Cause racine | `config.Hardware.run_label()` est calculé depuis `nvidia-smi` (matériel présent), pas depuis les moteurs utilisés ; `make all` enchaîne `make pipeline` (`--embed-engine tfidf`, extraction auto sans serveur LLM) |
 | Correctif proposé | (1) Exécuter `make serve-llm`, `make pipeline-llm`, `make bench-llm` avec `record_gpu_evidence.sh` ([procédure](../00-cadrage/analyse-depot.md#5-marche-à-suivre-sur-la-machine-gpu)) ; (2) dériver l'étiquette des moteurs (« GPU run — LLM + bge-m3 » ou « repli CPU sur machine équipée d'une T4 ») ; (3) test qui échoue si l'étiquette contient « GPU » sans moteur GPU |
-| Référence | À créer : `fix/etiquette-execution`, `results/gpu-llm` |
+| Correctif appliqué | `config.execution_label(moteurs_extraction, moteur_embeddings)` dérive l'étiquette des moteurs qui ont calculé : « GPU run — … — calculé sur GPU : LLM + bge-m3 », ou « repli CPU sur machine équipée d'une Tesla T4 — aucun calcul sur GPU (…) ». Câblé dans `pipeline.py`, `bench/benchmark.py`, `bench/embed_bench.py`. `scripts/fix_execution_label.py` corrige les fichiers déjà produits à partir des moteurs qu'ils déclarent, sans toucher aux mesures. Deux tests (`tests/test_pipeline.py`) échouent si une étiquette annonce « GPU run » sans nommer un moteur GPU. Reste à faire : la mesure LLM elle-même (T-01) |
+| Référence | `fix/etiquette-execution` |
 
 ## BUG-002 — Alias de mules pollués par des clients du bruit
 

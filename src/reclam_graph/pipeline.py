@@ -201,7 +201,7 @@ def run(
             "n_reclamations": len(complaints),
             "moteurs_extraction": engines_used,
             "moteur_embeddings": embed_info.get("engine"),
-            "materiel": cfg.HARDWARE.run_label,
+            "materiel": cfg.execution_label(engines_used, embed_info.get("engine")),
             "donnees": "synthétiques",
         },
     )
@@ -259,7 +259,10 @@ def run(
     bundle: dict[str, Any] = {
         "meta": {
             "genere_le": datetime.now().astimezone().isoformat(),
-            "etiquette_execution": cfg.HARDWARE.run_label,
+            "etiquette_execution": cfg.execution_label(
+                engines_used, embed_info.get("engine")
+            ),
+            "materiel_present": cfg.HARDWARE.run_label,
             "donnees": "SYNTHÉTIQUES — opérateurs fictifs",
             "config": cfg.summary(),
             "moteurs_extraction": engines_used,

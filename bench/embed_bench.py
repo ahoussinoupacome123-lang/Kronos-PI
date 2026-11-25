@@ -30,11 +30,13 @@ def run(n: int = 300, with_bge: bool = True) -> dict[str, Any]:
     complaints = load_complaints()
     texts = [c.text for c in complaints[:n]]
     print(f"Corpus : {len(texts)} réclamations.")
-    print(f"Matériel : {cfg.HARDWARE.run_label}\n")
+    etiquette = cfg.execution_label([], "bge-m3" if with_bge else "tfidf-svd")
+    print(f"Matériel : {etiquette}\n")
 
     report: dict[str, Any] = {
         "genere_le": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
-        "etiquette_execution": cfg.HARDWARE.run_label,
+        "etiquette_execution": etiquette,
+        "materiel_present": cfg.HARDWARE.run_label,
         "n_textes": len(texts),
         "moteurs": {},
     }

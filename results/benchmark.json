@@ -1,7 +1,7 @@
 {
   "meta": {
     "genere_le": "2026-11-25T10:21:20.070601+00:00",
-    "etiquette_execution": "GPU run — Tesla T4 (15360 MiB)",
+    "etiquette_execution": "repli CPU sur machine équipée d'une Tesla T4 — aucun calcul sur GPU (heuristique locale (CPU) + )",
     "donnees": "SYNTHÉTIQUES — opérateurs fictifs, générateur publié",
     "n_reclamations": 20000,
     "config": {
@@ -59,7 +59,8 @@
       },
       "demo_mode": true
     },
-    "avertissement": "Aucun chiffre de ce fichier n'est écrit en dur : tout provient d'une exécution de bench/benchmark.py sur les données du dépôt."
+    "avertissement": "Aucun chiffre de ce fichier n'est écrit en dur : tout provient d'une exécution de bench/benchmark.py sur les données du dépôt.",
+    "materiel_present": "GPU run — Tesla T4 (15360 MiB)"
   },
   "typologie": {
     "reference_mots_cles_regex": {
@@ -1231,7 +1232,7 @@
     }
   },
   "cout": {
-    "etiquette_execution": "GPU run — Tesla T4 (15360 MiB)",
+    "etiquette_execution": "repli CPU sur machine équipée d'une Tesla T4 — aucun calcul sur GPU (heuristique locale (CPU))",
     "moteur_mesure": "heuristique locale (CPU)",
     "debit_mesure_reclamations_par_seconde": 9220.7,
     "debit_llm_mesure": null,
@@ -1257,7 +1258,8 @@
       "Les coûts humains (270 / 700 FCFA par réclamation) sont des ESTIMATIONS issues d'offres d'emploi, pas des mesures.",
       "Les repères éditeurs (Intercom Fin, Thematic) sont des prix publics affichés, pas des mesures de notre part.",
       "Le prix proposé de 5 FCFA par réclamation est une HYPOTHÈSE de modèle économique."
-    ]
+    ],
+    "materiel_present": "GPU run — Tesla T4 (15360 MiB)"
   },
   "gpu": {
     "disponible": true,

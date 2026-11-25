@@ -1,7 +1,7 @@
 {
   "meta": {
     "genere_le": "2026-11-25T10:21:01.610965+00:00",
-    "etiquette_execution": "GPU run — Tesla T4 (15360 MiB)",
+    "etiquette_execution": "repli CPU sur machine équipée d'une Tesla T4 — aucun calcul sur GPU (heuristic-fallback + tfidf-svd)",
     "donnees": "SYNTHÉTIQUES — opérateurs fictifs",
     "config": {
       "version": "1.0.0",
@@ -117,7 +117,8 @@
       "limite_connue": "Un HMAC sur des numéros de téléphone reste attaquable par dictionnaire si la clé fuite : l'espace des numéros est petit. Le HMAC protège contre un hub curieux, pas contre un hub malveillant détenant la clé.",
       "production": "Private set intersection (PSI), ou hub opéré par un tiers de confiance (BCEAO, PI-Reclam, Alliance Fintech UEMOA).",
       "contexte": "24 % des fournisseurs de mobile money se disent gênés par les règles de transfert transfrontalier de données (GSMA 2026) : le partage minimal et l'inférence locale sont des arguments, pas des contraintes."
-    }
+    },
+    "materiel_present": "GPU run — Tesla T4 (15360 MiB)"
   },
   "volumes": {
     "n_reclamations": 20000,
