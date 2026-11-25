@@ -49,6 +49,7 @@ BENCHMARK_JSON = RESULTS_DIR / "benchmark.json"
 BENCHMARK_MD = RESULTS_DIR / "benchmark.md"
 GPU_LOG = RESULTS_DIR / "gpu_log.txt"
 DEMO_BUNDLE = RESULTS_DIR / "demo_bundle.json"
+TOKEN_COST_JSON = RESULTS_DIR / "token_cost.json"
 
 # --------------------------------------------------------------------------
 # LLM : un seul client OpenAI-compatible (vLLM ou Ollama interchangeables)
@@ -124,7 +125,46 @@ def _opt_float(name: str) -> float | None:
         return None
 
 
+# Tarifs PUBLICS relevés le 25/11/2026. Ce ne sont pas des mesures de notre
+# part : ce sont des prix affichés par des fournisseurs, et ils bougent. Toute
+# republication doit les relever à nouveau. Sources dans README « Coûts ».
+#
+# Le FCFA est arrimé à l'euro à parité fixe (1 EUR = 655,957 FCFA, parité
+# statutaire UEMOA), mais les deux fournisseurs ci-dessous facturent en dollars :
+# le taux USD/XOF flotte donc et constitue la principale fragilité du chiffre.
+USD_TO_FCFA = 598.03  # taux moyen de marché XE, 24/11/2026 19:18 UTC
+EUR_TO_FCFA = 655.957  # parité fixe, ne bouge pas
+
+# AWS EC2 g4dn.xlarge = 1 × NVIDIA T4 16 Go, exactement la carte visée par le
+# brief. Tarif à la demande, Linux, us-east-1. AWS ne publie pas de tarif FCFA.
+GPU_T4_HOURLY_PRICE_USD = 0.526
+_GPU_HOURLY_DEFAULT = round(GPU_T4_HOURLY_PRICE_USD * USD_TO_FCFA, 2)
+
+# Claude Haiku 5.5, palier ≤ 100 000 tokens : 0,10 $/M en entrée, 0,50 $/M en
+# sortie. Sert de point de comparaison « si on appelait une API au lieu
+# d'héberger le modèle ». Le coût pour 1 000 réclamations n'est PAS saisi à la
+# main : il est dérivé des tokens réellement comptés par `bench/token_cost.py`.
+CLOUD_API_INPUT_USD_PER_M = 0.10
+CLOUD_API_OUTPUT_USD_PER_M = 0.50
+CLOUD_API_MODEL_LABEL = "Claude Haiku 5.5 (palier ≤ 100 k tokens)"
+
+# Les deux paramètres du brief restent surchargeables par l'environnement ; à
+# défaut ils valent le tarif public ci-dessus. Mettre `0` dans `.env` pour
+# revenir à « non calculé » et ne rien afficher.
 GPU_HOURLY_PRICE_FCFA = _opt_float("GPU_HOURLY_PRICE_FCFA")
+if GPU_HOURLY_PRICE_FCFA is None:
+    GPU_HOURLY_PRICE_FCFA = _GPU_HOURLY_DEFAULT
+def _fr(value: float) -> str:
+    """Nombre en écriture française (virgule décimale), pour les étiquettes."""
+    return f"{value}".replace(".", ",")
+
+
+GPU_HOURLY_PRICE_LABEL = (
+    f"AWS g4dn.xlarge (T4 16 Go) à la demande, {_fr(GPU_T4_HOURLY_PRICE_USD)} USD/h "
+    f"× {_fr(USD_TO_FCFA)} FCFA/USD — prix public relevé le 25/11/2026"
+)
+
+# Surcharge explicite ; sinon dérivé des tokens mesurés (voir cost_report).
 CLOUD_API_PRICE_PER_1K_FCFA = _opt_float("CLOUD_API_PRICE_PER_1K_FCFA")
 
 # Estimations issues d'offres d'emploi (section 12) — à présenter comme estimations.

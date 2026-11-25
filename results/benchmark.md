@@ -2,7 +2,7 @@
 
 > **Données synthétiques.** SYNTHÉTIQUES — opérateurs fictifs, générateur publié  
 > **Exécution :** CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)  
-> **Généré le :** 2026-11-25T08:21:38.055141+01:00  
+> **Généré le :** 2026-11-25T10:13:19.314192+01:00  
 > **Corpus :** 20 000 réclamations  
 > Aucun chiffre de ce fichier n'est écrit en dur : tout provient d'une exécution de bench/benchmark.py sur les données du dépôt.
 
@@ -62,12 +62,12 @@ L'écart se creuse sur les montants mal écrits (« 25mil », « vingt cinq mill
 
 | Grandeur | Valeur | Étiquette |
 |---|---|---|
-| Débit référence regex | 45 215.96 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
-| Débit extracteur local | 29 408.78 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
+| Débit référence regex | 19 119.73 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
+| Débit extracteur local | 10 604.92 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
 | Débit LLM | non mesuré requêtes/s | non mesuré |
-| Prix horaire GPU | non calculé | paramètre `config.py` |
+| Prix horaire GPU | 314.56 | paramètre `config.py` |
 | Inférence locale / 1 000 réclamations | non calculé | calculé si le prix horaire est rempli |
-| API cloud / 1 000 | non calculé | paramètre `config.py` |
+| API cloud / 1 000 | 70.68 | paramètre `config.py` |
 | Agent humain / 1 000 (simple) | 270 000 FCFA | estimation (offres d'emploi, section 12) |
 | Agent humain / 1 000 (investiguée) | 700 000 FCFA | estimation (offres d'emploi, section 12) |
 | Repère — Intercom Fin (par résolution) / 1 000 | 590 000 FCFA | prix public affiché |
@@ -76,7 +76,8 @@ L'écart se creuse sur les montants mal écrits (« 25mil », « vingt cinq mill
 
 ### Avertissements de lecture
 
-- Le prix horaire du GPU et le tarif API cloud sont des paramètres de `config.py` à remplir depuis leurs sources. Vides, ils donnent « non calculé » — aucun coût n'est inventé.
+- Le prix horaire du GPU et le tarif API cloud sont des PRIX PUBLICS AFFICHÉS relevés le 25/11/2026, pas des mesures de notre part. Ils bougent, et le taux USD/FCFA avec eux.
+- Le coût d'inférence locale n'est calculé que si le débit a été mesuré sur un GPU : diviser un prix horaire de GPU par un débit CPU donnerait un chiffre flatteur et faux.
 - Les coûts humains (270 / 700 FCFA par réclamation) sont des ESTIMATIONS issues d'offres d'emploi, pas des mesures.
 - Les repères éditeurs (Intercom Fin, Thematic) sont des prix publics affichés, pas des mesures de notre part.
 - Le prix proposé de 5 FCFA par réclamation est une HYPOTHÈSE de modèle économique.
