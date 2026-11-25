@@ -13,3 +13,6 @@ results/cache/*.tmp
 
 # Cahier des charges de travail, garde en local et non publie
 PROMPT_RECLAM_GRAPH.md
+
+# Archives de resultats rapatriees depuis la machine GPU
+*.zip
