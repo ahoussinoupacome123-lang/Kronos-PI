@@ -87,6 +87,7 @@ Le journal détaillé et horodaté reste [DECISIONS.md](DECISIONS.md) (une ligne
 | 25/11 | **La plateforme web lit `results/`** (mode démo) ; API FastAPI en cible | Un seul jeu de chiffres, ceux du banc |
 | 25/11 | Documentation structurée selon `gestion-projet-git-doc` (`docs/00` à `03`, `context.md`) | Demande de Joachim |
 | 25/11 | **Refonte visuelle** : landing sur le modèle d'Evalis (toeic-building), tableau de bord sur le modèle GeneX ; nom provisoire **SikaX** centralisé dans `web/src/lib/brand.ts` ; assistant Nexus conservé ; pas d'images générées | Demande de Joachim ; `PRODUCT.md` écrit selon impeccable |
+| 25/11 | **Nom définitif : KronosPI** (Kronos, le temps ; PI, pour PI-SPI) ; logo cadran et K-graphe ; landing réécrite en keynote (hero givré et ajouré d'après la référence de Joachim, une idée par écran) | Demande de Joachim ; la version précédente jugée trop chargée |
 
 ## 5. Contraintes et règles
 
