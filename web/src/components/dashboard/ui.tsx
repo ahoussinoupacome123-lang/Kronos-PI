@@ -3,7 +3,7 @@ export function PageHead({ title, lead, children }: { title: string; lead?: Reac
   return (
     <header className="mb-8 flex flex-wrap items-end justify-between gap-4">
       <div>
-        <h1 className="font-display text-[2.1rem] font-semibold leading-[1.05] tracking-[-0.03em] text-balance">{title}</h1>
+        <h1 className="font-display text-[2.1rem] font-bold leading-[1.05] tracking-[-0.03em] text-ink text-balance">{title}</h1>
         {lead && <p className="mt-2 max-w-2xl text-slate">{lead}</p>}
       </div>
       {children}
@@ -13,10 +13,10 @@ export function PageHead({ title, lead, children }: { title: string; lead?: Reac
 
 export function Panel({ title, aside, children, className = "" }: { title?: string; aside?: React.ReactNode; children: React.ReactNode; className?: string }) {
   return (
-    <section className={`rounded-2xl border border-paper-line bg-paper-2 ${className}`}>
+    <section className={`rounded-[22px] bg-white shadow-[0_10px_34px_-24px_rgba(11,27,75,0.45)] ${className}`}>
       {title && (
         <div className="flex items-center justify-between gap-3 border-b border-paper-line px-5 py-3.5">
-          <h2 className="font-medium text-ink">{title}</h2>
+          <h2 className="font-display text-[15px] font-bold text-ink">{title}</h2>
           {aside}
         </div>
       )}
@@ -29,7 +29,7 @@ export function Panel({ title, aside, children, className = "" }: { title?: stri
 export function Kpi({ label, value, compare, help, tone = "ink" }: { label: string; value: string; compare?: string; help: string; tone?: "ink" | "laterite" | "sage" | "amber" }) {
   const color = { ink: "text-ink", laterite: "text-laterite-deep", sage: "text-sage-deep", amber: "text-amber-deep" }[tone];
   return (
-    <div className="group relative rounded-2xl border border-paper-line bg-paper-2 p-5">
+    <div className="group relative rounded-[22px] bg-white p-5 shadow-[0_10px_34px_-24px_rgba(11,27,75,0.45)]">
       <div className="flex items-start justify-between gap-2">
         <p className="text-sm text-slate">{label}</p>
         <button

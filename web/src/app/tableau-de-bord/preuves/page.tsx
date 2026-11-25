@@ -1,6 +1,7 @@
 import { Kpi, PageHead, Panel } from "@/components/dashboard/ui";
 import { IconChip } from "@/components/ui/icons";
 import { bench, engineTruth, fcfa, headline, meta, num, pct, tokenCost, volumes } from "@/lib/data";
+import { BRAND } from "@/lib/brand";
 
 export const metadata = { title: "Preuves mesurées" };
 
@@ -55,7 +56,7 @@ export default function ProofsPage() {
               {[
                 ["Mots-clés + regex (référence)", typo.reference_mots_cles_regex?.f1_macro],
                 ["TF-IDF + régression logistique (supervisée)", typo.reference_tfidf_logreg?.f1_macro],
-                ["Extracteur Réclam'Graph (sans étiquettes)", typo.heuristique_locale?.f1_macro],
+                [`Extracteur ${BRAND.name} (sans étiquettes)`, typo.heuristique_locale?.f1_macro],
                 ["LLM local", typo.llm?.f1_macro ?? null],
               ].map(([k, v]) => (
                 <tr key={k as string}>

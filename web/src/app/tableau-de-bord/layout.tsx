@@ -1,29 +1,49 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import Sidebar, { MobileNav } from "@/components/dashboard/Sidebar";
 import { DecisionsProvider } from "@/components/dashboard/decisions";
 import Nexus from "@/components/nexus/Nexus";
+import { Wordmark } from "@/components/site/SiteChrome";
 import { readSession } from "@/lib/auth";
+import { BRAND } from "@/lib/brand";
 import { dueSoon, priorityAlerts } from "@/lib/derive";
 import { dayHhmm, DEMO_NOW, engineTruth } from "@/lib/data";
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const session = await readSession();
   if (!session) redirect("/connexion");
+  const initials = session.name
+    .split(" ")
+    .map((p) => p[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
 
   return (
     <DecisionsProvider>
-      <div className="flex min-h-dvh bg-paper">
-        <Sidebar user={session} pendingPriority={priorityAlerts.map((a) => a.id)} dueSoon={dueSoon.length} />
-        <div className="flex min-w-0 flex-1 flex-col">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-amber/30 bg-amber/10 px-6 py-2 text-[13px] text-amber-deep">
-            <span>
-              <strong className="font-semibold">Mode démonstration.</strong> Données synthétiques, opérateurs fictifs. Horloge
-              figée au {dayHhmm(DEMO_NOW)}.
+      <div className="min-h-dvh bg-paper p-2.5 md:p-4">
+        <header className="flex flex-wrap items-center justify-between gap-3 rounded-[22px] bg-white px-4 py-3 shadow-[0_8px_30px_-22px_rgba(11,27,75,0.5)] md:px-6">
+          <Link href="/" aria-label={`${BRAND.name}, accueil`} className="rounded-lg">
+            <Wordmark />
+          </Link>
+          <p className="order-3 w-full rounded-full bg-amber/25 px-4 py-1.5 text-center text-[12.5px] font-semibold text-amber-deep md:order-none md:w-auto">
+            Démo · données synthétiques · horloge figée au {dayHhmm(DEMO_NOW)}
+            {!engineTruth.usedLlm && " · extraction par le moteur de repli"}
+          </p>
+          <div className="flex items-center gap-3">
+            <span className="hidden text-right leading-tight sm:block">
+              <span className="block text-sm font-bold text-ink">{session.name}</span>
+              <span className="block text-xs text-slate">{session.org}</span>
             </span>
-            {!engineTruth.usedLlm && <span>Extraction : moteur local de repli (LLM non mesuré dans ce run).</span>}
+            <span className="grid h-10 w-10 place-items-center rounded-full bg-blue font-display text-sm font-bold text-white" aria-hidden>
+              {initials}
+            </span>
           </div>
-          <MobileNav />
-          <main className="flex-1 px-5 py-8 md:px-10">{children}</main>
+        </header>
+        <MobileNav />
+        <div className="mt-3 flex gap-4 md:mt-4">
+          <Sidebar user={session} pendingPriority={priorityAlerts.map((a) => a.id)} dueSoon={dueSoon.length} />
+          <main className="min-w-0 flex-1 pb-24">{children}</main>
         </div>
       </div>
       <Nexus userName={session.name.split(" ")[0]} />
@@ -31,5 +51,5 @@ export default async function DashboardLayout({ children }: { children: React.Re
   );
 }
 
-// Page dépendante de la session ou de l'URL : rendu à la demande, hors validation de navigation instantanée.
+// Page dépendante de la session : rendu à la demande, hors validation de navigation instantanée.
 export const instant = false;

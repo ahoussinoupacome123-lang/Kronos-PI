@@ -86,6 +86,7 @@ Le journal détaillé et horodaté reste [DECISIONS.md](DECISIONS.md) (une ligne
 | 25/11 | **Assistant nommé « Nexus »** : guide chaque utilisateur, relie les EME entre elles à travers le graphe | Un nom de produit, pas un chatbot générique |
 | 25/11 | **La plateforme web lit `results/`** (mode démo) ; API FastAPI en cible | Un seul jeu de chiffres, ceux du banc |
 | 25/11 | Documentation structurée selon `gestion-projet-git-doc` (`docs/00` à `03`, `context.md`) | Demande de Joachim |
+| 25/11 | **Refonte visuelle** : landing sur le modèle d'Evalis (toeic-building), tableau de bord sur le modèle GeneX ; nom provisoire **SikaX** centralisé dans `web/src/lib/brand.ts` ; assistant Nexus conservé ; pas d'images générées | Demande de Joachim ; `PRODUCT.md` écrit selon impeccable |
 
 ## 5. Contraintes et règles
 
