@@ -9,10 +9,10 @@
 
 | Priorité | Exigences | Terminées | En cours | Avancement |
 |---|---|---|---|---|
-| **P0 — démo challenge** | 34 | 21 | 12 | 62 % |
-| P1 — pilote | 17 | 0 | 3 | 0 % |
+| **P0 — démo challenge** | 34 | 31 | 2 | 91 % |
+| P1 — pilote | 17 | 0 | 4 | 0 % |
 | P2 — production | 6 | 0 | 0 | 0 % |
-| **Global** | **57** | **21** | **15** | **37 %** |
+| **Global** | **57** | **31** | **6** | **54 %** |
 
 ### Par module
 
@@ -115,23 +115,23 @@
 
 | ID | Exigence | Prio | Statut | Responsable | Date | Branche / PR | Commentaires |
 |---|---|---|---|---|---|---|---|
-| WEB-01 | Landing (hero Three.js, EME, preuves, pied de page) | P0 | En cours | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
-| WEB-02 | Connexion, comptes de démo | P0 | En cours | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
-| WEB-03 | Tableau de bord qui guide | P0 | En cours | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
-| WEB-04 | Lecture de `results/` | P0 | En cours | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | API en P1 |
-| WEB-05 | CGU, confidentialité, mentions | P0 | En cours | agent juridique | 2026-11-25 | `feat/plateforme-web` | `docs/04-juridique` |
-| WEB-06 | SVG, sans emoji, accessible | P0 | En cours | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
+| WEB-01 | Landing (hero Three.js, EME, preuves, pied de page) | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
+| WEB-02 | Connexion, comptes de démo | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
+| WEB-03 | Tableau de bord qui guide | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
+| WEB-04 | Lecture de `results/` | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | API en P1 |
+| WEB-05 | CGU, confidentialité, mentions | P0 | Terminé | agent juridique | 2026-11-25 | `feat/plateforme-web` | `docs/04-juridique` |
+| WEB-06 | SVG, sans emoji, accessible | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
 | WEB-07 | Rôles et permissions | P1 | À faire | — | — | — | — |
-| WEB-08 | Décisions écrites dans l'audit | P1 | À faire | — | — | — | — |
+| WEB-08 | Décisions écrites dans l'audit | P1 | En cours | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | Décision signée avec motif, conservée dans le navigateur ; journal serveur en P1 |
 
 ## ASSIST — Nexus
 
 | ID | Exigence | Prio | Statut | Responsable | Date | Branche / PR | Commentaires |
 |---|---|---|---|---|---|---|---|
-| ASSIST-01 | Nexus présent partout, guide vers l'action | P0 | En cours | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
-| ASSIST-02 | Répond depuis les données, cite la source | P0 | En cours | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
-| ASSIST-03 | Explique le graphe entre EME | P0 | En cours | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
-| ASSIST-04 | Jamais de gel automatique | P0 | En cours | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
+| ASSIST-01 | Nexus présent partout, guide vers l'action | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
+| ASSIST-02 | Répond depuis les données, cite la source | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
+| ASSIST-03 | Explique le graphe entre EME | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
+| ASSIST-04 | Jamais de gel automatique | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
 | ASSIST-05 | LLM local + RAG | P1 | À faire | — | — | — | Endpoint `/assistant` |
 
 ## API
