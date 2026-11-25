@@ -151,8 +151,23 @@ Puis les deux phrases qui font la différence devant un jury :
    sert indifféremment à une arnaque et à une erreur sincère, **aucun moteur ne dépasse
    le taux de la classe majoritaire**. Lire la plainte ne suffit pas. Il faut les croiser. »*
 
-Terminer sur la **courbe GPU** (onglet Résultats) si la démo tourne sur la machine GPU,
-en ayant lancé `scripts/record_gpu_evidence.sh` en parallèle.
+Terminer sur l'onglet **Résultats**, qui porte les mesures GPU et la courbe
+`nvidia-smi` relevée pendant l'exécution :
+
+> *« Tout cela a tourné sur une Tesla T4. Le modèle Qwen2.5-7B en AWQ, servi par vLLM :
+> **3,087 réclamations par seconde**. Les embeddings bge-m3 : **25,65 textes par
+> seconde**. Et donc le coût : **28,31 FCFA pour mille réclamations**, c'est-à-dire le
+> prix horaire de la carte divisé par un débit que nous avons mesuré, pas estimé. »*
+
+Et la phrase qui désamorce la question du coût avant qu'on la pose :
+
+> *« Une API cloud ferait la même chose pour 70,68 FCFA les mille. Nous sommes deux fois
+> et demie moins chers, mais honnêtement, à côté des 270 000 FCFA que coûte le
+> traitement humain de mille réclamations, ces deux chiffres sont du bruit. Notre
+> argument n'est pas le coût du modèle. C'est le croisement entre opérateurs. »*
+
+Si une étiquette affiche « repli CPU sur machine équipée d'une T4 », c'est que rien n'a
+tourné sur la carte pour cette exécution-là : le dire, ne jamais le masquer.
 
 ### Si quelque chose casse
 
@@ -180,6 +195,9 @@ Le mode démo ne dépend de rien. En dernier recours : la **vidéo de secours** 
   cloud, et politiquement mauvais. Nous **outillons** les agents.
 - ❌ **« Aucune solution n'existe »** — faux : Proto, PI-Reclam, registres de fraude.
 - ❌ **Tout chiffre de débit, d'exactitude ou de coût qui n'a pas été mesuré.**
+- ❌ **« Notre pipeline tourne sur GPU »** sans préciser quelle étape. L'extraction LLM et
+  les embeddings bge-m3 tournent sur la T4, c'est mesuré ; le reste est du CPU, et les
+  étiquettes du dépôt le disent étape par étape.
 - ❌ **« Nous comprenons le fon, le wolof, le mina »** — les taux d'erreur publiés ne le
   permettent pas. Nous injectons du **bruit lexical** nouchi et fon dans les données ;
   ce n'est pas de la compréhension.
@@ -250,6 +268,8 @@ Le mode démo ne dépend de rien. En dernier recours : la **vidéo de secours** 
 
 - [ ] `make demo` lancé, **mode démo activé**, onglet « Le cas » ouvert.
 - [ ] Dire en premier : **« les données sont synthétiques, les opérateurs fictifs »**.
+- [ ] Savoir citer de tête : **3,087 req/s** (LLM sur T4), **25,65 textes/s** (bge-m3),
+      **28,31 FCFA** les mille en local contre **70,68 FCFA** en API cloud.
 - [ ] Sur la machine GPU : `bash scripts/record_gpu_evidence.sh` en parallèle, et une
       **capture d'écran de `nvidia-smi`** pendant le traitement.
 - [ ] Vidéo de secours enregistrée (OBS).

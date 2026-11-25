@@ -38,9 +38,21 @@
 | Précision après score | 75 % | 100 % (42 % brute) | ≥ 70 % | Atteint en synthétique |
 | Délai médian | 29 min | 13 min | ≤ 15 min | Atteint en synthétique |
 | FCFA gelables | 367 000 | 920 000 | — | Mesuré |
-| F1 extraction LLM | — | non mesuré | ≥ 0,95 (montant) | **Bloqué par BUG-001** |
-| Débit GPU | — | non mesuré | ≥ 50/s | **Bloqué par BUG-001** |
-| Coût local / 1 000 | — | non calculé | publié | **Bloqué par BUG-001** |
+| F1 extraction LLM — montant | 0,959 (regex) | **0,945** | ≥ 0,95 (montant) | Mesuré sur T4, cible frôlée |
+| F1 extraction LLM — champs | 0,959 (regex) | **0,973** | — | Mesuré sur T4, 400 appels |
+| F1 typologie LLM | 0,980 (TF-IDF+logreg) | **0,701** | — | Mesuré ; la référence supervisée gagne, publié tel quel |
+| Débit LLM sur GPU | — | **3,087 req/s** (2 462 tokens/s) | ≥ 50/s | **Cible non atteinte** — voir note |
+| Coût local / 1 000 | — | **28,31 FCFA** | publié | Publié (314,56 FCFA/h ÷ 3,087 req/s) |
+| Coût API cloud / 1 000 | — | **70,68 FCFA** | publié | Dérivé des tokens comptés |
+
+> **Note sur le débit.** La cible de 50 req/s n'est pas atteinte et nous ne la
+> maquillons pas : 3,087 req/s avec Qwen2.5-7B-AWQ sur une Tesla T4, concurrence 16,
+> latence médiane 5,0 s, 0 échec sur 400 appels. Le T4 est une carte de 2018 sans bf16,
+> et le modèle fait 7 milliards de paramètres. Les leviers connus, non mesurés ici :
+> Qwen2.5-3B, un cache de prompt (le prompt système pèse 601 des 642 tokens d'entrée),
+> et une carte plus récente. À 3 req/s, 20 000 réclamations demandent ~1 h 48 — le
+> traitement est nocturne, pas temps réel, et le délai de détection de 13 min vient du
+> croisement, pas de l'extraction.
 
 ## Répartition de l'équipe
 
@@ -51,7 +63,7 @@ Décidée le 25/11/2026. Plus aucune modification de code après 14 h 30 le 25/1
 | T-01 | Servir le LLM sur la T4 (`make serve-llm`), puis `make pipeline-llm` et `make bench-llm` | Pacôme | 25/11 14 h | Terminé | vLLM servi sur T4, `bench-llm` : 3,087 req/s sur Qwen2.5-7B-AWQ |
 | T-02 | Mesurer bge-m3 sur le corpus (`make bench-embed`) avec `record_gpu_evidence.sh` en parallèle | Pacôme | 25/11 14 h | Terminé | RAD, preuve GPU |
 | T-03 | Corriger BUG-001 : l'étiquette d'exécution nomme le moteur réellement utilisé | Pacôme | 25/11 14 h | Terminé | BUG-001 |
-| T-04 | Régénérer `README`, `benchmark.md`, pousser `results/` ; puis `cd web && npm run sync` | Pacôme, Joachim | 25/11 14 h 15 | À faire | WEB-04 |
+| T-04 | Régénérer `README`, `benchmark.md`, pousser `results/` ; puis `cd web && npm run sync` | Pacôme, Joachim | 25/11 14 h 15 | Terminé | `demo.json` porte les mesures T4 |
 | T-05 | Vidéo de secours (OBS) du pipeline sur GPU | Pacôme | 25/11 14 h 30 | À faire | — |
 | T-06 | Brancher Nexus sur le vLLM (`LLM_BASE_URL`) | Pacôme | 26/11 | À faire | ASSIST-05 |
 | T-07 | Vérification mobile de la landing, du tableau de bord et de Nexus (retouches seulement) | Ange Marie | 25/11 14 h 30 | À faire | WEB-01, WEB-03 |

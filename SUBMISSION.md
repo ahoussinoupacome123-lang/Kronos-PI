@@ -91,11 +91,28 @@ Fichiers de résultats : `results/benchmark.json`, `results/benchmark.md`,
 `results/baseline_alerts.json`, `results/incidents.json`, `results/dossiers.json`,
 `results/audit.jsonl`, `results/gpu_log.txt`.
 
-**123 tests** (`make test`) vérifient notamment : les 5 campagnes sont détectées, les
+**125 tests** (`make test`) vérifient notamment : les 5 campagnes sont détectées, les
 erreurs sincères produisent un dossier de remboursement **et aucune alerte**, le HMAC est
 déterministe par clé, les minuteurs calculent J+3 ouvrés et J+30, l'audit contient les
 preuves et le champ validateur, rien de nominatif ne quitte l'opérateur, et aucun
 chiffre LLM non mesuré n'est publié.
+
+## Ce qui a réellement tourné sur GPU
+
+Mesuré le 25/11/2026 sur **Tesla T4 16 Go**, journal `nvidia-smi` dans
+[`results/gpu_log.txt`](results/gpu_log.txt) :
+
+| Étape | Mesure | Moteur |
+|---|---|---|
+| Extraction LLM | **3,087 requêtes/s** (400 appels) | Qwen2.5-7B-Instruct-AWQ, fp16 (le T4 n'a pas de bf16) |
+| Embeddings | **25,65 textes/s**, 1024 dimensions | bge-m3 |
+| Coût d'inférence locale | **28,31 FCFA / 1 000 réclamations** | 314,56 FCFA/h ÷ 3,087 req/s |
+| Coût API cloud comparé | **70,68 FCFA / 1 000 réclamations** | dérivé de 642 tokens d'entrée + 108 de sortie comptés sur le corpus |
+
+L'auto-hébergement revient donc à **environ 2,5 fois moins cher** que l'API cloud à ce
+débit. Les deux restent marginaux face au **coût agent estimé à 270 000 FCFA pour
+1 000 réclamations** : l'argument du projet n'est pas le coût unitaire du modèle, c'est
+le croisement inter-opérateurs, que personne ne vend.
 
 ## Deux choses que nous disons nous-mêmes
 
@@ -110,11 +127,16 @@ chiffre LLM non mesuré n'est publié.
 
 - Données **synthétiques**, opérateurs **fictifs**. Générateur et vérité terrain publiés.
 - Les **FCFA gelables** viennent d'un modèle de retrait simulé, décrit dans le dépôt.
-- L'environnement de développement de ce dépôt est **sans GPU** : les débits publiés
-  portent l'étiquette **« CPU run »** et ne doivent pas être lus comme des débits GPU.
-  La mesure LLM est marquée **« non mesurée »** jusqu'à son exécution sur la machine GPU.
-- Le **prix horaire du GPU** et le **tarif API cloud** sont des paramètres de
-  `config.py` ; vides, les coûts affichent **« non calculé »**.
+- Les mesures GPU viennent d'une **Tesla T4 16 Go** (session cloud), pas du poste de
+  développement, qui est sans GPU. Chaque fichier de résultats nomme le moteur qui a
+  réellement calculé : « GPU run — Tesla T4 — calculé sur GPU : LLM », ou
+  « repli CPU sur machine équipée d'une T4 » quand rien n'a tourné sur la carte. Deux
+  tests échouent si une étiquette annonce « GPU run » sans moteur GPU.
+- Le **prix horaire du GPU** et le **tarif API cloud** sont des **prix publics affichés**
+  relevés le 25/11/2026, pas des mesures de notre part : ils bougent, et le taux
+  USD/FCFA avec eux (le FCFA est arrimé à l'euro, pas au dollar). Sources dans le README.
+- Le **coût d'inférence locale** n'est calculé que si le débit a été mesuré sur un GPU :
+  diviser un prix horaire de T4 par un débit CPU donnerait un chiffre flatteur et faux.
 - Les **coûts agent** (270 / 700 FCFA par réclamation) sont des **estimations** issues
   d'offres d'emploi ; les prix proposés, TAM, SAM et SOM sont des **hypothèses**.
 - Le chiffre de **~10 M réclamations par an** dans l'Union est une **extrapolation non
