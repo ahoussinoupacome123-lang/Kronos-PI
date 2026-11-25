@@ -1,6 +1,6 @@
 {
   "meta": {
-    "genere_le": "2026-11-25T10:13:19.314192+01:00",
+    "genere_le": "2026-11-25T10:26:09.143272+01:00",
     "etiquette_execution": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)",
     "donnees": "SYNTHÉTIQUES — opérateurs fictifs, générateur publié",
     "n_reclamations": 20000,
@@ -195,7 +195,7 @@
         },
         "lecture": "Sur ces textes, le mot à mot ne suffit pas : la même phrase sert à une arnaque et à une erreur sincère. C'est exactement le cas où le signal doit venir du CROISEMENT inter-opérateurs, pas du texte."
       },
-      "entrainement_s": 11.44,
+      "entrainement_s": 11.02,
       "note": "Référence supervisée : TF-IDF caractères + régression logistique, entraînée sur 14000 réclamations, évaluée sur 6000. Elle a vu des étiquettes ; les extracteurs non."
     },
     "heuristique_locale": {
@@ -1217,13 +1217,13 @@
   },
   "debit": {
     "reference_regex": {
-      "reclamations_par_seconde": 19119.73,
-      "secondes": 1.046,
+      "reclamations_par_seconde": 17523.08,
+      "secondes": 1.141,
       "etiquette": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)"
     },
     "heuristique_locale": {
-      "reclamations_par_seconde": 10604.92,
-      "secondes": 1.886,
+      "reclamations_par_seconde": 11448.16,
+      "secondes": 1.747,
       "etiquette": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)"
     },
     "llm": {
@@ -1233,14 +1233,14 @@
   "cout": {
     "etiquette_execution": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)",
     "moteur_mesure": "heuristique locale (CPU)",
-    "debit_mesure_reclamations_par_seconde": 10604.92,
+    "debit_mesure_reclamations_par_seconde": 11448.16,
     "debit_llm_mesure": null,
     "prix_horaire_gpu_fcfa": 314.56,
     "prix_horaire_gpu_source": "AWS g4dn.xlarge (T4 16 Go) à la demande, 0,526 USD/h × 598,03 FCFA/USD — prix public relevé le 25/11/2026",
     "cout_inference_locale_pour_1000_fcfa": "non calculé",
     "cout_inference_locale_note": "aucun GPU détecté : le débit disponible est un débit CPU, le diviser par un prix horaire de GPU n'aurait aucun sens",
     "cout_api_cloud_pour_1000_fcfa": 70.68,
-    "cout_api_cloud_note": "dérivé des tokens mesurés (642,19 entrée + 107,93 sortie par réclamation) × Claude Haiku 5.5 (palier ≤ 100 k tokens) — voir results/token_cost.json",
+    "cout_api_cloud_note": "dérivé des tokens mesurés (642,19 entrée + 107,93 sortie par réclamation) × API cloud commerciale (palier ≤ 100 k tokens) — voir results/token_cost.json",
     "cout_humain_pour_1000_fcfa": {
       "reclamation_simple": 270000.0,
       "reclamation_investiguee": 700000.0,
