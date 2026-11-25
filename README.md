@@ -256,10 +256,10 @@ Deux précautions que nous énonçons avant qu'on nous les oppose :
 1. **Le FCFA est arrimé à l'euro, pas au dollar** (parité fixe statutaire
    1 EUR = 655,957 FCFA). Les deux fournisseurs facturant en dollars, le taux
    USD/FCFA flotte : c'est la principale fragilité de ces deux chiffres.
-2. **Le coût d'inférence locale reste « non calculé »** tant que le débit LLM
-   n'a pas été mesuré sur un vrai GPU. Nous refusons de diviser un prix horaire
-   de T4 par un débit mesuré sur CPU : le résultat serait flatteur et faux.
-   Il se calculera tout seul après `make bench-llm` sur la machine GPU.
+2. **Le coût d'inférence locale est calculé depuis un débit mesuré sur GPU**, jamais
+   depuis un débit CPU : 314,56 FCFA/h ÷ 3,087 réclamations/s mesurées sur Tesla T4,
+   soit **28,31 FCFA pour 1 000 réclamations**. Sans mesure GPU, le dépôt affiche
+   « non calculé » plutôt qu'un chiffre flatteur.
 
 Le coût API pour 1 000 réclamations n'est pas saisi à la main : il est dérivé
 des tokens réellement comptés sur le corpus par `make token-cost`
@@ -358,6 +358,25 @@ flowchart TB
 
 ---
 
+## 4 bis. Ce qui a tourné sur GPU
+
+Mesuré le 25/11/2026 sur **Tesla T4 16 Go**, journal `nvidia-smi` dans
+[`results/gpu_log.txt`](results/gpu_log.txt). Le poste de développement, lui, n'a pas
+de GPU : les deux environnements sont distingués dans chaque sortie.
+
+| Étape | Mesure | Moteur |
+|---|---|---|
+| Extraction LLM | **3,087 req/s** · 2 462 tokens/s · latence médiane 5,0 s · 0 échec / 400 appels | Qwen2.5-7B-Instruct-AWQ, **fp16** (le T4 n'a pas de bf16) |
+| Embeddings | **25,65 textes/s**, 1024 dimensions | bge-m3 |
+| F1 extraction LLM (champs) | **0,973** récupérable · 0,596 brut | Qwen2.5-7B-AWQ |
+| F1 typologie LLM | **0,701** — la référence supervisée gagne (0,980) | Qwen2.5-7B-AWQ |
+| Coût inférence locale | **28,31 FCFA / 1 000** | 314,56 FCFA/h ÷ 3,087 req/s |
+| Coût API cloud comparé | **70,68 FCFA / 1 000** | 642 tokens entrée + 108 sortie, comptés |
+
+L'auto-hébergement est donc ~2,5× moins cher que l'API à ce débit. Les deux restent
+marginaux face au **coût agent estimé à 270 000 FCFA pour 1 000 réclamations** :
+l'argument du projet n'est pas le coût du modèle, c'est le croisement inter-opérateurs.
+
 ## 5. Démarrage rapide
 
 ```bash
@@ -379,7 +398,7 @@ Les trois commandes qui suffisent pour tout reproduire :
 ```bash
 make setup && make all      # données, pipeline, banc de mesure, tests
 make demo                   # la démonstration
-make test                   # 123 tests
+make test                   # 125 tests
 ```
 
 ### Avec un GPU
@@ -508,7 +527,7 @@ app/dashboard.py       interface Streamlit (7 onglets, mode démo)
 bench/benchmark.py     banc référence contre solution
 bench/metrics.py       F1 macro, F1 par champ, détection de campagnes, coût
 results/               benchmark.{json,md}, demo_bundle.json, alertes, audit, gpu_log.txt
-tests/                 123 tests
+tests/                 125 tests
 scripts/               serve_llm.sh, record_gpu_evidence.sh, refresh_results_block.py
 ```
 
@@ -534,9 +553,18 @@ Cette section est volontairement longue. Elle liste ce que nous ne savons pas.
 - Les **F1 de classification proches de 1,00** sur ce corpus mesurent la séparabilité
   des gabarits, pas une capacité transposable. Le repère réaliste est ~87 % (CFPB). La
   seule partie transposable de cette section est le **sous-corpus ambigu**.
-- Le **débit mesuré ici est un débit CPU** si aucun GPU n'est détecté, et l'étiquette
-  « CPU run » figure dans tous les fichiers de sortie. Il ne doit jamais être présenté
-  comme un débit GPU.
+- **Chaque fichier de résultats nomme le moteur qui a réellement calculé** :
+  « GPU run — Tesla T4 — calculé sur GPU : LLM », « … : bge-m3 », ou « repli CPU sur
+  machine équipée d'une T4 » quand rien n'a tourné sur la carte. Sans GPU du tout,
+  l'étiquette est « CPU run ». Deux tests échouent si une sortie annonce « GPU run »
+  sans nommer un moteur GPU.
+- Le **débit LLM de 3,087 req/s n'atteint pas** la cible interne de 50/s. Nous le
+  publions tel quel : Tesla T4 de 2018 sans bf16, modèle de 7 milliards de paramètres,
+  concurrence 16, latence médiane 5,0 s, 0 échec sur 400 appels. À ce débit, 20 000
+  réclamations demandent ~1 h 48 : le traitement est **nocturne, pas temps réel**. Le
+  délai de détection de 13 minutes vient du croisement, pas de la vitesse d'extraction.
+- Sur la **typologie**, le LLM (F1 macro 0,701) **perd contre la référence supervisée**
+  TF-IDF + régression logistique (0,980). C'est publié tel quel.
 - La **précision après score** dépend de la typologie produite par l'extracteur. Le
   sous-corpus ambigu montre que cette typologie n'est pas fiable sur les textes
   confondables : la précision réelle serait plus basse sur du trafic réel.
@@ -582,7 +610,7 @@ Cette section est volontairement longue. Elle liste ce que nous ne savons pas.
 ## 10. Reproduire et vérifier
 
 ```bash
-make test                                        # 123 tests
+make test                                        # 125 tests
 python scripts/refresh_results_block.py --check  # le README est-il à jour ?
 make env                                         # matériel détecté, modèle recommandé
 ```
