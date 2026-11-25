@@ -172,8 +172,15 @@ def test_le_banc_n_annonce_aucun_chiffre_llm_non_mesure():
     cout = r["cout"]
     if not cfg.GPU_HOURLY_PRICE_FCFA:
         assert cout["cout_inference_locale_pour_1000_fcfa"] == "non calculé"
-    if not cfg.HARDWARE.has_gpu:
+    # Le banc peut avoir ete execute sur une AUTRE machine que celle qui lance
+    # les tests (mesures rapatriees depuis la machine GPU). On verifie donc la
+    # coherence du fichier avec le materiel QU'IL DECLARE, pas avec le notre.
+    execute_sans_gpu = "CPU run" in cout["etiquette_execution"]
+    if execute_sans_gpu:
         assert any("AUCUN GPU" in a for a in cout["avertissements"])
+    else:
+        assert "GPU run" in cout["etiquette_execution"]
+        assert not any("AUCUN GPU" in a for a in cout["avertissements"])
 
 
 @needs_results
