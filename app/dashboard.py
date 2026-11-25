@@ -1005,160 +1005,246 @@ def tab_privacy(bundle: dict[str, Any]) -> None:
 # ---------------------------------------------------------------------------
 # Programme principal
 # ---------------------------------------------------------------------------
+MULE_DEMO_MSISDN = "+229 97 93 39 35"  # koffi.santos@betacash, campagne CMP-01
+
 EXEMPLES = {
-    "Arnaque à l'erreur de dépôt (doit recommander GELER)":
-        "Bonjour jai recu un msg de depot de 25.000 frs, jai rennvoye a "
-        "koffi.santos@betacash a 14h02, mais le depot nexistait pas. "
-        "je porte plainte c'est urgent",
-    "Erreur sincère de destinataire (doit recommander REMBOURSER)":
-        "Bonsoir, je me suis trompe de numero. J'ai envoye 15 000 FCFA a "
-        "mariam.kponou@gammapay vers 19h30 au lieu de mon frere. "
-        "Pouvez-vous m'aider a recuperer svp merci",
-    "Transaction échouée mais débitée":
-        "Mon compte a ete debite de 7500 F ce matin a 08h15 mais le "
-        "transfert n'est jamais passe. Reference TX-884512. Je veux mon argent.",
-    "Frais contestés":
-        "pourquoi on ma preleve 1200 frs de frais sur un retrait de 20000 ? "
-        "ct pas marque. je conteste",
+    "a": (
+        "A · Alias déjà signalé comme mule",
+        "bonjour je me suis fais avoir. un monsieur ma envoye 25mil par erreur "
+        "et ma dit de lui renvoyer. jai renvoye au " + MULE_DEMO_MSISDN + " "
+        "mais maintenant il repond plus. aidez moi svp",
+    ),
+    "b": (
+        "B · Erreur sincère de destinataire",
+        "bjr je me suis trompe de numero. jai envoye 10.000F hier au "
+        "+229 61 00 07 51 au lieu de mon frere, jai inverse 2 chiffres. "
+        "la personne ne me connait pas, je veux annuler svp",
+    ),
+    "c": (
+        "C · Aucun lien exploitable",
+        "mon argent est parti et je sais pas ou. je voulais payer mais ca a pas "
+        "marche, on ma debite quand meme. je me souviens plus du numero",
+    ),
 }
 
 
+def _audit_entry(action: str, subject_id: str, decision: str, evidence: dict) -> dict:
+    """Entrée d'audit identique à celle du pipeline, chaînée depuis la genèse."""
+    from reclam_graph.audit import GENESIS, compute_hash
+    from reclam_graph.schemas import AuditEntry
+
+    entry = AuditEntry(
+        entry_id=f"AUD-ESSAI-{datetime.now().strftime('%H%M%S')}",
+        ts=datetime.now(tz=ZoneInfo(cfg.TIMEZONE)),
+        actor="interface d'essai",
+        action=action,
+        subject_type="reclamation",
+        subject_id=subject_id,
+        rule=(
+            f"{cfg.MULE_MIN_COMPLAINANTS} plaignants / "
+            f"{cfg.MULE_MIN_OPERATORS} opérateurs / {cfg.MULE_WINDOW_MINUTES} min"
+        ),
+        thresholds={
+            "plaignants": cfg.MULE_MIN_COMPLAINANTS,
+            "operateurs": cfg.MULE_MIN_OPERATORS,
+            "fenetre_minutes": cfg.MULE_WINDOW_MINUTES,
+        },
+        evidence=evidence,
+        human_validator=None,
+        decision=decision,
+        prev_hash=GENESIS,
+        entry_hash="",
+    )
+    entry.entry_hash = compute_hash(entry)
+    return json.loads(entry.model_dump_json())
+
+
 def tab_essai(bundle: dict[str, Any]) -> None:
-    st.subheader("Écrivez une réclamation, voyez la chaîne réagir")
+    st.subheader("Tester une réclamation")
     st.caption(
-        "C'est la boucle réelle du produit : une entrée (le texte de la plainte), "
-        "deux sorties possibles (geler ou rembourser). Rien n'est pré-enregistré ici — "
-        "le texte que vous tapez est traité à l'instant."
+        "Collez une réclamation en français — fautes, abréviations SMS et nouchi "
+        "acceptés. Le texte est traité à l'instant : rien ici n'est pré-enregistré."
     )
 
-    choix = st.selectbox(
-        "Partir d'un exemple (ou écrivez le vôtre en dessous)",
-        ["— texte libre —", *EXEMPLES],
-    )
-    defaut = EXEMPLES.get(choix, "")
+    if "essai_texte" not in st.session_state:
+        st.session_state["essai_texte"] = ""
+
+    b1, b2, b3 = st.columns(3)
+    for col, cle in ((b1, "a"), (b2, "b"), (b3, "c")):
+        libelle, contenu = EXEMPLES[cle]
+        if col.button(libelle, width="stretch"):
+            st.session_state["essai_texte"] = contenu
 
     gauche, droite = st.columns([3, 1])
     with gauche:
         texte = st.text_area(
-            "Texte de la réclamation, tel que le client l'écrit",
-            value=defaut,
-            height=140,
+            "Réclamation",
+            key="essai_texte",
+            height=150,
             placeholder="Ex. : jai envoye 30.000 a un faux depot, aidez moi",
         )
     with droite:
-        operateur = st.selectbox("Opérateur qui reçoit", list(cfg.OPERATORS))
-        canal = st.selectbox("Canal", [c.value for c in Channel])
+        operateur = st.selectbox("Opérateur (optionnel)", list(cfg.OPERATORS))
         moteur = st.radio(
-            "Moteur d'extraction",
+            "Moteur",
             ["auto", "heuristic", "regex", "llm"],
-            help="auto = LLM s'il répond, repli heuristique sinon. Toujours étiqueté.",
+            help="auto : le modèle s'il répond, extraction simplifiée sinon.",
         )
 
-    if not st.button("Traiter la réclamation", type="primary", width="stretch"):
+    if not st.button("Analyser", type="primary", width="stretch"):
         return
     if not texte.strip():
-        st.warning("Écrivez d'abord un texte de réclamation.")
+        st.warning("Collez d'abord une réclamation.")
         return
 
+    try:
+        _analyser(texte, operateur, moteur, bundle)
+    except Exception as exc:  # noqa: BLE001 - une démo ne doit jamais planter
+        st.error(
+            f"**L'analyse n'a pas abouti.** {type(exc).__name__} : {exc}\n\n"
+            "Le texte est peut-être trop court ou mal formé. Essayez un des "
+            "trois exemples ci-dessus.",
+            icon="⚠️",
+        )
+
+
+def _analyser(texte: str, operateur: str, moteur: str, bundle: dict[str, Any]) -> None:
     recu_le = datetime.now(tz=ZoneInfo(cfg.TIMEZONE))
     plainte = Complaint(
-        complaint_id="ESSAI-001",
+        complaint_id=f"ESSAI-{recu_le.strftime('%H%M%S')}",
         operator=operateur,
-        channel=canal,
+        channel=Channel.AGENCE,
         received_at=recu_le,
         text=texte,
         complainant_msisdn="+22997000000",
         complainant_name="Client de démonstration",
     )
 
-    # ---- 1. Lire -------------------------------------------------------
     extractions, _ = extract([plainte], engine=moteur)
     ex = extractions[0]
-    st.markdown("#### 1 · Lire — ce que la machine a compris")
-    c1, c2, c3 = st.columns(3)
-    c1.metric("Typologie", ex.typology.value.replace("_", " ").title())
-    c2.metric("Montant", fcfa(ex.amount_fcfa) if ex.amount_fcfa else "non trouvé")
-    c3.metric("Confiance", f"{ex.confidence:.0%}" if ex.confidence else "—")
-    st.caption(f"Moteur réellement utilisé : **{ex.engine.value}** — {ex.engine_detail}")
-    with st.expander("JSON structuré produit"):
-        st.json(json.loads(ex.model_dump_json()))
 
-    # ---- 2. Masquer ----------------------------------------------------
-    st.markdown("#### 2 · Masquer — ce qui sort de l'opérateur")
-    partage = to_shared_record(plainte, ex, load_alias_directory())
-    if partage is None:
+    if ex.engine.value != "llm":
         st.info(
-            "Aucun bénéficiaire identifiable dans ce texte : **rien ne quitte "
-            "l'opérateur**. La réclamation est traitée en interne, point final.",
-            icon="🔒",
+            f"**Extraction simplifiée (modèle indisponible)** — moteur "
+            f"`{ex.engine.value}`. {ex.engine_detail}",
+            icon="🧩",
         )
-    else:
-        st.success(
-            "Seules ces valeurs partent vers le hub. Le numéro et le nom du "
-            "bénéficiaire ne sont **jamais** transmis en clair.",
-            icon="🔒",
-        )
-        st.json(json.loads(partage.model_dump_json()))
 
-    # ---- 3. Croiser ----------------------------------------------------
-    st.markdown("#### 3 · Croiser — est-ce que d'autres se sont plaints ?")
-    alerte = None
-    if partage is not None:
-        empreinte = partage.alias_hmac
-        connues = [
-            a for a in bundle.get("alertes_consortium", [])
-            if a.get("alias_hmac") == empreinte
-        ]
-        if connues:
-            try:
-                alerte = MuleAlert.model_validate(connues[0])
-            except Exception:  # noqa: BLE001 - l'alerte reste affichable sans etre typee
-                alerte = None
-            st.error(
-                f"**Cette empreinte est déjà connue du hub.** {_headline(connues[0])}",
-                icon="🚨",
-            )
-            st.caption(
-                "La règle est atteinte : au moins "
-                f"{cfg.MULE_MIN_COMPLAINANTS} plaignants indépendants, "
-                f"{cfg.MULE_MIN_OPERATORS} opérateurs distincts, "
-                f"dans une fenêtre de {cfg.MULE_WINDOW_MINUTES} minutes."
-            )
-        else:
-            st.info(
-                "Première plainte sur cette empreinte. **Aucune alerte** : une "
-                "plainte isolée ne prouve rien. Le hub la garde et attend de voir "
-                "si d'autres opérateurs signalent le même bénéficiaire.",
-                icon="⏳",
-            )
-
-    # ---- 4. Agir -------------------------------------------------------
-    st.markdown("#### 4 · Agir — la recommandation faite à l'agent")
-    decision, motif = decide(ex, alerte)
-    if decision is Decision.GELER:
-        st.error(f"### Recommandation : GELER\n\n{motif}", icon="🧊")
-    elif decision is Decision.REMBOURSER:
-        st.success(f"### Recommandation : REMBOURSER\n\n{motif}", icon="💸")
-    else:
-        st.warning(f"### Recommandation : À INSTRUIRE\n\n{motif}", icon="🔎")
-
-    st.warning(
-        "**Rien n'a été gelé ni remboursé.** Réclam'Graph a produit une "
-        "recommandation et un dossier. C'est l'agent de l'opérateur qui tranche, "
-        "et sa décision est tracée dans le journal d'audit.",
-        icon="⚖️",
+    # ---- 1. Enregistrement structuré -----------------------------------
+    st.markdown("#### 1 · Enregistrement structuré")
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Typologie", ex.typology.value.replace("_", " ").capitalize())
+    c2.metric("Montant", fcfa(ex.amount_fcfa) if ex.amount_fcfa else "non trouvé")
+    c3.metric(
+        "Heure de l'opération",
+        ex.event_at.strftime("%H:%M") if ex.event_at else "non précisée",
     )
 
-    minuteur = build_timer(recu_le)
-    t1, t2 = st.columns(2)
-    t1.metric("Échéance de remboursement", minuteur.refund_due_at.strftime("%d/%m/%Y"),
-              help="Article 35 : J+3 jours ouvrés, week-ends et fériés exclus.")
-    t2.metric("Réponse au client avant", minuteur.client_answer_due_at.strftime("%d/%m/%Y"),
-              help="Circulaire 002-2020/CB/C : J+30 calendaires.")
+    partage = to_shared_record(plainte, ex, load_alias_directory())
+    empreinte = partage.alias_hmac if partage else None
 
-    with st.expander("Dossier de litige pré-rempli (structure inspirée ISO 20022 camt.056)"):
+    d1, d2 = st.columns(2)
+    with d1:
+        st.caption("Bénéficiaire — empreinte HMAC")
+        st.code(empreinte or "aucun bénéficiaire identifiable", language=None)
+        st.caption(
+            "Le numéro brut n'est **jamais** affiché ni transmis : seule cette "
+            "empreinte circule entre opérateurs."
+        )
+    with d2:
+        st.caption("Réseau de destination")
+        st.code(ex.destination_operator or "non déterminé", language=None)
+        st.caption("Indices d'arnaque relevés dans le texte")
+        st.code(", ".join(ex.scam_indicators) if ex.scam_indicators else "aucun",
+                language=None)
+
+    # ---- 2. Croisement sur le graphe -----------------------------------
+    st.markdown("#### 2 · Croisement sur le graphe du consortium")
+    alerte = None
+    connue = None
+    if empreinte:
+        for a in bundle.get("alertes_consortium", []):
+            if a.get("alias_hmac") == empreinte:
+                connue = a
+                break
+    if connue:
+        try:
+            alerte = MuleAlert.model_validate(connue)
+        except Exception:  # noqa: BLE001
+            alerte = None
+        gelable = connue.get("freezable_at_last_update_fcfa") or connue.get(
+            "freezable_fcfa"
+        )
+        st.error("### Mule probable", icon="🚨")
+        m1, m2, m3 = st.columns(3)
+        m1.metric("Plaignants", connue.get("n_complainants", "—"))
+        m2.metric("Opérateurs", connue.get("n_operators", "—"))
+        m3.metric("Encore saisissable", fcfa(gelable) if gelable else "—")
+        st.caption(
+            "Cette empreinte est déjà portée par plusieurs plaignants chez "
+            "plusieurs opérateurs, dans la fenêtre de la règle."
+        )
+    elif empreinte:
+        st.success("### Erreur sincère — aucune corroboration", icon="✅")
+        st.caption(
+            "Première plainte sur cette empreinte. Une plainte isolée ne prouve "
+            "rien : le hub la conserve et attend un éventuel recoupement."
+        )
+    else:
+        st.warning("### Aucun lien exploitable", icon="🔎")
+        st.caption(
+            "Aucun bénéficiaire n'est identifiable dans ce texte : **rien ne "
+            "quitte l'opérateur** et aucune alerte ne peut être formée. "
+            "Nous ne désignons personne sans preuve."
+        )
+
+    # ---- 3. Décision et suites -----------------------------------------
+    st.markdown("#### 3 · Recommandation adressée à l'agent")
+    decision, motif = decide(ex, alerte)
+    if decision is Decision.GELER:
+        st.error(f"**GELER** — {motif}", icon="🧊")
+    elif decision is Decision.REMBOURSER:
+        st.success(f"**REMBOURSER** — {motif}", icon="💸")
+    else:
+        st.warning(f"**À INSTRUIRE** — {motif}", icon="🔎")
+    st.caption(
+        "Réclam'Graph recommande et documente. Rien n'a été gelé ni remboursé : "
+        "la décision revient à l'agent, et elle est tracée."
+    )
+
+    if decision is not Decision.GELER:
+        minuteur = build_timer(recu_le)
+        t1, t2 = st.columns(2)
+        t1.metric(
+            "J+3 ouvrés — remboursement",
+            minuteur.refund_due_at.strftime("%d/%m/%Y"),
+            help="Article 35, jours ouvrés : week-ends et fériés exclus.",
+        )
+        t2.metric(
+            "J+30 — réponse au client",
+            minuteur.client_answer_due_at.strftime("%d/%m/%Y"),
+            help="Circulaire 002-2020/CB/C, jours calendaires.",
+        )
         dossier = build_dispute_file(plainte, ex, alerte, now=recu_le)
-        st.json(json.loads(dossier.model_dump_json()))
+        with st.expander("Demande d'annulation PI-SPI pré-remplie "
+                         "(structure inspirée ISO 20022 camt.056)"):
+            st.json(dossier.iso20022_inspired)
+
+    with st.expander("Entrée du journal d'audit (chaînée par empreinte)"):
+        st.json(
+            _audit_entry(
+                action="analyse d'une réclamation déposée dans l'interface d'essai",
+                subject_id=plainte.complaint_id,
+                decision=decision.value,
+                evidence={
+                    "typologie": ex.typology.value,
+                    "montant_fcfa": ex.amount_fcfa,
+                    "empreinte_beneficiaire": empreinte,
+                    "moteur_extraction": ex.engine.value,
+                    "alerte_rattachee": connue.get("alert_id") if connue else None,
+                },
+            )
+        )
 
 
 def main() -> None:
