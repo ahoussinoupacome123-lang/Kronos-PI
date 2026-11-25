@@ -75,7 +75,7 @@ export default async function ConnexionPage({ searchParams }: { searchParams: Pr
 
       <aside className="relative hidden p-3 lg:sticky lg:top-0 lg:block lg:h-dvh">
         <div className="relative h-full overflow-hidden rounded-[32px] bg-paper-3">
-          <Image src="/visuels/responsable-fraude.jpg" alt="Une responsable litiges et fraude au travail." fill sizes="50vw" className="object-cover" />
+          <Image src="/visuels/equipe-fraude.jpg" alt="Deux analystes fraude examinent un tableau de bord." fill sizes="50vw" className="object-cover" />
           <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
           <Image src="/visuels/objet-bouclier.png" alt="" width={900} height={900} sizes="140px" className="flotte-css absolute right-8 top-8 w-[140px] drop-shadow-[0_24px_24px_rgba(15,23,18,.3)]" />
           <div className="absolute inset-x-8 bottom-8">
