@@ -177,5 +177,10 @@ export const decisionLabel: Record<string, string> = {
   A_INSTRUIRE: "À instruire",
 };
 
-/** Heure de référence de la démo : la fin du scénario CMP-01 (le dashboard « vit » le mardi 17/11). */
-export const DEMO_NOW = "2026-11-18T09:00:00+01:00";
+/** Heure de référence de la démo : une heure après la dernière alerte du corpus, pour que tout ce qui est affiché soit déjà arrivé. */
+export const DEMO_NOW = (() => {
+  const last = Math.max(...(d.alerts as Alert[]).map((a) => new Date(a.alertAt).getTime()));
+  const t = new Date(last + 3_600_000);
+  t.setUTCMinutes(0, 0, 0);
+  return t.toISOString();
+})();

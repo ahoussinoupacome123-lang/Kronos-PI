@@ -45,7 +45,7 @@ export default function ProofsPage() {
         <Kpi label="Rappel des campagnes" value={pct(cons.rappel)} compare={`Opérateur seul : ${pct(solo.rappel)}`} help="Campagnes détectées sur campagnes injectées. 5 campagnes : l'incertitude est large." tone="laterite" />
         <Kpi label="Délai médian" value={`${num(cons.delai_detection_median_minutes)} min`} compare={`Opérateur seul : ${num(solo.delai_detection_median_minutes)} min`} help="Depuis la première plainte de la campagne." />
         <Kpi label="FCFA gelables" value={fcfa(cons.fcfa_encore_gelables_total)} compare={`Opérateur seul : ${fcfa(solo.fcfa_encore_gelables_total)}`} help="Modèle de retrait du scénario synthétique : grandeur simulée." tone="sage" />
-        <Kpi label="Précision" value={pct(prio.precision)} compare={`Règle brute ${pct(cons.precision)} · opérateur seul ${pct(solo.precision)}`} help="Alertes vraies sur alertes émises. Après score pour les prioritaires ; les autres restent « à qualifier »." tone="amber" />
+        <Kpi label="Précision après score" value={`${prio.alertes_vraies} sur ${prio.alertes_totales}`} compare={`Règle brute ${pct(cons.precision)} · opérateur seul ${pct(solo.precision)}`} help="Alertes vraies sur alertes prioritaires. Le score a été réglé sur ce même corpus synthétique : chiffre à confirmer sur données réelles. Les autres alertes restent « à qualifier »." tone="amber" />
       </div>
 
       <div className="mt-8 grid gap-6 xl:grid-cols-2">
@@ -78,7 +78,7 @@ export default function ProofsPage() {
                 <tr>
                   <th className="pb-2 font-medium">Champ</th>
                   <th className="pb-2 text-right font-medium">Regex</th>
-                  <th className="pb-2 text-right font-medium">Local</th>
+                  <th className="pb-2 text-right font-medium">Local (repli)*</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-paper-line">
@@ -95,6 +95,9 @@ export default function ProofsPage() {
             <p className="text-sm text-slate">Détail par champ : voir results/benchmark.md, section 3.</p>
           )}
           <p className="mt-4 text-sm text-slate">Le montant sépare les moteurs : la regex ne lit pas « 25mil » ni « vingt cinq mille ».</p>
+          <p className="mt-2 text-xs text-slate">
+            * Extracteur local de repli, écrit en connaissant les gabarits du générateur : F1 optimiste par construction. Il ne remplace pas la mesure du LLM sur GPU.
+          </p>
         </Panel>
 
         <Panel title="Débit et coût pour 1 000 réclamations">

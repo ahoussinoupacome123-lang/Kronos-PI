@@ -135,7 +135,8 @@ export default async function Today() {
             ))}
           </ul>
           <p className="mt-4 text-xs text-slate">
-            Précision des alertes prioritaires : {pct(headline.prioritized.precision)} · règle brute {pct(cons.precision)}.
+            Alertes prioritaires vraies : {headline.prioritized.alertes_vraies} sur {headline.prioritized.alertes_totales} (score réglé sur ce corpus) · règle brute{" "}
+            {pct(cons.precision)}.
           </p>
         </Panel>
       </div>

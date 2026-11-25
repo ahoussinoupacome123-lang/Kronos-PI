@@ -233,10 +233,10 @@ export default function Home() {
             <Ledger
               label="Précision des alertes prioritaires"
               soloText={pct(solo.precision)}
-              consText={`${pct(prio.precision)} après score`}
+              consText={`${prio.alertes_vraies} sur ${prio.alertes_totales} après score`}
               soloRatio={solo.precision}
               consRatio={prio.precision}
-              note={`Règle brute : ${pct(cons.precision)}. Les alertes sous le score restent visibles « à qualifier ».`}
+              note={`Règle brute : ${pct(cons.precision)}. Score réglé sur ce même corpus : à confirmer sur données réelles. Les alertes sous le score restent visibles « à qualifier ».`}
             />
           </div>
 
@@ -305,8 +305,8 @@ export default function Home() {
               cite l&apos;alerte, le dossier ou la mesure d&apos;où elle vient. Il propose ; vous décidez.
             </p>
             <p className="mt-4 text-[#2a2f3d]">
-              Branché sur le même modèle open-weight que le pipeline, il tourne sur le GPU de l&apos;établissement. Sans modèle
-              disponible, il répond quand même, à partir des seuls résultats mesurés.
+              Aujourd&apos;hui, il répond à partir des seuls résultats mesurés. Il est prévu pour se brancher sur le même modèle
+              open-weight que le pipeline, sur le GPU de l&apos;établissement, sans que le texte d&apos;un client sorte de chez vous.
             </p>
           </div>
           <div className="rounded-3xl border border-paper-line bg-paper-2 p-6 shadow-[0_2px_4px_rgba(10,14,26,0.04),0_30px_60px_-30px_rgba(10,14,26,0.25)]">
@@ -319,9 +319,9 @@ export default function Home() {
             </ChatLine>
             <ChatLine who="vous">Et si c&apos;était un innocent ?</ChatLine>
             <ChatLine who="nexus">
-              Alors trois personnes de trois réseaux différents l&apos;ont accusé en {num(demoCase.alerte.detection_delay_minutes)} minutes
-              avec le même récit. Je recommande une suspension temporaire des retraits, pas un blocage. La décision et son
-              auteur seront inscrits dans l&apos;audit.
+              La règle exige au moins 3 plaignants sur 2 réseaux ; ici, {demoCase.alerte.n_complainants} plaignants sur{" "}
+              {demoCase.alerte.n_operators} réseaux décrivent le même faux dépôt. Je recommande une suspension temporaire et
+              réversible des retraits, pas un blocage. Votre décision, son motif et son auteur sont inscrits dans l&apos;audit.
             </ChatLine>
           </div>
         </div>
