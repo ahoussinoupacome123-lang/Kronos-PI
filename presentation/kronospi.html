@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KronosPI · GPU Challenge 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Barlow+Condensed:ital,wght@0,300;0,400;0,800;1,300;1,800&display=swap">
 <style>
 /* KronosPI — présentation autonome.
    Une idée par écran. Palette : nuit, blanc, gris, un corail pour l'alerte, l'or pour l'argent.
@@ -73,11 +73,31 @@ body.on-light .chrome-top, body.on-light .nav { color: #1d1d1f; }
 body.on-light .nav button { border-color: rgba(0, 0, 0, 0.15); }
 body.on-light .logo svg .ink { stroke: #1d1d1f; fill: #1d1d1f; }
 
-/* 1 — Ouverture : le sablier */
-#hero .stage { display: grid; grid-template-columns: 1fr minmax(300px, 40vh) 1fr; align-items: center; gap: 4vw; width: 100%; max-width: 1400px; }
-#hero canvas { width: 100%; aspect-ratio: 3 / 4.6; display: block; }
-.hero-left .h-xl b { font-weight: 300; }
-.hero-right { text-align: right; }
+/* 1 — Ouverture : un vrai sablier planté dans le désert, à l'heure dorée */
+.slide.desert { padding: 0; background: #e98a2f; overflow: hidden; }
+.desert .sky { position: absolute; inset: 0; background:
+  radial-gradient(60% 45% at 50% 46%, rgba(255, 236, 190, 0.85), rgba(255, 200, 120, 0) 70%),
+  linear-gradient(180deg, #f39a3a 0%, #f6ad4e 38%, #f0a04b 52%, #d9772a 100%); }
+.desert-title { position: absolute; left: 0; right: 0; top: 11vh; text-align: center; font-family: 'Barlow Condensed', 'Inter', sans-serif; font-weight: 800; font-size: clamp(5rem, 15vw, 15rem); line-height: 0.86; letter-spacing: -0.01em; color: #fff3dc; text-shadow: 0 10px 40px rgba(150, 60, 10, 0.25); }
+.desert-title span { font-weight: 300; }
+#desert3d { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+#hourglass { display: none; }
+body.no3d #desert3d { display: none; }
+body.no3d #hourglass { display: block; position: absolute; left: 50%; top: 52%; transform: translate(-50%, -50%); height: 60vh; aspect-ratio: 3 / 4.6; }
+.grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.22;
+  background-image: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+  background-size: 56px 56px; }
+.desert-bottom { position: absolute; left: 0; right: 0; bottom: 5vh; text-align: center; color: #fff3dc; font-family: 'Barlow Condensed', 'Inter', sans-serif; }
+.desert-bottom .find { font-size: clamp(2rem, 4.2vw, 4rem); letter-spacing: 0.01em; }
+.desert-bottom .find i { font-weight: 300; }
+.desert-bottom .find b { font-weight: 800; font-style: italic; }
+.desert-bottom .when { margin-top: 10px; font-size: clamp(1rem, 1.5vw, 1.4rem); letter-spacing: 0.28em; }
+.desert-bottom .when i { font-weight: 400; }
+.desert-bottom .when b { font-weight: 800; }
+.desert-clock { position: absolute; right: 4vw; bottom: 13vh; text-align: right; color: #fff3dc; }
+.desert-clock .small { color: rgba(255, 243, 220, 0.75); }
+.desert .tag { border-color: rgba(255, 243, 220, 0.35); color: #fff3dc; background: rgba(90, 40, 10, 0.18); }
+.desert .tag .dot { background: #fff3dc; }
 .tag { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); font-size: 14px; color: var(--gray-2); transition: all 0.6s var(--ease); }
 .tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); transition: background 0.4s; }
 .tag.alert { border-color: rgba(255, 106, 61, 0.6); color: var(--white); background: rgba(255, 106, 61, 0.12); }
@@ -163,6 +183,12 @@ body.on-light .logo svg .ink { stroke: #1d1d1f; fill: #1d1d1f; }
   [data-a], .slide.active [data-a], .slide.active .op { animation: none !important; opacity: 1; transform: none; }
   .ops .flow, .slide.active .mule .core { animation: none; }
 }
+
+/* Notes de l'orateur (touche N) */
+.notes { position: fixed; left: 4vw; right: 4vw; bottom: 84px; z-index: 30; max-width: 860px; margin: 0 auto; padding: 20px 24px; border-radius: 18px; background: rgba(10, 11, 15, 0.92); border: 1px solid rgba(245, 245, 247, 0.16); color: #f5f5f7; font-size: 17px; line-height: 1.5; display: none; }
+body.show-notes .notes { display: block; }
+.notes .who { font-size: 12px; letter-spacing: 0.16em; color: var(--gold); margin-bottom: 8px; }
+.notes p + p { margin-top: 6px; }
 </style>
 </head>
 <body>
@@ -187,19 +213,20 @@ body.on-light .logo svg .ink { stroke: #1d1d1f; fill: #1d1d1f; }
 
 <main>
   <!-- 1. OUVERTURE -->
-  <section class="slide" id="hero" aria-label="KronosPI">
-    <div class="stage">
-      <div class="hero-left">
-        <h1 class="h-xl" data-a style="--d:0">Kronos<b>PI</b></h1>
-        <p class="lead" data-a style="--d:1; margin-top:24px; max-width:22rem;">Chaque minute compte avant que l’argent volé ne sorte en espèces.</p>
-      </div>
-      <canvas id="hourglass" aria-label="Sablier en 3D : l’argent s’écoule jusqu’au retrait, KronosPI l’arrête avant" role="img"></canvas>
-      <div class="hero-right">
-        <p class="small" data-a style="--d:1">Scénario Aïcha · mardi</p>
-        <p class="clock" id="hg-clock" data-a style="--d:2">14:02</p>
-        <p data-a style="--d:3; margin-top:18px;"><span class="tag" id="hg-tag"><span class="dot"></span><span id="hg-text">L’argent s’écoule vers le compte mule</span></span></p>
-        <p class="small" data-a style="--d:4; margin-top:40px;">GPU Challenge 2026 · Token Titans</p>
-      </div>
+  <section class="slide desert" id="hero" aria-label="KronosPI">
+    <div class="sky" aria-hidden="true"></div>
+    <h1 class="desert-title" data-a style="--d:0">KRONOS<span>PI</span>.</h1>
+    <canvas id="desert3d" aria-label="Un sablier planté dans le sable du désert : l’argent s’écoule jusqu’au retrait, KronosPI l’arrête avant" role="img"></canvas>
+    <canvas id="hourglass" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="desert-bottom">
+      <p class="find" data-a style="--d:2"><i>CHAQUE MINUTE</i> <b>COMPTE.</b></p>
+      <p class="when" data-a style="--d:3"><i>GPU CHALLENGE</i> <b>25.11 · 16H00</b></p>
+    </div>
+    <div class="desert-clock" data-a style="--d:4">
+      <p class="small">Aïcha · mardi</p>
+      <p class="clock" id="hg-clock">14:02</p>
+      <p><span class="tag" id="hg-tag"><span class="dot"></span><span id="hg-text">L’argent s’écoule vers le compte mule</span></span></p>
     </div>
   </section>
 
@@ -209,9 +236,9 @@ body.on-light .logo svg .ink { stroke: #1d1d1f; fill: #1d1d1f; }
       <h2 class="h-l" data-a style="--d:0">Sommaire</h2>
       <ol class="toc">
         <li data-a style="--d:1"><button data-go="2"><span class="n">01</span><span class="t">Le problème</span><span class="s">Une arnaque que personne ne voit en entier</span></button></li>
-        <li data-a style="--d:2"><button data-go="3"><span class="n">02</span><span class="t">L’idée</span><span class="s">Chaque plainte est un capteur</span></button></li>
-        <li data-a style="--d:3"><button data-go="4"><span class="n">03</span><span class="t">Un cas : Aïcha</span><span class="s">De 14 h 02 à 14 h 40</span></button></li>
-        <li data-a style="--d:4"><button data-go="5"><span class="n">04</span><span class="t">Les chiffres</span><span class="s">Mesurés contre l’opérateur seul</span></button></li>
+        <li data-a style="--d:2"><button data-go="3"><span class="n">02</span><span class="t">La solution</span><span class="s">Chaque plainte est un capteur</span></button></li>
+        <li data-a style="--d:3"><button data-go="4"><span class="n">03</span><span class="t">Le cas pratique</span><span class="s">Comment ça marche, minute par minute</span></button></li>
+        <li data-a style="--d:4"><button data-go="5"><span class="n">04</span><span class="t">Les résultats</span><span class="s">Mesurés contre l’opérateur seul</span></button></li>
         <li data-a style="--d:5"><button data-go="6"><span class="n">05</span><span class="t">La suite</span><span class="s">Un pilote de huit semaines</span></button></li>
       </ol>
     </div>
@@ -227,9 +254,9 @@ body.on-light .logo svg .ink { stroke: #1d1d1f; fill: #1d1d1f; }
   </section>
 
   <!-- 4. L'IDÉE -->
-  <section class="slide" id="idee" aria-label="L’idée">
+  <section class="slide" id="idee" aria-label="La solution">
     <div class="wrap center">
-      <p class="small" data-a style="--d:0; letter-spacing:.16em;">02 · L’IDÉE</p>
+      <p class="small" data-a style="--d:0; letter-spacing:.16em;">02 · LA SOLUTION</p>
       <h2 class="h-l" data-a style="--d:1; margin-top:22px;">Chaque plainte est un capteur.</h2>
       <div class="ops" aria-label="Les plaintes de trois opérateurs convergent vers le même compte">
         <svg class="paths" viewBox="0 0 1100 420" preserveAspectRatio="none" aria-hidden="true">
@@ -265,9 +292,9 @@ body.on-light .logo svg .ink { stroke: #1d1d1f; fill: #1d1d1f; }
   </section>
 
   <!-- 5. AÏCHA -->
-  <section class="slide light" id="aicha" aria-label="Un cas : Aïcha">
+  <section class="slide light" id="aicha" aria-label="Le cas pratique">
     <div class="wrap center">
-      <p class="small" data-a style="--d:0; letter-spacing:.16em;">03 · UN CAS</p>
+      <p class="small" data-a style="--d:0; letter-spacing:.16em;">03 · LE CAS PRATIQUE</p>
       <h2 class="h-xl" data-a style="--d:1; margin-top:18px;">14 h 02.</h2>
       <p class="lead" data-a style="--d:2; max-width:40rem; margin:28px auto 0;">Aïcha, cliente Moov à Cotonou, reçoit un faux SMS de dépôt et renvoie 25 000 F sur un compte Wave. Elle n’est pas la seule.</p>
       <ol class="timeline" style="text-align:left;">
@@ -287,9 +314,9 @@ body.on-light .logo svg .ink { stroke: #1d1d1f; fill: #1d1d1f; }
   </section>
 
   <!-- 6. LES CHIFFRES -->
-  <section class="slide" id="chiffres" aria-label="Les chiffres">
+  <section class="slide" id="chiffres" aria-label="Les résultats">
     <div class="wrap center">
-      <p class="small" data-a style="--d:0; letter-spacing:.16em;">04 · LES CHIFFRES</p>
+      <p class="small" data-a style="--d:0; letter-spacing:.16em;">04 · LES RÉSULTATS</p>
       <h2 class="h-l" data-a style="--d:1; margin-top:22px;">Plus tôt. <span class="dim">Donc plus d’argent sauvé.</span></h2>
       <div class="figs">
         <div class="fig" data-a style="--d:2"><p class="v"><span data-count="13">13</span> min</p><p class="l">pour donner l’alerte</p><p class="vs">29 min pour un opérateur seul</p></div>
@@ -335,6 +362,7 @@ body.on-light .logo svg .ink { stroke: #1d1d1f; fill: #1d1d1f; }
   </section>
 </main>
 
+<aside class="notes" id="notes" aria-live="polite"></aside>
 <div class="progress" id="progress" style="width:12.5%"></div>
 <div class="nav">
   <button id="prev" aria-label="Écran précédent"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -358,6 +386,7 @@ function go(i) {
   document.getElementById("progress").style.width = `${((i + 1) / slides.length) * 100}%`;
   document.body.classList.toggle("on-light", slides[i].classList.contains("light"));
   if (slides[i].id === "chiffres") countUp(slides[i]);
+  if (typeof renderNotes === "function" && document.body.classList.contains("show-notes")) renderNotes();
   history.replaceState(null, "", `#${slides[i].id}`);
 }
 const next = () => go(cur + 1), prev = () => go(cur - 1);
@@ -386,6 +415,27 @@ addEventListener("touchend", (e) => {
 const start = Math.max(0, slides.findIndex((s) => `#${s.id}` === location.hash));
 slides.forEach((s) => s.setAttribute("aria-hidden", "true"));
 setTimeout(() => go(start), 80);
+
+
+/* ---------- Notes de l'orateur : touche N ---------- */
+const NOTES = [
+  ['JOACHIM · 0:20', ['Mardi, 14 h 02. Aïcha reçoit un SMS : « Je vous ai envoyé 25 000 par erreur, renvoyez svp. » Elle renvoie.', 'Dix-neuf minutes plus tard, l’argent sera parti en espèces.', 'Ce sablier, c’est le temps qu’il nous reste. Nous sommes Token Titans, et voici KronosPI.']],
+  ['JOACHIM · 0:10', ['Le problème. Notre solution. Un cas pratique, minute par minute. Nos résultats. Et ce que nous vous demandons.']],
+  ['JOACHIM · 1:00', ['La réclamation numéro un : « J’ai envoyé au mauvais numéro. » L’arnaque numéro un : « Je me suis trompé, renvoyez-moi l’argent. » Les mêmes mots.', '2,65 millions de réclamations en un semestre. 88 % des dépôts repartent en espèces. Depuis PI-SPI, un transfert ne s’annule plus.', 'Le fraudeur, lui, voit tout le réseau. Les opérateurs, non.']],
+  ['PACÔME · 1:00', ['Chaque plainte est un capteur.', 'Lire chez l’opérateur, sur son GPU. Masquer : seule une empreinte du numéro part au hub. Croiser : 3 plaignants, 2 réseaux, une heure.', 'Les outils d’analyse lisent une seule entreprise ; PI-Reclam transporte ; nous croisons, sans que personne ne livre ses clients.', 'Seul, un opérateur est aveugle. Ensemble, ils voient la mule.']],
+  ['ANGE MARIE · 1:00', ['14 h 02 le faux SMS. 14 h 09 Aïcha se plaint chez Moov. 14 h 16 d’autres victimes, chez MTN, chez Wave. 14 h 21 alerte.', 'Wave, qui héberge le compte, suspend les retraits et signe. Moov reçoit le dossier PI-SPI d’Aïcha, minuté à trois jours ouvrés.', 'KronosPI ne gèle jamais seul. Il recommande. L’humain décide.']],
+  ['PACÔME · 0:45', ['Mesuré sur 20 000 réclamations synthétiques, contre un opérateur seul avec la même règle.', '13 minutes contre 29. 5 campagnes sur 5 contre 3. 920 000 francs gelables contre 367 000.', 'Données synthétiques, annoncées ; générateur et vérité terrain publics. Plus tôt, c’est plus d’argent rendu.']],
+  ['JOACHIM · 0:30', ['Huit semaines, deux réseaux d’un même pays, leurs réclamations anonymisées. Tout tourne chez eux.', 'L’arnaque est déjà interopérable. La défense doit l’être aussi.']],
+  ['JOACHIM · 0:15', ['Merci au jury, à Epitech Bénin, UDU Technologies, l’Alliance Fintech UEMOA et Payfonte. Merci de nous avoir écoutés.', 'Place à la démo.']],
+];
+function renderNotes() {
+  const n = NOTES[cur] || ['', []];
+  const box = document.getElementById('notes');
+  box.innerHTML = '';
+  const who = document.createElement('div'); who.className = 'who'; who.textContent = n[0]; box.appendChild(who);
+  n[1].forEach((t) => { const p = document.createElement('p'); p.textContent = t; box.appendChild(p); });
+}
+addEventListener('keydown', (e) => { if (e.key === 'n' || e.key === 'N') { document.body.classList.toggle('show-notes'); renderNotes(); } });
 
 /* ---------- Compteurs ---------- */
 function countUp(scope) {
@@ -574,11 +624,224 @@ function countUp(scope) {
     }
   }
   function loop(t) {
-    if (slides[cur] && slides[cur].id === "hero") draw(t);
+    if (slides[cur] && slides[cur].id === "hero" && document.body.classList.contains("no3d")) draw(t);
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
 })();
+</script>
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" } }</script>
+<script type="module">
+/* Le vrai sablier : bois tourné, bagues de laiton, verre physique, sable qui s'écoule,
+   planté de biais dans les dunes à l'heure dorée. Si Three.js ne charge pas (pas de réseau),
+   la présentation bascule sur le sablier dessiné en 2D. */
+let THREE;
+try {
+  THREE = await import("three");
+} catch (e) {
+  document.body.classList.add("no3d");
+}
+if (THREE) {
+  const cv = document.getElementById("desert3d");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.35;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.localClippingEnabled = true;
+
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(0xf2a650, 12, 38);
+  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
+
+  // Lumières : soleil bas derrière (contre-jour et longues ombres), ciel chaud, débouché devant
+  scene.add(new THREE.HemisphereLight(0xffe6c0, 0xa04a14, 1.6));
+  const sun = new THREE.DirectionalLight(0xffb15c, 4.2);
+  sun.position.set(-3.5, 3.2, -7);
+  sun.castShadow = true;
+  sun.shadow.mapSize.set(2048, 2048);
+  sun.shadow.camera.left = -6; sun.shadow.camera.right = 6; sun.shadow.camera.top = 6; sun.shadow.camera.bottom = -6;
+  sun.shadow.bias = -0.0004;
+  scene.add(sun);
+  const fill = new THREE.DirectionalLight(0xffd2a0, 0.9);
+  fill.position.set(3, 2, 6);
+  scene.add(fill);
+
+  // Dunes
+  const dunesGeo = new THREE.PlaneGeometry(80, 80, 220, 220);
+  dunesGeo.rotateX(-Math.PI / 2);
+  const pos = dunesGeo.attributes.position;
+  for (let i = 0; i < pos.count; i++) {
+    const x = pos.getX(i), z = pos.getZ(i);
+    const d = Math.hypot(x, z);
+    let y = Math.sin(x * 0.22 + z * 0.08) * 0.55 + Math.sin(x * 0.07 - z * 0.19) * 0.9 + Math.sin(x * 0.9 + z * 0.6) * 0.04 + Math.sin(x * 2.3 - z * 1.7) * 0.012;
+    y *= Math.min(1, d / 6); // terrain plus calme au pied du sablier
+    pos.setY(i, y - 0.05);
+  }
+  dunesGeo.computeVertexNormals();
+  const sandColor = new THREE.Color(0xe08a34);
+  const dunes = new THREE.Mesh(dunesGeo, new THREE.MeshStandardMaterial({ color: sandColor, roughness: 0.95, metalness: 0 }));
+  dunes.receiveShadow = true;
+  scene.add(dunes);
+
+  // Le sablier
+  const hg = new THREE.Group();
+  hg.position.set(0.15, 1.02, 0);
+  hg.rotation.z = -0.24;
+  hg.rotation.x = 0.05;
+  scene.add(hg);
+
+  const wood = new THREE.MeshStandardMaterial({ color: 0x4a2a14, roughness: 0.48, metalness: 0.05 });
+  const brass = new THREE.MeshStandardMaterial({ color: 0xc08a3e, roughness: 0.28, metalness: 0.9 });
+  const H = 1.08; // demi-hauteur du verre
+  // Profil du verre
+  const R = (y) => {
+    const a = Math.min(1, Math.abs(y) / H);
+    return 0.05 + 0.5 * Math.pow(Math.sin(a * Math.PI / 2), 1.2) * (1 - 0.45 * Math.pow(a, 8));
+  };
+  const prof = [];
+  for (let i = 0; i <= 60; i++) { const y = -H + (i / 60) * 2 * H; prof.push(new THREE.Vector2(R(y), y)); }
+  const glassMat = new THREE.MeshPhysicalMaterial({ color: 0xfff4e4, metalness: 0, roughness: 0.04, transmission: 1, thickness: 0.18, ior: 1.46, transparent: true, opacity: 1, envMapIntensity: 1, clearcoat: 1, clearcoatRoughness: 0.05 });
+  const glass = new THREE.Mesh(new THREE.LatheGeometry(prof, 96), glassMat);
+  hg.add(glass);
+
+  // Plateaux et bagues
+  for (const s of [1, -1]) {
+    const plate = new THREE.Mesh(new THREE.CylinderGeometry(0.74, 0.74, 0.13, 72), wood);
+    plate.position.y = s * (H + 0.07);
+    plate.castShadow = true; plate.receiveShadow = true;
+    hg.add(plate);
+    const lip = new THREE.Mesh(new THREE.CylinderGeometry(0.66, 0.7, 0.06, 72), wood);
+    lip.position.y = s * (H + 0.16);
+    lip.castShadow = true;
+    hg.add(lip);
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(0.74, 0.022, 12, 96), brass);
+    ring.rotation.x = Math.PI / 2;
+    ring.position.y = s * (H + 0.07);
+    hg.add(ring);
+    const collar = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.24, 0.07, 48), brass);
+    collar.position.y = s * (H - 0.02);
+    hg.add(collar);
+  }
+  // Montants tournés
+  const post = [];
+  const beads = (y) => 0.045 + 0.018 * Math.exp(-Math.pow((Math.abs(y) - 0.92) * 9, 2)) + 0.022 * Math.exp(-Math.pow(y * 7, 2)) + 0.012 * Math.exp(-Math.pow((Math.abs(y) - 0.45) * 10, 2));
+  for (let i = 0; i <= 50; i++) { const y = -H + (i / 50) * 2 * H; post.push(new THREE.Vector2(beads(y), y)); }
+  const postGeo = new THREE.LatheGeometry(post, 24);
+  for (const a of [0.4, 2.5, 4.6]) {
+    const p = new THREE.Mesh(postGeo, wood);
+    p.position.set(Math.cos(a) * 0.62, 0, Math.sin(a) * 0.62);
+    p.castShadow = true;
+    hg.add(p);
+  }
+
+  // Sable : un volume par ampoule, coupé par un plan horizontal (le sable reste à plat malgré l'inclinaison)
+  const sandMat = (plane) => new THREE.MeshStandardMaterial({ color: 0xc7792c, roughness: 1, clippingPlanes: [plane], clipShadows: true });
+  const topPlane = new THREE.Plane(new THREE.Vector3(0, -1, 0), 0);
+  const profIn = (y0, y1) => {
+    const pts = [new THREE.Vector2(0, y0)];
+    for (let i = 0; i <= 40; i++) { const y = y0 + (i / 40) * (y1 - y0); pts.push(new THREE.Vector2(R(y) * 0.93, y)); }
+    pts.push(new THREE.Vector2(0, y1));
+    return pts;
+  };
+  const topSand = new THREE.Mesh(new THREE.LatheGeometry(profIn(0.05, H - 0.04), 64), sandMat(topPlane));
+  hg.add(topSand);
+  // Tas du bas : un cône qui grandit
+  const pile = new THREE.Mesh(new THREE.ConeGeometry(0.46, 1, 64, 1, false), new THREE.MeshStandardMaterial({ color: 0xc7792c, roughness: 1 }));
+  hg.add(pile);
+  const stream = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 1, 8), new THREE.MeshStandardMaterial({ color: 0xd88a3a, roughness: 1, emissive: 0x3a1a05 }));
+  hg.add(stream);
+
+  // Poussière dorée dans la lumière
+  const dustN = 700, dp = new Float32Array(dustN * 3);
+  for (let i = 0; i < dustN; i++) dp.set([(Math.random() - 0.5) * 14, Math.random() * 5, (Math.random() - 0.5) * 10 - 2], i * 3);
+  const dustGeo = new THREE.BufferGeometry();
+  dustGeo.setAttribute("position", new THREE.BufferAttribute(dp, 3));
+  const dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({ color: 0xfff0cc, size: 0.025, transparent: true, opacity: 0.75, depthWrite: false }));
+  scene.add(dust);
+
+  // Anneau d'alerte au col
+  const alertRing = new THREE.Mesh(new THREE.TorusGeometry(0.1, 0.008, 8, 64), new THREE.MeshBasicMaterial({ color: 0xff6a3d, transparent: true, opacity: 0 }));
+  alertRing.rotation.x = Math.PI / 2;
+  hg.add(alertRing);
+
+  function resize() {
+    const w = cv.clientWidth, h = cv.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    const narrow = w / h < 1;
+    camera.fov = narrow ? 50 : 30;
+    camera.position.set(0, narrow ? 1.9 : 1.5, narrow ? 11 : 8.4);
+    camera.lookAt(0, 1.5, 0);
+    camera.updateProjectionMatrix();
+  }
+  new ResizeObserver(resize).observe(cv);
+  resize();
+
+  const clockEl = document.getElementById("hg-clock");
+  const tagEl = document.getElementById("hg-tag");
+  const tagTx = document.getElementById("hg-text");
+  const pad = (n) => String(n).padStart(2, "0");
+  const CYCLE = 14, ALERT = 0.62, T0 = 14 * 60 + 2;
+  let last = "";
+  const tmp = new THREE.Vector3();
+
+  function frame(ms) {
+    const t = ms / 1000;
+    const f = reduced ? ALERT + 0.05 : (t % CYCLE) / CYCLE;
+    const frozen = f >= ALERT;
+    const p = (Math.min(f, ALERT) / ALERT) * 0.62; // part du sable tombée
+
+    // Niveau du sable en haut (plan horizontal dans le repère du monde)
+    const topLevel = 0.08 + (H - 0.12) * Math.pow(1 - p, 0.8);
+    hg.updateMatrixWorld();
+    tmp.set(0, topLevel, 0).applyMatrix4(hg.matrixWorld);
+    topPlane.set(new THREE.Vector3(0, -1, 0), tmp.y);
+    // Tas du bas
+    const pileH = 0.08 + 0.62 * p;
+    pile.scale.set(0.35 + 0.65 * Math.min(1, p * 1.6), pileH, 0.35 + 0.65 * Math.min(1, p * 1.6));
+    pile.position.y = -H + 0.02 + pileH / 2;
+    // Filet
+    const top = 0.04, bottom = -H + 0.02 + pileH;
+    stream.visible = !frozen && p < 0.6;
+    stream.scale.y = top - bottom;
+    stream.position.y = (top + bottom) / 2;
+    // Alerte
+    const am = alertRing.material;
+    if (frozen) {
+      const k = (t % 1.4) / 1.4;
+      alertRing.scale.setScalar(1 + k * 7);
+      am.opacity = (1 - k) * 0.9;
+    } else am.opacity = 0;
+
+    if (!reduced) {
+      camera.position.x = Math.sin(t * 0.12) * 0.6;
+      camera.lookAt(0, 1.5, 0);
+      dust.rotation.y = t * 0.02;
+      dust.position.y = Math.sin(t * 0.3) * 0.05;
+    }
+    renderer.render(scene, camera);
+
+    const mins = frozen ? T0 + 19 : T0 + Math.round(19 * (f / ALERT));
+    const label = `${Math.floor(mins / 60)}:${pad(mins % 60)}`;
+    const state = `${label}|${frozen}`;
+    if (state !== last) {
+      last = state;
+      clockEl.textContent = label;
+      tagEl.classList.toggle("alert", frozen);
+      tagTx.textContent = frozen ? "Alerte · écoulement figé avant le retrait" : "L’argent s’écoule vers le compte mule";
+    }
+  }
+  const isHero = () => document.querySelector("#hero").classList.contains("active");
+  function loop(ms) {
+    if (isHero()) frame(ms);
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+}
 </script>
 </body>
 </html>
