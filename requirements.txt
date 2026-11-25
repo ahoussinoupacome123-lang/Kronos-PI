@@ -1,6 +1,10 @@
 # Réclam'Graph — dependances CPU/noyau (versions epinglees, verifiees sur Python 3.14.4)
 # Installation : make setup
-numpy==2.5.5
+# Fourchette etroite et non pin exact : vLLM 0.34.0 (via humming-kernels)
+# plafonne numpy sous 2.5, alors que l'environnement CPU mesure tourne en
+# 2.5.5. La fourchette laisse pip choisir 2.5.5 sur CPU et 2.4.6 sur la
+# machine GPU, sans casser l'une ou l'autre installation.
+numpy>=2.4.6,<2.6
 pandas==3.1.1
 scipy==1.18.1
 scikit-learn==1.9.1
