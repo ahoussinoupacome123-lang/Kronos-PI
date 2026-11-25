@@ -1143,10 +1143,21 @@ def _analyser(texte: str, operateur: str, moteur: str, bundle: dict[str, Any]) -
         )
     elif ex.engine.value != "llm":
         st.info(
-            f"**Extraction simplifiée (modèle indisponible)** — moteur "
-            f"`{ex.engine.value}`. {ex.engine_detail}",
+            "**Extraction simplifiée (modèle indisponible)** — ce poste n'a pas "
+            "de GPU, le modèle tourne sur la machine GPU. L'analyse ci-dessous "
+            "utilise l'extracteur local à base de règles.",
             icon="🧩",
         )
+        with st.expander("Pourquoi nous ne publions pas la précision de cet extracteur"):
+            st.markdown(
+                "L'extracteur local a été écrit **en connaissant les gabarits du "
+                "générateur** de données synthétiques. Sa précision sur ce corpus "
+                "est donc flatteuse et ne vaut rien comme mesure : nous la "
+                "signalons au lieu de la présenter comme un résultat.\n\n"
+                "Les chiffres publiés dans l'onglet « Les preuves chiffrées » "
+                "viennent de la chaîne mesurée sur GPU, pas de cet extracteur."
+            )
+            st.caption(f"Détail technique du moteur : {ex.engine_detail}")
 
     # ---- 1. Enregistrement structuré -----------------------------------
     st.markdown("#### 1 · Enregistrement structuré")
