@@ -1,0 +1,27 @@
+{
+  "mesure": "mesuré",
+  "tokeniseur": "BAAI/bge-m3 (XLMRobertaTokenizer)",
+  "echantillon_reclamations": 1000,
+  "tokens_prompt_systeme": 601,
+  "tokens_corps_reclamation": {
+    "moyenne": 41.19,
+    "median": 40.0,
+    "max": 83
+  },
+  "tokens_entree_par_reclamation": 642.19,
+  "tokens_sortie_par_reclamation": 107.93,
+  "tarif_api": {
+    "modele": "Claude Haiku 5.5 (palier ≤ 100 k tokens)",
+    "entree_usd_par_million": 0.1,
+    "sortie_usd_par_million": 0.5,
+    "taux_usd_fcfa": 598.03,
+    "etiquette": "prix public affiché le 25/11/2026, pas une mesure"
+  },
+  "cout_api_cloud_pour_1_reclamation_usd": 0.00011819,
+  "cout_api_cloud_pour_1000_fcfa": 70.68,
+  "avertissements": [
+    "Le décompte utilise le tokeniseur de bge-m3 (XLM-RoBERTa), pas celui du fournisseur d'API : ORDRE DE GRANDEUR MESURÉ, pas une facture.",
+    "Le prompt système (601 tokens) est renvoyé à chaque appel et pèse plus que la réclamation elle-même (41.2 tokens en moyenne). Un cache de prompt le réduirait fortement — non mesuré ici.",
+    "Le taux USD/FCFA flotte : le FCFA est arrimé à l'euro, pas au dollar."
+  ]
+}
