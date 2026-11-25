@@ -69,7 +69,7 @@ Décidée le 25/11/2026. Plus aucune modification de code après 14 h 30 le 25/1
 | T-07 | Vérification mobile de la landing, du tableau de bord et de Nexus (retouches seulement) | Ange Marie | 25/11 14 h 30 | À faire | WEB-01, WEB-03 |
 | T-08 | Écran de l'opérateur hôte qui valide la suspension | Ange Marie | 26/11 | À faire | WEB-08 |
 | T-09 | Essai d'une réclamation dans le web (écrire une plainte, voir la chaîne réagir) | Ange Marie | 26/11 | À faire | WEB-03 |
-| T-10 | Refonte avec le nouveau nom, mode sombre, vues par rôle, export PDF, `DESIGN.md` | Ange Marie | Après le challenge | À faire | WEB-07 |
+| T-10 | Refonte avec le nouveau nom, mode sombre, vues par rôle, export PDF, `DESIGN.md` | Ange Marie | Après le challenge | En cours (accueil refait sur `feat/refonte-da-lime`, fusion soumise à l'accord de Joachim) | WEB-07 |
 | T-11 | Corriger `PITCH.md` selon la revue founder | Joachim | 25/11 13 h | À faire | — |
 | T-12 | Mettre la plateforme en ligne (adresse de secours) | Joachim | 25/11 14 h | À faire | WEB |
 | T-13 | Deux répétitions chronométrées de 13 min, 5 réponses de 20 s | Joachim, équipe | 25/11 16 h | À faire | — |
