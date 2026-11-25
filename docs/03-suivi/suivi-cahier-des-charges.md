@@ -115,23 +115,23 @@
 
 | ID | Exigence | Prio | Statut | Responsable | Date | Branche / PR | Commentaires |
 |---|---|---|---|---|---|---|---|
-| WEB-01 | Landing (hero Three.js, EME, preuves, pied de page) | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
-| WEB-02 | Connexion, comptes de démo | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
-| WEB-03 | Tableau de bord qui guide | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
-| WEB-04 | Lecture de `results/` | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | API en P1 |
-| WEB-05 | CGU, confidentialité, mentions | P0 | Terminé | agent juridique | 2026-11-25 | `feat/plateforme-web` | `docs/04-juridique` |
-| WEB-06 | SVG, sans emoji, accessible | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
+| WEB-01 | Landing (hero Three.js, EME, preuves, pied de page) | P0 | Terminé | Joachim + agents | 2026-11-25 | PR #1 | — |
+| WEB-02 | Connexion, comptes de démo | P0 | Terminé | Joachim + agents | 2026-11-25 | PR #1 | — |
+| WEB-03 | Tableau de bord qui guide | P0 | Terminé | Joachim + agents | 2026-11-25 | PR #1 | — |
+| WEB-04 | Lecture de `results/` | P0 | Terminé | Joachim + agents | 2026-11-25 | PR #1 | API en P1 |
+| WEB-05 | CGU, confidentialité, mentions | P0 | Terminé | agent juridique | 2026-11-25 | PR #1 | `docs/04-juridique` |
+| WEB-06 | SVG, sans emoji, accessible | P0 | Terminé | Joachim + agents | 2026-11-25 | PR #1 | — |
 | WEB-07 | Rôles et permissions | P1 | À faire | — | — | — | — |
-| WEB-08 | Décisions écrites dans l'audit | P1 | En cours | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | Décision signée avec motif, conservée dans le navigateur ; journal serveur en P1 |
+| WEB-08 | Décisions écrites dans l'audit | P1 | En cours | Joachim + agents | 2026-11-25 | PR #1 | Décision signée avec motif, conservée dans le navigateur ; journal serveur en P1 |
 
 ## ASSIST — Nexus
 
 | ID | Exigence | Prio | Statut | Responsable | Date | Branche / PR | Commentaires |
 |---|---|---|---|---|---|---|---|
-| ASSIST-01 | Nexus présent partout, guide vers l'action | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
-| ASSIST-02 | Répond depuis les données, cite la source | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
-| ASSIST-03 | Explique le graphe entre EME | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
-| ASSIST-04 | Jamais de gel automatique | P0 | Terminé | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | — |
+| ASSIST-01 | Nexus présent partout, guide vers l'action | P0 | Terminé | Joachim + agents | 2026-11-25 | PR #1 | — |
+| ASSIST-02 | Répond depuis les données, cite la source | P0 | Terminé | Joachim + agents | 2026-11-25 | PR #1 | — |
+| ASSIST-03 | Explique le graphe entre EME | P0 | Terminé | Joachim + agents | 2026-11-25 | PR #1 | — |
+| ASSIST-04 | Jamais de gel automatique | P0 | Terminé | Joachim + agents | 2026-11-25 | PR #1 | — |
 | ASSIST-05 | LLM local + RAG | P1 | À faire | — | — | — | Endpoint `/assistant` |
 
 ## API
@@ -148,7 +148,7 @@
 | ID | Exigence | Prio | Statut | Responsable | Date | Branche / PR | Commentaires |
 |---|---|---|---|---|---|---|---|
 | SEC-01 | Aucun secret dans le dépôt | P0 | Terminé | Pacôme | 2026-11-14 | — | `.env` ignoré ; clé de dev signalée |
-| SEC-02 | Sessions signées, cookies sûrs | P0 | En cours | Joachim + agents | 2026-11-25 | `feat/plateforme-web` | `jose`, `HttpOnly` |
+| SEC-02 | Sessions signées, cookies sûrs | P0 | En cours | Joachim + agents | 2026-11-25 | PR #1 | `jose`, `HttpOnly` |
 | SEC-03 | Cloisonnement par participant | P1 | À faire | — | — | — | — |
 | SEC-04 | Chiffrement au repos et en transit | P1 | À faire | — | — | — | — |
 | SEC-05 | Journal d'accès, limitation de débit | P1 | À faire | — | — | — | — |

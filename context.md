@@ -55,7 +55,7 @@ Détail par exigence : [cahier des charges](docs/00-cadrage/cahier-des-charges.m
 | **Mesures** (`results/`) | Rappel mules 100 % (5/5) contre 60 % pour l'opérateur seul ; délai médian 13 min contre 29 ; 920 000 FCFA gelables contre 367 000 ; précision 42 % brute, 100 % après score ; F1 extraction 0,982 contre 0,959 ; radar incidents rappel 100 %, précision 50 % |
 | **GPU** | **Risque n°1** : l'exécution étiquetée « GPU run — Tesla T4 » a utilisé le **repli CPU** (`heuristic-fallback`, `tfidf-svd`). Débit LLM « non mesuré », coût d'inférence locale « non calculé », utilisation GPU moyenne 4,58 %. bge-m3 a tourné sur CUDA dans `embed_bench` (300 textes, 32,8 textes/s). Voir [BUG-001](docs/03-suivi/anomalies.md) |
 | **Interface Streamlit** (`app/dashboard.py`) | Fonctionnelle en mode démo (rejoue `results/demo_bundle.json`), onglet d'essai interactif |
-| **Plateforme web** (`web/`) | Livrée sur `feat/plateforme-web` (build vert) : landing Three.js, connexion, tableau de bord guidé (alertes, décision signée, dossiers, radar, preuves, audit), assistant Nexus ancré sur les mesures, CGU et confidentialité. Revue founder : 7,4/10, corrections appliquées ([revue](docs/03-suivi/revue-mvp-web.md)) |
+| **Plateforme web** (`web/`) | Fusionnée dans `main` (PR #1, build vert) : landing Three.js, connexion, tableau de bord guidé (alertes, décision signée, dossiers, radar, preuves, audit), assistant Nexus ancré sur les mesures, CGU et confidentialité. Revue founder : 7,4/10, corrections appliquées ([revue](docs/03-suivi/revue-mvp-web.md)) |
 | **Documentation** | `README.md`, `PITCH.md`, `SUBMISSION.md`, `DECISIONS.md` (Pacôme) + `docs/` (cadrage, architecture, suivi) |
 | **À faire avant 16 h** | Relancer `make pipeline-llm` et `make bench-llm` sur la T4 avec `record_gpu_evidence.sh` ; sinon retirer l'étiquette « GPU run » des résultats CPU ; répétition chronométrée 5 + 3 + 5 |
 
@@ -132,6 +132,7 @@ Le journal détaillé et horodaté reste [DECISIONS.md](DECISIONS.md) (une ligne
 | 21–24/11/2026 | Corrections (alias pollués, regex montant, radar saisonnier), mode démo, voix en bonus |
 | 25/11/2026 matin | Dépendances GPU corrigées, coûts depuis prix publics, exécution sur Tesla T4 (en repli CPU), refonte de l'UI Streamlit, essai interactif |
 | 25/11/2026 midi | Cadrage complet (`docs/`), `context.md`, branche `feat/plateforme-web` : plateforme web Next.js et assistant Nexus |
+| 25/11/2026 12h33 | PR #1 fusionnée dans `main` : cadrage, juridique, revues founder et plateforme web ; branche supprimée |
 
 ## 9. Documents non applicables
 
