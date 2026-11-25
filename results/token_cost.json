@@ -11,7 +11,7 @@
   "tokens_entree_par_reclamation": 642.19,
   "tokens_sortie_par_reclamation": 107.93,
   "tarif_api": {
-    "modele": "API cloud commerciale (palier ≤ 100 k tokens)",
+    "modele": "Claude Haiku 5.5 (palier ≤ 100 k tokens)",
     "entree_usd_par_million": 0.1,
     "sortie_usd_par_million": 0.5,
     "taux_usd_fcfa": 598.03,

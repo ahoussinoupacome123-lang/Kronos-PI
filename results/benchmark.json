@@ -1,18 +1,18 @@
 {
   "meta": {
-    "genere_le": "2026-11-25T10:26:09.143272+01:00",
-    "etiquette_execution": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)",
+    "genere_le": "2026-11-25T10:21:20.070601+00:00",
+    "etiquette_execution": "GPU run — Tesla T4 (15360 MiB)",
     "donnees": "SYNTHÉTIQUES — opérateurs fictifs, générateur publié",
     "n_reclamations": 20000,
     "config": {
       "version": "1.0.0",
       "hardware": {
-        "has_gpu": false,
-        "gpu_name": null,
-        "vram_mb": null,
-        "driver": null,
-        "run_label": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)",
-        "detection": "nvidia-smi introuvable"
+        "has_gpu": true,
+        "gpu_name": "Tesla T4",
+        "vram_mb": 15360,
+        "driver": "580.82.07",
+        "run_label": "GPU run — Tesla T4 (15360 MiB)",
+        "detection": "Tesla T4, 15360, 580.82.07"
       },
       "llm": {
         "base_url": "http://localhost:8000/v1",
@@ -195,7 +195,7 @@
         },
         "lecture": "Sur ces textes, le mot à mot ne suffit pas : la même phrase sert à une arnaque et à une erreur sincère. C'est exactement le cas où le signal doit venir du CROISEMENT inter-opérateurs, pas du texte."
       },
-      "entrainement_s": 11.02,
+      "entrainement_s": 9.76,
       "note": "Référence supervisée : TF-IDF caractères + régression logistique, entraînée sur 14000 réclamations, évaluée sur 6000. Elle a vu des étiquettes ; les extracteurs non."
     },
     "heuristique_locale": {
@@ -1217,30 +1217,30 @@
   },
   "debit": {
     "reference_regex": {
-      "reclamations_par_seconde": 17523.08,
-      "secondes": 1.141,
-      "etiquette": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)"
+      "reclamations_par_seconde": 19204.28,
+      "secondes": 1.041,
+      "etiquette": "GPU run — Tesla T4 (15360 MiB)"
     },
     "heuristique_locale": {
-      "reclamations_par_seconde": 11448.16,
-      "secondes": 1.747,
-      "etiquette": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)"
+      "reclamations_par_seconde": 9220.7,
+      "secondes": 2.169,
+      "etiquette": "GPU run — Tesla T4 (15360 MiB)"
     },
     "llm": {
       "mesure": "non mesuré"
     }
   },
   "cout": {
-    "etiquette_execution": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)",
+    "etiquette_execution": "GPU run — Tesla T4 (15360 MiB)",
     "moteur_mesure": "heuristique locale (CPU)",
-    "debit_mesure_reclamations_par_seconde": 11448.16,
+    "debit_mesure_reclamations_par_seconde": 9220.7,
     "debit_llm_mesure": null,
     "prix_horaire_gpu_fcfa": 314.56,
     "prix_horaire_gpu_source": "AWS g4dn.xlarge (T4 16 Go) à la demande, 0,526 USD/h × 598,03 FCFA/USD — prix public relevé le 25/11/2026",
     "cout_inference_locale_pour_1000_fcfa": "non calculé",
-    "cout_inference_locale_note": "aucun GPU détecté : le débit disponible est un débit CPU, le diviser par un prix horaire de GPU n'aurait aucun sens",
+    "cout_inference_locale_note": "débit LLM non mesuré sur ce GPU (make bench-llm)",
     "cout_api_cloud_pour_1000_fcfa": 70.68,
-    "cout_api_cloud_note": "dérivé des tokens mesurés (642,19 entrée + 107,93 sortie par réclamation) × API cloud commerciale (palier ≤ 100 k tokens) — voir results/token_cost.json",
+    "cout_api_cloud_note": "dérivé des tokens mesurés (642,19 entrée + 107,93 sortie par réclamation) × Claude Haiku 5.5 (palier ≤ 100 k tokens) — voir results/token_cost.json",
     "cout_humain_pour_1000_fcfa": {
       "reclamation_simple": 270000.0,
       "reclamation_investiguee": 700000.0,
@@ -1256,12 +1256,15 @@
       "Le coût d'inférence locale n'est calculé que si le débit a été mesuré sur un GPU : diviser un prix horaire de GPU par un débit CPU donnerait un chiffre flatteur et faux.",
       "Les coûts humains (270 / 700 FCFA par réclamation) sont des ESTIMATIONS issues d'offres d'emploi, pas des mesures.",
       "Les repères éditeurs (Intercom Fin, Thematic) sont des prix publics affichés, pas des mesures de notre part.",
-      "Le prix proposé de 5 FCFA par réclamation est une HYPOTHÈSE de modèle économique.",
-      "AUCUN GPU DÉTECTÉ : le débit ci-dessus est un débit CPU. Il ne doit pas être présenté comme un débit GPU."
+      "Le prix proposé de 5 FCFA par réclamation est une HYPOTHÈSE de modèle économique."
     ]
   },
   "gpu": {
-    "disponible": false,
-    "note": "results/gpu_log.txt absent. Lancer `scripts/record_gpu_evidence.sh` pendant un traitement sur la machine GPU."
+    "disponible": true,
+    "n_echantillons": 120,
+    "utilisation_moyenne_pct": 4.58,
+    "utilisation_max_pct": 100.0,
+    "memoire_max_mib": 2649.0,
+    "memoire_totale_mib": 15360.0
   }
 }

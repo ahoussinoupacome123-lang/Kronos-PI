@@ -1,6 +1,6 @@
 {
-  "genere_le": "2026-11-25T04:06:27+0100",
-  "etiquette_execution": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)",
+  "genere_le": "2026-11-25T10:20:23+0000",
+  "etiquette_execution": "GPU run — Tesla T4 (15360 MiB)",
   "n_textes": 300,
   "moteurs": {
     "tfidf-svd": {
@@ -8,25 +8,25 @@
       "engine_detail": "TF-IDF char_wb 3-5grammes + SVD(256) — repli local, ce n'est PAS bge-m3",
       "dim": 256,
       "n_texts": 300,
-      "seconds": 1.262,
-      "texts_per_second": 237.66,
+      "seconds": 0.604,
+      "texts_per_second": 496.55,
       "device": "cpu"
     },
     "bge-m3": {
       "engine": "bge-m3",
-      "engine_detail": "sentence-transformers BAAI/bge-m3 sur cpu",
+      "engine_detail": "sentence-transformers BAAI/bge-m3 sur cuda",
       "dim": 1024,
       "n_texts": 300,
-      "seconds": 59.715,
-      "texts_per_second": 5.02,
-      "device": "cpu"
+      "seconds": 9.139,
+      "texts_per_second": 32.83,
+      "device": "cuda"
     }
   },
   "extrapolation_corpus_complet": {
     "n_reclamations": 20000,
-    "secondes": 3984.1,
-    "heures": 1.11,
+    "secondes": 609.2,
+    "heures": 0.17,
     "etiquette": "EXTRAPOLATION depuis le débit mesuré ci-dessus, pas une mesure sur le corpus complet."
   },
-  "conclusion": "bge-m3 tourne et produit des vecteurs de dimension 1024, mais à 5.02 textes/s sur ce matériel, les 20000 réclamations demanderaient environ 1.1 h. C'est la raison chiffrée pour laquelle le pipeline livré utilise le repli TF-IDF au-delà de 2000 textes sur CPU, et bge-m3 dès qu'un GPU est présent. Le choix est mesuré, pas supposé."
+  "conclusion": "bge-m3 tourne et produit des vecteurs de dimension 1024, mais à 32.83 textes/s sur ce matériel, les 20000 réclamations demanderaient environ 0.2 h. C'est la raison chiffrée pour laquelle le pipeline livré utilise le repli TF-IDF au-delà de 2000 textes sur CPU, et bge-m3 dès qu'un GPU est présent. Le choix est mesuré, pas supposé."
 }
