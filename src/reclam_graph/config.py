@@ -140,13 +140,14 @@ EUR_TO_FCFA = 655.957  # parité fixe, ne bouge pas
 GPU_T4_HOURLY_PRICE_USD = 0.526
 _GPU_HOURLY_DEFAULT = round(GPU_T4_HOURLY_PRICE_USD * USD_TO_FCFA, 2)
 
-# Claude Haiku 5.5, palier ≤ 100 000 tokens : 0,10 $/M en entrée, 0,50 $/M en
-# sortie. Sert de point de comparaison « si on appelait une API au lieu
-# d'héberger le modèle ». Le coût pour 1 000 réclamations n'est PAS saisi à la
-# main : il est dérivé des tokens réellement comptés par `bench/token_cost.py`.
+# API cloud commerciale, palier ≤ 100 000 tokens : 0,10 $/M en entrée, 0,50 $/M
+# en sortie (tarif public affiché, URL dans README « Sources des tarifs »).
+# Sert de point de comparaison « si on appelait une API au lieu d'héberger le
+# modèle ». Le coût pour 1 000 réclamations n'est PAS saisi à la main : il est
+# dérivé des tokens réellement comptés par `bench/token_cost.py`.
 CLOUD_API_INPUT_USD_PER_M = 0.10
 CLOUD_API_OUTPUT_USD_PER_M = 0.50
-CLOUD_API_MODEL_LABEL = "Claude Haiku 5.5 (palier ≤ 100 k tokens)"
+CLOUD_API_MODEL_LABEL = "API cloud commerciale (palier ≤ 100 k tokens)"
 
 # Les deux paramètres du brief restent surchargeables par l'environnement ; à
 # défaut ils valent le tarif public ci-dessus. Mettre `0` dans `.env` pour
