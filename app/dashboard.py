@@ -1088,7 +1088,11 @@ def tab_essai(bundle: dict[str, Any]) -> None:
         moteur = st.radio(
             "Moteur",
             ["auto", "heuristic", "regex", "llm"],
-            help="auto : le modèle s'il répond, extraction simplifiée sinon.",
+            help=(
+                "auto : le modèle s'il répond, extraction simplifiée sinon. "
+                "llm exige un serveur lancé par `make serve-llm` ; sans lui, "
+                "l'analyse bascule automatiquement sur l'extracteur local."
+            ),
         )
 
     if not st.button("Analyser", type="primary", width="stretch"):
@@ -1102,8 +1106,8 @@ def tab_essai(bundle: dict[str, Any]) -> None:
     except Exception as exc:  # noqa: BLE001 - une démo ne doit jamais planter
         st.error(
             f"**L'analyse n'a pas abouti.** {type(exc).__name__} : {exc}\n\n"
-            "Le texte est peut-être trop court ou mal formé. Essayez un des "
-            "trois exemples ci-dessus.",
+            "Rien n'a été modifié. Vous pouvez réessayer avec le moteur "
+            "`heuristic`, qui ne dépend d'aucun serveur.",
             icon="⚠️",
         )
 
@@ -1120,10 +1124,24 @@ def _analyser(texte: str, operateur: str, moteur: str, bundle: dict[str, Any]) -
         complainant_name="Client de démonstration",
     )
 
-    extractions, _ = extract([plainte], engine=moteur)
+    # Le modèle peut être injoignable : on le dit et on bascule sur
+    # l'extraction simplifiée, au lieu d'interrompre la démonstration.
+    repli = None
+    try:
+        extractions, _ = extract([plainte], engine=moteur)
+    except Exception as exc:  # noqa: BLE001 - le motif exact est affiché
+        repli = str(exc)
+        extractions, _ = extract([plainte], engine="heuristic")
     ex = extractions[0]
 
-    if ex.engine.value != "llm":
+    if repli:
+        st.warning(
+            f"**Extraction simplifiée (modèle indisponible)** — le serveur LLM "
+            f"n'a pas répondu, l'analyse continue avec l'extracteur local "
+            f"`{ex.engine.value}`.\n\nMotif : {repli}",
+            icon="🧩",
+        )
+    elif ex.engine.value != "llm":
         st.info(
             f"**Extraction simplifiée (modèle indisponible)** — moteur "
             f"`{ex.engine.value}`. {ex.engine_detail}",
