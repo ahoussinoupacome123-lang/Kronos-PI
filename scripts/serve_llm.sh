@@ -50,7 +50,15 @@ echo "  export LLM_BASE_URL=http://localhost:${PORT}/v1 LLM_MODEL=${LLM_MODEL}"
 echo "  make pipeline-llm && make bench-llm"
 echo ""
 
-exec .venv/bin/python -m vllm.entrypoints.openai.api_server \
+# L'interpreteur n'est pas toujours dans .venv : sur une machine GPU louee
+# (Colab, Kaggle, image docker) il n'y a pas de virtualenv. On prend .venv
+# s'il existe, sinon le python courant, et on peut forcer avec PY=...
+if [ -z "${PY:-}" ]; then
+  if [ -x ".venv/bin/python" ]; then PY=".venv/bin/python"; else PY="python3"; fi
+fi
+echo "Interpreteur : $PY"
+
+exec "$PY" -m vllm.entrypoints.openai.api_server \
   --model "$LLM_MODEL" \
   "${QUANT[@]}" \
   --dtype "$DTYPE" \
