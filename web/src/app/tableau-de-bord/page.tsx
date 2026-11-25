@@ -1,11 +1,11 @@
 import Link from "next/link";
-import ConvergenceArt from "@/components/dashboard/ConvergenceArt";
+import ConsortiumHub from "@/components/dashboard/ConsortiumHub";
 import NextActions, { type ActionItem } from "@/components/dashboard/NextActions";
 import { FreezableChart, Kpi, OperatorDot, Panel, Pill } from "@/components/dashboard/ui";
 import { IconArrowRight, IconClock } from "@/components/ui/icons";
 import { readSession } from "@/lib/auth";
 import { BRAND } from "@/lib/brand";
-import { campaigns, dayHhmm, demoCase, fcfa, freezableCurves, headline, hhmm, incidents, num, pct, soloAlerts, volumes } from "@/lib/data";
+import { alerts, campaigns, dayHhmm, demoCase, fcfa, freezableCurves, headline, hhmm, incidents, num, OPERATORS, operatorColor, pct, soloAlerts, volumes } from "@/lib/data";
 import { dueSoon, humanHours, openDossiers, priorityAlerts, toQualifyAlerts } from "@/lib/derive";
 
 export const metadata = { title: "Aujourd'hui" };
@@ -19,6 +19,7 @@ export default async function Today() {
   const soloNarr = soloAlerts.find((a) => a.campaign === narrative.id);
   const incident = [...incidents].sort((a, b) => b.zscore - a.zscore)[0];
   const top = priorityAlerts[0];
+  const stations = OPERATORS.map((op) => ({ op, alertes: alerts.filter((a) => a.operators.includes(op)).length }));
 
   const actions: ActionItem[] = [
     {
@@ -59,22 +60,44 @@ export default async function Today() {
 
   return (
     <div className="space-y-4">
-      {/* Rangée d'accueil, façon cockpit */}
-      <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1.35fr_1fr_1fr]">
-        <section className="relative overflow-hidden rounded-[26px] bg-white p-6 shadow-[0_10px_34px_-24px_rgba(30,43,37,0.45)] md:p-7">
-          <h1 className="font-display text-[2.3rem] font-extrabold leading-none tracking-[-0.035em] text-ink">Bonjour {first} !</h1>
-          <Link href="/tableau-de-bord/alertes" className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-blue hover:underline">
-            Votre consortium a croisé {num(volumes.n_reclamations)} réclamations <IconArrowRight size={14} />
-          </Link>
-          <ConvergenceArt className="mx-auto mt-2 w-full max-w-[26rem]" />
-          <div className="mt-2 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-paper p-3.5">
-            <div className="min-w-0">
-              <p className="text-xs font-bold text-laterite-deep">Alerte la plus urgente</p>
-              <p className="truncate font-mono text-sm text-ink">
-                {top.alias.slice(0, 12)}… · {top.complainants} plaignants · {top.operators.length} réseaux
-              </p>
+      {/* Rangée d'accueil : le réacteur du consortium */}
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1fr)_340px]">
+        <section className="relative overflow-hidden rounded-[30px] bg-nuit text-white shadow-[0_40px_80px_-40px_rgba(15,23,18,.7)]">
+          <span aria-hidden className="pointer-events-none absolute -left-24 -top-32 h-80 w-80 rounded-full bg-lime/15 blur-3xl" />
+          <div className="relative flex flex-wrap items-start justify-between gap-4 px-6 pt-6 md:px-8 md:pt-7">
+            <div>
+              <p className="font-donnee text-[11px] tracking-[0.2em] text-lime/80">VUE DU CONSORTIUM</p>
+              <h1 className="mt-2 font-titre text-[clamp(2rem,3.6vw,2.8rem)] font-bold leading-none tracking-[-0.04em]">Bonjour {first}.</h1>
+              <Link href="/tableau-de-bord/alertes" className="mt-3 inline-block text-sm text-white/65 transition-colors hover:text-lime">
+                Votre consortium a croisé <span className="font-semibold text-white">{num(volumes.n_reclamations)}</span> réclamations <IconArrowRight size={14} className="inline align-[-2px]" />
+              </Link>
             </div>
-            <Link href={`/tableau-de-bord/alertes/${top.id}`} className="inline-flex items-center gap-1.5 rounded-full bg-laterite px-4 py-2 text-sm font-bold text-white hover:bg-laterite-deep">
+            <ul className="flex flex-wrap gap-x-5 gap-y-2 text-[12px] text-white/60" aria-label="Légende">
+              {OPERATORS.map((op) => (
+                <li key={op} className="flex items-center gap-2">
+                  <span aria-hidden className="h-2 w-2 rounded-full" style={{ background: operatorColor[op] }} /> Plaintes {op}
+                </li>
+              ))}
+              <li className="flex items-center gap-2">
+                <span aria-hidden className="h-2 w-2 rounded-full bg-lime shadow-[0_0_10px_var(--color-lime)]" /> Alerte renvoyée
+              </li>
+            </ul>
+          </div>
+          <ConsortiumHub stations={stations} className="relative -mt-4 w-full" />
+          <div className="relative mx-3 mb-3 flex flex-wrap items-center justify-between gap-3 rounded-[22px] bg-white/[0.06] p-4 ring-1 ring-white/10 backdrop-blur md:mx-4 md:mb-4">
+            <div className="flex min-w-0 items-center gap-3">
+              <span aria-hidden className="relative flex h-3 w-3 shrink-0">
+                <span className="absolute inset-0 animate-ping rounded-full bg-alerte opacity-70 motion-reduce:hidden" />
+                <span className="relative h-3 w-3 rounded-full bg-alerte" />
+              </span>
+              <div className="min-w-0">
+                <p className="text-xs font-semibold text-[#ff8a8e]">Alerte la plus urgente</p>
+                <p className="truncate font-donnee text-sm text-white/85">
+                  {top.alias.slice(0, 12)}… · {top.complainants} plaignants · {top.operators.length} réseaux · {fcfa(top.freezableFcfa)} gelables
+                </p>
+              </div>
+            </div>
+            <Link href={`/tableau-de-bord/alertes/${top.id}`} className="inline-flex items-center gap-1.5 rounded-full bg-lime px-5 py-2.5 text-sm font-bold text-encre transition-transform hover:scale-[1.03]">
               Décider <IconArrowRight size={15} />
             </Link>
           </div>
@@ -103,11 +126,15 @@ export default async function Today() {
           />
         </div>
 
+      </div>
+
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1.5fr_1fr]">
+        <NextActions items={actions} />
         <Panel title="Échéances à tenir" aside={<Pill tone="amber">{dueSoon.length} sous 48 h</Pill>}>
           <ul className="-my-1 space-y-2.5">
             {dueSoon.slice(0, 4).map((d) => (
               <li key={d.dossier.id + d.kind}>
-                <Link href="/tableau-de-bord/dossiers?tri=echeance" className="flex items-center gap-3 rounded-2xl bg-paper px-3.5 py-3 transition-colors hover:bg-sky/60">
+                <Link href="/tableau-de-bord/dossiers?tri=echeance" className="flex items-center gap-3 rounded-2xl bg-brume px-3.5 py-3 transition-colors hover:bg-sky">
                   <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-amber-deep">
                     <IconClock size={18} />
                   </span>
@@ -117,7 +144,7 @@ export default async function Today() {
                       {d.kind} · {d.dossier.operator}
                     </span>
                   </span>
-                  <span className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] font-bold ${d.hoursLeft <= 12 ? "bg-laterite text-white" : "bg-ink text-white"}`}>
+                  <span className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] font-bold ${d.hoursLeft <= 12 ? "bg-alerte text-white" : "bg-encre text-lime"}`}>
                     {humanHours(d.hoursLeft)}
                   </span>
                 </Link>
@@ -130,8 +157,6 @@ export default async function Today() {
         </Panel>
       </div>
 
-      <NextActions items={actions} />
-
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1.4fr_1fr]">
         <Panel title={`Ce que le délai coûte : campagne ${narrative.id}`} aside={<span className="text-xs text-slate">{fcfa(narrative.totalFcfa)} détournés · {narrative.victims} victimes</span>}>
           <FreezableChart points={freezableCurves[narrative.id] ?? []} alertAt={demoCase.alerte.alert_at} soloAlertAt={soloNarr?.alertAt} />
@@ -141,11 +166,11 @@ export default async function Today() {
           </p>
         </Panel>
 
-        <Panel title="Dernières alertes du consortium" aside={<Link href="/tableau-de-bord/alertes" className="text-xs font-bold text-blue hover:underline">Toutes</Link>}>
+        <Panel title="Dernières alertes du consortium" aside={<Link href="/tableau-de-bord/alertes" className="text-xs font-bold text-lime-texte hover:underline">Toutes</Link>}>
           <ul className="-my-1 space-y-2">
             {[...priorityAlerts].sort((a, b) => b.alertAt.localeCompare(a.alertAt)).slice(0, 5).map((a) => (
               <li key={a.id}>
-                <Link href={`/tableau-de-bord/alertes/${a.id}`} className="flex items-center gap-3 rounded-2xl px-2 py-2.5 transition-colors hover:bg-paper">
+                <Link href={`/tableau-de-bord/alertes/${a.id}`} className="flex items-center gap-3 rounded-2xl px-2 py-2.5 transition-colors hover:bg-brume">
                   <span className="flex gap-1">
                     {a.operators.map((o) => (
                       <OperatorDot key={o} op={o} />

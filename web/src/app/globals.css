@@ -287,3 +287,62 @@ a {
     animation: none;
   }
 }
+
+/* Tableau de bord : réacteur du consortium et conduits (coupés si mouvement réduit). */
+@keyframes tourne {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes respire {
+  50% {
+    opacity: 0.55;
+    transform: scale(1.06);
+  }
+}
+@keyframes flux {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+.hub-tourne,
+.hub-tourne-inverse,
+.hub-respire {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.hub-tourne {
+  animation: tourne 60s linear infinite;
+}
+.hub-tourne-inverse {
+  animation: tourne 38s linear infinite reverse;
+}
+.hub-respire {
+  animation: respire 3.6s ease-in-out infinite;
+}
+.hub-flux {
+  animation: flux 1.6s linear infinite;
+}
+@keyframes comete {
+  from {
+    stroke-dashoffset: 440;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.hub-comete {
+  animation: comete 2.6s cubic-bezier(0.55, 0, 0.45, 1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hub-tourne,
+  .hub-tourne-inverse,
+  .hub-respire,
+  .hub-comete,
+  .hub-flux {
+    animation: none;
+  }
+  .hub-paquet {
+    display: none;
+  }
+}

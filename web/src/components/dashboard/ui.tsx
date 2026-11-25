@@ -10,8 +10,8 @@ export function PageHead({ title, lead, objet, children }: { title: string; lead
           <Image src={`/visuels/objet-${objet}.png`} alt="" width={900} height={900} sizes="96px" className="flotte-css hidden w-[84px] shrink-0 drop-shadow-[0_16px_16px_rgba(15,23,18,.18)] sm:block md:w-[96px]" />
         )}
         <div>
-          <h1 className="font-display text-[2.1rem] font-bold leading-[1.05] tracking-[-0.03em] text-ink text-balance">{title}</h1>
-          {lead && <p className="mt-2 max-w-2xl text-slate">{lead}</p>}
+          <h1 className="font-titre text-[clamp(2rem,3.4vw,2.6rem)] font-bold leading-[1.02] tracking-[-0.04em] text-encre text-balance">{title}</h1>
+          {lead && <p className="mt-2.5 max-w-2xl text-[15px] leading-relaxed text-encre-2">{lead}</p>}
         </div>
       </div>
       {children}
@@ -21,25 +21,30 @@ export function PageHead({ title, lead, objet, children }: { title: string; lead
 
 export function Panel({ title, aside, children, className = "" }: { title?: string; aside?: React.ReactNode; children: React.ReactNode; className?: string }) {
   return (
-    <section className={`rounded-[22px] bg-white shadow-[0_10px_34px_-24px_rgba(30,43,37,0.45)] ${className}`}>
+    <section className={`carte rounded-[26px] bg-blanc ring-1 ring-encre/[0.06] shadow-[0_1px_2px_rgba(15,23,18,.04),0_24px_48px_-32px_rgba(15,23,18,.35)] ${className}`}>
       {title && (
-        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-paper-line px-5 py-3.5">
-          <h2 className="min-w-0 font-display text-[15px] font-bold text-ink">{title}</h2>
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 px-6 pb-1 pt-5">
+          <h2 className="flex min-w-0 items-center gap-2.5 font-titre text-[16px] font-bold tracking-[-0.01em] text-encre">
+            <span aria-hidden className="h-4 w-1.5 shrink-0 rounded-full bg-lime" />
+            {title}
+          </h2>
           {aside}
         </div>
       )}
-      <div className="p-5">{children}</div>
+      <div className="px-6 pb-6 pt-4">{children}</div>
     </section>
   );
 }
 
 /** Indicateur avec explication accessible au survol et au focus. */
 export function Kpi({ label, value, compare, help, tone = "ink" }: { label: string; value: string; compare?: string; help: string; tone?: "ink" | "laterite" | "sage" | "amber" }) {
-  const color = { ink: "text-ink", laterite: "text-laterite-deep", sage: "text-sage-deep", amber: "text-amber-deep" }[tone];
+  const color = { ink: "text-encre", laterite: "text-laterite-deep", sage: "text-lime-texte", amber: "text-amber-deep" }[tone];
+  const barre = { ink: "bg-encre", laterite: "bg-alerte", sage: "bg-lime", amber: "bg-amber" }[tone];
   return (
-    <div className="group relative rounded-[22px] bg-white p-5 shadow-[0_10px_34px_-24px_rgba(30,43,37,0.45)]">
+    <div className="carte group relative flex flex-col overflow-hidden rounded-[26px] bg-blanc p-5 ring-1 ring-encre/[0.06] shadow-[0_1px_2px_rgba(15,23,18,.04),0_24px_48px_-32px_rgba(15,23,18,.35)] transition-transform duration-300 hover:-translate-y-0.5">
+      <span aria-hidden className={`absolute left-0 top-6 h-8 w-1 rounded-r-full ${barre}`} />
       <div className="flex items-start justify-between gap-2">
-        <p className="text-sm text-slate">{label}</p>
+        <p className="text-[13px] font-medium text-gris">{label}</p>
         <button
           type="button"
           aria-label={`Comprendre : ${label}`}
@@ -54,8 +59,8 @@ export function Kpi({ label, value, compare, help, tone = "ink" }: { label: stri
           {help}
         </span>
       </div>
-      <p className={`mt-3 font-display text-[2rem] font-semibold leading-none tracking-[-0.02em] tabular-nums ${color}`}>{value}</p>
-      {compare && <p className="mt-2 text-xs text-slate">{compare}</p>}
+      <p className={`mt-auto pt-4 font-titre text-[2.4rem] font-bold leading-none tracking-[-0.04em] tabular-nums ${color}`}>{value}</p>
+      {compare && <p className="mt-3 self-start rounded-full bg-brume px-2.5 py-1 text-[11.5px] text-encre-2">{compare}</p>}
     </div>
   );
 }
@@ -97,7 +102,7 @@ export function FreezableChart({ points, alertAt, soloAlertAt, height = 180 }: {
     for (const p of points) if (new Date(p[0]).getTime() <= t) v = p[1];
     return v;
   };
-  const marker = (iso: string | undefined, color: string, label: string) => {
+  const marker = (iso: string | undefined, color: string, label: string, rang = 0) => {
     if (!iso) return null;
     const v = valueAt(iso)!;
     const mx = x(iso);
@@ -105,8 +110,9 @@ export function FreezableChart({ points, alertAt, soloAlertAt, height = 180 }: {
     return (
       <g>
         <line x1={mx} x2={mx} y1={pad.t} y2={H - pad.b} stroke={color} strokeDasharray="3 4" />
-        <circle cx={mx} cy={y(v)} r="5" fill={color} stroke="var(--color-cream)" strokeWidth="2" />
-        <text x={mx + 8} y={pad.t + 12} fontSize="11" fill={color} style={{ fontFamily: "var(--font-plex)" }}>
+        <circle cx={mx} cy={y(v)} r="10" fill={color} fillOpacity=".15" />
+        <circle cx={mx} cy={y(v)} r="5" fill={color} stroke="#fff" strokeWidth="2" />
+        <text x={mx + 8} y={H - pad.b - 10 - rang * 15} fontSize="11" fill={color} fontWeight="600" style={{ fontFamily: "var(--font-donnee)" }}>
           {label} {fmt(iso)}
         </text>
       </g>
@@ -114,18 +120,24 @@ export function FreezableChart({ points, alertAt, soloAlertAt, height = 180 }: {
   };
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label="FCFA encore gelables au fil du temps">
+      <defs>
+        <linearGradient id="fc-aire" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="var(--color-lime)" stopOpacity=".55" />
+          <stop offset="1" stopColor="var(--color-lime)" stopOpacity="0" />
+        </linearGradient>
+      </defs>
       {[0, 0.5, 1].map((k) => (
         <g key={k}>
-          <line x1={pad.l} x2={W - pad.r} y1={y(max * k)} y2={y(max * k)} stroke="var(--color-mist)" strokeWidth="1" />
+          <line x1={pad.l} x2={W - pad.r} y1={y(max * k)} y2={y(max * k)} stroke="var(--color-mist)" strokeOpacity=".5" strokeWidth="1" strokeDasharray="2 5" />
           <text x={pad.l - 8} y={y(max * k) + 4} textAnchor="end" fontSize="10.5" fill="var(--color-slate)" style={{ fontFamily: "var(--font-donnee)" }}>
             {new Intl.NumberFormat("fr-FR", { notation: "compact" }).format(max * k)}
           </text>
         </g>
       ))}
-      <path d={area} fill="var(--color-laterite)" fillOpacity=".08" />
-      <path d={d} fill="none" stroke="var(--color-laterite)" strokeWidth="2" strokeLinejoin="round" />
+      <path d={area} fill="url(#fc-aire)" />
+      <path d={d} fill="none" stroke="var(--color-lime-texte)" strokeWidth="2.4" strokeLinejoin="round" />
       {marker(alertAt, "var(--color-laterite-deep)", "Consortium")}
-      {marker(soloAlertAt, "var(--color-slate)", "Opérateur seul")}
+      {marker(soloAlertAt, "var(--color-slate)", "Opérateur seul", 1)}
       <text x={pad.l} y={H - 6} fontSize="10.5" fill="var(--color-slate)" style={{ fontFamily: "var(--font-donnee)" }}>
         {fmt(points[0][0])}
       </text>

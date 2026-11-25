@@ -52,6 +52,7 @@ Les sous-routes exactes du tableau de bord suivent l'implémentation de `web/src
 | Décision humaine visible | Aucun bouton « geler » automatique ; libellés « recommander », « valider » ; rappel de la règle 3/2/60 |
 | Chiffres étiquetés | Chaque chiffre porte sa nature (mesuré, estimation, prix public, hypothèse) et rappelle « données synthétiques » |
 | Pas d'emoji | Icônes et illustrations en SVG |
+| Le consortium se voit | L'accueil du tableau de bord montre le réacteur du consortium (`ConsortiumHub`) : SikaX au centre, un conduit par réseau, les plaintes entrent (couleur du réseau), l'alerte repart (lime). Le graphe d'une alerte (`AlertGraph`) reprend ce langage et reste rejouable plainte par plainte. Animations coupées si `prefers-reduced-motion` |
 
 ## 2. Assistant Nexus
 
