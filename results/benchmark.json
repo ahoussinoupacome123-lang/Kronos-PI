@@ -1,6 +1,6 @@
 {
   "meta": {
-    "genere_le": "2026-11-25T08:21:38.055141+01:00",
+    "genere_le": "2026-11-25T10:13:19.314192+01:00",
     "etiquette_execution": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)",
     "donnees": "SYNTHÉTIQUES — opérateurs fictifs, générateur publié",
     "n_reclamations": 20000,
@@ -33,7 +33,7 @@
         "pi_reclam_public": false
       },
       "costs": {
-        "gpu_hourly_price_fcfa": null,
+        "gpu_hourly_price_fcfa": 314.56,
         "cloud_api_price_per_1k_fcfa": null,
         "human_cost_simple_fcfa": 270.0,
         "human_cost_investigated_fcfa": 700.0,
@@ -195,7 +195,7 @@
         },
         "lecture": "Sur ces textes, le mot à mot ne suffit pas : la même phrase sert à une arnaque et à une erreur sincère. C'est exactement le cas où le signal doit venir du CROISEMENT inter-opérateurs, pas du texte."
       },
-      "entrainement_s": 5.88,
+      "entrainement_s": 11.44,
       "note": "Référence supervisée : TF-IDF caractères + régression logistique, entraînée sur 14000 réclamations, évaluée sur 6000. Elle a vu des étiquettes ; les extracteurs non."
     },
     "heuristique_locale": {
@@ -1217,13 +1217,13 @@
   },
   "debit": {
     "reference_regex": {
-      "reclamations_par_seconde": 45215.96,
-      "secondes": 0.442,
+      "reclamations_par_seconde": 19119.73,
+      "secondes": 1.046,
       "etiquette": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)"
     },
     "heuristique_locale": {
-      "reclamations_par_seconde": 29408.78,
-      "secondes": 0.68,
+      "reclamations_par_seconde": 10604.92,
+      "secondes": 1.886,
       "etiquette": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)"
     },
     "llm": {
@@ -1233,11 +1233,14 @@
   "cout": {
     "etiquette_execution": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)",
     "moteur_mesure": "heuristique locale (CPU)",
-    "debit_mesure_reclamations_par_seconde": 29408.78,
+    "debit_mesure_reclamations_par_seconde": 10604.92,
     "debit_llm_mesure": null,
-    "prix_horaire_gpu_fcfa": "non calculé",
+    "prix_horaire_gpu_fcfa": 314.56,
+    "prix_horaire_gpu_source": "AWS g4dn.xlarge (T4 16 Go) à la demande, 0,526 USD/h × 598,03 FCFA/USD — prix public relevé le 25/11/2026",
     "cout_inference_locale_pour_1000_fcfa": "non calculé",
-    "cout_api_cloud_pour_1000_fcfa": "non calculé",
+    "cout_inference_locale_note": "aucun GPU détecté : le débit disponible est un débit CPU, le diviser par un prix horaire de GPU n'aurait aucun sens",
+    "cout_api_cloud_pour_1000_fcfa": 70.68,
+    "cout_api_cloud_note": "dérivé des tokens mesurés (642,19 entrée + 107,93 sortie par réclamation) × Claude Haiku 5.5 (palier ≤ 100 k tokens) — voir results/token_cost.json",
     "cout_humain_pour_1000_fcfa": {
       "reclamation_simple": 270000.0,
       "reclamation_investiguee": 700000.0,
@@ -1249,7 +1252,8 @@
     },
     "prix_propose_pour_1000_fcfa": 5000.0,
     "avertissements": [
-      "Le prix horaire du GPU et le tarif API cloud sont des paramètres de `config.py` à remplir depuis leurs sources. Vides, ils donnent « non calculé » — aucun coût n'est inventé.",
+      "Le prix horaire du GPU et le tarif API cloud sont des PRIX PUBLICS AFFICHÉS relevés le 25/11/2026, pas des mesures de notre part. Ils bougent, et le taux USD/FCFA avec eux.",
+      "Le coût d'inférence locale n'est calculé que si le débit a été mesuré sur un GPU : diviser un prix horaire de GPU par un débit CPU donnerait un chiffre flatteur et faux.",
       "Les coûts humains (270 / 700 FCFA par réclamation) sont des ESTIMATIONS issues d'offres d'emploi, pas des mesures.",
       "Les repères éditeurs (Intercom Fin, Thematic) sont des prix publics affichés, pas des mesures de notre part.",
       "Le prix proposé de 5 FCFA par réclamation est une HYPOTHÈSE de modèle économique.",
