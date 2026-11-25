@@ -19,7 +19,7 @@ export default async function AlertsPage({ searchParams }: { searchParams: Promi
 
   return (
     <div className="mx-auto max-w-6xl">
-      <PageHead
+      <PageHead objet="reseau"
         title="Alertes du consortium"
         lead={
           <>

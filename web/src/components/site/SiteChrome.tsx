@@ -1,27 +1,15 @@
 import Link from "next/link";
 import { IconArrowRight } from "@/components/ui/icons";
 import { BRAND } from "@/lib/brand";
+import { SECTIONS_ACCUEIL } from "@/lib/sections";
 
-/** Logo : trois réseaux qui se croisent en X sur le compte mule. */
-export function BrandMark({ size = 34, onDark = false }: { size?: number; onDark?: boolean }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 40 40" aria-hidden>
-      <rect width="40" height="40" rx="12" fill={onDark ? "#ffffff" : "#2347e8"} />
-      <path d="M11 11 29 29M29 11 11 29" stroke={onDark ? "#2347e8" : "#ffffff"} strokeWidth="4.2" strokeLinecap="round" />
-      <circle cx="20" cy="20" r="4.6" fill="#ffc531" stroke={onDark ? "#ffffff" : "#2347e8"} strokeWidth="2" />
-    </svg>
-  );
-}
-
+/** Marque provisoire (le logo définitif viendra plus tard) : nom + X sur pastille lime, comme sur l'accueil. */
 export function Wordmark({ onDark = false, className = "" }: { onDark?: boolean; className?: string }) {
-  const [a, b] = [BRAND.name.replace(/X$/, ""), BRAND.name.endsWith("X") ? "X" : ""];
+  const base = BRAND.name.replace(/X$/, "");
   return (
-    <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <BrandMark onDark={onDark} />
-      <span className={`font-display text-[1.35rem] font-bold tracking-[-0.03em] ${onDark ? "text-white" : "text-ink"}`}>
-        {a}
-        {b && <span className={onDark ? "text-amber" : "text-blue"}>{b}</span>}
-      </span>
+    <span className={`inline-flex items-center font-display text-[1.45rem] font-extrabold tracking-[-0.04em] ${onDark ? "text-white" : "text-ink"} ${className}`}>
+      {base}
+      <span className="ml-[3px] inline-grid h-[30px] w-[30px] place-items-center rounded-[9px] bg-lime text-[1.3rem] text-ink">X</span>
     </span>
   );
 }
@@ -45,12 +33,7 @@ export function SiteHeader() {
           <Wordmark />
         </Link>
         <nav aria-label="Navigation principale" className="hidden items-center gap-1 lg:flex">
-          {[
-            ["/#calcul", "Le calcul"],
-            ["/#fonctions", "Ce que fait " + BRAND.name],
-            ["/#preuves", "Preuves"],
-            ["/#faq", "Questions"],
-          ].map(([href, label]) => (
+          {SECTIONS_ACCUEIL.map(({ id, label }) => [`/#${id}`, label]).map(([href, label]) => (
             <Link key={href} href={href} className="rounded-full px-4 py-2 text-[15px] font-semibold text-slate transition-colors hover:bg-paper hover:text-ink">
               {label}
             </Link>
@@ -62,7 +45,7 @@ export function SiteHeader() {
           </Link>
           <Link
             href="/connexion?demo=1"
-            className="inline-flex items-center gap-2 rounded-full bg-blue px-5 py-2.5 text-[15px] font-bold text-white shadow-[0_10px_24px_-10px_rgba(35,71,232,0.9)] transition-[background-color,transform] duration-300 hover:bg-blue-deep active:scale-[0.98]"
+            className="inline-flex items-center gap-2 rounded-full bg-blue px-5 py-2.5 text-[15px] font-bold text-white shadow-[0_10px_24px_-10px_rgba(30,43,37,0.9)] transition-[background-color,transform] duration-300 hover:bg-blue-deep active:scale-[0.98]"
           >
             Essayer la démo <IconArrowRight size={16} />
           </Link>
@@ -76,7 +59,7 @@ export function SiteFooter() {
   return (
     <footer className="p-3">
       <div className="rounded-[32px] bg-ink px-6 pb-8 pt-16 text-cream md:px-14">
-        <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-[1.5fr_1fr_1fr_1.3fr]">
+        <div className="mx-auto grid grid-cols-1 max-w-7xl gap-12 md:grid-cols-[1.5fr_1fr_1fr_1.3fr]">
           <div>
             <Wordmark onDark />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-mist">
@@ -90,16 +73,16 @@ export function SiteFooter() {
           <FooterCol
             title="Produit"
             links={[
-              ["/#fonctions", "Fonctionnalités"],
+              ["/#fonctionnement", "Comment ça marche"],
               ["/#preuves", "Résultats mesurés"],
-              ["/#nexus", `Assistant ${BRAND.assistant}`],
+              ["/connexion?demo=1", `Assistant ${BRAND.assistant} (dans la démo)`],
               ["/connexion?demo=1", "Démo en ligne"],
             ]}
           />
           <FooterCol
             title="Confiance"
             links={[
-              ["/#confiance", "Ce qui quitte l'opérateur"],
+              ["/#confidentialite", "Ce qui quitte l'opérateur"],
               ["/confidentialite", "Confidentialité"],
               ["/cgu", "Conditions d'utilisation"],
               ["/mentions-legales", "Mentions légales"],

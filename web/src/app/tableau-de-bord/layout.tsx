@@ -22,7 +22,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
   return (
     <DecisionsProvider>
       <div className="min-h-dvh bg-paper p-2.5 md:p-4">
-        <header className="flex flex-wrap items-center justify-between gap-3 rounded-[22px] bg-white px-4 py-3 shadow-[0_8px_30px_-22px_rgba(11,27,75,0.5)] md:px-6">
+        <header className="flex flex-wrap items-center justify-between gap-3 rounded-[22px] bg-white px-4 py-3 shadow-[0_8px_30px_-22px_rgba(30,43,37,0.5)] md:px-6">
           <Link href="/" aria-label={`${BRAND.name}, accueil`} className="rounded-lg">
             <Wordmark />
           </Link>

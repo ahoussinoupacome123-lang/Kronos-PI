@@ -83,11 +83,11 @@ export default function Nexus({ userName }: { userName: string }) {
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         aria-controls="nexus-panel"
-        className={`on-ink fixed bottom-5 right-5 z-40 flex items-center gap-2.5 rounded-full bg-ink py-2.5 pl-2.5 pr-5 text-cream shadow-[0_14px_40px_-12px_rgba(10,14,26,0.7)] transition-[transform,opacity] duration-300 hover:-translate-y-0.5 ${open ? "pointer-events-none translate-y-2 opacity-0" : ""}`}
+        className={`on-ink fixed bottom-5 right-5 z-40 flex items-center gap-2.5 rounded-full bg-ink py-2.5 pl-2.5 pr-5 text-cream shadow-[0_14px_40px_-12px_rgba(15,23,18,0.7)] transition-[transform,opacity] duration-300 hover:-translate-y-0.5 ${open ? "pointer-events-none translate-y-2 opacity-0" : ""}`}
       >
-        <span className="relative grid h-9 w-9 place-items-center rounded-full bg-laterite">
+        <span className="relative grid h-9 w-9 place-items-center rounded-full bg-lime text-ink">
           <IconGraph size={18} />
-          <span aria-hidden className="absolute inset-0 animate-[pulse-ring_2.4s_ease-out_infinite] rounded-full border border-laterite" />
+          <span aria-hidden className="absolute inset-0 animate-[pulse-ring_2.4s_ease-out_infinite] rounded-full border border-lime" />
         </span>
         <span className="text-sm font-medium">Demander à Nexus</span>
         <kbd className="hidden rounded-md border border-white/15 px-1.5 py-0.5 font-mono text-[10px] text-mist sm:inline">Ctrl K</kbd>
@@ -96,12 +96,12 @@ export default function Nexus({ userName }: { userName: string }) {
       <aside
         id="nexus-panel"
         aria-label="Assistant Nexus"
-        className={`fixed inset-y-0 right-0 z-50 flex w-full max-w-[26rem] flex-col border-l border-paper-line bg-paper-2 shadow-[-20px_0_60px_-30px_rgba(10,14,26,0.45)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`fixed inset-y-0 right-0 z-50 flex w-full max-w-[26rem] flex-col border-l border-paper-line bg-paper-2 shadow-[-20px_0_60px_-30px_rgba(15,23,18,0.45)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           open ? "translate-x-0" : "pointer-events-none translate-x-full"
         }`}
       >
         <header className="on-ink flex items-center gap-3 bg-ink px-5 py-4 text-cream">
-          <span className="grid h-10 w-10 place-items-center rounded-full bg-laterite">
+          <span className="grid h-10 w-10 place-items-center rounded-full bg-lime text-ink">
             <IconGraph size={20} />
           </span>
           <div className="flex-1">

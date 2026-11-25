@@ -13,9 +13,9 @@ const r1 = (v: number) => Math.round(v * 10) / 10;
 export default function ConvergenceArt({ className = "" }: { className?: string }) {
   const rand = rng(42);
   const clusters = [
-    { x: 95, y: 92, c: "#4d74ff" },
-    { x: 330, y: 70, c: "#22b07d" },
-    { x: 230, y: 250, c: "#ffc531" },
+    { x: 95, y: 92, c: "var(--color-reseau-a)" },
+    { x: 330, y: 70, c: "var(--color-reseau-b)" },
+    { x: 230, y: 250, c: "var(--color-lime)" },
   ];
   const center = { x: 215, y: 140 };
   const dots = clusters.flatMap((cl, k) =>
@@ -38,12 +38,12 @@ export default function ConvergenceArt({ className = "" }: { className?: string 
     <svg viewBox="0 0 420 300" className={className} role="img" aria-label="Trois réseaux dont les plaintes convergent vers un même compte">
       <defs>
         <radialGradient id="ca-core" cx="50%" cy="50%" r="50%">
-          <stop offset="0" stopColor="#f2542d" stopOpacity=".55" />
-          <stop offset="1" stopColor="#f2542d" stopOpacity="0" />
+          <stop offset="0" stopColor="var(--color-laterite)" stopOpacity=".55" />
+          <stop offset="1" stopColor="var(--color-laterite)" stopOpacity="0" />
         </radialGradient>
         <radialGradient id="ca-halo" cx="50%" cy="50%" r="50%">
-          <stop offset="0" stopColor="#dce7ff" stopOpacity="1" />
-          <stop offset="1" stopColor="#dce7ff" stopOpacity="0" />
+          <stop offset="0" stopColor="var(--color-sky)" stopOpacity="1" />
+          <stop offset="1" stopColor="var(--color-sky)" stopOpacity="0" />
         </radialGradient>
       </defs>
       <ellipse cx="215" cy="150" rx="200" ry="140" fill="url(#ca-halo)" />
@@ -54,8 +54,8 @@ export default function ConvergenceArt({ className = "" }: { className?: string 
         <circle key={i} cx={d.x} cy={d.y} r={d.r} fill={d.c} fillOpacity={d.o} />
       ))}
       <circle cx={center.x} cy={center.y} r="46" fill="url(#ca-core)" />
-      <circle cx={center.x} cy={center.y} r="26" fill="none" stroke="#f2542d" strokeOpacity=".45" />
-      <circle cx={center.x} cy={center.y} r="11" fill="#f2542d" stroke="#fff" strokeWidth="3" />
+      <circle cx={center.x} cy={center.y} r="26" fill="none" stroke="var(--color-laterite)" strokeOpacity=".45" />
+      <circle cx={center.x} cy={center.y} r="11" fill="var(--color-laterite)" stroke="#fff" strokeWidth="3" />
     </svg>
   );
 }

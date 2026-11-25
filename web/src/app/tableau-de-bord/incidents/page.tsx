@@ -7,11 +7,11 @@ export default function IncidentsPage() {
   const list = [...incidents].sort((a, b) => b.zscore - a.zscore);
   return (
     <div className="mx-auto max-w-6xl">
-      <PageHead
+      <PageHead objet="telephone-alerte"
         title="Radar d'incidents"
         lead="Quand des centaines de clients écrivent la même chose à la même heure, ce n'est pas une fraude : c'est une panne. Le radar la repère avant l'avalanche de tickets, pour que vos agents répondent d'une seule voix."
       />
-      <div className="mb-6 grid gap-4 sm:grid-cols-3">
+      <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
         {[
           ["Incidents injectés retrouvés", `${incidentEval.incidents_detectes} / ${incidentEval.incidents_injectes}`],
           ["Précision du radar", pct(incidentEval.precision)],
@@ -33,7 +33,7 @@ export default function IncidentsPage() {
               title={inc.label}
               aside={major ? <Pill tone="laterite">Incident probable</Pill> : <Pill tone="slate">Fluctuation, à vérifier</Pill>}
             >
-              <div className="grid gap-6 md:grid-cols-[16rem_1fr]">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-[16rem_1fr]">
                 <dl className="space-y-3 text-sm">
                   <div>
                     <dt className="text-slate">Fenêtre</dt>

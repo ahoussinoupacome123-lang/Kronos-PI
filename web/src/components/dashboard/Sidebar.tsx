@@ -23,7 +23,7 @@ export default function Sidebar({ user, pendingPriority, dueSoon }: { user: { na
   ];
 
   return (
-    <aside className="on-ink sticky top-4 hidden h-[calc(100dvh-7.5rem)] w-[16.5rem] shrink-0 flex-col rounded-[28px] bg-ink px-4 py-6 text-cream shadow-[0_24px_60px_-30px_rgba(11,27,75,0.8)] lg:flex">
+    <aside className="on-ink sticky top-4 hidden h-[calc(100dvh-7.5rem)] w-[16.5rem] shrink-0 flex-col rounded-[28px] bg-ink px-4 py-6 text-cream shadow-[0_24px_60px_-30px_rgba(30,43,37,0.8)] lg:flex">
       <p className="px-3 text-[11px] font-bold tracking-[0.12em] text-mist">ESPACE ÉTABLISSEMENT</p>
       <nav aria-label="Espace établissement" className="mt-4 flex-1">
         <ul className="space-y-1">

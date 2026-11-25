@@ -13,8 +13,8 @@ const actionLabel: Record<string, string> = {
 export default function AuditPage() {
   return (
     <div className="mx-auto max-w-5xl">
-      <PageHead title="Piste d'audit" lead={audit.base_reglementaire} />
-      <div className="grid gap-6 lg:grid-cols-2">
+      <PageHead objet="cle" title="Piste d'audit" lead={audit.base_reglementaire} />
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <Panel title="Journal du pipeline" aside={<span className={`text-xs ${audit.chaine_integre ? "text-sage-deep" : "text-laterite-deep"}`}>{audit.chaine_integre ? "Chaîne intègre" : "Chaîne altérée"}</span>}>
           <ul className="divide-y divide-paper-line text-sm">
             {Object.entries(audit.par_action).map(([k, v]) => (

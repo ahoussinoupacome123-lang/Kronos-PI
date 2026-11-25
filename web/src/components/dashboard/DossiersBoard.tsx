@@ -32,7 +32,7 @@ export default function DossiersBoard({ rows, labels, initialSort }: { rows: Row
   }, [rows, filter, sort]);
 
   return (
-    <div className="grid gap-6 xl:grid-cols-[1fr_24rem]">
+    <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1fr_24rem]">
       <div>
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filtrer par décision">
@@ -61,7 +61,7 @@ export default function DossiersBoard({ rows, labels, initialSort }: { rows: Row
         {list.length === 0 ? (
           <p className="rounded-2xl border border-dashed border-paper-line p-10 text-center text-slate">Aucun dossier ouvert dans cette vue à l&apos;heure de la démo.</p>
         ) : (
-          <ul className="overflow-hidden rounded-[22px] bg-white shadow-[0_10px_34px_-24px_rgba(11,27,75,0.45)]">
+          <ul className="overflow-hidden rounded-[22px] bg-white shadow-[0_10px_34px_-24px_rgba(30,43,37,0.45)]">
             {list.map((r) => {
               const urgent = r.next && r.next.hoursLeft <= 24;
               const isSel = selected?.d.id === r.d.id;
@@ -101,7 +101,7 @@ export default function DossiersBoard({ rows, labels, initialSort }: { rows: Row
             Sélectionnez un dossier pour voir la plainte, ce qui en a été extrait, et ses échéances.
           </div>
         ) : (
-          <div className="rounded-[22px] bg-white shadow-[0_10px_34px_-24px_rgba(11,27,75,0.45)]">
+          <div className="rounded-[22px] bg-white shadow-[0_10px_34px_-24px_rgba(30,43,37,0.45)]">
             <div className="flex items-center justify-between border-b border-paper-line px-5 py-3.5">
               <p className="font-mono text-sm">{selected.d.id}</p>
               <button onClick={() => setSelected(null)} aria-label="Fermer le dossier" className="rounded-full p-1.5 text-slate hover:bg-paper-3 hover:text-ink">

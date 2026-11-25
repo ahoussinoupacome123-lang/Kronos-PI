@@ -5,7 +5,7 @@ import type { Graph } from "@/lib/data";
 
 // Arrondi : évite un écart de rendu serveur/client sur les flottants.
 const r1 = (v: number) => Math.round(v * 10) / 10;
-const COL: Record<string, string> = { ALPHAMONEY: "#7d8cff", BETACASH: "#7cc4a4", GAMMAPAY: "#e8b04b" };
+const COL: Record<string, string> = { ALPHAMONEY: "var(--color-reseau-a)", BETACASH: "var(--color-reseau-b)", GAMMAPAY: "var(--color-reseau-c)" };
 
 /** Graphe d'une alerte, rejouable plainte par plainte : on voit le seuil 3 · 2 se franchir. */
 export default function AlertGraph({ graph, minComplainants = 3, minOperators = 2 }: { graph: Graph; minComplainants?: number; minOperators?: number }) {
@@ -57,14 +57,14 @@ export default function AlertGraph({ graph, minComplainants = 3, minOperators = 
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full rounded-xl bg-ink" role="img" aria-label={`Graphe de l'alerte : ${nC} plaignants sur ${nO} réseaux`}>
         <defs>
           <radialGradient id="ag-core">
-            <stop offset="0" stopColor="#e0643a" stopOpacity=".7" />
-            <stop offset="1" stopColor="#e0643a" stopOpacity="0" />
+            <stop offset="0" stopColor="var(--color-laterite)" stopOpacity=".7" />
+            <stop offset="1" stopColor="var(--color-laterite)" stopOpacity="0" />
           </radialGradient>
         </defs>
         {ops.map((op) => (
           <g key={op}>
             <circle cx={opPos[op].x} cy={opPos[op].y} r="86" fill={COL[op] ?? "#888"} fillOpacity=".06" stroke={COL[op] ?? "#888"} strokeOpacity=".3" strokeDasharray="2 6" />
-            <text x={opPos[op].x} y={opPos[op].y - 70} textAnchor="middle" fontSize="11" fill={COL[op]} style={{ fontFamily: "var(--font-plex-mono)", letterSpacing: "0.08em" }}>
+            <text x={opPos[op].x} y={opPos[op].y - 70} textAnchor="middle" fontSize="11" fill={COL[op]} style={{ fontFamily: "var(--font-donnee)", letterSpacing: "0.08em" }}>
               {op}
             </text>
           </g>
@@ -98,8 +98,8 @@ export default function AlertGraph({ graph, minComplainants = 3, minOperators = 
           );
         })}
         {fired && <circle cx={cx} cy={cy} r="62" fill="url(#ag-core)" />}
-        <circle cx={cx} cy={cy} r={fired ? 15 : 10} fill={fired ? "#e0643a" : "#ece5d6"} style={{ transition: "all 500ms" }} />
-        <text x={cx} y={cy + 34} textAnchor="middle" fontSize="11.5" fill="#ece5d6" style={{ fontFamily: "var(--font-plex-mono)" }}>
+        <circle cx={cx} cy={cy} r={fired ? 15 : 10} fill={fired ? "var(--color-laterite)" : "var(--color-cream)"} style={{ transition: "all 500ms" }} />
+        <text x={cx} y={cy + 34} textAnchor="middle" fontSize="11.5" fill="var(--color-cream)" style={{ fontFamily: "var(--font-donnee)" }}>
           {center?.id.slice(0, 12)}…
         </text>
       </svg>
@@ -126,7 +126,7 @@ export default function AlertGraph({ graph, minComplainants = 3, minOperators = 
               setPlaying(false);
               setStep(Number(e.target.value));
             }}
-            className="flex-1 accent-[#e0643a]"
+            className="flex-1 accent-laterite"
           />
         </label>
         <p className="font-mono text-sm tabular-nums text-ink" aria-live="polite">
