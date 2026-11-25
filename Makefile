@@ -40,6 +40,9 @@ pipeline: ## Exécute le pipeline complet (extraction auto, embeddings TF-IDF)
 pipeline-llm: ## Pipeline avec extraction LLM obligatoire (nécessite make serve-llm)
 	$(PY) -m reclam_graph.pipeline --engine llm --embed-engine auto
 
+token-cost: ## Compte les tokens par réclamation -> results/token_cost.json
+	HF_HUB_OFFLINE=1 $(PY) -m bench.token_cost
+
 bench: ## Banc de mesure référence contre solution -> results/benchmark.{json,md}
 	$(PY) -m bench.benchmark
 
@@ -74,7 +77,7 @@ serve-ollama: ## Variante Ollama (CPU ou GPU), même API OpenAI
 gpu-log: ## Enregistre la preuve d'utilisation GPU -> results/gpu_log.txt
 	bash scripts/record_gpu_evidence.sh
 
-all: data pipeline bench readme test ## Chaîne complète hors interface
+all: data pipeline token-cost bench readme test ## Chaîne complète hors interface
 	@echo "✓ données, pipeline, banc de mesure et tests terminés"
 
 clean-results: ## Supprime les sorties calculées
