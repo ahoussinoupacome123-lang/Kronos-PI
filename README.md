@@ -140,7 +140,7 @@ situation actuelle. Détail complet : [`results/benchmark.md`](results/benchmark
 > Chiffres régénérés depuis `results/` par `scripts/refresh_results_block.py`.  
 > **Exécution : CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)**  
 > Corpus : 20 000 réclamations synthétiques sur 7 jours, 3 opérateurs fictifs.  
-> Généré le 2026-11-25 à 04:03:58.
+> Généré le 2026-11-25 à 08:21:38.
 
 ### Détection de comptes mules — l'écart principal
 
@@ -220,8 +220,8 @@ Mesuré sur 300 réclamations — *CPU run — aucun GPU détecté (ne pas prés
 
 | Grandeur | Valeur | Étiquette |
 |---|---|---|
-| Débit référence regex | 28 639,24 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
-| Débit extracteur local | 18 283,47 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
+| Débit référence regex | 45 215,96 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
+| Débit extracteur local | 29 408,78 réclamations/s | CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU) |
 | Débit LLM | non mesuré requêtes/s | à mesurer sur la machine GPU (`make bench-llm`) |
 | Prix horaire GPU | non calculé | paramètre `config.py` |
 | Inférence locale / 1 000 réclamations | non calculé | calculé dès que le prix horaire est renseigné |
@@ -338,8 +338,14 @@ make setup      # .venv + dépendances CPU épinglées
 make data       # 20 000 réclamations synthétiques + vérité terrain
 make pipeline   # lire → pseudonymiser → croiser → agir
 make bench      # référence contre solution → results/benchmark.{json,md}
+make readme     # réinjecte les chiffres mesurés dans ce README
 make demo       # interface Streamlit en MODE DÉMO (sans GPU)
 ```
+
+> `make bench` remesure les débits sur la machine courante : ils changent donc d'une
+> exécution à l'autre. `make readme` réinjecte les valeurs mesurées dans le bloc
+> « Résultats mesurés » ci-dessus, et `make all` l'appelle automatiquement avant les
+> tests. Aucun chiffre de ce README n'est saisi à la main.
 
 Les trois commandes qui suffisent pour tout reproduire :
 
@@ -358,6 +364,7 @@ make serve-llm                        # choisit Qwen2.5-7B-AWQ ou 3B selon la VR
 # dans un second terminal :
 bash scripts/record_gpu_evidence.sh   # preuve nvidia-smi → results/gpu_log.txt
 make pipeline-llm && make bench-llm   # mesure réelle du LLM
+make readme                           # réinjecte ces mesures dans le README
 ```
 
 `make serve-llm` choisit le modèle d'après la VRAM détectée : **Qwen2.5-7B-Instruct-AWQ**
