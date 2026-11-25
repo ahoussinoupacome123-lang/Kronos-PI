@@ -353,12 +353,60 @@ def mule_report(
 # ---------------------------------------------------------------------------
 # Coût
 # ---------------------------------------------------------------------------
+def _local_inference_cost(llm_metrics: dict[str, Any] | None) -> tuple[float | str, str]:
+    """Coût d'inférence locale pour 1 000 réclamations.
+
+    Règle dure : on ne divise un prix horaire de GPU que par un débit mesuré
+    SUR CE GPU. Sans GPU, ou sans mesure LLM, on renvoie « non calculé » — un
+    prix de location de T4 divisé par un débit d'expressions régulières sur CPU
+    produirait un coût ridiculement bas et malhonnête.
+    """
+    if not cfg.GPU_HOURLY_PRICE_FCFA:
+        return NOT_COMPUTED, "prix horaire GPU non renseigné"
+    if not cfg.HARDWARE.has_gpu:
+        return NOT_COMPUTED, (
+            "aucun GPU détecté : le débit disponible est un débit CPU, "
+            "le diviser par un prix horaire de GPU n'aurait aucun sens"
+        )
+    rps = (llm_metrics or {}).get("requests_per_second")
+    if not rps:
+        return NOT_COMPUTED, "débit LLM non mesuré sur ce GPU (make bench-llm)"
+    return cost_per_1000(rps, cfg.GPU_HOURLY_PRICE_FCFA), (
+        f"prix horaire ÷ débit LLM mesuré ({rps} réclamations/s)"
+    )
+
+
+def _cloud_api_cost() -> tuple[float | str, str]:
+    """Coût API cloud pour 1 000 réclamations.
+
+    Jamais saisi à la main : soit le paramètre explicite de `.env`, soit la
+    valeur dérivée des tokens comptés par `bench/token_cost.py`.
+    """
+    if cfg.CLOUD_API_PRICE_PER_1K_FCFA:
+        return round(cfg.CLOUD_API_PRICE_PER_1K_FCFA, 2), "paramètre explicite (.env)"
+    if cfg.TOKEN_COST_JSON.exists():
+        try:
+            data = json.loads(cfg.TOKEN_COST_JSON.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            data = {}
+        value = data.get("cout_api_cloud_pour_1000_fcfa")
+        if isinstance(value, (int, float)):
+            entree = str(data.get("tokens_entree_par_reclamation")).replace(".", ",")
+            sortie = str(data.get("tokens_sortie_par_reclamation")).replace(".", ",")
+            return round(float(value), 2), (
+                f"dérivé des tokens mesurés ({entree} entrée + {sortie} sortie par "
+                f"réclamation) × {cfg.CLOUD_API_MODEL_LABEL} — voir results/token_cost.json"
+            )
+    return NOT_COMPUTED, "lancer `python -m bench.token_cost` pour compter les tokens"
+
+
 def cost_report(
     throughput_per_second: float | None,
     engine_label: str,
     llm_metrics: dict[str, Any] | None,
 ) -> dict[str, Any]:
-    gpu = cost_per_1000(throughput_per_second, cfg.GPU_HOURLY_PRICE_FCFA)
+    gpu, gpu_note = _local_inference_cost(llm_metrics)
+    cloud, cloud_note = _cloud_api_cost()
     human_simple = round(cfg.HUMAN_COST_SIMPLE_FCFA * 1000, 2)
     human_invest = round(cfg.HUMAN_COST_INVESTIGATED_FCFA * 1000, 2)
     return {
@@ -367,12 +415,11 @@ def cost_report(
         "debit_mesure_reclamations_par_seconde": throughput_per_second,
         "debit_llm_mesure": llm_metrics,
         "prix_horaire_gpu_fcfa": cfg.GPU_HOURLY_PRICE_FCFA or NOT_COMPUTED,
+        "prix_horaire_gpu_source": cfg.GPU_HOURLY_PRICE_LABEL,
         "cout_inference_locale_pour_1000_fcfa": gpu,
-        "cout_api_cloud_pour_1000_fcfa": (
-            round(cfg.CLOUD_API_PRICE_PER_1K_FCFA, 2)
-            if cfg.CLOUD_API_PRICE_PER_1K_FCFA
-            else NOT_COMPUTED
-        ),
+        "cout_inference_locale_note": gpu_note,
+        "cout_api_cloud_pour_1000_fcfa": cloud,
+        "cout_api_cloud_note": cloud_note,
         "cout_humain_pour_1000_fcfa": {
             "reclamation_simple": human_simple,
             "reclamation_investiguee": human_invest,
@@ -383,9 +430,12 @@ def cost_report(
         },
         "prix_propose_pour_1000_fcfa": round(cfg.PROPOSED_PRICE_PER_COMPLAINT_FCFA * 1000, 2),
         "avertissements": [
-            "Le prix horaire du GPU et le tarif API cloud sont des paramètres de "
-            "`config.py` à remplir depuis leurs sources. Vides, ils donnent "
-            "« non calculé » — aucun coût n'est inventé.",
+            "Le prix horaire du GPU et le tarif API cloud sont des PRIX PUBLICS "
+            "AFFICHÉS relevés le 25/11/2026, pas des mesures de notre part. Ils "
+            "bougent, et le taux USD/FCFA avec eux.",
+            "Le coût d'inférence locale n'est calculé que si le débit a été "
+            "mesuré sur un GPU : diviser un prix horaire de GPU par un débit CPU "
+            "donnerait un chiffre flatteur et faux.",
             "Les coûts humains (270 / 700 FCFA par réclamation) sont des "
             "ESTIMATIONS issues d'offres d'emploi, pas des mesures.",
             "Les repères éditeurs (Intercom Fin, Thematic) sont des prix publics "
