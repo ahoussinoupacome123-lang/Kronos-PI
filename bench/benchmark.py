@@ -410,9 +410,11 @@ def cost_report(
     human_simple = round(cfg.HUMAN_COST_SIMPLE_FCFA * 1000, 2)
     human_invest = round(cfg.HUMAN_COST_INVESTIGATED_FCFA * 1000, 2)
     return {
+        # Le banc ne calcule pas d'embeddings : seule l'extraction peut avoir
+        # tourné sur GPU, et seulement si le LLM a réellement répondu.
         "etiquette_execution": cfg.execution_label(
             ["llm"] if (llm_metrics or {}).get("requests") else [engine_label],
-            "bge-m3" if (llm_metrics or {}).get("requests") else None,
+            None,
         ),
         "materiel_present": cfg.HARDWARE.run_label,
         "moteur_mesure": engine_label,

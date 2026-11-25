@@ -56,9 +56,15 @@ def _moteurs(data: dict) -> tuple[list[str], str | None]:
     if isinstance(embed, dict):
         embed = embed.get("engine")
     if not extraction:
-        moteur = (data.get("cout") or {}).get("moteur_mesure")
-        if moteur:
-            extraction = [moteur]
+        # Un débit LLM mesuré prouve que l'extraction a tourné sur le GPU,
+        # quel que soit le libellé du moteur enregistré par l'ancien code.
+        llm = (data.get("debit") or {}).get("llm") or {}
+        if isinstance(llm, dict) and llm.get("requests_per_second"):
+            extraction = ["llm"]
+        else:
+            moteur = (data.get("cout") or {}).get("moteur_mesure")
+            if moteur:
+                extraction = [moteur]
     if embed is None:
         moteurs = data.get("moteurs") or {}
         if "bge-m3" in moteurs:
