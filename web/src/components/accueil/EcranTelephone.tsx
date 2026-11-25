@@ -1,6 +1,7 @@
 "use client";
 // Écran du téléphone de la photo héros : la campagne CMP-01 rejouée en boucle.
 // Les plaintes arrivent de trois réseaux, puis l'alerte s'allume. Tout vient des mesures.
+import { NOM_ACCENT, NOM_BASE } from "@/lib/nom";
 import { useRef } from "react";
 import { TriangleAlert } from "lucide-react";
 import { casDemo, nombre } from "@/lib/accueil";
@@ -52,7 +53,7 @@ export default function EcranTelephone() {
       </div>
       <div className="mt-[6cqw] px-[7cqw]">
         <div className="flex items-center gap-[2cqw] font-titre text-[8cqw] font-extrabold tracking-[-0.04em]">
-          Sika<span className="grid h-[9cqw] w-[9cqw] place-items-center rounded-[2.6cqw] bg-lime">X</span>
+          {NOM_BASE}<span className="grid h-[9cqw] min-w-[9cqw] place-items-center rounded-[2.6cqw] bg-lime px-[1.4cqw]">{NOM_ACCENT}</span>
         </div>
         <p className="mt-[1cqw] text-[4.6cqw] text-gris">Plaintes reçues sur le consortium</p>
       </div>

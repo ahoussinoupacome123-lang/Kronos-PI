@@ -4,17 +4,17 @@ import Link from "next/link";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { BRAND } from "@/lib/brand";
+import { NOM_ACCENT, NOM_BASE } from "@/lib/nom";
 import { SECTIONS_ACCUEIL } from "@/lib/sections";
 import { gsap, ScrollTrigger, useGSAP } from "./mouvement";
 
 const LIENS = SECTIONS_ACCUEIL.map((s) => ({ href: `#${s.id}`, label: s.label }));
 
 export function Marque({ className = "" }: { className?: string }) {
-  const base = BRAND.name.replace(/X$/, "");
   return (
     <span className={`inline-flex items-center font-titre text-[24px] font-extrabold tracking-[-0.04em] ${className}`}>
-      {base}
-      <span className="ml-[3px] inline-grid h-[30px] w-[30px] place-items-center rounded-[9px] bg-lime text-[22px] text-encre">X</span>
+      {NOM_BASE}
+      <span className="ml-[3px] inline-grid h-[30px] min-w-[30px] place-items-center rounded-[9px] px-1.5 bg-lime text-[22px] text-encre">{NOM_ACCENT}</span>
     </span>
   );
 }

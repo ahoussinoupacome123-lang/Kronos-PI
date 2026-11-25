@@ -1,15 +1,15 @@
 import Link from "next/link";
 import { IconArrowRight } from "@/components/ui/icons";
 import { BRAND } from "@/lib/brand";
+import { NOM_ACCENT, NOM_BASE } from "@/lib/nom";
 import { SECTIONS_ACCUEIL } from "@/lib/sections";
 
 /** Marque provisoire (le logo définitif viendra plus tard) : nom + X sur pastille lime, comme sur l'accueil. */
 export function Wordmark({ onDark = false, className = "" }: { onDark?: boolean; className?: string }) {
-  const base = BRAND.name.replace(/X$/, "");
   return (
     <span className={`inline-flex items-center font-display text-[1.45rem] font-extrabold tracking-[-0.04em] ${onDark ? "text-white" : "text-ink"} ${className}`}>
-      {base}
-      <span className="ml-[3px] inline-grid h-[30px] w-[30px] place-items-center rounded-[9px] bg-lime text-[1.3rem] text-ink">X</span>
+      {NOM_BASE}
+      <span className="ml-[3px] inline-grid h-[30px] min-w-[30px] place-items-center rounded-[9px] px-1.5 bg-lime text-[1.3rem] text-ink">{NOM_ACCENT}</span>
     </span>
   );
 }

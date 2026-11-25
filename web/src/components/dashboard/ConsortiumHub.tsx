@@ -1,11 +1,12 @@
 "use client";
-// Réacteur du consortium : SikaX au centre, chaque réseau branché par un conduit à double rail.
+// Réacteur du consortium : le produit au centre, chaque réseau branché par un conduit à double rail.
 // Les paquets colorés sont des plaintes qui entrent, le paquet lime est l'alerte qui repart.
 // Les émetteurs en orbite sont ceux que PI-SPI permettrait de raccorder ensuite.
 import Link from "next/link";
 import { useState } from "react";
 import { BRAND } from "@/lib/brand";
 import { operatorColor } from "@/lib/data";
+import { NOM_ACCENT, NOM_BASE } from "@/lib/nom";
 
 export type Station = { op: string; alertes: number };
 
@@ -120,9 +121,9 @@ export default function ConsortiumHub({ stations, className = "" }: { stations: 
       <circle cx={C.x} cy={C.y} r={ANNEAU - 9} fill="none" stroke="var(--color-lime)" strokeOpacity=".35" strokeWidth="7" strokeDasharray="1.5 6" className="hub-tourne" />
       <circle cx={C.x} cy={C.y} r="66" fill="url(#hub-disque)" stroke="#fff" strokeOpacity=".12" />
       <circle cx={C.x} cy={C.y} r="66" fill="none" stroke="var(--color-lime)" strokeWidth="2" strokeDasharray="70 345" strokeLinecap="round" className="hub-tourne-inverse" />
-      <text x={C.x} y={C.y + 6} textAnchor="middle" fontSize="27" fontWeight="700" fill="#fff" style={{ fontFamily: "var(--font-titre)", letterSpacing: "-0.03em" }}>
-        {BRAND.name.replace(/X$/, "")}
-        <tspan fill="var(--color-lime)">{BRAND.name.endsWith("X") ? "X" : ""}</tspan>
+      <text x={C.x} y={C.y + 6} textAnchor="middle" fontSize="22" fontWeight="700" fill="#fff" style={{ fontFamily: "var(--font-titre)", letterSpacing: "-0.03em" }}>
+        {NOM_BASE}
+        <tspan fill="var(--color-lime)">{NOM_ACCENT}</tspan>
       </text>
       <text x={C.x} y={C.y + 26} textAnchor="middle" fontSize="9.5" fill="var(--color-lime)" fillOpacity=".8" style={{ fontFamily: "var(--font-donnee)", letterSpacing: "0.22em" }}>
         CONSORTIUM
