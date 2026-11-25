@@ -175,12 +175,16 @@ def test_le_banc_n_annonce_aucun_chiffre_llm_non_mesure():
     # Le banc peut avoir ete execute sur une AUTRE machine que celle qui lance
     # les tests (mesures rapatriees depuis la machine GPU). On verifie donc la
     # coherence du fichier avec le materiel QU'IL DECLARE, pas avec le notre.
-    execute_sans_gpu = "CPU run" in cout["etiquette_execution"]
-    if execute_sans_gpu:
-        assert any("AUCUN GPU" in a for a in cout["avertissements"])
+    etiquette = cout["etiquette_execution"]
+    calcule_sur_gpu = "calculé sur GPU" in etiquette
+    if not calcule_sur_gpu:
+        # Deux cas sans calcul GPU : pas de carte du tout, ou une carte
+        # présente mais un repli local. Les deux doivent le dire.
+        assert "CPU run" in etiquette or "repli CPU" in etiquette, etiquette
+        if "CPU run" in etiquette:
+            assert any("AUCUN GPU" in a for a in cout["avertissements"])
     else:
-        assert "GPU run" in cout["etiquette_execution"]
-        assert not any("AUCUN GPU" in a for a in cout["avertissements"])
+        assert any(m in etiquette for m in ("LLM", "bge-m3")), etiquette
 
 
 @needs_results
@@ -207,3 +211,44 @@ def test_le_consortium_bat_la_reference_sur_les_trois_metriques_qui_comptent():
     assert cons["rappel"] > seul["rappel"]
     assert cons["delai_detection_median_minutes"] < seul["delai_detection_median_minutes"]
     assert cons["fcfa_encore_gelables_total"] > seul["fcfa_encore_gelables_total"]
+
+
+@needs_results
+def test_l_etiquette_ne_revendique_pas_le_gpu_sans_moteur_gpu():
+    """BUG-001 : « GPU run » ne doit apparaître que si un moteur GPU a calculé.
+
+    Une machine équipée d'une carte qui tourne en repli heuristique et TF-IDF
+    n'a rien calculé sur GPU. Écrire « GPU run » serait trompeur dans un GPU
+    Challenge, et contraire à la règle du brief : aucun chiffre présenté pour
+    ce qu'il n'est pas.
+    """
+    import json as _json
+
+    for fichier in (cfg.BENCHMARK_JSON, cfg.DEMO_BUNDLE):
+        if not fichier.exists():
+            continue
+        data = _json.loads(fichier.read_text(encoding="utf-8"))
+        bloc = data.get("cout") or data.get("meta") or {}
+        etiquette = bloc.get("etiquette_execution", "")
+        if "GPU run" not in etiquette:
+            continue
+        assert "calculé sur GPU" in etiquette, (
+            f"{fichier.name} annonce « GPU run » sans nommer le moteur qui a "
+            f"calculé sur GPU : {etiquette!r}"
+        )
+        assert any(m in etiquette for m in ("LLM", "bge-m3")), (
+            f"{fichier.name} annonce « GPU run » sans moteur GPU : {etiquette!r}"
+        )
+
+
+@needs_results
+def test_l_etiquette_derivee_dit_la_verite_sur_chaque_combinaison():
+    """`execution_label` ne doit jamais promettre plus que les moteurs fournis."""
+    repli = cfg.execution_label(["heuristic-fallback"], "tfidf-svd")
+    assert "calculé sur GPU" not in repli
+
+    plein = cfg.execution_label(["llm"], "bge-m3")
+    if cfg.HARDWARE.has_gpu:
+        assert "calculé sur GPU" in plein and "LLM" in plein and "bge-m3" in plein
+    else:
+        assert "CPU run" in plein

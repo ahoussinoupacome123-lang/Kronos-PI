@@ -138,7 +138,7 @@ situation actuelle. Détail complet : [`results/benchmark.md`](results/benchmark
 <!-- RESULTATS:DEBUT -->
 
 > Chiffres régénérés depuis `results/` par `scripts/refresh_results_block.py`.  
-> **Exécution : GPU run — Tesla T4 (15360 MiB)**  
+> **Exécution : repli CPU sur machine équipée d'une Tesla T4 — aucun calcul sur GPU (heuristique locale (CPU) + )**  
 > Corpus : 20 000 réclamations synthétiques sur 7 jours, 3 opérateurs fictifs.  
 > Généré le 2026-11-25 à 10:21:20.
 
@@ -200,7 +200,7 @@ Le seul champ qui sépare vraiment les deux moteurs est le **montant** : la rege
 
 ### Moteur d'embeddings — bge-m3 contre le repli TF-IDF
 
-Mesuré sur 300 réclamations — *GPU run — Tesla T4 (15360 MiB)* :
+Mesuré sur 300 réclamations — *GPU run — Tesla T4 (15360 MiB) — calculé sur GPU : bge-m3* :
 
 | Moteur | Dimension | Débit | Durée |
 |---|---|---|---|

@@ -13,6 +13,7 @@ from __future__ import annotations
 import os
 import shutil
 import subprocess
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -250,6 +251,43 @@ class Hardware:
             if gb >= threshold:
                 return MODEL_BY_VRAM_GB[threshold]
         return "Qwen/Qwen2.5-3B-Instruct"
+
+
+# Moteurs qui calculent réellement sur le GPU. Tout le reste tourne sur CPU,
+# même quand la machine est équipée d'une carte.
+GPU_EXTRACTION_ENGINES = frozenset({"llm"})
+GPU_EMBED_ENGINES = frozenset({"bge-m3"})
+
+
+def execution_label(
+    extraction_engines: "Iterable[str] | None" = None,
+    embed_engine: str | None = None,
+) -> str:
+    """Étiquette d'exécution dérivée des moteurs qui ont CALCULÉ.
+
+    BUG-001 : `Hardware.run_label` décrit le matériel présent, pas le travail
+    effectué. Une machine équipée d'une T4 qui tourne en repli heuristique et
+    TF-IDF n'a rien calculé sur GPU : écrire « GPU run » serait trompeur dans
+    un GPU Challenge. Quand aucun moteur n'est fourni, on retombe sur la
+    description du matériel seul.
+    """
+    moteurs = [m for m in (extraction_engines or []) if m]
+    sur_gpu: list[str] = []
+    if any(m in GPU_EXTRACTION_ENGINES for m in moteurs):
+        sur_gpu.append("LLM")
+    if embed_engine in GPU_EMBED_ENGINES:
+        sur_gpu.append("bge-m3")
+
+    if not HARDWARE.has_gpu:
+        return HARDWARE.run_label
+    carte = f"{HARDWARE.gpu_name} ({HARDWARE.vram_mb} MiB)"
+    if sur_gpu:
+        return f"GPU run — {carte} — calculé sur GPU : {' + '.join(sur_gpu)}"
+    repli = " + ".join(dict.fromkeys([m for m in [*moteurs, embed_engine] if m])) or "repli local"
+    return (
+        f"repli CPU sur machine équipée d'une {HARDWARE.gpu_name} — "
+        f"aucun calcul sur GPU ({repli})"
+    )
 
 
 def detect_hardware() -> Hardware:

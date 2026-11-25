@@ -1,6 +1,6 @@
 {
   "genere_le": "2026-11-25T10:20:23+0000",
-  "etiquette_execution": "GPU run — Tesla T4 (15360 MiB)",
+  "etiquette_execution": "GPU run — Tesla T4 (15360 MiB) — calculé sur GPU : bge-m3",
   "n_textes": 300,
   "moteurs": {
     "tfidf-svd": {
@@ -28,5 +28,6 @@
     "heures": 0.17,
     "etiquette": "EXTRAPOLATION depuis le débit mesuré ci-dessus, pas une mesure sur le corpus complet."
   },
-  "conclusion": "bge-m3 tourne et produit des vecteurs de dimension 1024, mais à 32.83 textes/s sur ce matériel, les 20000 réclamations demanderaient environ 0.2 h. C'est la raison chiffrée pour laquelle le pipeline livré utilise le repli TF-IDF au-delà de 2000 textes sur CPU, et bge-m3 dès qu'un GPU est présent. Le choix est mesuré, pas supposé."
+  "conclusion": "bge-m3 tourne et produit des vecteurs de dimension 1024, mais à 32.83 textes/s sur ce matériel, les 20000 réclamations demanderaient environ 0.2 h. C'est la raison chiffrée pour laquelle le pipeline livré utilise le repli TF-IDF au-delà de 2000 textes sur CPU, et bge-m3 dès qu'un GPU est présent. Le choix est mesuré, pas supposé.",
+  "materiel_present": "GPU run — Tesla T4 (15360 MiB)"
 }

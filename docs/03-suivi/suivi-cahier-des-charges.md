@@ -49,8 +49,8 @@ Décidée le 25/11/2026. Plus aucune modification de code après 14 h 30 le 25/1
 | ID | Tâche | Responsable | Échéance | Statut | Lien avec les exigences |
 |---|---|---|---|---|---|
 | T-01 | Servir le LLM sur la T4 (`make serve-llm`), puis `make pipeline-llm` et `make bench-llm` | Pacôme | 25/11 14 h | À faire | EXT, BUG-001 |
-| T-02 | Mesurer bge-m3 sur le corpus (`make bench-embed`) avec `record_gpu_evidence.sh` en parallèle | Pacôme | 25/11 14 h | À faire | RAD, preuve GPU |
-| T-03 | Corriger BUG-001 : l'étiquette d'exécution nomme le moteur réellement utilisé | Pacôme | 25/11 14 h | À faire | BUG-001 |
+| T-02 | Mesurer bge-m3 sur le corpus (`make bench-embed`) avec `record_gpu_evidence.sh` en parallèle | Pacôme | 25/11 14 h | Terminé | RAD, preuve GPU |
+| T-03 | Corriger BUG-001 : l'étiquette d'exécution nomme le moteur réellement utilisé | Pacôme | 25/11 14 h | Terminé | BUG-001 |
 | T-04 | Régénérer `README`, `benchmark.md`, pousser `results/` ; puis `cd web && npm run sync` | Pacôme, Joachim | 25/11 14 h 15 | À faire | WEB-04 |
 | T-05 | Vidéo de secours (OBS) du pipeline sur GPU | Pacôme | 25/11 14 h 30 | À faire | — |
 | T-06 | Brancher Nexus sur le vLLM (`LLM_BASE_URL`) | Pacôme | 26/11 | À faire | ASSIST-05 |
@@ -103,7 +103,7 @@ Décidée le 25/11/2026. Plus aucune modification de code après 14 h 30 le 25/1
 | ID | Exigence | Prio | Statut | Responsable | Date | Branche / PR | Commentaires |
 |---|---|---|---|---|---|---|---|
 | RAD-01 | Pics, base saisonnière, seuil ×2 | P0 | Terminé | Pacôme | 2026-11-18 | `feat/radar` | Rappel 100 %, précision 50 % |
-| RAD-02 | Regroupement bge-m3 | P0 | En cours | Pacôme | — | `feat/radar` | Pipeline publié en `tfidf-svd` (BUG-001) |
+| RAD-02 | Regroupement bge-m3 | P0 | Terminé | Pacôme | 2026-11-25 | `feat/radar` | Pipeline exécuté en `bge-m3` sur Tesla T4 (42,36 s) |
 | RAD-03 | Diffusion aux participants | P1 | À faire | — | — | — | — |
 
 ## DOS — Dossier de litige

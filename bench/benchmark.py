@@ -410,7 +410,11 @@ def cost_report(
     human_simple = round(cfg.HUMAN_COST_SIMPLE_FCFA * 1000, 2)
     human_invest = round(cfg.HUMAN_COST_INVESTIGATED_FCFA * 1000, 2)
     return {
-        "etiquette_execution": cfg.HARDWARE.run_label,
+        "etiquette_execution": cfg.execution_label(
+            ["llm"] if (llm_metrics or {}).get("requests") else [engine_label],
+            "bge-m3" if (llm_metrics or {}).get("requests") else None,
+        ),
+        "materiel_present": cfg.HARDWARE.run_label,
         "moteur_mesure": engine_label,
         "debit_mesure_reclamations_par_seconde": throughput_per_second,
         "debit_llm_mesure": llm_metrics,
