@@ -13,6 +13,7 @@ import json
 import math
 import sys
 from datetime import datetime
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from typing import Any
 import streamlit as st
@@ -22,6 +23,11 @@ for _p in (str(ROOT), str(ROOT / "src")):
         sys.path.insert(0, _p)
 from reclam_graph import config as cfg  # noqa: E402
 from reclam_graph.llm import get_client  # noqa: E402
+from reclam_graph.schemas import Channel, Complaint, Decision, MuleAlert  # noqa: E402
+from reclam_graph.extract import extract  # noqa: E402
+from reclam_graph.pseudonymize import load_alias_directory, to_shared_record  # noqa: E402
+from reclam_graph.dossier import decide, build_dispute_file  # noqa: E402
+from reclam_graph.timer import build_timer  # noqa: E402
 st.set_page_config(
     page_title="Réclam'Graph — analyse intelligente des réclamations clients",
     page_icon="🕸️",
@@ -999,6 +1005,162 @@ def tab_privacy(bundle: dict[str, Any]) -> None:
 # ---------------------------------------------------------------------------
 # Programme principal
 # ---------------------------------------------------------------------------
+EXEMPLES = {
+    "Arnaque à l'erreur de dépôt (doit recommander GELER)":
+        "Bonjour jai recu un msg de depot de 25.000 frs, jai rennvoye a "
+        "koffi.santos@betacash a 14h02, mais le depot nexistait pas. "
+        "je porte plainte c'est urgent",
+    "Erreur sincère de destinataire (doit recommander REMBOURSER)":
+        "Bonsoir, je me suis trompe de numero. J'ai envoye 15 000 FCFA a "
+        "mariam.kponou@gammapay vers 19h30 au lieu de mon frere. "
+        "Pouvez-vous m'aider a recuperer svp merci",
+    "Transaction échouée mais débitée":
+        "Mon compte a ete debite de 7500 F ce matin a 08h15 mais le "
+        "transfert n'est jamais passe. Reference TX-884512. Je veux mon argent.",
+    "Frais contestés":
+        "pourquoi on ma preleve 1200 frs de frais sur un retrait de 20000 ? "
+        "ct pas marque. je conteste",
+}
+
+
+def tab_essai(bundle: dict[str, Any]) -> None:
+    st.subheader("Écrivez une réclamation, voyez la chaîne réagir")
+    st.caption(
+        "C'est la boucle réelle du produit : une entrée (le texte de la plainte), "
+        "deux sorties possibles (geler ou rembourser). Rien n'est pré-enregistré ici — "
+        "le texte que vous tapez est traité à l'instant."
+    )
+
+    choix = st.selectbox(
+        "Partir d'un exemple (ou écrivez le vôtre en dessous)",
+        ["— texte libre —", *EXEMPLES],
+    )
+    defaut = EXEMPLES.get(choix, "")
+
+    gauche, droite = st.columns([3, 1])
+    with gauche:
+        texte = st.text_area(
+            "Texte de la réclamation, tel que le client l'écrit",
+            value=defaut,
+            height=140,
+            placeholder="Ex. : jai envoye 30.000 a un faux depot, aidez moi",
+        )
+    with droite:
+        operateur = st.selectbox("Opérateur qui reçoit", list(cfg.OPERATORS))
+        canal = st.selectbox("Canal", [c.value for c in Channel])
+        moteur = st.radio(
+            "Moteur d'extraction",
+            ["auto", "heuristic", "regex", "llm"],
+            help="auto = LLM s'il répond, repli heuristique sinon. Toujours étiqueté.",
+        )
+
+    if not st.button("Traiter la réclamation", type="primary", width="stretch"):
+        return
+    if not texte.strip():
+        st.warning("Écrivez d'abord un texte de réclamation.")
+        return
+
+    recu_le = datetime.now(tz=ZoneInfo(cfg.TIMEZONE))
+    plainte = Complaint(
+        complaint_id="ESSAI-001",
+        operator=operateur,
+        channel=canal,
+        received_at=recu_le,
+        text=texte,
+        complainant_msisdn="+22997000000",
+        complainant_name="Client de démonstration",
+    )
+
+    # ---- 1. Lire -------------------------------------------------------
+    extractions, _ = extract([plainte], engine=moteur)
+    ex = extractions[0]
+    st.markdown("#### 1 · Lire — ce que la machine a compris")
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Typologie", ex.typology.value.replace("_", " ").title())
+    c2.metric("Montant", fcfa(ex.amount_fcfa) if ex.amount_fcfa else "non trouvé")
+    c3.metric("Confiance", f"{ex.confidence:.0%}" if ex.confidence else "—")
+    st.caption(f"Moteur réellement utilisé : **{ex.engine.value}** — {ex.engine_detail}")
+    with st.expander("JSON structuré produit"):
+        st.json(json.loads(ex.model_dump_json()))
+
+    # ---- 2. Masquer ----------------------------------------------------
+    st.markdown("#### 2 · Masquer — ce qui sort de l'opérateur")
+    partage = to_shared_record(plainte, ex, load_alias_directory())
+    if partage is None:
+        st.info(
+            "Aucun bénéficiaire identifiable dans ce texte : **rien ne quitte "
+            "l'opérateur**. La réclamation est traitée en interne, point final.",
+            icon="🔒",
+        )
+    else:
+        st.success(
+            "Seules ces valeurs partent vers le hub. Le numéro et le nom du "
+            "bénéficiaire ne sont **jamais** transmis en clair.",
+            icon="🔒",
+        )
+        st.json(json.loads(partage.model_dump_json()))
+
+    # ---- 3. Croiser ----------------------------------------------------
+    st.markdown("#### 3 · Croiser — est-ce que d'autres se sont plaints ?")
+    alerte = None
+    if partage is not None:
+        empreinte = partage.alias_hmac
+        connues = [
+            a for a in bundle.get("alertes_consortium", [])
+            if a.get("alias_hmac") == empreinte
+        ]
+        if connues:
+            try:
+                alerte = MuleAlert.model_validate(connues[0])
+            except Exception:  # noqa: BLE001 - l'alerte reste affichable sans etre typee
+                alerte = None
+            st.error(
+                f"**Cette empreinte est déjà connue du hub.** {_headline(connues[0])}",
+                icon="🚨",
+            )
+            st.caption(
+                "La règle est atteinte : au moins "
+                f"{cfg.MULE_MIN_COMPLAINANTS} plaignants indépendants, "
+                f"{cfg.MULE_MIN_OPERATORS} opérateurs distincts, "
+                f"dans une fenêtre de {cfg.MULE_WINDOW_MINUTES} minutes."
+            )
+        else:
+            st.info(
+                "Première plainte sur cette empreinte. **Aucune alerte** : une "
+                "plainte isolée ne prouve rien. Le hub la garde et attend de voir "
+                "si d'autres opérateurs signalent le même bénéficiaire.",
+                icon="⏳",
+            )
+
+    # ---- 4. Agir -------------------------------------------------------
+    st.markdown("#### 4 · Agir — la recommandation faite à l'agent")
+    decision, motif = decide(ex, alerte)
+    if decision is Decision.GELER:
+        st.error(f"### Recommandation : GELER\n\n{motif}", icon="🧊")
+    elif decision is Decision.REMBOURSER:
+        st.success(f"### Recommandation : REMBOURSER\n\n{motif}", icon="💸")
+    else:
+        st.warning(f"### Recommandation : À INSTRUIRE\n\n{motif}", icon="🔎")
+
+    st.warning(
+        "**Rien n'a été gelé ni remboursé.** Réclam'Graph a produit une "
+        "recommandation et un dossier. C'est l'agent de l'opérateur qui tranche, "
+        "et sa décision est tracée dans le journal d'audit.",
+        icon="⚖️",
+    )
+
+    minuteur = build_timer(recu_le)
+    t1, t2 = st.columns(2)
+    t1.metric("Échéance de remboursement", minuteur.refund_due_at.strftime("%d/%m/%Y"),
+              help="Article 35 : J+3 jours ouvrés, week-ends et fériés exclus.")
+    t2.metric("Réponse au client avant", minuteur.client_answer_due_at.strftime("%d/%m/%Y"),
+              help="Circulaire 002-2020/CB/C : J+30 calendaires.")
+
+    with st.expander("Dossier de litige pré-rempli (structure inspirée ISO 20022 camt.056)"):
+        dossier = build_dispute_file(plainte, ex, alerte, now=recu_le)
+        st.json(json.loads(dossier.model_dump_json()))
+
+
 def main() -> None:
     bundle, demo_mode = sidebar()
     st.markdown(
@@ -1116,6 +1278,7 @@ fichier de résultats du dépôt. Aucun n'est saisi à la main.</div>
 
     tabs = st.tabs(
         [
+            "▶ Testez vous-même",
             "1 · L'histoire d'Aïcha",
             "2 · Seul ou ensemble ?",
             "3 · Qui est relié à qui",
@@ -1126,18 +1289,20 @@ fichier de résultats du dépôt. Aucun n'est saisi à la main.</div>
         ]
     )
     with tabs[0]:
-        tab_case(bundle)
+        tab_essai(bundle)
     with tabs[1]:
-        tab_comparison(bundle)
+        tab_case(bundle)
     with tabs[2]:
-        tab_graph(bundle)
+        tab_comparison(bundle)
     with tabs[3]:
-        tab_detail(bundle)
+        tab_graph(bundle)
     with tabs[4]:
-        tab_radar(bundle)
+        tab_detail(bundle)
     with tabs[5]:
-        tab_results(bundle)
+        tab_radar(bundle)
     with tabs[6]:
+        tab_results(bundle)
+    with tabs[7]:
         tab_privacy(bundle)
 
 
