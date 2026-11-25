@@ -7,6 +7,7 @@ import { readSession } from "@/lib/auth";
 import { DEMO_ACCOUNTS } from "@/lib/demo-accounts";
 import { IconArrowRight } from "@/components/ui/icons";
 import { alerts, fcfa } from "@/lib/data";
+import { BRAND } from "@/lib/brand";
 
 export const metadata = { title: "Connexion" };
 
@@ -85,7 +86,7 @@ export default async function ConnexionPage({ searchParams }: { searchParams: Pr
               <p className="mt-3 font-mono text-sm text-[#ffb59a]">{fcfa(top.freezableFcfa)} encore gelables</p>
             </div>
             <p className="mt-6 max-w-md text-sm text-mist">
-              Réclam&apos;Graph recommande. Votre équipe décide, et chaque décision est inscrite dans l&apos;audit.
+              {BRAND.name} recommande. Votre équipe décide, et chaque décision est inscrite dans l&apos;audit.
             </p>
           </div>
         </div>

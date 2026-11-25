@@ -1,4 +1,5 @@
-// Défilement des émetteurs de l'UEMOA que Réclam'Graph doit relier.
+import { BRAND } from "@/lib/brand";
+// Défilement des émetteurs de l'UEMOA que ${BRAND.name} doit relier.
 // Choix délibéré : monogrammes neutres, pas les logos des marques. Ces acteurs ne sont ni clients ni partenaires ;
 // afficher leurs logos laisserait croire le contraire devant un jury où siègent certains d'entre eux.
 type Issuer = { name: string; mono: string; detail: string };
@@ -39,7 +40,7 @@ export default function IssuerMarquee() {
           Une arnaque traverse les réseaux. Personne ne la voit en entier.
         </h2>
         <p className="mt-3 max-w-2xl text-slate">
-          175 institutions sont connectées à PI-SPI. Chacune ne lit que ses propres réclamations. Réclam&apos;Graph est la
+          175 institutions sont connectées à PI-SPI. Chacune ne lit que ses propres réclamations. {BRAND.name} est la
           couche qui les relie, sans qu&apos;aucune ne livre le texte d&apos;un client.
         </p>
       </div>

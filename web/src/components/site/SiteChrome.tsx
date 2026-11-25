@@ -1,51 +1,70 @@
 import Link from "next/link";
-import { LogoMark, IconArrowRight } from "@/components/ui/icons";
+import { IconArrowRight } from "@/components/ui/icons";
+import { BRAND } from "@/lib/brand";
 
-export function Wordmark({ className = "" }: { className?: string }) {
+/** Logo : trois réseaux qui se croisent en X sur le compte mule. */
+export function BrandMark({ size = 34, onDark = false }: { size?: number; onDark?: boolean }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" aria-hidden>
+      <rect width="40" height="40" rx="12" fill={onDark ? "#ffffff" : "#2347e8"} />
+      <path d="M11 11 29 29M29 11 11 29" stroke={onDark ? "#2347e8" : "#ffffff"} strokeWidth="4.2" strokeLinecap="round" />
+      <circle cx="20" cy="20" r="4.6" fill="#ffc531" stroke={onDark ? "#ffffff" : "#2347e8"} strokeWidth="2" />
+    </svg>
+  );
+}
+
+export function Wordmark({ onDark = false, className = "" }: { onDark?: boolean; className?: string }) {
+  const [a, b] = [BRAND.name.replace(/X$/, ""), BRAND.name.endsWith("X") ? "X" : ""];
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <LogoMark />
-      <span className="font-display text-[1.15rem] font-semibold tracking-[-0.02em]">Réclam&apos;Graph</span>
+      <BrandMark onDark={onDark} />
+      <span className={`font-display text-[1.35rem] font-bold tracking-[-0.03em] ${onDark ? "text-white" : "text-ink"}`}>
+        {a}
+        {b && <span className={onDark ? "text-amber" : "text-blue"}>{b}</span>}
+      </span>
     </span>
   );
 }
 
-export function SiteHeader({ tone = "ink" }: { tone?: "ink" | "paper" }) {
-  const onInk = tone === "ink";
+export function AnnouncementBar() {
   return (
-    <header className={`relative z-20 ${onInk ? "on-ink text-cream" : "text-ink"}`}>
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-5 md:px-10">
-        <Link href="/" aria-label="Réclam'Graph, accueil" className="rounded-lg">
+    <div className="bg-amber px-4 py-2 text-center text-[13px] font-semibold text-ink">
+      GPU Challenge 2026 · démonstration en ligne sur données synthétiques.{" "}
+      <Link href="/connexion?demo=1" className="underline underline-offset-4">
+        Ouvrir le tableau de bord
+      </Link>
+    </div>
+  );
+}
+
+export function SiteHeader() {
+  return (
+    <header className="sticky top-0 z-30 border-b border-paper-line/70 bg-white/85 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-3.5 md:px-8">
+        <Link href="/" aria-label={`${BRAND.name}, accueil`} className="rounded-lg">
           <Wordmark />
         </Link>
         <nav aria-label="Navigation principale" className="hidden items-center gap-1 lg:flex">
           {[
-            ["#probleme", "Le problème"],
-            ["#fonctionnement", "Fonctionnement"],
-            ["#preuves", "Preuves mesurées"],
-            ["#confiance", "Confidentialité"],
+            ["/#calcul", "Le calcul"],
+            ["/#fonctions", "Ce que fait " + BRAND.name],
+            ["/#preuves", "Preuves"],
+            ["/#faq", "Questions"],
           ].map(([href, label]) => (
-            <Link
-              key={href}
-              href={`/${href}`}
-              className={`rounded-full px-4 py-2 text-sm transition-colors ${onInk ? "text-cream/80 hover:bg-white/10 hover:text-cream" : "text-slate hover:bg-paper-3 hover:text-ink"}`}
-            >
+            <Link key={href} href={href} className="rounded-full px-4 py-2 text-[15px] font-semibold text-slate transition-colors hover:bg-paper hover:text-ink">
               {label}
             </Link>
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <Link
-            href="/connexion"
-            className={`hidden rounded-full px-4 py-2 text-sm font-medium sm:inline-flex ${onInk ? "text-cream hover:bg-white/10" : "text-ink hover:bg-paper-3"}`}
-          >
+          <Link href="/connexion" className="hidden rounded-full px-4 py-2 text-[15px] font-bold text-ink hover:bg-paper sm:inline-flex">
             Se connecter
           </Link>
           <Link
             href="/connexion?demo=1"
-            className="inline-flex items-center gap-2 rounded-full bg-laterite px-4 py-2 text-sm font-medium text-paper-2 shadow-[0_6px_20px_-8px_rgba(224,100,58,0.8)] transition-[background-color,transform] duration-300 hover:bg-laterite-deep active:scale-[0.98]"
+            className="inline-flex items-center gap-2 rounded-full bg-blue px-5 py-2.5 text-[15px] font-bold text-white shadow-[0_10px_24px_-10px_rgba(35,71,232,0.9)] transition-[background-color,transform] duration-300 hover:bg-blue-deep active:scale-[0.98]"
           >
-            Ouvrir la démo <IconArrowRight size={16} />
+            Essayer la démo <IconArrowRight size={16} />
           </Link>
         </div>
       </div>
@@ -54,28 +73,26 @@ export function SiteHeader({ tone = "ink" }: { tone?: "ink" | "paper" }) {
 }
 
 export function SiteFooter() {
-  const year = 2026;
   return (
-    <footer className="on-ink bg-ink text-cream">
-      <div className="mx-auto max-w-7xl px-6 pb-10 pt-20 md:px-10">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <footer className="p-3">
+      <div className="rounded-[32px] bg-ink px-6 pb-8 pt-16 text-cream md:px-14">
+        <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-[1.5fr_1fr_1fr_1.3fr]">
           <div>
-            <Wordmark />
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-mist">
-              Chaque plainte est un capteur. Seule, elle ne dit rien. Croisée entre opérateurs, elle révèle le compte mule
-              avant le retrait.
+            <Wordmark onDark />
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-mist">
+              {BRAND.meaning} {BRAND.tagline}
             </p>
-            <p className="mt-6 max-w-sm text-xs leading-relaxed text-mist/80">
-              Prototype de l&apos;équipe Token Titans, GPU Challenge 2026, Epitech Bénin, Cotonou. Données de démonstration
-              entièrement synthétiques, opérateurs fictifs.
+            <p className="mt-6 max-w-xs text-xs leading-relaxed text-mist/80">
+              Équipe {BRAND.team}, GPU Challenge 2026, Epitech Bénin, Cotonou. Projet déposé sous le nom {BRAND.legacyName}. Données de
+              démonstration synthétiques, opérateurs fictifs.
             </p>
           </div>
           <FooterCol
             title="Produit"
             links={[
-              ["/#fonctionnement", "Fonctionnement"],
+              ["/#fonctions", "Fonctionnalités"],
               ["/#preuves", "Résultats mesurés"],
-              ["/#nexus", "Assistant Nexus"],
+              ["/#nexus", `Assistant ${BRAND.assistant}`],
               ["/connexion?demo=1", "Démo en ligne"],
             ]}
           />
@@ -83,22 +100,24 @@ export function SiteFooter() {
             title="Confiance"
             links={[
               ["/#confiance", "Ce qui quitte l'opérateur"],
-              ["/confidentialite", "Politique de confidentialité"],
+              ["/confidentialite", "Confidentialité"],
               ["/cgu", "Conditions d'utilisation"],
               ["/mentions-legales", "Mentions légales"],
             ]}
           />
-          <FooterCol
-            title="Cadre"
-            links={[
-              ["/#probleme", "PI-SPI et irrévocabilité"],
-              ["/#preuves", "Délais J+3 et J+30"],
-              ["/connexion", "Espace établissement"],
-            ]}
-          />
+          <div>
+            <h3 className="text-sm font-bold text-white">Un pilote de 8 semaines</h3>
+            <p className="mt-3 text-sm leading-relaxed text-mist">Deux réseaux, vos réclamations anonymisées, tout tourne chez vous.</p>
+            <a
+              href={`mailto:${BRAND.contact}`}
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:bg-amber"
+            >
+              Nous écrire <IconArrowRight size={15} />
+            </a>
+          </div>
         </div>
-        <div className="mt-16 flex flex-col gap-3 border-t border-ink-line pt-6 text-xs text-mist md:flex-row md:items-center md:justify-between">
-          <p>© {year} Réclam&apos;Graph · Token Titans. Réclam&apos;Graph recommande et documente ; il ne gèle jamais seul.</p>
+        <div className="mx-auto mt-14 flex max-w-7xl flex-col gap-3 border-t border-ink-line pt-6 text-xs text-mist md:flex-row md:items-center md:justify-between">
+          <p>© 2026 {BRAND.name} · {BRAND.team}. Nous recommandons et documentons ; nous ne gelons jamais seuls.</p>
           <p>Conçu à Cotonou pour l&apos;UEMOA.</p>
         </div>
       </div>
@@ -109,11 +128,11 @@ export function SiteFooter() {
 function FooterCol({ title, links }: { title: string; links: [string, string][] }) {
   return (
     <div>
-      <h3 className="text-sm font-medium text-cream">{title}</h3>
+      <h3 className="text-sm font-bold text-white">{title}</h3>
       <ul className="mt-4 space-y-2.5">
         {links.map(([href, label]) => (
           <li key={label}>
-            <Link href={href} className="text-sm text-mist transition-colors hover:text-cream">
+            <Link href={href} className="text-sm text-mist transition-colors hover:text-white">
               {label}
             </Link>
           </li>

@@ -19,9 +19,7 @@ export default async function LegalPage({ slug }: { slug: "cgu" | "confidentiali
   ].filter(([href]) => href !== `/${slug}`);
   return (
     <>
-      <div className="border-b border-paper-line bg-paper">
-        <SiteHeader tone="paper" />
-      </div>
+      <SiteHeader />
       <main className="mx-auto grid max-w-6xl gap-12 px-6 py-16 lg:grid-cols-[1fr_15rem]">
         <article className="legal max-w-[72ch]">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{md}</ReactMarkdown>

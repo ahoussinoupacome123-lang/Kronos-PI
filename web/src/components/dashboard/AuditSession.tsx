@@ -7,7 +7,7 @@ export default function AuditSession() {
   const { decisions, reset } = useDecisions();
   const list = Object.values(decisions).sort((a, b) => b.at.localeCompare(a.at));
   return (
-    <section className="rounded-2xl border border-paper-line bg-paper-2">
+    <section className="rounded-[22px] bg-white shadow-[0_10px_34px_-24px_rgba(11,27,75,0.45)]">
       <div className="flex items-center justify-between border-b border-paper-line px-5 py-3.5">
         <h2 className="font-medium">Décisions humaines de cette session</h2>
         {list.length > 0 && (
