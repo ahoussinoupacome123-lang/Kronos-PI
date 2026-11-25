@@ -55,6 +55,9 @@ demo: ## Lance l'interface en MODE DÉMO (résultats pré-calculés, sans GPU)
 demo-live: ## Lance l'interface en mode calcul direct
 	RECLAM_DEMO_MODE=0 $(STREAM) run app/dashboard.py
 
+readme: ## Réinjecte les chiffres de results/ dans le bloc RESULTATS du README
+	$(PY) scripts/refresh_results_block.py
+
 test: ## Lance la suite de tests
 	$(PY) -m pytest tests -q
 
@@ -71,7 +74,7 @@ serve-ollama: ## Variante Ollama (CPU ou GPU), même API OpenAI
 gpu-log: ## Enregistre la preuve d'utilisation GPU -> results/gpu_log.txt
 	bash scripts/record_gpu_evidence.sh
 
-all: data pipeline bench test ## Chaîne complète hors interface
+all: data pipeline bench readme test ## Chaîne complète hors interface
 	@echo "✓ données, pipeline, banc de mesure et tests terminés"
 
 clean-results: ## Supprime les sorties calculées

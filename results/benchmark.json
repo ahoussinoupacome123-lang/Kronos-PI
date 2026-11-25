@@ -1,6 +1,6 @@
 {
   "meta": {
-    "genere_le": "2026-11-25T04:03:58.741792+01:00",
+    "genere_le": "2026-11-25T08:21:38.055141+01:00",
     "etiquette_execution": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)",
     "donnees": "SYNTHÉTIQUES — opérateurs fictifs, générateur publié",
     "n_reclamations": 20000,
@@ -195,7 +195,7 @@
         },
         "lecture": "Sur ces textes, le mot à mot ne suffit pas : la même phrase sert à une arnaque et à une erreur sincère. C'est exactement le cas où le signal doit venir du CROISEMENT inter-opérateurs, pas du texte."
       },
-      "entrainement_s": 8.06,
+      "entrainement_s": 5.88,
       "note": "Référence supervisée : TF-IDF caractères + régression logistique, entraînée sur 14000 réclamations, évaluée sur 6000. Elle a vu des étiquettes ; les extracteurs non."
     },
     "heuristique_locale": {
@@ -1217,13 +1217,13 @@
   },
   "debit": {
     "reference_regex": {
-      "reclamations_par_seconde": 28639.24,
-      "secondes": 0.698,
+      "reclamations_par_seconde": 45215.96,
+      "secondes": 0.442,
       "etiquette": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)"
     },
     "heuristique_locale": {
-      "reclamations_par_seconde": 18283.47,
-      "secondes": 1.094,
+      "reclamations_par_seconde": 29408.78,
+      "secondes": 0.68,
       "etiquette": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)"
     },
     "llm": {
@@ -1233,7 +1233,7 @@
   "cout": {
     "etiquette_execution": "CPU run — aucun GPU détecté (ne pas présenter comme des chiffres GPU)",
     "moteur_mesure": "heuristique locale (CPU)",
-    "debit_mesure_reclamations_par_seconde": 18283.47,
+    "debit_mesure_reclamations_par_seconde": 29408.78,
     "debit_llm_mesure": null,
     "prix_horaire_gpu_fcfa": "non calculé",
     "cout_inference_locale_pour_1000_fcfa": "non calculé",
