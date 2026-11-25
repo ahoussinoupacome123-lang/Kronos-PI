@@ -1,9 +1,0 @@
-# Deploiement de la presentation KronosPI sur Render — site statique.
-# Render > New > Blueprint > choisir ce depot. Aucun build : les fichiers
-# de presentation/ sont servis tels quels.
-services:
-  - type: web
-    name: kronospi-presentation
-    runtime: static
-    buildCommand: echo "aucun build, presentation statique"
-    staticPublishPath: ./presentation
